@@ -10,7 +10,7 @@ describe("local env loader", () => {
   it("parses quoted values, empty values and inline comments", () => {
     const values = parseEnvFile([
       "DATA_DIR=./data",
-      "BANGUMI_USER_AGENT=\"anime-quarter-schedule-local/0.1.0 (contact: local-dev)\"",
+      "BANGUMI_USER_AGENT=\"anime-quarter-schedule-local/0.1.1 (contact: local-dev)\"",
       "BAHAMUT_TIMETABLE_URLS= # optional",
       "IGNORED LINE",
       "# COMMENTED=true"
@@ -18,7 +18,7 @@ describe("local env loader", () => {
 
     assert.deepEqual(values, {
       DATA_DIR: "./data",
-      BANGUMI_USER_AGENT: "anime-quarter-schedule-local/0.1.0 (contact: local-dev)",
+      BANGUMI_USER_AGENT: "anime-quarter-schedule-local/0.1.1 (contact: local-dev)",
       BAHAMUT_TIMETABLE_URLS: ""
     });
   });

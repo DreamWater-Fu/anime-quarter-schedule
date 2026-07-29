@@ -34,7 +34,7 @@ describe("frontend season interaction helpers", () => {
     const marchToApril = findFixtureItem(cache, "anime:march-to-april");
     const juneToJuly = findFixtureItem(cache, "anime:june-to-july");
 
-    assert.equal(classifySeasonMembership(marchToApril, { year: 2026, quarter: "spring" }), "continuing");
+    assert.equal(classifySeasonMembership(marchToApril, { year: 2026, quarter: "spring" }), "new");
     assert.equal(classifySeasonMembership(juneToJuly, { year: 2026, quarter: "spring" }), "new");
   });
 

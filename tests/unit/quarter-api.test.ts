@@ -7,24 +7,55 @@ import type { AnimeCache } from "../../src/server/types/anime.ts";
 import { MemoryStorage, readFixture } from "./test-utils.ts";
 
 describe("quarter query coverage", () => {
-  it("returns TV works by premiere quarter and active cross-quarter continuation", async () => {
+  it("returns TV works by premiere quarter only for non-current seasons", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const storage = new MemoryStorage(cache);
 
-    const winter = await queryAnimeBySeason({ year: 2026, season: 1, storage });
+    const winter = await queryAnimeBySeason({ year: 2026, season: 1, storage, now: new Date("2026-07-29T00:00:00+08:00") });
     assert.deepEqual(
       winter.items.map((item) => item.id),
-      ["anime:winter-jan-mar", "anime:march-to-april", "anime:october-to-next-january"]
+      ["anime:winter-jan-mar"]
     );
 
-    const spring = await queryAnimeBySeason({ year: 2026, season: 4, storage });
+    const spring = await queryAnimeBySeason({ year: 2026, season: 4, storage, now: new Date("2026-07-29T00:00:00+08:00") });
     assert.deepEqual(
       spring.items.map((item) => item.id),
-      ["anime:march-to-april", "anime:june-to-july"]
+      ["anime:march-to-april"]
     );
 
-    const summer = await queryAnimeBySeason({ year: 2026, season: 7, storage });
+    const summer = await queryAnimeBySeason({ year: 2026, season: 7, storage, now: new Date("2026-07-29T00:00:00+08:00") });
     assert.deepEqual(summer.items.map((item) => item.id), ["anime:june-to-july"]);
+  });
+
+  it("shows active continuations only when the requested season is the current Beijing season", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const continuingIntoSummer = {
+      ...cache.items[0]!,
+      id: "anime:spring-continuing-into-summer",
+      startDate: "2026-04-10",
+      primarySeason: { year: 2026, quarter: "spring" as const },
+      activeSeasons: [
+        { year: 2026, quarter: "spring" as const },
+        { year: 2026, quarter: "summer" as const }
+      ]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [...cache.items, continuingIntoSummer] });
+
+    const currentSummer = await queryAnimeBySeason({
+      year: 2026,
+      season: 7,
+      storage,
+      now: new Date("2026-07-29T00:00:00+08:00")
+    });
+    assert.equal(currentSummer.items.some((item) => item.id === continuingIntoSummer.id), true);
+
+    const futureFall = await queryAnimeBySeason({
+      year: 2026,
+      season: 10,
+      storage,
+      now: new Date("2026-07-29T00:00:00+08:00")
+    });
+    assert.equal(futureFall.items.some((item) => item.id === "anime:june-to-july"), false);
   });
 
   it("keeps continuing classification available for activeSeasons metadata", async () => {
@@ -34,7 +65,7 @@ describe("quarter query coverage", () => {
 
     assert.ok(marchToApril);
     assert.ok(juneToJuly);
-    assert.equal(classifySeasonMembership(marchToApril, { year: 2026, quarter: "spring" }), "continuing");
+    assert.equal(classifySeasonMembership(marchToApril, { year: 2026, quarter: "spring" }), "new");
     assert.equal(classifySeasonMembership(juneToJuly, { year: 2026, quarter: "spring" }), "new");
   });
 

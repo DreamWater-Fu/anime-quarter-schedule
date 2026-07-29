@@ -26,14 +26,14 @@ describe("documented fixtures", () => {
     assert.deepEqual(janToMar.activeSeasons, [{ year: 2026, quarter: "winter" }]);
 
     const marToApr = findFixtureItem(cache, "anime:march-to-april");
-    assert.deepEqual(marToApr.primarySeason, { year: 2026, quarter: "winter" });
+    assert.deepEqual(marToApr.primarySeason, { year: 2026, quarter: "spring" });
     assert.deepEqual(marToApr.activeSeasons, [
       { year: 2026, quarter: "winter" },
       { year: 2026, quarter: "spring" }
     ]);
 
     const junToJul = findFixtureItem(cache, "anime:june-to-july");
-    assert.deepEqual(junToJul.primarySeason, { year: 2026, quarter: "spring" });
+    assert.deepEqual(junToJul.primarySeason, { year: 2026, quarter: "summer" });
     assert.deepEqual(junToJul.activeSeasons, [
       { year: 2026, quarter: "spring" },
       { year: 2026, quarter: "summer" }
@@ -59,7 +59,7 @@ describe("documented fixtures", () => {
 
     const marchToApril = cases.get("march-to-april");
     assert.ok(marchToApril);
-    assert.deepEqual(calculatePrimarySeason(marchToApril.startDate), { year: 2026, quarter: "winter" });
+    assert.deepEqual(calculatePrimarySeason(marchToApril.startDate), { year: 2026, quarter: "spring" });
     assert.deepEqual(
       calculateActiveSeasons({
         schedule: marchToApril.schedule,

@@ -9,6 +9,8 @@ import { getDefaultStorage } from "../cache/jsonFileStorage.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { ApiErrorException } from "../utils/errors.ts";
 import {
+  compareSeasonKey,
+  getCurrentSeasonKey,
   isSeasonMonth,
   seasonKeyEquals,
   seasonMonthToQuarter
@@ -21,6 +23,7 @@ export interface QueryAnimeInput {
   includeOptional?: boolean;
   includeNeedsReview?: boolean;
   storage?: AnimeStorage;
+  now?: Date;
 }
 
 const EMPTY_STATUS_SUMMARY: Record<DataStatus, number> = {
@@ -40,11 +43,12 @@ export async function queryAnimeBySeason(input: QueryAnimeInput): Promise<AnimeS
   const cache = await storage.readAnimeCache();
   const quarter = input.quarter ?? seasonMonthToQuarter(input.season);
   const currentSeason = { year: input.year, quarter };
+  const actualSeason = getCurrentSeasonKey(input.now);
   const includeOptional = input.includeOptional ?? true;
   const includeNeedsReview = input.includeNeedsReview ?? true;
 
   const items = cache.items
-    .filter((item) => isVisibleInSeason(item, currentSeason))
+    .filter((item) => isVisibleInSeason(item, currentSeason, actualSeason))
     .filter((item) => item.format === "tv")
     .filter((item) => item.isJapaneseAnime !== false)
     .filter((item) => isIncludedForQuery(item, includeOptional, includeNeedsReview))
@@ -77,11 +81,15 @@ function isIncludedForQuery(item: AnimeItem, includeOptional: boolean, includeNe
   return false;
 }
 
-function isVisibleInSeason(item: AnimeItem, currentSeason: { year: number; quarter: AnimeQuarter }): boolean {
-  return (
-    seasonKeyEquals(item.primarySeason, currentSeason) ||
-    item.activeSeasons.some((season) => seasonKeyEquals(season, currentSeason))
-  );
+function isVisibleInSeason(
+  item: AnimeItem,
+  requestedSeason: { year: number; quarter: AnimeQuarter },
+  actualSeason: { year: number; quarter: AnimeQuarter }
+): boolean {
+  if (seasonKeyEquals(item.primarySeason, requestedSeason)) return true;
+  if (!seasonKeyEquals(requestedSeason, actualSeason)) return false;
+  if (!item.primarySeason || compareSeasonKey(item.primarySeason, requestedSeason) >= 0) return false;
+  return item.activeSeasons.some((season) => seasonKeyEquals(season, requestedSeason));
 }
 
 function compareAnimeForSeasonPage(left: AnimeItem, right: AnimeItem): number {

@@ -1,7 +1,14 @@
+import { execFile } from "node:child_process";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
+import { promisify } from "node:util";
 
 import { DataSourceError } from "../types.ts";
 import type { BangumiClient, BangumiEpisode, BangumiSubject } from "./types.ts";
+
+const execFileAsync = promisify(execFile);
 
 export interface BangumiApiClientOptions {
   baseUrl?: string;
@@ -10,12 +17,14 @@ export interface BangumiApiClientOptions {
   timeoutMs?: number;
   rateLimitPerMinute?: number;
   fetchImpl?: typeof fetch;
+  fallbackFetchImpl?: typeof fetch;
+  usePowerShellFallback?: boolean;
 }
 
 type JsonRecord = Record<string, unknown>;
 
 const DEFAULT_BASE_URL = "https://api.bgm.tv";
-const DEFAULT_USER_AGENT = "anime-quarter-schedule-local/0.1.0 (contact: local-dev)";
+const DEFAULT_USER_AGENT = "anime-quarter-schedule-local/0.1.1 (contact: local-dev)";
 
 export class BangumiApiClient implements BangumiClient {
   private readonly baseUrl: string;
@@ -24,6 +33,7 @@ export class BangumiApiClient implements BangumiClient {
   private readonly timeoutMs: number;
   private readonly rateLimitPerMinute: number;
   private readonly fetchImpl: typeof fetch;
+  private readonly fallbackFetchImpl?: typeof fetch;
   private readonly requestTimes: number[] = [];
 
   constructor(options: BangumiApiClientOptions = {}) {
@@ -33,6 +43,10 @@ export class BangumiApiClient implements BangumiClient {
     this.timeoutMs = options.timeoutMs ?? 20_000;
     this.rateLimitPerMinute = options.rateLimitPerMinute ?? Number(process.env.BANGUMI_RATE_LIMIT_PER_MINUTE ?? 30);
     this.fetchImpl = options.fetchImpl ?? fetch;
+    const usePowerShellFallback =
+      options.usePowerShellFallback ??
+      (process.platform === "win32" && process.env.BANGUMI_POWERSHELL_FALLBACK === "true");
+    this.fallbackFetchImpl = options.fallbackFetchImpl ?? (usePowerShellFallback ? createPowerShellFetch(this.timeoutMs) : undefined);
   }
 
   async listSubjectsByMonth(input: {
@@ -107,24 +121,29 @@ export class BangumiApiClient implements BangumiClient {
     if (init.body && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
     if (this.accessToken) headers.set("Authorization", `Bearer ${this.accessToken}`);
 
+    const url = `${this.baseUrl}${path}`;
     let response: Response;
     try {
-      response = await this.fetchImpl(`${this.baseUrl}${path}`, {
+      response = await this.fetchImpl(url, {
         ...init,
         headers,
         signal: controller.signal
       });
     } catch (error) {
-      throw new DataSourceError({
-        source: "Bangumi",
-        code: "NETWORK_FAILED",
-        message:
-          error instanceof Error && error.name === "AbortError"
-            ? "Bangumi API request timed out"
-            : "Bangumi API network request failed",
-        retryable: true,
-        details: error instanceof Error ? error.message : error
-      });
+      const fallbackResponse = await this.tryFallbackFetch(url, init, headers, error);
+      if (!fallbackResponse) {
+        throw new DataSourceError({
+          source: "Bangumi",
+          code: "NETWORK_FAILED",
+          message:
+            error instanceof Error && error.name === "AbortError"
+              ? "Bangumi API request timed out"
+              : "Bangumi API network request failed",
+          retryable: true,
+          details: error instanceof Error ? error.message : error
+        });
+      }
+      response = fallbackResponse;
     } finally {
       clearTimeout(timeout);
     }
@@ -162,6 +181,30 @@ export class BangumiApiClient implements BangumiClient {
     }
   }
 
+  private async tryFallbackFetch(
+    url: string,
+    init: RequestInit,
+    headers: Headers,
+    originalError: unknown
+  ): Promise<Response | null> {
+    if (!this.fallbackFetchImpl || !isGetRequest(init)) return null;
+
+    try {
+      return await this.fallbackFetchImpl(url, { headers });
+    } catch (error) {
+      throw new DataSourceError({
+        source: "Bangumi",
+        code: "NETWORK_FAILED",
+        message: "Bangumi API fallback request failed",
+        retryable: true,
+        details: {
+          primary: originalError instanceof Error ? originalError.message : originalError,
+          fallback: error instanceof Error ? error.message : error
+        }
+      });
+    }
+  }
+
   private async waitForRateLimitSlot(): Promise<void> {
     if (!Number.isFinite(this.rateLimitPerMinute) || this.rateLimitPerMinute <= 0) return;
 
@@ -178,6 +221,67 @@ export class BangumiApiClient implements BangumiClient {
 
     this.requestTimes.push(Date.now());
   }
+}
+
+function isGetRequest(init: RequestInit): boolean {
+  return !init.body && (!init.method || init.method.toUpperCase() === "GET");
+}
+
+function createPowerShellFetch(timeoutMs: number): typeof fetch {
+  return async (input, init) => {
+    const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+    const headers = new Headers(init?.headers);
+    const tempDir = join(tmpdir(), `bangumi-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+    const outputFile = join(tempDir, "response.json");
+    const scriptFile = join(tempDir, "fetch-bangumi.ps1");
+    await mkdir(tempDir, { recursive: true });
+    try {
+      const script = [
+        "param($uri, $out, $userAgent, $accept, $token, $timeoutSec)",
+        "$ErrorActionPreference = 'Stop'",
+        "[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)",
+        "$timeoutSec = [int]$timeoutSec",
+        "$headers = @{}",
+        "if ($userAgent) { $headers['User-Agent'] = $userAgent }",
+        "if ($accept) { $headers['Accept'] = $accept }",
+        "if ($token) { $headers['Authorization'] = $token }",
+        "$response = Invoke-WebRequest -Uri $uri -Headers $headers -UseBasicParsing -TimeoutSec $timeoutSec",
+        "[System.IO.File]::WriteAllText($out, $response.Content, [System.Text.UTF8Encoding]::new($false))",
+        "[Console]::Write([string]$response.StatusCode)"
+      ].join("\n");
+      await writeFile(scriptFile, script, "utf8");
+      const { stdout } = await execFileAsync(
+        "powershell.exe",
+        [
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          scriptFile,
+          url,
+          outputFile,
+          headers.get("User-Agent") ?? "",
+          headers.get("Accept") ?? "application/json",
+          headers.get("Authorization") ?? "",
+          String(Math.max(1, Math.ceil(timeoutMs / 1000)))
+        ],
+        {
+          timeout: timeoutMs + 5_000,
+          windowsHide: true,
+          maxBuffer: 1024 * 1024
+        }
+      );
+      const status = Number(String(stdout).trim()) || 200;
+      const body = await readFile(outputFile, "utf8");
+      return new Response(body, {
+        status,
+        headers: { "Content-Type": "application/json; charset=utf-8" }
+      });
+    } finally {
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  };
 }
 
 function extractSubjectList(payload: unknown): BangumiSubject[] {

@@ -95,7 +95,7 @@ async function main() {
 
 async function fetchBangumiDetails(ids: number[]): Promise<Map<number, BangumiDetail>> {
   if (ids.length === 0) return new Map();
-  const userAgent = process.env.BANGUMI_USER_AGENT || "anime-quarter-schedule-local/0.1.0 (contact: local-dev)";
+  const userAgent = process.env.BANGUMI_USER_AGENT || "anime-quarter-schedule-local/0.1.1 (contact: local-dev)";
   const script = String.raw`
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 $ids = ConvertFrom-Json $env:BG_SYNC_IDS

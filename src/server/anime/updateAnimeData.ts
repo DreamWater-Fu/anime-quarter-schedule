@@ -184,6 +184,7 @@ function applyManualBroadcastOverride(
   overrides: Map<string, ManualBroadcastOverride>,
   retrievedAt: string
 ): AnimeItem {
+  if (isFinalStatus(item.status)) return item;
   const override = overrides.get(item.id);
   if (!override) return item;
 
@@ -386,13 +387,15 @@ function findExistingMergeKey(item: AnimeItem, existingItems: Map<string, AnimeI
 }
 
 function mergeTwoItems(left: AnimeItem, right: AnimeItem): AnimeItem {
-  const rightUsesJapanBroadcastTime = isJapanBroadcastReviewItem(right) && right.startDate !== null;
+  const mergedStatus = resolveMergedStatus(left.status, right.status);
+  const suppressBroadcastTime = isFinalStatus(mergedStatus);
+  const rightUsesJapanBroadcastTime = !suppressBroadcastTime && isJapanBroadcastReviewItem(right) && right.startDate !== null;
   const schedule = rightUsesJapanBroadcastTime && right.updateTime !== null
     ? mergeScheduleFromJapanBroadcastReference(left, right)
     : dedupeSchedule([...left.schedule, ...right.schedule]);
   const primarySeason = rightUsesJapanBroadcastTime ? right.primarySeason : left.primarySeason ?? right.primarySeason;
   const startDate = rightUsesJapanBroadcastTime ? right.startDate : left.startDate ?? right.startDate;
-  const updateTime = left.updateTime ?? right.updateTime;
+  const updateTime = suppressBroadcastTime ? null : left.updateTime ?? right.updateTime;
   const bangumi = left.bangumi.subjectId !== null ? left.bangumi : right.bangumi;
   const externalIds = {
     bangumiSubjectId: left.externalIds.bangumiSubjectId ?? right.externalIds.bangumiSubjectId,
@@ -413,7 +416,7 @@ function mergeTwoItems(left: AnimeItem, right: AnimeItem): AnimeItem {
       aliases: [...new Set([...left.title.aliases, ...right.title.aliases])]
     },
     format: left.format !== "unknown" ? left.format : right.format,
-    status: left.status !== "unknown" ? left.status : right.status,
+    status: mergedStatus,
     startDate,
     endDate: left.endDate ?? right.endDate,
     officialUrl: left.officialUrl ?? right.officialUrl,
@@ -425,11 +428,13 @@ function mergeTwoItems(left: AnimeItem, right: AnimeItem): AnimeItem {
       fallbackPrimarySeason: primarySeason
     }),
     primarySeason,
-    updateWeekday: inferUpdateWeekday({
-      updateWeekday: right.updateWeekday ?? left.updateWeekday,
-      schedule,
-      startDate
-    }),
+    updateWeekday: suppressBroadcastTime
+      ? null
+      : inferUpdateWeekday({
+          updateWeekday: right.updateWeekday ?? left.updateWeekday,
+          schedule,
+          startDate
+        }),
     updateTime,
     episodeCount: left.episodeCount ?? right.episodeCount,
     airedEpisodeCount: left.airedEpisodeCount ?? right.airedEpisodeCount,
@@ -438,6 +443,19 @@ function mergeTwoItems(left: AnimeItem, right: AnimeItem): AnimeItem {
     createdAt: left.createdAt,
     updatedAt: right.updatedAt
   };
+}
+
+function resolveMergedStatus(left: AnimeItem["status"], right: AnimeItem["status"]): AnimeItem["status"] {
+  if (left === "finished" || right === "finished") return "finished";
+  if (left === "cancelled" || right === "cancelled") return "cancelled";
+  if (left === "delayed" || right === "delayed") return "delayed";
+  if (left === "airing" || right === "airing") return "airing";
+  if (left === "announced" || right === "announced") return "announced";
+  return "unknown";
+}
+
+function isFinalStatus(status: AnimeItem["status"]): boolean {
+  return status === "finished" || status === "cancelled";
 }
 
 function isJapanBroadcastReviewItem(item: AnimeItem): boolean {
@@ -498,13 +516,20 @@ function mergeWithOldItem(item: AnimeItem, oldItems: AnimeItem[]): AnimeItem {
     return oldTitleMatch ? mergeScheduleReviewWithOldItem(oldTitleMatch, item) : item;
   }
 
+  const mergedStatus = resolveMergedStatus(item.status, oldItem.status);
+  const suppressBroadcastTime = isFinalStatus(mergedStatus);
   return {
     ...item,
+    status: mergedStatus,
     createdAt: oldItem.createdAt,
     schedule: mergeSchedulePreservingTimedEntries(item.schedule, oldItem.schedule),
-    updateWeekday: item.updateTime === null ? oldItem.updateWeekday ?? item.updateWeekday : item.updateWeekday,
-    updateTime: item.updateTime ?? oldItem.updateTime,
-    timezone: item.updateTime === null && oldItem.updateTime !== null ? oldItem.timezone : item.timezone,
+    updateWeekday: suppressBroadcastTime
+      ? null
+      : item.updateTime === null ? oldItem.updateWeekday ?? item.updateWeekday : item.updateWeekday,
+    updateTime: suppressBroadcastTime ? null : item.updateTime ?? oldItem.updateTime,
+    timezone: suppressBroadcastTime
+      ? item.timezone
+      : item.updateTime === null && oldItem.updateTime !== null ? oldItem.timezone : item.timezone,
     bangumi: item.bangumi.rating === null && oldItem.bangumi.subjectId === item.bangumi.subjectId
       ? oldItem.bangumi
       : item.bangumi,
@@ -540,6 +565,14 @@ function isUnmatchedReferenceOnlyItem(item: AnimeItem, oldItems: AnimeItem[]): b
 
 function mergeScheduleReviewWithOldItem(oldItem: AnimeItem, scheduleItem: AnimeItem): AnimeItem {
   const merged = mergeTwoItems(oldItem, scheduleItem);
+  if (isFinalStatus(merged.status)) {
+    return {
+      ...merged,
+      updateTime: null,
+      updateWeekday: null,
+      dataStatus: merged.dataStatus === "complete" && scheduleItem.dataStatus !== "complete" ? "partial" : merged.dataStatus
+    };
+  }
   return {
     ...merged,
     updateTime: scheduleItem.updateTime ?? merged.updateTime,

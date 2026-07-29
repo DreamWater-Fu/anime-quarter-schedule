@@ -74,7 +74,7 @@ export class BahamutSourceAdapter implements AnimeSourceAdapter {
     this.timetableUrls = options.timetableUrls ?? splitEnvList(process.env.BAHAMUT_TIMETABLE_URLS);
     this.timetableFiles = options.timetableFiles ?? splitEnvList(process.env.BAHAMUT_TIMETABLE_FILES ?? `${process.env.DATA_DIR ?? "data"}/bahamut-timetable.html`);
     this.fetchImpl = options.fetchImpl ?? fetch;
-    this.userAgent = options.userAgent ?? process.env.BAHAMUT_USER_AGENT ?? "anime-quarter-schedule-local/0.1.0 (contact: local-dev)";
+    this.userAgent = options.userAgent ?? process.env.BAHAMUT_USER_AGENT ?? "anime-quarter-schedule-local/0.1.1 (contact: local-dev)";
     this.timeoutMs = options.timeoutMs ?? parsePositiveInteger(process.env.BAHAMUT_TIMEOUT_MS, 15_000);
     this.rateLimitPerMinute = options.rateLimitPerMinute ?? parsePositiveInteger(process.env.BAHAMUT_RATE_LIMIT_PER_MINUTE, 3);
     this.useDefaultTimetableUrls = options.useDefaultTimetableUrls ?? (options.entries === undefined && options.timetableUrls === undefined);

@@ -81,15 +81,21 @@ class FailingAdapter implements AnimeSourceAdapter {
 }
 
 describe("anime query and api handlers", () => {
-  it("queries TV season items including cross-quarter continuations", async () => {
-    const winterToSpring = createAnime({
+  it("queries TV season items and only shows continuations in the current season", async () => {
+    const winterToCurrentSpring = createAnime({
       id: "anime:cross-quarter",
-      startDate: "2026-03-20",
+      startDate: "2026-01-20",
       primarySeason: { year: 2026, quarter: "winter" },
       activeSeasons: [
         { year: 2026, quarter: "winter" },
         { year: 2026, quarter: "spring" }
       ]
+    });
+    const springPremiere = createAnime({
+      id: "anime:spring-premiere",
+      startDate: "2026-04-10",
+      primarySeason: { year: 2026, quarter: "spring" },
+      activeSeasons: [{ year: 2026, quarter: "spring" }]
     });
     const optional = createAnime({
       id: "anime:optional",
@@ -103,26 +109,27 @@ describe("anime query and api handlers", () => {
       schemaVersion: 1,
       updatedAt: cacheUpdatedAt,
       generatedBy: "manual-edit",
-      items: [winterToSpring, optional]
+      items: [winterToCurrentSpring, springPremiere, optional]
     });
 
     const payload = await queryAnimeBySeason({
       year: 2026,
       season: 4,
+      now: new Date("2026-04-20T00:00:00+08:00"),
       storage
     });
 
-    assert.deepEqual(payload.items.map((item) => item.id), ["anime:cross-quarter"]);
+    assert.deepEqual(payload.items.map((item) => item.id), ["anime:cross-quarter", "anime:spring-premiere"]);
     assert.equal(payload.meta.cacheUpdatedAt, cacheUpdatedAt);
-    assert.equal(payload.meta.dataStatusSummary.partial, 1);
+    assert.equal(payload.meta.dataStatusSummary.partial, 2);
 
-    const withoutOptional = await queryAnimeBySeason({
+    const sameSeasonViewedLater = await queryAnimeBySeason({
       year: 2026,
       season: 4,
-      includeOptional: false,
+      now: new Date("2026-07-20T00:00:00+08:00"),
       storage
     });
-    assert.deepEqual(withoutOptional.items.map((item) => item.id), ["anime:cross-quarter"]);
+    assert.deepEqual(sameSeasonViewedLater.items.map((item) => item.id), ["anime:spring-premiere"]);
   });
 
   it("wraps status and anime route results in the documented ok/data shape", async () => {

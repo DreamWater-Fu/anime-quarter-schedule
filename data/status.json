@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "status": "success",
-  "lastSuccessAt": "2026-07-29T07:00:55.114Z",
-  "lastAttemptAt": "2026-07-29T07:00:54.366Z",
+  "lastSuccessAt": "2026-07-29T08:48:32.110Z",
+  "lastAttemptAt": "2026-07-29T08:48:24.651Z",
   "lastError": null,
   "currentJob": null,
   "cache": {
-    "animeUpdatedAt": "2026-07-29T07:00:55.052Z",
-    "itemCount": 165
+    "animeUpdatedAt": "2026-07-29T08:48:32.027Z",
+    "itemCount": 252
   }
 }

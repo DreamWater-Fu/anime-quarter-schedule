@@ -186,6 +186,40 @@ describe("Bangumi mapper", () => {
     assert.equal(item.status, "airing");
     assert.equal(item.endDate, "2026-09-10");
   });
+
+  it("infers finished state for historical cached Bangumi list subjects with episode counts", () => {
+    const item = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 3300,
+        date: "2025-07-19",
+        eps: 11,
+        total_episodes: 11
+      },
+      [],
+      { retrievedAt, now: new Date("2026-07-29T00:00:00Z") }
+    );
+
+    assert.equal(item.endDate, "2025-09-27");
+    assert.equal(item.status, "finished");
+  });
+
+  it("marks stale historical seasonal subjects finished even when episode count is missing", () => {
+    const item = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 3301,
+        date: "2025-07-15",
+        eps: 0,
+        total_episodes: 0
+      },
+      [],
+      { retrievedAt, now: new Date("2026-07-29T00:00:00Z") }
+    );
+
+    assert.equal(item.endDate, "2025-09-30");
+    assert.equal(item.status, "finished");
+  });
 });
 
 describe("Bangumi API client", () => {
@@ -220,6 +254,28 @@ describe("Bangumi API client", () => {
       (error) => error instanceof DataSourceError && error.code === "SOURCE_SCHEMA_CHANGED"
     );
   });
+
+  it("falls back to a configured GET fetch when the primary Bangumi fetch fails", async () => {
+    let fallbackUrl = "";
+    const client = new BangumiApiClient({
+      fetchImpl: async () => {
+        throw new TypeError("connect timeout");
+      },
+      fallbackFetchImpl: async (url) => {
+        fallbackUrl = String(url);
+        return Response.json({ data: [subject] });
+      },
+      usePowerShellFallback: false,
+      rateLimitPerMinute: 0
+    });
+
+    const result = await client.listSubjectsByMonth({ year: 2025, month: 7, limit: 1 });
+
+    assert.equal(result.length, 1);
+    assert.equal(result[0]?.id, subject.id);
+    assert.match(fallbackUrl, /year=2025/);
+    assert.match(fallbackUrl, /month=7/);
+  });
 });
 
 describe("source adapters", () => {
@@ -243,6 +299,7 @@ describe("source adapters", () => {
     const adapter = new BangumiSourceAdapter({
       client: failingClient,
       useFallbackOnFailure: true,
+      usePowerShellSubjectListFallback: false,
       now: () => new Date(retrievedAt)
     });
     const result = await adapter.fetchSeason({ year: 2026, season: 7, quarter: "summer" });
@@ -252,6 +309,48 @@ describe("source adapters", () => {
     assert.equal(result.items[0]?.bangumi.subjectId, null);
     assert.equal(result.items[0]?.dataStatus, "unverified");
     assert.equal(result.warnings[0]?.code, "NETWORK_FAILED");
+  });
+
+  it("uses Bangumi month subject fallback before reporting quarter list failure", async () => {
+    const previousDataDir = process.env.DATA_DIR;
+    process.env.DATA_DIR = "tests/fixtures/missing-bangumi-cache";
+    const failingClient: BangumiClient = {
+      listSubjectsByMonth: async () => {
+        throw new DataSourceError({
+          source: "Bangumi",
+          code: "NETWORK_FAILED",
+          message: "offline",
+          retryable: true
+        });
+      },
+      searchSubjects: async () => [],
+      getSubject: async () => {
+        throw new Error("unused");
+      },
+      getEpisodes: async () => {
+        throw new Error("unused");
+      }
+    };
+    const adapter = new BangumiSourceAdapter({
+      client: failingClient,
+      monthSubjectFallback: async ({ month }) => (month === 7 ? [subject] : []),
+      now: () => new Date(retrievedAt)
+    });
+
+    try {
+      const result = await adapter.fetchSeason({ year: 2025, season: 7, quarter: "summer" });
+
+      assert.equal(result.items.length, 1);
+      assert.equal(result.items[0]?.id, "anime:2001");
+      assert.equal(result.items[0]?.bangumi.subjectId, 2001);
+      assert.equal(result.warnings.some((warning) => warning.message === "Bangumi quarter subject list could not be fetched"), false);
+    } finally {
+      if (previousDataDir === undefined) {
+        delete process.env.DATA_DIR;
+      } else {
+        process.env.DATA_DIR = previousDataDir;
+      }
+    }
   });
 
   it("can explicitly disable Bahamut as a reference-only source", async () => {

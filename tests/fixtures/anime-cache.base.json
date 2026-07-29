@@ -119,7 +119,7 @@
                       "datePrecision":  "day",
                       "primarySeason":  {
                                             "year":  2026,
-                                            "quarter":  "winter"
+                                            "quarter":  "spring"
                                         },
                       "activeSeasons":  [
                                             {
@@ -212,7 +212,7 @@
                       "datePrecision":  "day",
                       "primarySeason":  {
                                             "year":  2026,
-                                            "quarter":  "spring"
+                                            "quarter":  "summer"
                                         },
                       "activeSeasons":  [
                                             {

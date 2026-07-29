@@ -191,6 +191,78 @@ describe("update data merge and rollback", () => {
     assert.equal(storage.logs.some((entry) => entry.event === "source_warnings"), true);
   });
 
+  it("does not let an old airing cache overwrite a newly inferred finished status", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const oldItem = {
+      ...toSummerFixtureItem(cache),
+      status: "airing" as const,
+      endDate: null,
+      updateWeekday: 5,
+      updateTime: "22:30",
+      sources: [{ name: "Bangumi", type: "bangumi" as const, retrievedAt: "2025-07-01T00:00:00Z" }]
+    };
+    const finishedItem = {
+      ...oldItem,
+      status: "finished" as const,
+      endDate: "2025-09-27",
+      updatedAt: runAt
+    };
+    const storage = new MemoryStorage({ ...cache, items: [oldItem] });
+
+    await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [new StaticAdapter("Bangumi", "bangumi", [finishedItem])],
+        now: () => new Date(runAt)
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    const item = nextCache.items.find((candidate) => candidate.id === oldItem.id);
+    assert.equal(item?.status, "finished");
+    assert.equal(item?.updateWeekday, null);
+    assert.equal(item?.updateTime, null);
+  });
+
+  it("does not keep reference update times after the catalog item is already finished", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const baseItem = toSummerFixtureItem(cache);
+    const bangumiItem = {
+      ...baseItem,
+      status: "finished" as const,
+      endDate: "2025-09-27",
+      updateWeekday: null,
+      updateTime: null,
+      sources: [{ name: "Bangumi", type: "bangumi" as const, retrievedAt: runAt }]
+    };
+    const referenceItem = {
+      ...baseItem,
+      status: "airing" as const,
+      updateWeekday: 5,
+      updateTime: "22:30",
+      sources: [{ name: "YourAnimes", type: "third_party" as const, retrievedAt: runAt, scope: "japan_broadcast" as const }]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [] });
+
+    await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [
+          new StaticAdapter("Bangumi", "bangumi", [bangumiItem]),
+          new StaticAdapter("YourAnimes", "third_party", [referenceItem])
+        ],
+        now: () => new Date(runAt)
+      }
+    );
+
+    const item = (await storage.readAnimeCache()).items.find((candidate) => candidate.id === baseItem.id);
+    assert.equal(item?.status, "finished");
+    assert.equal(item?.updateWeekday, null);
+    assert.equal(item?.updateTime, null);
+  });
+
   it("merges Bahamut reference update time into the Bangumi main record", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const baseItem = toSummerFixtureItem(cache);

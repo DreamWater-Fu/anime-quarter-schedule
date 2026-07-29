@@ -94,13 +94,24 @@ export function calculatePrimarySeason(startDate: string | null): SeasonKey | nu
   const month = Number(startDate.slice(5, 7));
   const day = Number(startDate.slice(8, 10));
 
-  if (day < 25) return season;
-  if (month === 3) return { year: season.year, quarter: "spring" };
-  if (month === 6) return { year: season.year, quarter: "summer" };
-  if (month === 9) return { year: season.year, quarter: "fall" };
-  if (month === 12) return { year: season.year + 1, quarter: "winter" };
+  if (month === 3 && day >= 18) return { year: season.year, quarter: "spring" };
+  if (month === 6 && day >= 17) return { year: season.year, quarter: "summer" };
+  if (month === 9 && day >= 17) return { year: season.year, quarter: "fall" };
+  if (month === 12 && day >= 18) return { year: season.year + 1, quarter: "winter" };
 
   return season;
+}
+
+export function getCurrentSeasonKey(date = new Date()): SeasonKey {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date);
+  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const today = `${byType.year}-${byType.month}-${byType.day}`;
+  return calculatePrimarySeason(today) ?? seasonKeyFromDate(today);
 }
 
 export function inferUpdateWeekday(input: {

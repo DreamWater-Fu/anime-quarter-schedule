@@ -50,7 +50,7 @@ export class YourAnimesSourceAdapter implements AnimeSourceAdapter {
     this.timetableUrls = options.timetableUrls ?? splitEnvList(process.env.YOURANIMES_TIMETABLE_URLS);
     this.timetableFiles = options.timetableFiles ?? splitEnvList(process.env.YOURANIMES_TIMETABLE_FILES);
     this.fetchImpl = options.fetchImpl ?? fetch;
-    this.userAgent = options.userAgent ?? process.env.YOURANIMES_USER_AGENT ?? "anime-quarter-schedule-local/0.1.0 (contact: local-dev)";
+    this.userAgent = options.userAgent ?? process.env.YOURANIMES_USER_AGENT ?? "anime-quarter-schedule-local/0.1.1 (contact: local-dev)";
     this.timeoutMs = options.timeoutMs ?? parsePositiveInteger(process.env.YOURANIMES_TIMEOUT_MS, 15_000);
     this.now = options.now ?? (() => new Date());
   }
@@ -108,7 +108,10 @@ export class YourAnimesSourceAdapter implements AnimeSourceAdapter {
       }
     }
 
-    for (const url of this.resolveTimetableUrls(input)) {
+    const timetableUrls = entries.length > 0 && !this.hasExplicitTimetableUrls && this.timetableUrls.length === 0
+      ? []
+      : this.resolveTimetableUrls(input);
+    for (const url of timetableUrls) {
       try {
         const response = await this.fetchWithTimeout(url);
         if (!response.ok) {

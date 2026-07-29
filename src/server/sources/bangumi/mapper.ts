@@ -22,9 +22,14 @@ export function mapBangumiSubjectToAnimeItem(
     episodeCount: positiveIntegerOrNull(subject.eps) ?? positiveIntegerOrNull(subject.total_episodes),
     airedEpisodeCount: schedule.length > 0 ? schedule.length : positiveIntegerOrNull(subject.total_episodes)
   });
-  const endDate = inferEndDate(schedule, rawEpisodeCounts.episodeCount);
-  const rating = positiveNumberOrNull(subject.rating?.score);
   const now = options.now ?? new Date();
+  const endDate = inferEndDate({
+    schedule,
+    episodeCount: rawEpisodeCounts.episodeCount,
+    startDate,
+    now
+  });
+  const rating = positiveNumberOrNull(subject.rating?.score);
   const updateWeekday = inferUpdateWeekday({ schedule, startDate });
   const source = createBangumiSource(subject, retrievedAt);
   const japanDecision = resolveJapaneseAnimeDecision(subject);
@@ -245,10 +250,45 @@ function inferStatus(
   return startDate === null ? "unknown" : "airing";
 }
 
-function inferEndDate(schedule: AnimeItem["schedule"], episodeCount: number | null): string | null {
-  if (schedule.length === 0) return null;
-  if (episodeCount !== null && schedule.length < episodeCount) return null;
-  return schedule[schedule.length - 1]?.airDate ?? null;
+function inferEndDate(input: {
+  schedule: AnimeItem["schedule"];
+  episodeCount: number | null;
+  startDate: string | null;
+  now: Date;
+}): string | null {
+  const { schedule, episodeCount, startDate, now } = input;
+  if (schedule.length > 0) {
+    if (episodeCount !== null && schedule.length < episodeCount) return inferWeeklyEndDate(startDate, episodeCount);
+    return schedule[schedule.length - 1]?.airDate ?? null;
+  }
+  if (episodeCount !== null) return inferWeeklyEndDate(startDate, episodeCount);
+  if (startDate !== null && isHistoricalSeason(startDate, now)) return inferSeasonEndDate(startDate);
+  return null;
+}
+
+function inferWeeklyEndDate(startDate: string | null, episodeCount: number): string | null {
+  if (startDate === null || episodeCount <= 0) return null;
+  return shiftDate(startDate, (episodeCount - 1) * 7);
+}
+
+function isHistoricalSeason(startDate: string, now: Date): boolean {
+  const seasonEnd = Date.parse(`${inferSeasonEndDate(startDate)}T23:59:59+09:00`);
+  return Number.isFinite(seasonEnd) && now.getTime() - seasonEnd > 90 * 86_400_000;
+}
+
+function inferSeasonEndDate(startDate: string): string {
+  const date = new Date(`${startDate}T00:00:00Z`);
+  if (!Number.isFinite(date.getTime())) return startDate;
+  const month = date.getUTCMonth() + 1;
+  const quarterStartMonth = month <= 3 ? 1 : month <= 6 ? 4 : month <= 9 ? 7 : 10;
+  const quarterEndMonth = quarterStartMonth + 2;
+  return new Date(Date.UTC(date.getUTCFullYear(), quarterEndMonth, 0)).toISOString().slice(0, 10);
+}
+
+function shiftDate(date: string, days: number): string | null {
+  const time = Date.parse(`${date}T00:00:00Z`);
+  if (!Number.isFinite(time)) return null;
+  return new Date(time + days * 86_400_000).toISOString().slice(0, 10);
 }
 
 function mapCoverImage(subject: BangumiSubject): CoverImage | null {

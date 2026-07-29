@@ -3,6 +3,7 @@ import { describe, it } from "node:test";
 
 import {
   calculateActiveSeasons,
+  getCurrentSeasonKey,
   calculatePrimarySeason,
   classifySeasonMembership,
   hasBlockingValidationIssues,
@@ -106,12 +107,21 @@ describe("season calculation", () => {
     assert.deepEqual(seasonKeyFromDate("2026-12-31"), { year: 2026, quarter: "fall" });
   });
 
-  it("calculates primarySeason only from startDate", () => {
-    assert.deepEqual(calculatePrimarySeason("2026-06-20"), { year: 2026, quarter: "spring" });
-    assert.deepEqual(calculatePrimarySeason("2026-03-25"), { year: 2026, quarter: "spring" });
-    assert.deepEqual(calculatePrimarySeason("2026-03-31"), { year: 2026, quarter: "spring" });
-    assert.deepEqual(calculatePrimarySeason("2026-12-25"), { year: 2027, quarter: "winter" });
+  it("calculates primarySeason from premiere date with a two-week lead window", () => {
+    assert.deepEqual(calculatePrimarySeason("2026-03-17"), { year: 2026, quarter: "winter" });
+    assert.deepEqual(calculatePrimarySeason("2026-03-18"), { year: 2026, quarter: "spring" });
+    assert.deepEqual(calculatePrimarySeason("2026-06-16"), { year: 2026, quarter: "spring" });
+    assert.deepEqual(calculatePrimarySeason("2026-06-17"), { year: 2026, quarter: "summer" });
+    assert.deepEqual(calculatePrimarySeason("2026-09-16"), { year: 2026, quarter: "summer" });
+    assert.deepEqual(calculatePrimarySeason("2026-09-17"), { year: 2026, quarter: "fall" });
+    assert.deepEqual(calculatePrimarySeason("2026-12-17"), { year: 2026, quarter: "fall" });
+    assert.deepEqual(calculatePrimarySeason("2026-12-18"), { year: 2027, quarter: "winter" });
     assert.equal(calculatePrimarySeason(null), null);
+  });
+
+  it("uses the same lead window for the current Beijing season", () => {
+    assert.deepEqual(getCurrentSeasonKey(new Date("2026-03-17T15:59:59Z")), { year: 2026, quarter: "winter" });
+    assert.deepEqual(getCurrentSeasonKey(new Date("2026-03-17T16:00:00Z")), { year: 2026, quarter: "spring" });
   });
 
   it("calculates activeSeasons from actual schedule coverage", () => {
