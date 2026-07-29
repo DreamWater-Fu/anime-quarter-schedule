@@ -43,6 +43,7 @@ const NON_JAPANESE_PATTERN = new RegExp(
   ].join("|"),
   "iu"
 );
+const ADULT_PATTERN = /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu;
 
 interface ManualBroadcastOverride {
   id: string;
@@ -76,7 +77,7 @@ async function main() {
   const nextItems: AnimeItem[] = [];
 
   for (const item of cache.items) {
-    if (isExplicitNonJapanese(item) || isUnmatchedReferenceOnlyItem(item)) {
+    if (item.format !== "tv" || isExplicitNonJapanese(item) || isExplicitAdult(item) || isUnmatchedReferenceOnlyItem(item)) {
       removed += 1;
       continue;
     }
@@ -115,6 +116,23 @@ async function main() {
   });
 
   console.log(JSON.stringify({ removed, retagged, filledTimes, manualFilled, written: nextItems.length }, null, 2));
+}
+
+function isExplicitAdult(item: AnimeItem): boolean {
+  const haystack = [
+    item.title.original,
+    item.title.japanese,
+    item.title.chinese,
+    item.title.english,
+    ...item.title.aliases,
+    item.officialUrl,
+    item.exclusionReason
+  ]
+    .filter((value): value is string => typeof value === "string")
+    .join(" ")
+    .normalize("NFKC")
+    .toLowerCase();
+  return ADULT_PATTERN.test(haystack);
 }
 
 async function readYourAnimesReferences(retrievedAt: string): Promise<AnimeItem[]> {

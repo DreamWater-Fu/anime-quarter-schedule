@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "dev:local": "next dev -H 127.0.0.1 --webpack",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc -p tsconfig.json",

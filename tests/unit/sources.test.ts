@@ -144,6 +144,30 @@ describe("Bangumi mapper", () => {
     }
   });
 
+  it("excludes NSFW and explicit adult subjects", () => {
+    for (const input of [
+      { name: "Adult Test Anime", name_cn: "成人动画", nsfw: true },
+      { name: "Seminar Classmate", name_cn: "同一个研讨会的染谷同学是AV女优的事", nsfw: false }
+    ]) {
+      const item = mapBangumiSubjectToAnimeItem(
+        {
+          ...subject,
+          id: 3200,
+          name: input.name,
+          name_cn: input.name_cn,
+          platform: "TV",
+          nsfw: input.nsfw,
+          infobox: []
+        },
+        [{ ep: 1, name_cn: "Episode 1", airdate: "2026-07-03", type: 0 }],
+        { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+      );
+
+      assert.equal(item.isJapaneseAnime, false);
+      assert.equal(item.inclusionStatus, "excluded");
+    }
+  });
+
   it("keeps a started show airing while its inferred end date is still in the future", () => {
     const item = mapBangumiSubjectToAnimeItem(
       {
@@ -400,5 +424,63 @@ describe("source adapters", () => {
     assert.equal(result.items[0]?.id, "anime:517106");
     assert.equal(result.items[0]?.updateTime, "22:30");
     assert.equal(result.warnings.length, 0);
+  });
+
+  it("falls back to dynamic YourAnimes quarter URLs when the implicit local cache file is missing", async () => {
+    const previousDataDir = process.env.DATA_DIR;
+    process.env.DATA_DIR = "tests/fixtures/missing-youranimes-cache";
+    let requestedUrl = "";
+    const adapter = new YourAnimesSourceAdapter({
+      fetchImpl: async (url) => {
+        requestedUrl = String(url);
+        return new Response(`<script type="application/ld+json">${JSON.stringify({
+          "@type": "ItemList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              item: {
+                "@type": "TVSeries",
+                name: "YourAnimes 2025 Reference",
+                url: "https://youranimes.tw/animes/2025",
+                datePublished: "2025-07-05T00:30:00+09:00",
+                sameAs: ["https://bangumi.tv/subject/202507"]
+              }
+            }
+          ]
+        })}</script>`);
+      },
+      now: () => new Date(retrievedAt)
+    });
+
+    try {
+      const result = await adapter.fetchSeason({ year: 2025, season: 7, quarter: "summer" });
+
+      assert.equal(requestedUrl, "https://youranimes.tw/bangumi/202507");
+      assert.equal(result.items.length, 1);
+      assert.equal(result.items[0]?.id, "anime:202507");
+      assert.equal(result.items[0]?.startDate, "2025-07-04");
+      assert.equal(result.items[0]?.updateTime, "23:30");
+      assert.equal(result.warnings.length, 0);
+    } finally {
+      if (previousDataDir === undefined) {
+        delete process.env.DATA_DIR;
+      } else {
+        process.env.DATA_DIR = previousDataDir;
+      }
+    }
+  });
+
+  it("keeps warning for explicitly configured missing YourAnimes timetable files", async () => {
+    const adapter = new YourAnimesSourceAdapter({
+      timetableFiles: ["tests/fixtures/missing-youranimes.html"],
+      timetableUrls: [],
+      now: () => new Date(retrievedAt)
+    });
+
+    const result = await adapter.fetchSeason({ year: 2025, season: 7, quarter: "summer" });
+
+    assert.equal(result.items.length, 0);
+    assert.equal(result.warnings.length, 1);
+    assert.equal(result.warnings[0]?.message, "failed to read YourAnimes timetable file: tests/fixtures/missing-youranimes.html");
   });
 });

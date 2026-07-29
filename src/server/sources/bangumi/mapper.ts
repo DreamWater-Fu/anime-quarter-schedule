@@ -117,6 +117,8 @@ function createBangumiSource(subject: BangumiSubject, retrievedAt: string): Anim
 }
 
 function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnime: boolean; reason?: string } {
+  if (subject.nsfw === true) return { isJapaneseAnime: false, reason: "R18 or NSFW content" };
+
   const haystack = [
     subject.name,
     subject.name_cn,
@@ -147,6 +149,12 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
     /(中国|中國|国产|國產|大陆|大陸|台湾|台灣|香港|美国|美國|加拿大|canada|韓国|韩国|south park|paw patrol|汪汪队|汪汪隊|柯蒂斯总统|柯蒂斯總統|curtis|ninjago|lego|乐高|樂高|幻影忍者|喜羊羊|灰太狼|超能猩云队|大头儿子|大頭兒子|小头爸爸|小頭爸爸|無涯之約|无涯之约|東游記|东游记|开心超人|開心超人|熊出没|熊出沒|猪猪侠|豬豬俠|primal|genndy\s+tartakovsky|史前战纪|野蛮纪源|原始战纪|熊熊帮帮团|卡酷动画春晚|恶搞之家|family\s+guy|spider-man|spider man|蜘蛛侠与他的神奇朋友们|sealook|pinkfong|baby\s*shark)/iu;
   if (explicitNonJapanesePattern.test(haystack)) {
     return { isJapaneseAnime: false, reason: "Not Japanese anime" };
+  }
+
+  const explicitAdultPattern =
+    /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu;
+  if (explicitAdultPattern.test(haystack)) {
+    return { isJapaneseAnime: false, reason: "R18 or adult content" };
   }
 
   if (/[ぁ-ゖァ-ヺー]/u.test(subject.name)) return { isJapaneseAnime: true };

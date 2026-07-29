@@ -1,6 +1,6 @@
-import { formatLabels, statusLabels } from "../lib/format";
+import { statusLabels } from "../lib/format";
 import type { ReactNode } from "react";
-import type { AnimeFormat, AnimeStatus } from "@/src/server/types/anime";
+import type { AnimeStatus } from "@/src/server/types/anime";
 import type { SortMode, ViewMode } from "../lib/listing";
 
 export type ScopeFilter = "all" | "new" | "continuing";
@@ -10,11 +10,9 @@ export interface FilterState {
   viewMode: ViewMode;
   sortMode: SortMode;
   scope: ScopeFilter;
-  formats: FieldFilter<AnimeFormat>;
   statuses: FieldFilter<AnimeStatus>;
 }
 
-const formatOptions: AnimeFormat[] = ["tv", "web", "ova", "movie", "sp"];
 const statusOptions: AnimeStatus[] = ["announced", "airing", "finished", "delayed"];
 
 export function ScheduleControls({
@@ -72,14 +70,6 @@ export function ScheduleControls({
           跨季度续播
         </SegmentButton>
       </ControlGroup>
-
-      <ChipGroup
-        label="类型"
-        values={value.formats}
-        options={formatOptions}
-        labelMap={formatLabels}
-        onChange={(formats) => onChange({ formats })}
-      />
 
       <ChipGroup
         label="状态"

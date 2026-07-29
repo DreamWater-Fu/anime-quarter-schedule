@@ -360,7 +360,7 @@ describe("update data merge and rollback", () => {
 
     const nextCache = await storage.readAnimeCache();
 
-    assert.equal(nextCache.items.some((item) => item.id === "anime:200002"), false);
+    assert.equal(nextCache.items.some((item) => item.id === "anime:200002"), true);
     assert.equal(nextCache.items.some((item) => item.id === "anime:100001"), true);
   });
 

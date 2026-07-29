@@ -534,6 +534,7 @@ function findOldItemByTitle(item: AnimeItem, oldItems: AnimeItem[]): AnimeItem |
 
 function isUnmatchedReferenceOnlyItem(item: AnimeItem, oldItems: AnimeItem[]): boolean {
   if (!isScheduleReviewItem(item) || isCatalogItem(item)) return false;
+  if (item.bangumi.subjectId !== null || item.externalIds.bangumiSubjectId !== null) return false;
   return findOldItemByTitle(item, oldItems) === null;
 }
 
@@ -579,7 +580,24 @@ function isPrimaryInSeason(item: Pick<AnimeItem, "primarySeason">, targetSeason:
 }
 
 function isCacheEligibleAnime(item: AnimeItem): boolean {
-  return item.isJapaneseAnime !== false && item.inclusionStatus !== "excluded";
+  return item.format === "tv" && item.isJapaneseAnime !== false && item.inclusionStatus !== "excluded" && !isAdultAnime(item);
+}
+
+function isAdultAnime(item: AnimeItem): boolean {
+  const haystack = [
+    item.title.original,
+    item.title.japanese,
+    item.title.chinese,
+    item.title.english,
+    ...item.title.aliases,
+    item.officialUrl,
+    item.exclusionReason
+  ]
+    .filter((value): value is string => typeof value === "string")
+    .join(" ")
+    .normalize("NFKC")
+    .toLowerCase();
+  return /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu.test(haystack);
 }
 
 function summarizeUpdate(seasonItems: AnimeItem[], nextCache: AnimeCache, skippedNonJapanese: number): UpdateSummary {

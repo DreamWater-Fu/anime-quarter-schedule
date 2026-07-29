@@ -1,6 +1,6 @@
 import { BangumiBadge } from "./BangumiBadge";
 import { CoverImage } from "./CoverImage";
-import { formatDate, formatLabels, formatUpdateDisplay, statusLabels } from "../lib/format";
+import { formatDate, formatUpdateDisplay, statusLabels } from "../lib/format";
 import { classifySeasonMembership } from "../lib/season";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
 
@@ -33,8 +33,7 @@ export function AnimeTable({ items, currentSeason }: { items: AnimeItem[]; curre
                         </span>
                       </div>
                       <span>
-                        {item.title.japanese || item.title.original} / {formatLabels[item.format]} /{" "}
-                        {statusLabels[item.status]}
+                        {item.title.japanese || item.title.original} / {statusLabels[item.status]}
                       </span>
                     </div>
                   </div>

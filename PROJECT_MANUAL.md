@@ -606,3 +606,60 @@ npm run data:validate
 - 当前缓存封面缺失数为 0。
 - `npm run data:validate` 通过。
 - `npm run test` 通过，78 个单元测试全部通过。
+
+## 20. 追加版本记录：2026-07-29 TV-only / R18 / 跨季度续播修复
+
+本节为追加记录，不改写前文历史内容。当前版本状态维持 `0.1.1`，完成一轮针对“只保留 TV 动画、排除 R18、跨季度续播纳入当季、清理无用缓存文件”的实测反馈修复。
+
+本轮已完成：
+- 前端删除“类型”筛选区分；常态页面仅保留 TV 动画展示，不再显示 web、movie、OVA、SP 等非 TV 类型。
+- 后端查询改为只返回 `format="tv"` 且属于当前季度首播或 `activeSeasons` 覆盖当前季度的条目，因此跨季度续播作品会进入后续季度列表。
+- 更新写入和缓存重整均增加 TV-only 门槛：非 TV 格式不再写入当前缓存，也会在 `npm run data:reconcile` 中被清理。
+- Bangumi 映射与缓存重整增加 R18/NSFW/成人关键词排除规则，`nsfw=true` 或标题、别名、来源字段命中成人内容的条目不再纳入缓存。
+- YourAnimes 反向审查保留为低优先级补充源，但仅允许带有 Bangumi subjectId 的参考条目进入候选，避免无 subjectId 的纯参考行污染缓存。
+- 已运行 `npm run data:reconcile` 重整当前缓存，仅影响当前年份当前季度相关缓存内容与显式不合规条目。
+- 已清理项目内可再生成或备份文件：`.next/`、`tsconfig.tsbuildinfo`、`data/anime.json.bak`、`data/status.json.bak`；不删除 `node_modules`、源码、主数据文件和用户不确定用途文件。
+- 本地自测推荐使用 `npm run dev:local` 启动服务，并访问 `http://127.0.0.1:3000/`；该脚本固定使用 webpack dev 模式，避免当前环境下 Turbopack dev 进程偶发卡死。若旧 dev 进程卡住，应先停止旧进程再重启。
+
+本轮数据状态：
+- 当前 `data/anime.json` 共 165 条。
+- 当前缓存格式统计：`tv=165`，非 TV 条目为 0。
+- 当前 R18/成人关键词命中数为 0。
+- 2026 年 1 月季度查询返回 49 条，其中跨季度续播 5 条。
+- 2026 年 4 月季度查询返回 47 条，其中跨季度续播 5 条。
+- 2026 年 7 月季度查询返回 88 条，其中跨季度续播 13 条。
+- 2026 年 10 月季度查询返回 10 条，其中跨季度续播 6 条。
+
+本轮修改文件：
+- `src/server/types/anime.ts`
+- `src/server/anime/queryAnime.ts`
+- `src/server/anime/updateAnimeData.ts`
+- `src/server/sources/bangumi/mapper.ts`
+- `src/server/sources/bangumi/types.ts`
+- `src/app/components/ScheduleControls.tsx`
+- `src/app/components/AnimeSchedulePage.tsx`
+- `src/app/components/AnimeTable.tsx`
+- `src/app/components/FollowSchedule.tsx`
+- `src/app/lib/format.ts`
+- `scripts/reconcile-current-cache.ts`
+- `package.json`
+- `tests/fixtures/anime-cache.base.json`
+- `tests/unit/api-cache.test.ts`
+- `tests/unit/quarter-api.test.ts`
+- `tests/unit/sources.test.ts`
+- `tests/unit/update-flow-fixtures.test.ts`
+- `data/anime.json`
+- `data/status.json`
+- `PROJECT_MANUAL.md`
+
+本轮删除文件：
+- `data/anime.json.bak`
+- `data/status.json.bak`
+- `tsconfig.tsbuildinfo`
+
+最近验证：
+- `npm run data:reconcile` 通过，输出 `removed=1`，当前写入 165 条。
+- `npm run data:validate` 通过，缓存有效 165 条。
+- `npm run test` 通过，80 个单元测试全部通过。
+- `npm run check` 通过，typecheck、lint、单元测试、缓存校验、API smoke 全部通过。
+- `npm run build` 通过。

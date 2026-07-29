@@ -81,7 +81,7 @@ class FailingAdapter implements AnimeSourceAdapter {
 }
 
 describe("anime query and api handlers", () => {
-  it("queries season items by premiere quarter and shows optional items by default", async () => {
+  it("queries TV season items including cross-quarter continuations", async () => {
     const winterToSpring = createAnime({
       id: "anime:cross-quarter",
       startDate: "2026-03-20",
@@ -112,7 +112,7 @@ describe("anime query and api handlers", () => {
       storage
     });
 
-    assert.deepEqual(payload.items.map((item) => item.id), ["anime:optional"]);
+    assert.deepEqual(payload.items.map((item) => item.id), ["anime:cross-quarter"]);
     assert.equal(payload.meta.cacheUpdatedAt, cacheUpdatedAt);
     assert.equal(payload.meta.dataStatusSummary.partial, 1);
 
@@ -122,7 +122,7 @@ describe("anime query and api handlers", () => {
       includeOptional: false,
       storage
     });
-    assert.deepEqual(withoutOptional.items.map((item) => item.id), []);
+    assert.deepEqual(withoutOptional.items.map((item) => item.id), ["anime:cross-quarter"]);
   });
 
   it("wraps status and anime route results in the documented ok/data shape", async () => {

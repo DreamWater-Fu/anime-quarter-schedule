@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import {
@@ -29,13 +29,6 @@ export interface YourAnimesReferenceEntry {
   bangumiSubjectId: number | null;
   retrievedAt: string;
 }
-
-const DEFAULT_TIMETABLE_URLS: Record<string, string[]> = {
-  "2026-1": ["https://youranimes.tw/bangumi/202601"],
-  "2026-4": ["https://youranimes.tw/bangumi/202604"],
-  "2026-7": ["https://youranimes.tw/bangumi/202607"],
-  "2026-10": ["https://youranimes.tw/bangumi/202610"]
-};
 
 export class YourAnimesSourceAdapter implements AnimeSourceAdapter {
   readonly name = "YourAnimes";
@@ -100,7 +93,7 @@ export class YourAnimesSourceAdapter implements AnimeSourceAdapter {
   ): Promise<YourAnimesReferenceEntry[]> {
     const entries: YourAnimesReferenceEntry[] = [];
 
-    for (const file of this.resolveTimetableFiles(input)) {
+    for (const file of await this.resolveTimetableFiles(input)) {
       try {
         const html = await readFile(resolve(/* turbopackIgnore: true */ process.cwd(), file), "utf8");
         entries.push(...parseYourAnimesHtml(html, { url: file, retrievedAt }));
@@ -143,16 +136,22 @@ export class YourAnimesSourceAdapter implements AnimeSourceAdapter {
     return dedupeEntries(entries);
   }
 
-  private resolveTimetableFiles(input: SourceFetchInput): string[] {
+  private async resolveTimetableFiles(input: SourceFetchInput): Promise<string[]> {
     if (this.timetableFiles.length > 0) return this.timetableFiles;
     if (this.hasExplicitTimetableFiles) return [];
-    return [`${process.env.DATA_DIR ?? "data"}/youranimes-${input.year}${String(input.season).padStart(2, "0")}.html`];
+    const defaultFile = `${process.env.DATA_DIR ?? "data"}/youranimes-${input.year}${String(input.season).padStart(2, "0")}.html`;
+    try {
+      await access(resolve(/* turbopackIgnore: true */ process.cwd(), defaultFile));
+      return [defaultFile];
+    } catch {
+      return [];
+    }
   }
 
   private resolveTimetableUrls(input: SourceFetchInput): string[] {
     if (this.timetableUrls.length > 0) return this.timetableUrls;
     if (this.hasExplicitTimetableUrls) return [];
-    return DEFAULT_TIMETABLE_URLS[`${input.year}-${input.season}`] ?? [];
+    return [`https://youranimes.tw/bangumi/${input.year}${String(input.season).padStart(2, "0")}`];
   }
 
   private async fetchWithTimeout(url: string): Promise<Response> {

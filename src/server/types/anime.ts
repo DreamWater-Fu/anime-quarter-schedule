@@ -161,8 +161,8 @@ export interface AnimeSeasonPayload {
   };
 }
 
-export const DEFAULT_DISPLAY_FORMATS: readonly AnimeFormat[] = ["tv", "web"];
-export const OPTIONAL_DISPLAY_FORMATS: readonly AnimeFormat[] = ["ova", "movie", "sp"];
+export const DEFAULT_DISPLAY_FORMATS: readonly AnimeFormat[] = ["tv"];
+export const OPTIONAL_DISPLAY_FORMATS: readonly AnimeFormat[] = [];
 export const DEFAULT_HIDDEN_FORMATS: readonly AnimeFormat[] = [
   "recap",
   "pv",

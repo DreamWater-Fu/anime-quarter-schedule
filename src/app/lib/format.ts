@@ -1,19 +1,5 @@
-import type { AnimeFormat, AnimeItem, AnimeStatus, DataStatus, SeasonKey } from "@/src/server/types/anime";
+import type { AnimeItem, AnimeStatus, DataStatus, SeasonKey } from "@/src/server/types/anime";
 import { getBeijingUpdateSlot, getUpdateWeekdaySlot } from "./timezone.ts";
-
-export const formatLabels: Record<AnimeFormat, string> = {
-  tv: "TV",
-  web: "WEB",
-  ova: "OVA",
-  movie: "剧场版",
-  sp: "SP",
-  recap: "总集篇",
-  pv: "PV",
-  cm: "CM",
-  music_video: "MV",
-  rebroadcast: "重播",
-  unknown: "未知"
-};
 
 export const statusLabels: Record<AnimeStatus, string> = {
   announced: "未开播",

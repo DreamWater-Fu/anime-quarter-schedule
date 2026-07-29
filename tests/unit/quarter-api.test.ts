@@ -7,24 +7,24 @@ import type { AnimeCache } from "../../src/server/types/anime.ts";
 import { MemoryStorage, readFixture } from "./test-utils.ts";
 
 describe("quarter query coverage", () => {
-  it("returns works by premiere quarter instead of spillover schedule dates", async () => {
+  it("returns TV works by premiere quarter and active cross-quarter continuation", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const storage = new MemoryStorage(cache);
 
     const winter = await queryAnimeBySeason({ year: 2026, season: 1, storage });
     assert.deepEqual(
       winter.items.map((item) => item.id),
-      ["anime:winter-jan-mar", "anime:march-to-april"]
+      ["anime:winter-jan-mar", "anime:march-to-april", "anime:october-to-next-january"]
     );
 
     const spring = await queryAnimeBySeason({ year: 2026, season: 4, storage });
     assert.deepEqual(
       spring.items.map((item) => item.id),
-      ["anime:june-to-july"]
+      ["anime:march-to-april", "anime:june-to-july"]
     );
 
     const summer = await queryAnimeBySeason({ year: 2026, season: 7, storage });
-    assert.deepEqual(summer.items.map((item) => item.id), []);
+    assert.deepEqual(summer.items.map((item) => item.id), ["anime:june-to-july"]);
   });
 
   it("keeps continuing classification available for activeSeasons metadata", async () => {
@@ -58,6 +58,26 @@ describe("quarter query coverage", () => {
     });
 
     assert.equal(summer.items.some((item) => item.id === "anime:non-japanese"), false);
+  });
+
+  it("does not return non-TV formats", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const webItem = {
+      ...cache.items[2]!,
+      id: "anime:web-format",
+      format: "web" as const
+    };
+    const storage = new MemoryStorage({ ...cache, items: [...cache.items, webItem] });
+
+    const summer = await queryAnimeBySeason({
+      year: 2026,
+      season: 7,
+      includeOptional: true,
+      includeNeedsReview: true,
+      storage
+    });
+
+    assert.equal(summer.items.some((item) => item.id === "anime:web-format"), false);
   });
 });
 

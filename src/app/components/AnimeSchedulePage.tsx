@@ -24,7 +24,6 @@ const defaultFilterState: FilterState = {
   viewMode: "stats",
   sortMode: "default",
   scope: "all",
-  formats: "all",
   statuses: "all"
 };
 
@@ -235,7 +234,7 @@ export function AnimeSchedulePage() {
           <StateView
             type="empty"
             title="没有符合筛选条件的作品"
-            description="可以放宽类型、状态、范围或数据状态筛选。"
+            description="可以放宽状态、范围或数据状态筛选。"
             actionLabel="清空筛选"
             onAction={() => setFilters(defaultFilterState)}
           />
@@ -391,7 +390,6 @@ function formatErrorDetails(details: unknown): string {
 
 function filterItems(items: AnimeItem[], filters: FilterState, currentSeason: SeasonKey) {
   return items.filter((item) => {
-    if (filters.formats !== "all" && !filters.formats.includes(item.format)) return false;
     if (filters.statuses !== "all" && !filters.statuses.includes(item.status)) return false;
     if (filters.scope === "new" && !seasonKeyEquals(item.primarySeason, currentSeason)) return false;
     if (filters.scope === "continuing" && classifySeasonMembership(item, currentSeason) !== "continuing") return false;

@@ -3,3 +3,5 @@ dist/
 .next/
 coverage/
 .env.local
+tsconfig.tsbuildinfo
+*.bak

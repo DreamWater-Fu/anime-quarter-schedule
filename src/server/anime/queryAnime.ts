@@ -1,6 +1,4 @@
 import {
-  DEFAULT_DISPLAY_FORMATS,
-  OPTIONAL_DISPLAY_FORMATS,
   type AnimeItem,
   type AnimeSeasonPayload,
   type AnimeQuarter,
@@ -46,12 +44,10 @@ export async function queryAnimeBySeason(input: QueryAnimeInput): Promise<AnimeS
   const includeNeedsReview = input.includeNeedsReview ?? true;
 
   const items = cache.items
-    .filter((item) => seasonKeyEquals(item.primarySeason, currentSeason))
+    .filter((item) => isVisibleInSeason(item, currentSeason))
+    .filter((item) => item.format === "tv")
     .filter((item) => item.isJapaneseAnime !== false)
     .filter((item) => isIncludedForQuery(item, includeOptional, includeNeedsReview))
-    .filter((item) =>
-      isDisplayFormatForQuery(item, includeOptional, includeNeedsReview)
-    )
     .sort(compareAnimeForSeasonPage);
 
   return {
@@ -81,11 +77,11 @@ function isIncludedForQuery(item: AnimeItem, includeOptional: boolean, includeNe
   return false;
 }
 
-function isDisplayFormatForQuery(item: AnimeItem, includeOptional: boolean, includeNeedsReview: boolean): boolean {
-  if (includeOptional && includeNeedsReview) return true;
-  if (DEFAULT_DISPLAY_FORMATS.includes(item.format)) return true;
-  if (includeOptional && OPTIONAL_DISPLAY_FORMATS.includes(item.format)) return true;
-  return false;
+function isVisibleInSeason(item: AnimeItem, currentSeason: { year: number; quarter: AnimeQuarter }): boolean {
+  return (
+    seasonKeyEquals(item.primarySeason, currentSeason) ||
+    item.activeSeasons.some((season) => seasonKeyEquals(season, currentSeason))
+  );
 }
 
 function compareAnimeForSeasonPage(left: AnimeItem, right: AnimeItem): number {

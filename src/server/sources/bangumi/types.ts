@@ -33,6 +33,7 @@ export interface BangumiSubject {
   rating?: BangumiRating;
   rank?: number;
   infobox?: BangumiInfoboxItem[];
+  nsfw?: boolean;
 }
 
 export interface BangumiEpisode {
