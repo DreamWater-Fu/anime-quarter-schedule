@@ -1,22 +1,31 @@
 :root {
-  --bg: #f5f7fa;
+  --bg: #f8fbfa;
   --surface: #ffffff;
-  --surface-subtle: #eef2f7;
-  --border: #d9e1ea;
-  --border-strong: #b9c6d4;
-  --text: #17202a;
-  --muted: #5d6b7a;
-  --primary: #0f6f8f;
-  --primary-strong: #084f66;
-  --info-bg: #e8f4fb;
-  --info-text: #075985;
-  --warn-bg: #fff5d6;
-  --warn-text: #7a4d00;
-  --danger-bg: #ffe8e4;
-  --danger-text: #9f1d16;
-  --success-bg: #e7f7ee;
-  --success-text: #126238;
-  --shadow: 0 8px 24px rgb(16 32 48 / 8%);
+  --surface-subtle: #eef3f2;
+  --surface-container: #f1f5f4;
+  --surface-container-high: #e8eeee;
+  --border: #d6dfdd;
+  --border-strong: #bac8c5;
+  --text: #17211f;
+  --muted: #53615f;
+  --primary: #006a6a;
+  --primary-strong: #004f4f;
+  --primary-container: #9cf1ef;
+  --on-primary-container: #002020;
+  --secondary: #a01857;
+  --secondary-container: #ffd8e7;
+  --tertiary: #735c00;
+  --info-bg: #d7f7f5;
+  --info-text: #005353;
+  --warn-bg: #fff1c2;
+  --warn-text: #654d00;
+  --danger-bg: #ffdad6;
+  --danger-text: #93000a;
+  --success-bg: #c9f1d6;
+  --success-text: #0b5d2a;
+  --state-layer: rgb(0 106 106 / 8%);
+  --shadow: 0 1px 2px rgb(0 0 0 / 12%), 0 1px 3px 1px rgb(0 0 0 / 8%);
+  --shadow-raised: 0 3px 6px rgb(0 0 0 / 12%), 0 6px 16px rgb(0 0 0 / 10%);
 }
 
 * {
@@ -66,35 +75,38 @@ a:hover {
 
 .pageShell {
   min-height: 100dvh;
-  background: var(--bg);
+  background:
+    linear-gradient(180deg, #edf7f5 0, var(--bg) 280px),
+    var(--bg);
 }
 
 .contentShell {
   display: flex;
-  width: min(100%, 1360px);
+  width: min(100%, 1280px);
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 18px 16px 28px;
 }
 
 .toolbar {
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid var(--border);
-  background: rgb(255 255 255 / 96%);
-  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgb(214 223 221 / 74%);
+  background: rgb(248 251 250 / 92%);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
 }
 
 .toolbarMain {
   display: flex;
-  width: min(100%, 1360px);
+  width: min(100%, 1280px);
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   margin: 0 auto;
-  padding: 12px 16px;
+  padding: 14px 16px;
 }
 
 .titleBlock {
@@ -103,8 +115,9 @@ a:hover {
 
 .titleBlock h1 {
   margin: 0;
-  font-size: 22px;
-  line-height: 1.35;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.28;
 }
 
 .titleBlock p {
@@ -129,16 +142,17 @@ a:hover {
 
 .field {
   display: grid;
-  gap: 4px;
+  gap: 6px;
   color: var(--muted);
   font-size: 12px;
+  font-weight: 600;
 }
 
 .field input {
   width: 108px;
   min-height: 44px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
   background: var(--surface);
   color: var(--text);
   padding: 0 10px;
@@ -154,9 +168,9 @@ a:hover {
 .segmented {
   min-height: 44px;
   align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-subtle);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: var(--surface-container);
   padding: 4px;
 }
 
@@ -166,30 +180,38 @@ a:hover {
 .secondaryButton,
 .primaryButton {
   min-height: 44px;
-  border-radius: 6px;
+  border-radius: 999px;
   cursor: pointer;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease,
-    opacity 180ms ease;
+    opacity 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .segmentedButton,
 .chipButton,
 .ghostButton,
 .secondaryButton {
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  background: transparent;
   color: var(--text);
   padding: 0 12px;
 }
 
+.segmentedButton:hover,
+.chipButton:hover,
+.ghostButton:hover,
+.secondaryButton:hover {
+  background: var(--state-layer);
+}
+
 .segmentedButton[data-active="true"],
 .chipButton[data-active="true"] {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: #ffffff;
+  border-color: var(--primary-container);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
 }
 
 .primaryButton {
@@ -203,10 +225,12 @@ a:hover {
   color: #ffffff;
   font-weight: 700;
   padding: 0 16px;
+  box-shadow: var(--shadow);
 }
 
 .primaryButton:hover {
   background: var(--primary-strong);
+  box-shadow: var(--shadow-raised);
 }
 
 .primaryButton:disabled {
@@ -227,11 +251,11 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
-  gap: 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  padding: 12px;
+  gap: 14px;
+  border: 1px solid rgb(214 223 221 / 82%);
+  border-radius: 20px;
+  background: rgb(255 255 255 / 88%);
+  padding: 14px;
   box-shadow: var(--shadow);
 }
 
@@ -265,10 +289,11 @@ a:hover {
   display: grid;
   gap: 6px;
   min-height: 72px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid rgb(214 223 221 / 76%);
+  border-radius: 20px;
   background: var(--surface);
   padding: 12px;
+  box-shadow: var(--shadow);
 }
 
 .summaryItem span {
@@ -496,17 +521,17 @@ a:hover {
 
 .scheduleGroup {
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid rgb(214 223 221 / 78%);
+  border-radius: 24px;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
 
 .followSchedule {
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
+  border: 1px solid rgb(214 223 221 / 78%);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ffffff, #fbfdfc);
   box-shadow: var(--shadow);
 }
 
@@ -516,12 +541,14 @@ a:hover {
   justify-content: space-between;
   gap: 12px;
   border-bottom: 1px solid var(--border);
-  padding: 12px 14px;
+  background: var(--surface-container);
+  padding: 16px 18px;
 }
 
 .groupHeader h2 {
   margin: 0;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .groupHeader p {
@@ -544,23 +571,32 @@ a:hover {
 
 .animeTable {
   width: 100%;
-  min-width: 900px;
+  min-width: 780px;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
 .animeTable th,
 .animeTable td {
-  border-bottom: 1px solid var(--border);
-  padding: 10px 12px;
+  border-bottom: 1px solid rgb(214 223 221 / 70%);
+  padding: 12px 14px;
   text-align: left;
   vertical-align: middle;
 }
 
 .animeTable th {
+  background: #fbfdfc;
   color: var(--muted);
   font-size: 12px;
   font-weight: 700;
+}
+
+.animeTable tbody tr {
+  transition: background-color 160ms ease;
+}
+
+.animeTable tbody tr:hover {
+  background: rgb(0 106 106 / 5%);
 }
 
 .animeTable th:nth-child(1) {
@@ -572,8 +608,7 @@ a:hover {
 }
 
 .animeTable th:nth-child(3),
-.animeTable th:nth-child(4),
-.animeTable th:nth-child(5) {
+.animeTable th:nth-child(4) {
   width: 128px;
 }
 
@@ -615,19 +650,79 @@ a:hover {
 
 .followList {
   display: grid;
+  gap: 0;
+  padding: 8px 0 12px;
 }
 
 .followRow {
   display: grid;
-  grid-template-columns: 88px 56px minmax(0, 1fr) 96px;
+  grid-template-columns: 92px minmax(0, 1fr);
   gap: 12px;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding: 12px 14px;
+  align-items: stretch;
+  padding: 8px 16px;
 }
 
 .followRow:last-child {
   border-bottom: 0;
+}
+
+.followTimeline {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  padding-top: 8px;
+}
+
+.followTimeline::before {
+  position: absolute;
+  top: 0;
+  bottom: -16px;
+  left: 50%;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--surface-container-high);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.followTimeline span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  min-width: 66px;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-container);
+  border-radius: 999px;
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  font-size: 14px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+}
+
+.followCard {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 104px;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid rgb(214 223 221 / 78%);
+  border-radius: 18px;
+  background: var(--surface);
+  padding: 10px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  transition:
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.followCard:hover {
+  background: #fbfdfc;
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
 }
 
 .followTime {
@@ -640,21 +735,19 @@ a:hover {
 .followMain {
   display: grid;
   min-width: 0;
-  gap: 4px;
+  gap: 6px;
 }
 
 .followMain strong {
   overflow-wrap: anywhere;
+  font-size: 16px;
+  line-height: 1.35;
 }
 
 .followMain span {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.4;
-}
-
-.followMain .badge {
-  justify-self: start;
 }
 
 .animeTable tr:last-child td {
@@ -665,7 +758,7 @@ a:hover {
 .coverPlaceholder {
   width: 56px;
   aspect-ratio: 7 / 10;
-  border-radius: 6px;
+  border-radius: 12px;
   object-fit: cover;
   background: var(--surface-subtle);
 }
@@ -676,6 +769,16 @@ a:hover {
   border: 1px solid var(--border);
   color: var(--muted);
   font-weight: 700;
+}
+
+.coverPlaceholder span {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  overflow: hidden;
+  font-size: 20px;
+  line-height: 1;
 }
 
 .animeTitleRow {
@@ -691,10 +794,12 @@ a:hover {
   gap: 2px;
   color: var(--text);
   font-variant-numeric: tabular-nums;
+  justify-items: start;
 }
 
 .bangumiBadge strong {
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 800;
 }
 
 .bangumiBadge span {
@@ -704,6 +809,19 @@ a:hover {
 
 .bangumiBadge[data-empty="true"] strong {
   color: var(--muted);
+}
+
+.followCard .coverImage,
+.followCard .coverPlaceholder {
+  width: 64px;
+}
+
+.followCard .bangumiBadge {
+  justify-self: end;
+  min-width: 88px;
+  border-radius: 14px;
+  background: var(--surface-container);
+  padding: 8px 10px;
 }
 
 .badge {
@@ -718,8 +836,8 @@ a:hover {
 }
 
 .badge[data-tone="neutral"] {
-  background: var(--surface-subtle);
-  color: var(--muted);
+  background: var(--surface-container-high);
+  color: var(--text);
 }
 
 .badge[data-tone="info"] {
@@ -811,6 +929,10 @@ a:hover {
     padding-inline: 12px;
   }
 
+  .toolbar {
+    position: static;
+  }
+
   .titleBlock h1 {
     font-size: 20px;
   }
@@ -852,15 +974,32 @@ a:hover {
   }
 
   .followRow {
-    grid-template-columns: 72px 48px minmax(0, 1fr);
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px 10px;
   }
 
-  .followRow .bangumiBadge {
-    grid-column: 3;
+  .followTimeline span {
+    min-width: 56px;
+    min-height: 34px;
+    font-size: 13px;
   }
 
-  .followTime {
-    font-size: 16px;
+  .followCard {
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  .followCard .coverImage,
+  .followCard .coverPlaceholder {
+    width: 56px;
+  }
+
+  .followCard .bangumiBadge {
+    grid-column: 2;
+    justify-self: start;
+    min-width: 88px;
   }
 
   .skeletonRow {

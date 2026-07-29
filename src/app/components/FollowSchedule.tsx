@@ -1,6 +1,5 @@
 import { BangumiBadge } from "./BangumiBadge";
 import { CoverImage } from "./CoverImage";
-import { DataStatusBadge } from "./DataStatusBadge";
 import { formatUpdateDisplay, statusLabels } from "../lib/format";
 import { getBeijingUpdateSlot, getUpdateWeekdaySlot } from "../lib/timezone";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
@@ -22,16 +21,19 @@ export function FollowSchedule({ items, currentSeason }: { items: AnimeItem[]; c
           const weekdaySlot = getUpdateWeekdaySlot(item);
           return (
             <article className="followRow" key={item.id}>
-              <div className="followTime">{beijingUpdateSlot?.time ?? (weekdaySlot ? "时间待定" : "未定")}</div>
-              <CoverImage item={item} />
-              <div className="followMain">
-                <strong>{displayTitle}</strong>
-                <span>
-                  {formatUpdateDisplay(item, currentSeason)} / {statusLabels[item.status]}
-                </span>
-                <DataStatusBadge status={item.dataStatus} />
+              <div className="followTimeline" aria-label={formatUpdateDisplay(item, currentSeason)}>
+                <span>{beijingUpdateSlot?.time ?? (weekdaySlot ? "待定" : "未定")}</span>
               </div>
-              <BangumiBadge item={item} />
+              <div className="followCard">
+                <CoverImage item={item} />
+                <div className="followMain">
+                  <strong>{displayTitle}</strong>
+                  <span>
+                    {formatUpdateDisplay(item, currentSeason)} / {statusLabels[item.status]}
+                  </span>
+                </div>
+                <BangumiBadge item={item} />
+              </div>
             </article>
           );
         })}

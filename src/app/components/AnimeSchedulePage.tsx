@@ -24,8 +24,7 @@ const defaultFilterState: FilterState = {
   viewMode: "stats",
   sortMode: "default",
   scope: "all",
-  statuses: "all",
-  dataStatuses: "all"
+  statuses: "all"
 };
 
 const emptyUpdateStatus: UpdateStatusPayload = {
@@ -409,7 +408,6 @@ function formatErrorDetails(details: unknown): string {
 function filterItems(items: AnimeItem[], filters: FilterState, currentSeason: SeasonKey) {
   return items.filter((item) => {
     if (filters.statuses !== "all" && !filters.statuses.includes(item.status)) return false;
-    if (filters.dataStatuses !== "all" && !filters.dataStatuses.includes(item.dataStatus)) return false;
     if (filters.scope === "new" && !seasonKeyEquals(item.primarySeason, currentSeason)) return false;
     if (filters.scope === "continuing" && classifySeasonMembership(item, currentSeason) !== "continuing") return false;
     return true;

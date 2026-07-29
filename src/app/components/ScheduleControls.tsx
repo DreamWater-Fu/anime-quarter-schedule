@@ -1,6 +1,6 @@
-import { dataStatusLabels, statusLabels } from "../lib/format";
+import { statusLabels } from "../lib/format";
 import type { ReactNode } from "react";
-import type { AnimeStatus, DataStatus } from "@/src/server/types/anime";
+import type { AnimeStatus } from "@/src/server/types/anime";
 import type { SortMode, ViewMode } from "../lib/listing";
 
 export type ScopeFilter = "all" | "new" | "continuing";
@@ -11,11 +11,9 @@ export interface FilterState {
   sortMode: SortMode;
   scope: ScopeFilter;
   statuses: FieldFilter<AnimeStatus>;
-  dataStatuses: FieldFilter<DataStatus>;
 }
 
 const statusOptions: AnimeStatus[] = ["announced", "airing", "finished", "delayed"];
-const dataStatusOptions: DataStatus[] = ["complete", "partial", "unverified", "conflicting"];
 
 export function ScheduleControls({
   value,
@@ -79,14 +77,6 @@ export function ScheduleControls({
         options={statusOptions}
         labelMap={statusLabels}
         onChange={(statuses) => onChange({ statuses })}
-      />
-
-      <ChipGroup
-        label="数据状态"
-        values={value.dataStatuses}
-        options={dataStatusOptions}
-        labelMap={dataStatusLabels}
-        onChange={(dataStatuses) => onChange({ dataStatuses })}
       />
 
       <button className="ghostButton" type="button" onClick={onReset}>
