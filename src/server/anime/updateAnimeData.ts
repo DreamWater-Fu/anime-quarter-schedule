@@ -11,7 +11,7 @@ import { YourAnimesSourceAdapter } from "../sources/youranimes/adapter.ts";
 import type { AnimeCache, AnimeItem, SeasonKey, SeasonMonth } from "../types/anime.ts";
 import type { PublicApiError, UpdateInput, UpdateResult, UpdateStatusPayload, UpdateSummary } from "../types/api.ts";
 import { ApiErrorException, toPublicApiError } from "../utils/errors.ts";
-import { hasBlockingValidationIssues, isExpectedBangumiRatingGap, validateAnimeCache } from "./validateAnime.ts";
+import { hasBlockingValidationIssues, validateAnimeCache } from "./validateAnime.ts";
 import {
   calculateActiveSeasons,
   calculatePrimarySeason,
@@ -89,6 +89,15 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
       .filter((item) => !isUnmatchedReferenceOnlyItem(item, oldCache.items));
     const eligibleTargetItems = targetItems.filter(isCacheEligibleAnime);
     const fallbackSeasonItems = getOldSeasonItems(oldCache.items, targetSeason);
+    if (shouldFailEmptyUpdate(fetched.warnings, targetItems, fallbackSeasonItems)) {
+      throw new ApiErrorException("SOURCE_UNAVAILABLE", "target season has no cached items and external sources did not return usable data", {
+        status: 503,
+        details: {
+          targetSeason,
+          warnings: fetched.warnings
+        }
+      });
+    }
     const hasCatalogItems = eligibleTargetItems.some(isCatalogItem);
     const nextSeasonItems = hasCatalogItems
       ? eligibleTargetItems
@@ -328,7 +337,7 @@ function normalizeFetchedItem(item: AnimeItem, now: string): AnimeItem {
     schedule: item.schedule,
     fallbackPrimarySeason: primarySeason
   });
-  const dataStatus = item.dataStatus === "complete" && (item.schedule.length === 0 || (item.bangumi.rating === null && !isExpectedBangumiRatingGap(item)))
+  const dataStatus = item.dataStatus === "complete" && item.schedule.length === 0
     ? "partial"
     : item.dataStatus;
 
@@ -606,6 +615,14 @@ function getOldSeasonItems(oldItems: AnimeItem[], targetSeason: SeasonKey): Anim
   return oldItems
     .filter((item) => isPrimaryInSeason(item, targetSeason))
     .filter(isCacheEligibleAnime);
+}
+
+function shouldFailEmptyUpdate(
+  warnings: SourceIssue[],
+  targetItems: AnimeItem[],
+  fallbackSeasonItems: AnimeItem[]
+): boolean {
+  return warnings.length > 0 && targetItems.length === 0 && fallbackSeasonItems.length === 0;
 }
 
 function isPrimaryInSeason(item: Pick<AnimeItem, "primarySeason">, targetSeason: SeasonKey): boolean {

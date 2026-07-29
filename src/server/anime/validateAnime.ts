@@ -269,12 +269,12 @@ export function validateAnimeItem(item: AnimeItem): ValidationIssue[] {
   issues.push(...validateNullableIso(item.createdAt, "createdAt"));
 
   if (item.dataStatus === "complete") {
-    if (item.startDate === null || item.schedule.length === 0 || (item.bangumi.rating === null && !isExpectedBangumiRatingGap(item))) {
+    if (item.startDate === null || item.schedule.length === 0) {
       issues.push(
         issue(
           "dataStatus",
           "COMPLETE_WITH_MISSING_KEY_FIELDS",
-          "complete dataStatus requires startDate, schedule and Bangumi rating",
+          "complete dataStatus requires startDate and schedule",
           "warning"
         )
       );

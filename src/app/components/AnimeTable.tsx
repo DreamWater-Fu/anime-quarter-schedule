@@ -1,5 +1,6 @@
 import { BangumiBadge } from "./BangumiBadge";
 import { CoverImage } from "./CoverImage";
+import { DataStatusBadge } from "./DataStatusBadge";
 import { formatDate, formatUpdateDisplay, statusLabels } from "../lib/format";
 import { classifySeasonMembership } from "../lib/season";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
@@ -14,6 +15,7 @@ export function AnimeTable({ items, currentSeason }: { items: AnimeItem[]; curre
             <th>更新时间</th>
             <th>首播</th>
             <th>评分</th>
+            <th>数据状态</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +24,7 @@ export function AnimeTable({ items, currentSeason }: { items: AnimeItem[]; curre
             const membership = classifySeasonMembership(item, currentSeason);
             return (
               <tr key={item.id}>
-                <td>
+                <td data-label="作品">
                   <div className="tableTitleCell">
                     <CoverImage item={item} />
                     <div>
@@ -38,13 +40,18 @@ export function AnimeTable({ items, currentSeason }: { items: AnimeItem[]; curre
                     </div>
                   </div>
                 </td>
-                <td className="updateCell">
+                <td className="updateCell" data-label="更新时间">
                   {formatUpdateDisplay(item, currentSeason)}
                   {item.updateTime !== null ? <span className="timezoneHint">北京时间</span> : null}
                 </td>
-                <td className="numericCell">{formatDate(item.startDate)}</td>
-                <td>
+                <td className="numericCell" data-label="首播">
+                  {formatDate(item.startDate)}
+                </td>
+                <td data-label="评分">
                   <BangumiBadge item={item} />
+                </td>
+                <td data-label="数据状态">
+                  <DataStatusBadge status={item.dataStatus} />
                 </td>
               </tr>
             );

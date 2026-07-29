@@ -520,6 +520,36 @@ describe("update data merge and rollback", () => {
     assert.equal(storage.logs.some((entry) => entry.event === "source_warnings"), true);
   });
 
+  it("fails clearly when external sources are unavailable and the target season has no old cache", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const storage = new MemoryStorage({ ...cache, items: [] });
+
+    await assert.rejects(
+      () =>
+        updateAnimeData(
+          { year: 2025, season: 1 },
+          {
+            storage,
+            adapters: [new FailingAdapter()],
+            now: () => new Date(runAt)
+          }
+        ),
+      (error: unknown) =>
+        error instanceof Error &&
+        "code" in error &&
+        (error as { code: unknown }).code === "SOURCE_UNAVAILABLE"
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    const status = await storage.readUpdateStatus();
+
+    assert.deepEqual(nextCache.items, []);
+    assert.equal(storage.writeCount, 0);
+    assert.equal(status.status, "failed");
+    assert.equal(status.lastError?.code, "SOURCE_UNAVAILABLE");
+    assert.equal(storage.logs.some((entry) => entry.event === "update_failed"), true);
+  });
+
   it("treats an empty requested season as a successful empty refresh", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const storage = new MemoryStorage(cache);

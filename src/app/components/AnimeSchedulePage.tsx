@@ -24,7 +24,8 @@ const defaultFilterState: FilterState = {
   viewMode: "stats",
   sortMode: "default",
   scope: "all",
-  statuses: "all"
+  statuses: "all",
+  dataStatuses: "all"
 };
 
 const emptyUpdateStatus: UpdateStatusPayload = {
@@ -97,10 +98,19 @@ export function AnimeSchedulePage() {
     if (updateState.status !== "running") return;
 
     const timer = window.setInterval(() => {
-      void loadUpdateStatus().then((status) => {
-        setUpdateState(status);
-        if (status.status !== "running") void loadData();
-      });
+      void loadUpdateStatus()
+        .then((status) => {
+          setUpdateState(status);
+          if (status.status !== "running") void loadData();
+        })
+        .catch((error) => {
+          setUpdateState((current) => ({
+            ...current,
+            status: "failed",
+            lastError: { ...toApiError(error, "更新状态读取失败，请稍后重试"), at: new Date().toISOString() },
+            currentJob: null
+          }));
+        });
     }, 2500);
 
     return () => window.clearInterval(timer);
@@ -324,7 +334,12 @@ function UpdateReportDialog({
             <ul>
               {report.result.warnings.map((warning, index) => (
                 <li key={`${warning.source}-${warning.code}-${index}`}>
-                  {warning.source}：{warning.message}
+                  <strong>{warning.source}</strong>
+                  <span>
+                    {warning.code}
+                    {warning.status ? ` / HTTP ${warning.status}` : ""}：{warning.message}
+                  </span>
+                  {warning.details ? <pre>{formatErrorDetails(warning.details)}</pre> : null}
                 </li>
               ))}
             </ul>
@@ -364,7 +379,10 @@ function UpdateErrorDialog({
         <div className="errorDetails">
           <span>错误代码</span>
           <strong>{error.code}</strong>
-          {error.details ? <pre>{formatErrorDetails(error.details)}</pre> : null}
+          <span>错误原因</span>
+          <p>{error.message}</p>
+          <span>错误详情</span>
+          {error.details ? <pre>{formatErrorDetails(error.details)}</pre> : <p>接口未返回更多详情。</p>}
         </div>
         <div className="dialogActions">
           <button className="secondaryButton" type="button" onClick={onClose}>
@@ -391,6 +409,7 @@ function formatErrorDetails(details: unknown): string {
 function filterItems(items: AnimeItem[], filters: FilterState, currentSeason: SeasonKey) {
   return items.filter((item) => {
     if (filters.statuses !== "all" && !filters.statuses.includes(item.status)) return false;
+    if (filters.dataStatuses !== "all" && !filters.dataStatuses.includes(item.dataStatus)) return false;
     if (filters.scope === "new" && !seasonKeyEquals(item.primarySeason, currentSeason)) return false;
     if (filters.scope === "continuing" && classifySeasonMembership(item, currentSeason) !== "continuing") return false;
     return true;

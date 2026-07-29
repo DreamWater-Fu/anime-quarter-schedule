@@ -1,6 +1,6 @@
-import { statusLabels } from "../lib/format";
+import { dataStatusLabels, statusLabels } from "../lib/format";
 import type { ReactNode } from "react";
-import type { AnimeStatus } from "@/src/server/types/anime";
+import type { AnimeStatus, DataStatus } from "@/src/server/types/anime";
 import type { SortMode, ViewMode } from "../lib/listing";
 
 export type ScopeFilter = "all" | "new" | "continuing";
@@ -11,9 +11,11 @@ export interface FilterState {
   sortMode: SortMode;
   scope: ScopeFilter;
   statuses: FieldFilter<AnimeStatus>;
+  dataStatuses: FieldFilter<DataStatus>;
 }
 
 const statusOptions: AnimeStatus[] = ["announced", "airing", "finished", "delayed"];
+const dataStatusOptions: DataStatus[] = ["complete", "partial", "unverified", "conflicting"];
 
 export function ScheduleControls({
   value,
@@ -79,6 +81,14 @@ export function ScheduleControls({
         onChange={(statuses) => onChange({ statuses })}
       />
 
+      <ChipGroup
+        label="数据状态"
+        values={value.dataStatuses}
+        options={dataStatusOptions}
+        labelMap={dataStatusLabels}
+        onChange={(dataStatuses) => onChange({ dataStatuses })}
+      />
+
       <button className="ghostButton" type="button" onClick={onReset}>
         重置
       </button>
@@ -97,7 +107,7 @@ function ControlGroup({ label, children }: { label: string; children: ReactNode 
 
 function SegmentButton({ active, children, onClick }: { active: boolean; children: ReactNode; onClick: () => void }) {
   return (
-    <button className="chipButton" data-active={active} type="button" onClick={onClick}>
+    <button aria-pressed={active} className="chipButton" data-active={active} type="button" onClick={onClick}>
       {children}
     </button>
   );
@@ -120,13 +130,20 @@ function ChipGroup<T extends string>({
     <fieldset className="controlGroup">
       <legend>{label}</legend>
       <div>
-        <button className="chipButton" data-active={values === "all"} type="button" onClick={() => onChange("all")}>
+        <button
+          aria-pressed={values === "all"}
+          className="chipButton"
+          data-active={values === "all"}
+          type="button"
+          onClick={() => onChange("all")}
+        >
           全部
         </button>
         {options.map((option) => {
           const active = values !== "all" && values.includes(option);
           return (
             <button
+              aria-pressed={active}
               className="chipButton"
               data-active={active}
               key={option}

@@ -88,9 +88,7 @@ export function mapBangumiSubjectToAnimeItem(
     dataStatus: resolveBangumiOnlyDataStatus({
       startDate,
       scheduleCount: schedule.length,
-      hasEpisodeCountConflict: rawEpisodeCounts.hasConflict,
-      rating,
-      updateTime: null
+      hasEpisodeCountConflict: rawEpisodeCounts.hasConflict
     }),
     updatedAt: retrievedAt,
     createdAt: retrievedAt
@@ -187,15 +185,11 @@ function resolveBangumiOnlyDataStatus(input: {
   startDate: string | null;
   scheduleCount: number;
   hasEpisodeCountConflict: boolean;
-  rating: number | null;
-  updateTime: string | null;
 }): AnimeItem["dataStatus"] {
   if (
     input.startDate === null ||
     input.scheduleCount === 0 ||
-    input.hasEpisodeCountConflict ||
-    input.rating === null ||
-    input.updateTime === null
+    input.hasEpisodeCountConflict
   ) {
     return "partial";
   }

@@ -12,6 +12,7 @@ export function SeasonSelector({
     <div className="segmented" aria-label="季度选择">
       {seasonOptions.map((option) => (
         <button
+          aria-pressed={value === option.value}
           className="segmentedButton"
           data-active={value === option.value}
           key={option.value}

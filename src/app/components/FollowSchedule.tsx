@@ -1,5 +1,6 @@
 import { BangumiBadge } from "./BangumiBadge";
 import { CoverImage } from "./CoverImage";
+import { DataStatusBadge } from "./DataStatusBadge";
 import { formatUpdateDisplay, statusLabels } from "../lib/format";
 import { getBeijingUpdateSlot, getUpdateWeekdaySlot } from "../lib/timezone";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
@@ -28,6 +29,7 @@ export function FollowSchedule({ items, currentSeason }: { items: AnimeItem[]; c
                 <span>
                   {formatUpdateDisplay(item, currentSeason)} / {statusLabels[item.status]}
                 </span>
+                <DataStatusBadge status={item.dataStatus} />
               </div>
               <BangumiBadge item={item} />
             </article>

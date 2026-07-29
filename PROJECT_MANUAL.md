@@ -10,8 +10,8 @@
 - 技术栈：Next.js App Router、React、TypeScript、Node.js `>=24`
 - 存储：本地 JSON 文件
 - 测试：Node.js 内置 test runner
-- 当前缓存：`data/anime.json` 共 252 条，全部为 TV，日本动画，非 excluded，封面缺失为 0
-- 当前验证：`npm run check` 通过，`npm run build` 通过，90 个单元测试通过
+- 当前缓存：`data/anime.json` 共 326 条，全部为 TV，日本动画，非 excluded，封面缺失为 0
+- 当前验证：`npm run lint` 通过，`npm run test` 通过，`npm run build` 通过，91 个单元测试通过
 
 ## 2. 产品边界
 
@@ -115,6 +115,7 @@ tests/
 - 非日本动画必须标记 `isJapaneseAnime=false`、`inclusionStatus="excluded"`，并写明 `exclusionReason`。
 - 可展示条目至少保留一个 `sources[]`。
 - Bangumi 信息保留 `subjectId`、`url`、`rating`、`ratingCount`、`rank`、`lastSyncedAt`。
+- `complete` 表示开播日期、排期等关键资料齐全且无来源冲突；缺 Bangumi 评分由 `missingRating` 单独统计，不得单独导致 `dataStatus="partial"`。
 - 已完结或已取消条目不再继承 `updateTime` / `updateWeekday`。
 - `episodeCount` 和 `airedEpisodeCount` 不得互相矛盾。
 
@@ -241,6 +242,7 @@ tests/
 
 - 写入前校验失败：不覆盖旧 `anime.json`。
 - Bangumi、巴哈姆特、YourAnimes 网络或结构失败：记录 warning，尽量保留可用旧缓存。
+- 目标季度没有旧缓存，且外部源没有返回任何可用条目但产生了 warning 时：返回 `SOURCE_UNAVAILABLE`，不写入空成功，避免把网络或数据源不可用误判为“季度确实为空”。
 - 外部源 warning 必须在更新完成弹窗展示。
 
 ## 9. 前端行为
@@ -411,6 +413,22 @@ npm run build
 
 只保留对当前实现有指导意义的记录；旧流水账不要作为当前规则来源。
 
+### 2026-07-29：数据完整性口径修正
+
+- 缺 Bangumi 评分不再单独导致 `dataStatus="partial"`。
+- Bangumi 条目只要开播日期、排期齐全且无集数或来源冲突，可标记为 `complete`。
+- `missingRating` 继续作为独立统计项展示，不并入“信息不完整”的数据状态判定。
+
+### 2026-07-29：前端状态展示与移动端可用性优化
+
+- 前端筛选新增 `dataStatus` 维度，可按完整、信息缺失、待确认、来源冲突筛选。
+- 统计列表新增数据状态列；追番列表在作品信息中同步显示数据状态徽标。
+- 小屏统计列表改为卡片式行展示，字段标签直接出现在每条记录内，避免移动端依赖横向滚动。
+- 更新完成弹窗中的外部来源 warning 显示 source、code、HTTP status 和 details；更新失败弹窗显示错误代码、错误原因和错误详情缺省提示。
+- 年份输入改为本地草稿校验，只有 1900-2100 的有效年份才触发查询和 URL 更新。
+- 新增本地 `app/icon.svg` 并在 metadata 中声明，减少浏览器默认 favicon 404 噪声。
+- 验证：`npm run lint`、`npm run test`、`npm run build` 通过；Playwright 预览桌面与 390px 移动端，移动端横向溢出检查为 `false`。
+
 ### 2026-07-29：开播月份归属与当前季度续播判断
 
 - 修复 7 月新番提前出现在 10 月新番页的问题。
@@ -418,7 +436,7 @@ npm run build
 - 新增 `getCurrentSeasonKey`，按北京时间判断当前实际季度。
 - `queryAnimeBySeason` 仅在请求季度等于当前实际季度时，允许 `activeSeasons` 命中的旧季度条目作为续播展示。
 - 验证：以 `2026-07-29` 查询，2026 年 10 月页返回 4 条，不包含 7 月首播续播条目；以 `2026-10-10` 查询，10 月页可显示当时实际续播条目。
-- 验证：`npm run test`、`npm run check`、`npm run build` 通过，90 个单元测试通过。
+- 验证：`npm run test`、`npm run check`、`npm run build` 通过，91 个单元测试通过。
 
 ### 2026-07-29：projectmanual 自检精简
 
@@ -426,10 +444,16 @@ npm run build
 - 保留当前数据源、季度规则、查询规则、更新流程、环境变量、命令、风险和最近有效变更。
 - 明确旧历史记录不得覆盖当前规则。
 
+### 2026-07-29：历史季度更新失败语义
+
+- 修复历史季度无旧缓存时，外部源不可用却可能表现成“成功更新 0 条”的模糊状态。
+- `updateAnimeData` 现在会在目标季度没有旧缓存、外部源返回 warning 且无可用条目时抛出 `SOURCE_UNAVAILABLE`。
+- 目标季度已有旧缓存时，外部源失败仍可按旧缓存完成刷新并记录 warning。
+- 验证：新增更新流程单测覆盖无旧缓存失败场景。
+
 ### 2026-07-29：当前数据源与缓存基线
 
 - 数据源链路为 Bangumi、巴哈姆特、YourAnimes、人工广播覆盖。
-- 当前缓存已扩展到 2025 年 7 月和 2026 年四个季度相关数据，共 252 条。
+- 当前缓存已扩展到 2025 年 7 月和 2026 年四个季度相关数据，共 326 条。
 - 当前缓存全部为 TV，日本动画，非 excluded，封面缺失为 0。
 - 2025 年 7 月历史条目已按完结优先规则清理更新时间残留。
-

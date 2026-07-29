@@ -379,9 +379,28 @@ a:hover {
 }
 
 .warningList li {
+  display: grid;
+  gap: 3px;
   color: var(--warn-text);
   font-size: 12px;
   line-height: 1.45;
+}
+
+.warningList li strong {
+  font-size: 13px;
+}
+
+.warningList pre {
+  max-height: 160px;
+  overflow: auto;
+  margin: 2px 0 0;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 68%);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 8px;
+  white-space: pre-wrap;
 }
 
 .errorDetails {
@@ -401,6 +420,13 @@ a:hover {
 
 .errorDetails strong {
   color: var(--danger-text);
+}
+
+.errorDetails p {
+  margin: 0;
+  color: var(--danger-text);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .errorDetails pre {
@@ -518,7 +544,7 @@ a:hover {
 
 .animeTable {
   width: 100%;
-  min-width: 760px;
+  min-width: 900px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -546,7 +572,8 @@ a:hover {
 }
 
 .animeTable th:nth-child(3),
-.animeTable th:nth-child(4) {
+.animeTable th:nth-child(4),
+.animeTable th:nth-child(5) {
   width: 128px;
 }
 
@@ -624,6 +651,10 @@ a:hover {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.4;
+}
+
+.followMain .badge {
+  justify-self: start;
 }
 
 .animeTable tr:last-child td {
@@ -834,5 +865,73 @@ a:hover {
 
   .skeletonRow {
     grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .tableShell {
+    overflow-x: visible;
+  }
+
+  .animeTable {
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .animeTable thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .animeTable,
+  .animeTable tbody,
+  .animeTable tr,
+  .animeTable td {
+    display: block;
+    width: 100%;
+  }
+
+  .animeTable tbody {
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .animeTable tr {
+    display: grid;
+    gap: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 10px;
+  }
+
+  .animeTable td {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    border-bottom: 0;
+    padding: 0;
+    white-space: normal;
+  }
+
+  .animeTable td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .animeTable td:first-child {
+    display: block;
+  }
+
+  .animeTable td:first-child::before {
+    display: none;
   }
 }

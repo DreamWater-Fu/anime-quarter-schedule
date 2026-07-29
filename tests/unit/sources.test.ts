@@ -69,7 +69,7 @@ describe("Bangumi mapper", () => {
     assert.equal(item.officialUrl, "https://anime.example/");
     assert.equal(item.coverImage?.source, "bangumi");
     assert.equal(item.schedule.length, 2);
-    assert.equal(item.dataStatus, "partial");
+    assert.equal(item.dataStatus, "complete");
 
     const blockingIssues = validateAnimeItem(item).filter((issue) => issue.severity === "error");
     assert.deepEqual(blockingIssues, []);
