@@ -1,0 +1,42 @@
+{
+  "input": {
+    "title": {
+      "original": "Same Title",
+      "japanese": "Same Title",
+      "chinese": null,
+      "english": null,
+      "aliases": []
+    },
+    "year": 2026,
+    "quarter": "spring",
+    "startDate": "2026-04-05",
+    "format": "tv",
+    "episodeCount": 12
+  },
+  "searchResponse": [
+    {
+      "id": 3001,
+      "type": 2,
+      "name": "Same Title",
+      "name_cn": "Same Title",
+      "date": "2026-04-05",
+      "platform": "TV",
+      "eps": 12
+    },
+    {
+      "id": 3002,
+      "type": 2,
+      "name": "Same Title",
+      "name_cn": "Same Title Second Entry",
+      "date": "2026-04-06",
+      "platform": "TV",
+      "eps": 12
+    }
+  ],
+  "expected": {
+    "confidence": "medium",
+    "subjectId": null,
+    "needsManualReview": true,
+    "risk": "multiple_close_candidates"
+  }
+}

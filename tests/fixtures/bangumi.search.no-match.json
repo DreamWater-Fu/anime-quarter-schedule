@@ -1,0 +1,28 @@
+{
+  "input": {
+    "title": {
+      "original": "No Match Anime",
+      "japanese": "No Match Anime",
+      "chinese": null,
+      "english": null,
+      "aliases": []
+    },
+    "year": 2026,
+    "quarter": "summer",
+    "startDate": "2026-07-10",
+    "format": "tv",
+    "episodeCount": null
+  },
+  "searchResponse": [],
+  "expectedAnimePatch": {
+    "bangumi": {
+      "subjectId": null,
+      "url": null,
+      "rating": null,
+      "ratingCount": null,
+      "rank": null,
+      "lastSyncedAt": null
+    },
+    "dataStatus": "unverified"
+  }
+}

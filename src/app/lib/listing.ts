@@ -1,0 +1,61 @@
+import type { AnimeItem } from "@/src/server/types/anime";
+import { getBeijingUpdateSlot, getBeijingWeekday, getUpdateWeekdaySlot } from "./timezone.ts";
+
+export type ViewMode = "stats" | "following";
+export type SortMode = "default" | "ratingAsc" | "ratingDesc" | "startDateAsc" | "startDateDesc";
+
+export function sortAnimeItems(items: AnimeItem[], sortMode: SortMode): AnimeItem[] {
+  const sorted = [...items];
+  if (sortMode === "default") return sorted;
+
+  return sorted.sort((left, right) => {
+    if (sortMode === "ratingAsc") {
+      return compareNullableNumber(left.bangumi.rating, right.bangumi.rating, "asc") || compareTitle(left, right);
+    }
+    if (sortMode === "ratingDesc") {
+      return compareNullableNumber(left.bangumi.rating, right.bangumi.rating, "desc") || compareTitle(left, right);
+    }
+    if (sortMode === "startDateAsc") {
+      return compareNullableString(left.startDate, right.startDate, "asc") || compareTitle(left, right);
+    }
+    return compareNullableString(left.startDate, right.startDate, "desc") || compareTitle(left, right);
+  });
+}
+
+export function getTodayFollowItems(items: AnimeItem[], date = new Date()): AnimeItem[] {
+  const weekday = getBeijingWeekday(date);
+  return items
+    .filter((item) => (getBeijingUpdateSlot(item)?.weekday ?? getUpdateWeekdaySlot(item)?.weekday) === weekday)
+    .filter((item) => item.status === "airing" || item.status === "delayed")
+    .sort((left, right) => {
+      const leftTime = getBeijingUpdateSlot(left)?.time ?? null;
+      const rightTime = getBeijingUpdateSlot(right)?.time ?? null;
+      return compareNullableString(leftTime, rightTime, "asc") || compareTitle(left, right);
+    });
+}
+
+function compareNullableNumber(
+  left: number | null,
+  right: number | null,
+  direction: "asc" | "desc"
+): number {
+  if (left === null && right === null) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return direction === "asc" ? left - right : right - left;
+}
+
+function compareNullableString(
+  left: string | null,
+  right: string | null,
+  direction: "asc" | "desc"
+): number {
+  if (left === null && right === null) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return direction === "asc" ? left.localeCompare(right) : right.localeCompare(left);
+}
+
+function compareTitle(left: AnimeItem, right: AnimeItem): number {
+  return left.title.original.localeCompare(right.title.original);
+}

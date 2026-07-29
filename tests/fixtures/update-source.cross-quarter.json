@@ -1,0 +1,49 @@
+{
+  "candidates": [
+    {
+      "caseId": "march-to-april",
+      "title": {
+        "original": "March To April",
+        "japanese": "March To April",
+        "aliases": []
+      },
+      "format": "tv",
+      "startDate": "2026-03-20",
+      "schedule": [
+        { "episodeNumber": 1, "airDate": "2026-03-20", "airTime": "00:30", "timezone": "Asia/Tokyo", "rawTimeText": "24:30" },
+        { "episodeNumber": 2, "airDate": "2026-03-27", "airTime": "00:30", "timezone": "Asia/Tokyo", "rawTimeText": "24:30" },
+        { "episodeNumber": 3, "airDate": "2026-04-03", "airTime": "00:30", "timezone": "Asia/Tokyo", "rawTimeText": "24:30" }
+      ]
+    },
+    {
+      "caseId": "june-to-july",
+      "title": {
+        "original": "June To July",
+        "japanese": "June To July",
+        "aliases": []
+      },
+      "format": "web",
+      "startDate": "2026-06-20",
+      "schedule": [
+        { "episodeNumber": 1, "airDate": "2026-06-20", "airTime": "22:00", "timezone": "Asia/Tokyo" },
+        { "episodeNumber": 2, "airDate": "2026-06-27", "airTime": "22:00", "timezone": "Asia/Tokyo" },
+        { "episodeNumber": 3, "airDate": "2026-07-04", "airTime": "22:00", "timezone": "Asia/Tokyo" }
+      ]
+    },
+    {
+      "caseId": "october-to-next-january",
+      "title": {
+        "original": "October To Next January",
+        "japanese": "October To Next January",
+        "aliases": []
+      },
+      "format": "tv",
+      "startDate": "2025-10-10",
+      "schedule": [
+        { "episodeNumber": 1, "airDate": "2025-10-10", "airTime": "23:00", "timezone": "Asia/Tokyo" },
+        { "episodeNumber": 12, "airDate": "2025-12-26", "airTime": "23:00", "timezone": "Asia/Tokyo" },
+        { "episodeNumber": 13, "airDate": "2026-01-02", "airTime": "23:00", "timezone": "Asia/Tokyo" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "status": "failed",
+  "lastSuccessAt": "2026-07-27T21:30:00+09:00",
+  "lastAttemptAt": "2026-07-28T12:00:00+09:00",
+  "lastError": {
+    "code": "BANGUMI_SOURCE_FAILED",
+    "message": "Bangumi API request failed",
+    "at": "2026-07-28T12:00:05+09:00"
+  },
+  "currentJob": null,
+  "cache": {
+    "animeUpdatedAt": "2026-07-27T21:30:00+09:00",
+    "itemCount": 4
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "timezone": "Asia/Shanghai",
+  "updatedAt": "2026-07-29",
+  "notes": "Manual Beijing-time overrides used only after Bangumi, Bahamut and YourAnimes cannot fill a usable broadcast slot.",
+  "overrides": [
+    {
+      "id": "anime:618661",
+      "beijingDate": "2026-01-21",
+      "beijingTime": "20:54",
+      "sourceName": "TOKYO MX official news",
+      "sourceUrl": "https://s.mxtv.jp/tokyomxplus/mx/article/202601211750/detail/",
+      "note": "JST 2026-01-21 21:54 converted to BJT 2026-01-21 20:54."
+    },
+    {
+      "id": "anime:515759",
+      "beijingDate": "2026-01-16",
+      "beijingTime": "22:00",
+      "sourceName": "Frieren official site",
+      "sourceUrl": "https://frieren-anime.jp/",
+      "note": "JST 2026-01-16 23:00 converted to BJT 2026-01-16 22:00."
+    },
+    {
+      "id": "anime:558296",
+      "beijingDate": "2026-01-10",
+      "beijingTime": "00:00",
+      "sourceName": "Official on-air page",
+      "sourceUrl": "https://hanisuka.deregula.com/onair/",
+      "note": "JST 2026-01-09 25:00 converted to BJT 2026-01-10 00:00."
+    },
+    {
+      "id": "anime:531724",
+      "beijingDate": "2026-01-07",
+      "beijingTime": "23:00",
+      "sourceName": "Official on-air page",
+      "sourceUrl": "https://kizoku-tensei.com/onair/",
+      "note": "JST 2026-01-07 24:00 converted to BJT 2026-01-07 23:00."
+    },
+    {
+      "id": "anime:555772",
+      "beijingDate": "2026-01-07",
+      "beijingTime": "22:45",
+      "sourceName": "Official on-air page",
+      "sourceUrl": "https://nube-anime.com/on-air/",
+      "note": "JST 2026-01-07 23:45 converted to BJT 2026-01-07 22:45."
+    },
+    {
+      "id": "anime:459601",
+      "beijingDate": "2026-03-30",
+      "beijingTime": "23:00",
+      "sourceName": "Kansou anime new-program list",
+      "sourceUrl": "https://www.kansou.me/archive/2026_spring.html",
+      "note": "JST 2026-03-30 24:00 converted to BJT 2026-03-30 23:00."
+    },
+    {
+      "id": "anime:636048",
+      "beijingDate": "2026-03-30",
+      "beijingTime": "07:25",
+      "sourceName": "NHK schedule reference",
+      "sourceUrl": "https://news.denfaminicogamer.jp/news/260323d",
+      "note": "JST 2026-03-30 08:25 converted to BJT 2026-03-30 07:25."
+    },
+    {
+      "id": "anime:615739",
+      "beijingDate": "2026-01-12",
+      "beijingTime": "01:20",
+      "sourceName": "TV Tokyo official on-air page",
+      "sourceUrl": "https://www.tv-tokyo.co.jp/anime/yamishibai16/onair/",
+      "note": "JST 2026-01-11 26:20 converted to BJT 2026-01-12 01:20."
+    },
+    {
+      "id": "anime:635233",
+      "beijingDate": "2026-03-30",
+      "beijingTime": "06:45",
+      "sourceName": "AnimeDB press release",
+      "sourceUrl": "https://animedb.jp/2026/02/20268?range=1",
+      "note": "JST 2026-03-30 07:45 converted to BJT 2026-03-30 06:45."
+    },
+    {
+      "id": "anime:619052",
+      "beijingDate": "2026-07-05",
+      "beijingTime": "23:45",
+      "sourceName": "Official site",
+      "sourceUrl": "https://www.meisakukun.com/",
+      "note": "JST 2026-07-05 24:45 converted to BJT 2026-07-05 23:45."
+    },
+    {
+      "id": "anime:633354",
+      "beijingDate": "2026-07-06",
+      "beijingTime": "00:00",
+      "sourceName": "Official on-air page",
+      "sourceUrl": "https://someyasan-anime.af-original.com/onair/",
+      "note": "JST 2026-07-05 25:00 converted to BJT 2026-07-06 00:00."
+    },
+    {
+      "id": "anime:659686",
+      "beijingDate": "2026-07-05",
+      "beijingTime": "07:30",
+      "sourceName": "Bahamut summer timetable",
+      "sourceUrl": "https://home.gamer.com.tw/artwork.php?sn=6346127",
+      "note": "JST 2026-07-05 08:30 converted to BJT 2026-07-05 07:30."
+    }
+  ]
+}

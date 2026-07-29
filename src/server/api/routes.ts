@@ -1,0 +1,89 @@
+import { readUpdateStatus } from "../cache/statusCache.ts";
+import { queryAnimeBySeason } from "../anime/queryAnime.ts";
+import { updateAnimeData } from "../anime/updateAnimeData.ts";
+import type { AnimeSeasonPayload, SeasonMonth } from "../types/anime.ts";
+import type { ApiResponse, UpdateInput, UpdateResult, UpdateStatusPayload } from "../types/api.ts";
+import { getHttpStatus, toPublicApiError } from "../utils/errors.ts";
+import { isSeasonMonth } from "../anime/calculateSeason.ts";
+
+export interface ApiHandlerResult<T> {
+  status: number;
+  body: ApiResponse<T>;
+}
+
+export async function getAnimeApi(query: URLSearchParams): Promise<ApiHandlerResult<AnimeSeasonPayload>> {
+  try {
+    const year = Number(query.get("year"));
+    const seasonValue = Number(query.get("season"));
+    const season = parseSeasonMonth(seasonValue);
+    const data = await queryAnimeBySeason({
+      year,
+      season,
+      includeOptional: query.get("includeOptional") !== "false",
+      includeNeedsReview: query.get("includeNeedsReview") !== "false"
+    });
+    return { status: 200, body: { ok: true, data } };
+  } catch (error) {
+    return { status: getHttpStatus(error), body: { ok: false, error: toPublicApiError(error) } };
+  }
+}
+
+export async function postUpdateApi(body: unknown): Promise<ApiHandlerResult<UpdateResult>> {
+  try {
+    const input = parseUpdateInput(body);
+    const data = await updateAnimeData(input);
+    return { status: 200, body: { ok: true, data } };
+  } catch (error) {
+    return { status: getHttpStatus(error), body: { ok: false, error: toPublicApiError(error) } };
+  }
+}
+
+export async function getStatusApi(): Promise<ApiHandlerResult<UpdateStatusPayload>> {
+  try {
+    const data = await readUpdateStatus();
+    return { status: 200, body: { ok: true, data } };
+  } catch (error) {
+    return { status: getHttpStatus(error), body: { ok: false, error: toPublicApiError(error) } };
+  }
+}
+
+export async function handleApiRequest(input: {
+  method: "GET" | "POST";
+  path: "/api/anime" | "/api/update" | "/api/status";
+  query?: URLSearchParams;
+  body?: unknown;
+}): Promise<ApiHandlerResult<unknown>> {
+  if (input.method === "GET" && input.path === "/api/anime") {
+    return getAnimeApi(input.query ?? new URLSearchParams());
+  }
+  if (input.method === "POST" && input.path === "/api/update") {
+    return postUpdateApi(input.body);
+  }
+  if (input.method === "GET" && input.path === "/api/status") {
+    return getStatusApi();
+  }
+  return {
+    status: 404,
+    body: {
+      ok: false,
+      error: {
+        code: "NOT_FOUND",
+        message: "api route not found"
+      }
+    }
+  };
+}
+
+function parseUpdateInput(body: unknown): UpdateInput {
+  const value = body && typeof body === "object" ? body as Record<string, unknown> : {};
+  return {
+    year: Number(value.year),
+    season: parseSeasonMonth(Number(value.season)),
+    force: value.force === true
+  };
+}
+
+function parseSeasonMonth(value: number): SeasonMonth {
+  if (isSeasonMonth(value)) return value;
+  return value as SeasonMonth;
+}

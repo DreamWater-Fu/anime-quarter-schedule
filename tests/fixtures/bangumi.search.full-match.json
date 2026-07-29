@@ -1,0 +1,33 @@
+{
+  "input": {
+    "title": {
+      "original": "Perfect Match Anime",
+      "japanese": "Perfect Match Anime",
+      "chinese": null,
+      "english": null,
+      "aliases": []
+    },
+    "year": 2026,
+    "quarter": "summer",
+    "startDate": "2026-07-03",
+    "format": "tv",
+    "episodeCount": 12
+  },
+  "searchResponse": [
+    {
+      "id": 2001,
+      "type": 2,
+      "name": "Perfect Match Anime",
+      "name_cn": "Perfect Match CN",
+      "date": "2026-07-03",
+      "platform": "TV",
+      "eps": 12,
+      "rating": { "score": 7.8, "total": 980, "rank": 720 }
+    }
+  ],
+  "expected": {
+    "confidence": "high",
+    "subjectId": 2001,
+    "needsManualReview": false
+  }
+}

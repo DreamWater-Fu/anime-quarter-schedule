@@ -1,0 +1,384 @@
+{
+    "schemaVersion":  1,
+    "updatedAt":  "2026-07-27T21:30:00+09:00",
+    "generatedBy":  "manual-edit",
+    "items":  [
+                  {
+                      "id":  "anime:winter-jan-mar",
+                      "title":  {
+                                    "original":  "Winter Jan Mar",
+                                    "japanese":  "Winter Jan Mar",
+                                    "chinese":  null,
+                                    "english":  null,
+                                    "aliases":  [
+
+                                                ]
+                                },
+                      "format":  "tv",
+                      "status":  "finished",
+                      "startDate":  "2026-01-05",
+                      "endDate":  "2026-03-23",
+                      "datePrecision":  "day",
+                      "primarySeason":  {
+                                            "year":  2026,
+                                            "quarter":  "winter"
+                                        },
+                      "activeSeasons":  [
+                                            {
+                                                "year":  2026,
+                                                "quarter":  "winter"
+                                            }
+                                        ],
+                      "updateWeekday":  1,
+                      "updateTime":  "23:30",
+                      "timezone":  "Asia/Tokyo",
+                      "episodeCount":  12,
+                      "airedEpisodeCount":  12,
+                      "isJapaneseAnime":  true,
+                      "inclusionStatus":  "included",
+                      "officialUrl":  null,
+                      "coverImage":  null,
+                      "externalIds":  {
+                                          "bangumiSubjectId":  1001,
+                                          "bahamutSn":  null
+                                      },
+                      "bangumi":  {
+                                      "subjectId":  1001,
+                                      "url":  "https://bgm.tv/subject/1001",
+                                      "rating":  7.6,
+                                      "ratingCount":  1200,
+                                      "rank":  880,
+                                      "lastSyncedAt":  "2026-07-27T21:30:00+09:00"
+                                  },
+                      "schedule":  [
+                                       {
+                                           "episodeNumber":  1,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2026-01-05",
+                                           "airTime":  "23:30",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "source":  {
+                                                          "name":  "Official Schedule",
+                                                          "type":  "third_party",
+                                                          "url":  "https://anime.example/schedule",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       },
+                                       {
+                                           "episodeNumber":  12,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2026-03-23",
+                                           "airTime":  "23:30",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "source":  {
+                                                          "name":  "Official Schedule",
+                                                          "type":  "third_party",
+                                                          "url":  "https://anime.example/schedule",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       }
+                                   ],
+                      "staff":  {
+                                    "studio":  [
+                                                   "Example Studio"
+                                               ],
+                                    "productionCommittee":  [
+
+                                                            ],
+                                    "originalWorkType":  null
+                                },
+                      "sources":  [
+                                      {
+                                          "name":  "Bangumi",
+                                          "type":  "bangumi",
+                                          "url":  "https://bgm.tv/subject/1001",
+                                          "retrievedAt":  "2026-07-27T21:30:00+09:00"
+                                      }
+                                  ],
+                      "dataStatus":  "complete",
+                      "updatedAt":  "2026-07-27T21:30:00+09:00",
+                      "createdAt":  "2026-07-20T10:00:00+09:00"
+                  },
+                  {
+                      "id":  "anime:march-to-april",
+                      "title":  {
+                                    "original":  "March To April",
+                                    "japanese":  "March To April",
+                                    "chinese":  null,
+                                    "english":  null,
+                                    "aliases":  [
+
+                                                ]
+                                },
+                      "format":  "tv",
+                      "status":  "airing",
+                      "startDate":  "2026-03-20",
+                      "endDate":  null,
+                      "datePrecision":  "day",
+                      "primarySeason":  {
+                                            "year":  2026,
+                                            "quarter":  "winter"
+                                        },
+                      "activeSeasons":  [
+                                            {
+                                                "year":  2026,
+                                                "quarter":  "winter"
+                                            },
+                                            {
+                                                "year":  2026,
+                                                "quarter":  "spring"
+                                            }
+                                        ],
+                      "updateWeekday":  5,
+                      "updateTime":  "00:30",
+                      "timezone":  "Asia/Tokyo",
+                      "episodeCount":  12,
+                      "airedEpisodeCount":  3,
+                      "isJapaneseAnime":  true,
+                      "inclusionStatus":  "included",
+                      "officialUrl":  null,
+                      "coverImage":  null,
+                      "externalIds":  {
+                                          "bangumiSubjectId":  1002,
+                                          "bahamutSn":  null
+                                      },
+                      "bangumi":  {
+                                      "subjectId":  1002,
+                                      "url":  "https://bgm.tv/subject/1002",
+                                      "rating":  null,
+                                      "ratingCount":  null,
+                                      "rank":  null,
+                                      "lastSyncedAt":  "2026-07-27T21:30:00+09:00"
+                                  },
+                      "schedule":  [
+                                       {
+                                           "episodeNumber":  1,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2026-03-20",
+                                           "airTime":  "00:30",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "rawTimeText":  "24:30",
+                                           "source":  {
+                                                          "name":  "Official",
+                                                          "type":  "official",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       },
+                                       {
+                                           "episodeNumber":  3,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2026-04-03",
+                                           "airTime":  "00:30",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "rawTimeText":  "24:30",
+                                           "source":  {
+                                                          "name":  "Official",
+                                                          "type":  "official",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       }
+                                   ],
+                      "staff":  null,
+                      "sources":  [
+                                      {
+                                          "name":  "Official",
+                                          "type":  "official",
+                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                      }
+                                  ],
+                      "dataStatus":  "partial",
+                      "updatedAt":  "2026-07-27T21:30:00+09:00",
+                      "createdAt":  "2026-03-20T10:00:00+09:00"
+                  },
+                  {
+                      "id":  "anime:june-to-july",
+                      "title":  {
+                                    "original":  "June To July",
+                                    "japanese":  "June To July",
+                                    "chinese":  null,
+                                    "english":  null,
+                                    "aliases":  [
+
+                                                ]
+                                },
+                      "format":  "web",
+                      "status":  "airing",
+                      "startDate":  "2026-06-20",
+                      "endDate":  null,
+                      "datePrecision":  "day",
+                      "primarySeason":  {
+                                            "year":  2026,
+                                            "quarter":  "spring"
+                                        },
+                      "activeSeasons":  [
+                                            {
+                                                "year":  2026,
+                                                "quarter":  "spring"
+                                            },
+                                            {
+                                                "year":  2026,
+                                                "quarter":  "summer"
+                                            }
+                                        ],
+                      "updateWeekday":  6,
+                      "updateTime":  "22:00",
+                      "timezone":  "Asia/Tokyo",
+                      "episodeCount":  null,
+                      "airedEpisodeCount":  3,
+                      "isJapaneseAnime":  true,
+                      "inclusionStatus":  "included",
+                      "officialUrl":  null,
+                      "coverImage":  null,
+                      "externalIds":  {
+                                          "bangumiSubjectId":  null,
+                                          "bahamutSn":  null
+                                      },
+                      "bangumi":  {
+                                      "subjectId":  null,
+                                      "url":  null,
+                                      "rating":  null,
+                                      "ratingCount":  null,
+                                      "rank":  null,
+                                      "lastSyncedAt":  null
+                                  },
+                      "schedule":  [
+                                       {
+                                           "episodeNumber":  1,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2026-06-20",
+                                           "airTime":  "22:00",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "source":  {
+                                                          "name":  "Manual",
+                                                          "type":  "manual",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       },
+                                       {
+                                           "episodeNumber":  3,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2026-07-04",
+                                           "airTime":  "22:00",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "source":  {
+                                                          "name":  "Manual",
+                                                          "type":  "manual",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       }
+                                   ],
+                      "staff":  null,
+                      "sources":  [
+                                      {
+                                          "name":  "Manual",
+                                          "type":  "manual",
+                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                      }
+                                  ],
+                      "dataStatus":  "unverified",
+                      "updatedAt":  "2026-07-27T21:30:00+09:00",
+                      "createdAt":  "2026-06-20T10:00:00+09:00"
+                  },
+                  {
+                      "id":  "anime:october-to-next-january",
+                      "title":  {
+                                    "original":  "October To Next January",
+                                    "japanese":  "October To Next January",
+                                    "chinese":  null,
+                                    "english":  null,
+                                    "aliases":  [
+
+                                                ]
+                                },
+                      "format":  "tv",
+                      "status":  "airing",
+                      "startDate":  "2025-10-10",
+                      "endDate":  null,
+                      "datePrecision":  "day",
+                      "primarySeason":  {
+                                            "year":  2025,
+                                            "quarter":  "fall"
+                                        },
+                      "activeSeasons":  [
+                                            {
+                                                "year":  2025,
+                                                "quarter":  "fall"
+                                            },
+                                            {
+                                                "year":  2026,
+                                                "quarter":  "winter"
+                                            }
+                                        ],
+                      "updateWeekday":  5,
+                      "updateTime":  "23:00",
+                      "timezone":  "Asia/Tokyo",
+                      "episodeCount":  13,
+                      "airedEpisodeCount":  13,
+                      "isJapaneseAnime":  true,
+                      "inclusionStatus":  "included",
+                      "officialUrl":  null,
+                      "coverImage":  null,
+                      "externalIds":  {
+                                          "bangumiSubjectId":  1004,
+                                          "bahamutSn":  null
+                                      },
+                      "bangumi":  {
+                                      "subjectId":  1004,
+                                      "url":  "https://bgm.tv/subject/1004",
+                                      "rating":  8.1,
+                                      "ratingCount":  2000,
+                                      "rank":  400,
+                                      "lastSyncedAt":  "2026-07-27T21:30:00+09:00"
+                                  },
+                      "schedule":  [
+                                       {
+                                           "episodeNumber":  1,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2025-10-10",
+                                           "airTime":  "23:00",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "source":  {
+                                                          "name":  "Official Schedule",
+                                                          "type":  "third_party",
+                                                          "url":  "https://anime.example/schedule",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       },
+                                       {
+                                           "episodeNumber":  13,
+                                           "episodeTitle":  null,
+                                           "airDate":  "2026-01-02",
+                                           "airTime":  "23:00",
+                                           "timezone":  "Asia/Tokyo",
+                                           "status":  "confirmed",
+                                           "source":  {
+                                                          "name":  "Official Schedule",
+                                                          "type":  "third_party",
+                                                          "url":  "https://anime.example/schedule",
+                                                          "retrievedAt":  "2026-07-27T21:25:00+09:00"
+                                                      }
+                                       }
+                                   ],
+                      "staff":  null,
+                      "sources":  [
+                                      {
+                                          "name":  "Bangumi",
+                                          "type":  "bangumi",
+                                          "url":  "https://bgm.tv/subject/1004",
+                                          "retrievedAt":  "2026-07-27T21:30:00+09:00"
+                                      }
+                                  ],
+                      "dataStatus":  "complete",
+                      "updatedAt":  "2026-07-27T21:30:00+09:00",
+                      "createdAt":  "2025-10-10T10:00:00+09:00"
+                  }
+              ]
+}
+
