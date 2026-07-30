@@ -75,6 +75,28 @@ describe("Bangumi mapper", () => {
     assert.deepEqual(blockingIssues, []);
   });
 
+  it("repairs UTF-8 text that was decoded as Latin-1 before mapping titles", () => {
+    const item = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 2002,
+        name: "\u00e3\u0083\u00a1\u00e3\u0083\u0080\u00e3\u0083\u00aa\u00e3\u0082\u00b9\u00e3\u0083\u0088",
+        name_cn: "\u00e9\u0087\u0091\u00e7\u0089\u008c\u00e5\u00be\u0097\u00e4\u00b8\u00bb",
+        infobox: [
+          { key: "Alias", value: [{ v: "\u00e3\u0083\u00a1\u00e3\u0083\u0080\u00e3\u0083\u00aa\u00e3\u0082\u00b9\u00e3\u0083\u0088" }] }
+        ]
+      },
+      [{ ep: 1, name_cn: "\u00e7\u00ac\u00ac\u00e4\u00b8\u0080\u00e8\u00af\u009d", airdate: "2025-01-04", type: 0 }],
+      { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+    );
+
+    assert.equal(item.title.original, "メダリスト");
+    assert.equal(item.title.japanese, "メダリスト");
+    assert.equal(item.title.chinese, "金牌得主");
+    assert.deepEqual(item.title.aliases, []);
+    assert.equal(item.schedule[0]?.episodeTitle, "第一话");
+  });
+
   it("does not write airedEpisodeCount greater than episodeCount when Bangumi counts conflict", () => {
     const item = mapBangumiSubjectToAnimeItem(
       {
@@ -120,6 +142,11 @@ describe("Bangumi mapper", () => {
     for (const input of [
       { name: "PAW Patrol Season 13", name_cn: "汪汪队立大功 第十三季" },
       { name: "柯蒂斯总统", name_cn: "柯蒂斯总统" },
+      { name: "冰球旋风 第2季", name_cn: "冰球旋风 第2季" },
+      { name: "幸福公寓", name_cn: "幸福公寓" },
+      { name: "Miraculous Ladybug Season 6", name_cn: "瓢虫雷迪 第六季" },
+      { name: "Mickey Mouse Clubhouse+", name_cn: "米奇妙妙屋+" },
+      { name: "Transformers: Earthspark Season 4", name_cn: "变形金刚:地球火种 第四季" },
       { name: "Primal Season 3", name_cn: "史前战纪 第三季" },
       { name: "熊熊帮帮团5", name_cn: "熊熊帮帮团 第5季" },
       { name: "Family Guy Season 24", name_cn: "恶搞之家 第二十四季" },

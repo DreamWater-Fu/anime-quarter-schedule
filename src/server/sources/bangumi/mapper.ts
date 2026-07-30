@@ -43,8 +43,8 @@ export function mapBangumiSubjectToAnimeItem(
   return {
     id: `anime:${subject.id}`,
     title: {
-      original: subject.name,
-      japanese: subject.name,
+      original: repairMojibakeText(subject.name),
+      japanese: repairMojibakeText(subject.name),
       chinese: nonEmptyStringOrNull(subject.name_cn),
       english: null,
       aliases: extractAliases(subject)
@@ -119,8 +119,28 @@ function createBangumiSource(subject: BangumiSubject, retrievedAt: string): Anim
   };
 }
 
+const EXPLICIT_NON_JAPANESE_BANGUMI_SUBJECT_IDS = new Set([
+  219760,
+  499548,
+  529532,
+  538958,
+  547751,
+  556595,
+  561911,
+  564419,
+  587898,
+  608842,
+  609708,
+  624845,
+  625477,
+  640936
+]);
+
 function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnime: boolean; reason?: string } {
   if (subject.nsfw === true) return { isJapaneseAnime: false, reason: "R18 or NSFW content" };
+  if (EXPLICIT_NON_JAPANESE_BANGUMI_SUBJECT_IDS.has(subject.id)) {
+    return { isJapaneseAnime: false, reason: "Not Japanese anime" };
+  }
 
   const haystack = [
     subject.name,
@@ -149,7 +169,7 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
   if (/(日本|japan|japanese)/iu.test(haystack)) return { isJapaneseAnime: true };
 
   const explicitNonJapanesePattern =
-    /(中国|中國|国产|國產|大陆|大陸|台湾|台灣|香港|美国|美國|加拿大|canada|韓国|韩国|south park|paw patrol|汪汪队|汪汪隊|柯蒂斯总统|柯蒂斯總統|curtis|ninjago|lego|乐高|樂高|幻影忍者|喜羊羊|灰太狼|超能猩云队|大头儿子|大頭兒子|小头爸爸|小頭爸爸|無涯之約|无涯之约|東游記|东游记|开心超人|開心超人|熊出没|熊出沒|猪猪侠|豬豬俠|primal|genndy\s+tartakovsky|史前战纪|野蛮纪源|原始战纪|熊熊帮帮团|卡酷动画春晚|恶搞之家|family\s+guy|spider-man|spider man|蜘蛛侠与他的神奇朋友们|sealook|pinkfong|baby\s*shark)/iu;
+    /(中国|中國|国产|國產|大陆|大陸|台湾|台灣|香港|美国|美國|欧美|歐美|加拿大|canada|韓国|韩国|south park|paw patrol|汪汪队|汪汪隊|柯蒂斯总统|柯蒂斯總統|curtis|ninjago|lego|乐高|樂高|幻影忍者|喜羊羊|灰太狼|超能猩云队|大头儿子|大頭兒子|小头爸爸|小頭爸爸|無涯之約|无涯之约|東游記|东游记|开心超人|開心超人|熊出没|熊出沒|猪猪侠|豬豬俠|冰球旋风|冰球旋風|primal|genndy\s+tartakovsky|史前战纪|野蛮纪源|原始战纪|熊熊帮帮团|卡酷动画春晚|卡酷2025春节动画大联欢|小小守艺人|幸福公寓|海底小纵队|octonauts|mickey|disney|miraculous|瓢虫雷迪|恶搞之家|family\s+guy|spider-man|spider man|spidey|marvel's spidey|蜘蛛侠与他的神奇朋友们|transformers:\s*earthspark|变形金刚:地球火种|我的哪吒与变形金刚|sealook|pinkfong|baby\s*shark)/iu;
   if (explicitNonJapanesePattern.test(haystack)) {
     return { isJapaneseAnime: false, reason: "Not Japanese anime" };
   }
@@ -301,7 +321,8 @@ function extractAliases(subject: BangumiSubject): string[] {
     ...extractStringListFromInfobox(subject, ["别名", "aliases", "Alias"]),
     ...extractStringListFromInfobox(subject, ["英文名", "English"])
   ];
-  return [...new Set(aliases.filter((alias) => alias !== subject.name && alias !== subject.name_cn))];
+  const subjectNames = new Set([repairMojibakeText(subject.name), nonEmptyStringOrNull(subject.name_cn)].filter(Boolean));
+  return [...new Set(aliases.filter((alias) => !subjectNames.has(alias)))];
 }
 
 function extractOfficialUrl(subject: BangumiSubject): string | null {
@@ -323,7 +344,7 @@ function extractStringListFromInfobox(subject: BangumiSubject, keys: string[]): 
     result.push(...unknownToStrings(item.value));
   }
 
-  return [...new Set(result.map((value) => value.trim()).filter(Boolean))];
+  return [...new Set(result.map((value) => repairMojibakeText(value).trim()).filter(Boolean))];
 }
 
 function unknownToStrings(value: unknown): string[] {
@@ -338,7 +359,9 @@ function unknownToStrings(value: unknown): string[] {
 }
 
 function nonEmptyStringOrNull(value: unknown): string | null {
-  return typeof value === "string" && value.trim() !== "" ? value : null;
+  if (typeof value !== "string") return null;
+  const repaired = repairMojibakeText(value).trim();
+  return repaired !== "" ? repaired : null;
 }
 
 function positiveNumberOrNull(value: unknown): number | null {
@@ -347,4 +370,21 @@ function positiveNumberOrNull(value: unknown): number | null {
 
 function positiveIntegerOrNull(value: unknown): number | null {
   return Number.isInteger(value) && Number(value) > 0 ? Number(value) : null;
+}
+
+function repairMojibakeText(value: string): string {
+  if (!looksLikeUtf8AsLatin1(value)) return value;
+
+  const repaired = Buffer.from(value, "latin1").toString("utf8");
+  return scoreMojibake(repaired) < scoreMojibake(value) ? repaired : value;
+}
+
+function looksLikeUtf8AsLatin1(value: string): boolean {
+  return /[\u00c3\u00e3\u00c2\u00c5\u00e6\u00e7\u00e8\u00e9\u00e5\u00e4\u00f0\u00fe]|[\u0080-\u009f]/u.test(value);
+}
+
+function scoreMojibake(value: string): number {
+  const markerCount = (value.match(/[\u00c3\u00e3\u00c2\u00c5\u00e6\u00e7\u00e8\u00e9\u00e5\u00e4\u00f0\u00fe]|[\u0080-\u009f]/gu) ?? []).length;
+  const replacementCount = (value.match(/\uFFFD/gu) ?? []).length;
+  return markerCount + replacementCount * 3;
 }
