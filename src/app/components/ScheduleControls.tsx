@@ -14,6 +14,16 @@ export interface FilterState {
 }
 
 const statusOptions: AnimeStatus[] = ["announced", "airing", "finished", "delayed"];
+const viewModeLabels: Record<ViewMode, string> = {
+  stats: "统计列表",
+  following: "追番列表"
+};
+
+const scopeLabels: Record<ScopeFilter, string> = {
+  all: "全部",
+  new: "本季新开播",
+  continuing: "跨季度续播"
+};
 
 export function ScheduleControls({
   value,
@@ -25,41 +35,58 @@ export function ScheduleControls({
   onReset: () => void;
 }) {
   return (
-    <section className="controls" aria-label="筛选控制">
-      <ControlGroup label="视图">
-        <SegmentButton active={value.viewMode === "stats"} onClick={() => onChange({ viewMode: "stats" })}>
-          统计列表
-        </SegmentButton>
-        <SegmentButton active={value.viewMode === "following"} onClick={() => onChange({ viewMode: "following" })}>
-          追番列表
-        </SegmentButton>
-      </ControlGroup>
+    <details className="controls" aria-label="筛选控制">
+      <summary className="controlsSummary">
+        <span className="controlsSummaryTitle">筛选</span>
+        <span className="controlsSummaryText">{getFilterSummary(value)}</span>
+        <span aria-hidden="true" className="controlsSummaryIcon" />
+      </summary>
 
-      <ControlGroup label="范围">
-        <SegmentButton active={value.scope === "all"} onClick={() => onChange({ scope: "all" })}>
-          全部
-        </SegmentButton>
-        <SegmentButton active={value.scope === "new"} onClick={() => onChange({ scope: "new" })}>
-          本季新开播
-        </SegmentButton>
-        <SegmentButton active={value.scope === "continuing"} onClick={() => onChange({ scope: "continuing" })}>
-          跨季度续播
-        </SegmentButton>
-      </ControlGroup>
+      <div className="controlsBody">
+        <ControlGroup label="视图">
+          <SegmentButton active={value.viewMode === "stats"} onClick={() => onChange({ viewMode: "stats" })}>
+            统计列表
+          </SegmentButton>
+          <SegmentButton active={value.viewMode === "following"} onClick={() => onChange({ viewMode: "following" })}>
+            追番列表
+          </SegmentButton>
+        </ControlGroup>
 
-      <ChipGroup
-        label="状态"
-        values={value.statuses}
-        options={statusOptions}
-        labelMap={statusLabels}
-        onChange={(statuses) => onChange({ statuses })}
-      />
+        <ControlGroup label="范围">
+          <SegmentButton active={value.scope === "all"} onClick={() => onChange({ scope: "all" })}>
+            全部
+          </SegmentButton>
+          <SegmentButton active={value.scope === "new"} onClick={() => onChange({ scope: "new" })}>
+            本季新开播
+          </SegmentButton>
+          <SegmentButton active={value.scope === "continuing"} onClick={() => onChange({ scope: "continuing" })}>
+            跨季度续播
+          </SegmentButton>
+        </ControlGroup>
 
-      <button className="ghostButton" type="button" onClick={onReset}>
-        重置
-      </button>
-    </section>
+        <ChipGroup
+          label="状态"
+          values={value.statuses}
+          options={statusOptions}
+          labelMap={statusLabels}
+          onChange={(statuses) => onChange({ statuses })}
+        />
+
+        <button className="ghostButton" type="button" onClick={onReset}>
+          重置
+        </button>
+      </div>
+    </details>
   );
+}
+
+function getFilterSummary(value: FilterState): string {
+  return [viewModeLabels[value.viewMode], scopeLabels[value.scope], getStatusSummary(value.statuses)].join(" / ");
+}
+
+function getStatusSummary(statuses: FieldFilter<AnimeStatus>): string {
+  if (statuses === "all") return "全部状态";
+  return statuses.map((status) => statusLabels[status]).join("、");
 }
 
 function ControlGroup({ label, children }: { label: string; children: ReactNode }) {

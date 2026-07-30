@@ -222,7 +222,7 @@ export function AnimeSchedulePage() {
           {staticMode ? (
             <StateView
               type="partial"
-              title="静态只读模式"
+              title="只读模式"
               description="当前页面读取随部署发布的静态 JSON，不会调用 /api/update；请在本地更新数据后重新部署。"
             />
           ) : null}

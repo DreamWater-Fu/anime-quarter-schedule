@@ -1,8 +1,15 @@
 import type { AnimeItem } from "@/src/server/types/anime";
-import { getBeijingUpdateSlot, getBeijingWeekday, getUpdateWeekdaySlot } from "./timezone.ts";
+import { getBeijingUpdateSlot, getBeijingWeekday, getUpdateWeekdaySlot, parseTimeToMinutes } from "./timezone.ts";
 
 export type ViewMode = "stats" | "following";
-export type SortMode = "default" | "ratingAsc" | "ratingDesc" | "startDateAsc" | "startDateDesc";
+export type SortMode =
+  | "default"
+  | "ratingAsc"
+  | "ratingDesc"
+  | "startDateAsc"
+  | "startDateDesc"
+  | "updateTimeAsc"
+  | "updateTimeDesc";
 
 export function sortAnimeItems(items: AnimeItem[], sortMode: SortMode): AnimeItem[] {
   const sorted = [...items];
@@ -18,7 +25,13 @@ export function sortAnimeItems(items: AnimeItem[], sortMode: SortMode): AnimeIte
     if (sortMode === "startDateAsc") {
       return compareNullableString(left.startDate, right.startDate, "asc") || compareTitle(left, right);
     }
-    return compareNullableString(left.startDate, right.startDate, "desc") || compareTitle(left, right);
+    if (sortMode === "startDateDesc") {
+      return compareNullableString(left.startDate, right.startDate, "desc") || compareTitle(left, right);
+    }
+    if (sortMode === "updateTimeAsc") {
+      return compareNullableNumber(getUpdateSortValue(left), getUpdateSortValue(right), "asc") || compareTitle(left, right);
+    }
+    return compareNullableNumber(getUpdateSortValue(left), getUpdateSortValue(right), "desc") || compareTitle(left, right);
   });
 }
 
@@ -62,4 +75,17 @@ function compareNullableString(
 
 function compareTitle(left: AnimeItem, right: AnimeItem): number {
   return left.title.original.localeCompare(right.title.original);
+}
+
+function getUpdateSortValue(item: AnimeItem): number | null {
+  const beijingSlot = getBeijingUpdateSlot(item);
+  if (beijingSlot) {
+    const minutes = parseTimeToMinutes(beijingSlot.time);
+    if (minutes !== null) return (beijingSlot.weekday - 1) * 1440 + minutes;
+  }
+
+  const weekdaySlot = getUpdateWeekdaySlot(item);
+  if (weekdaySlot) return (weekdaySlot.weekday - 1) * 1440 + 1439;
+
+  return null;
 }

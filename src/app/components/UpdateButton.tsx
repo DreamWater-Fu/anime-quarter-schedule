@@ -33,7 +33,7 @@ export function UpdateButton({
       onClick={onClick}
     >
       {isBusy ? <span className="buttonSpinner" aria-hidden="true" /> : null}
-      {disabledReason && !isBusy ? "静态只读" : labelByStatus[status]}
+      {disabledReason && !isBusy ? "只读" : labelByStatus[status]}
       {disabledReason ? (
         <span className="srOnly" id="update-button-disabled-reason">
           {disabledReason}

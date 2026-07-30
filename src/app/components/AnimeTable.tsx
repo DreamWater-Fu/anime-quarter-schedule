@@ -1,21 +1,73 @@
 import { BangumiBadge } from "./BangumiBadge";
 import { CoverImage } from "./CoverImage";
 import { formatDate, formatUpdateDisplay, statusLabels } from "../lib/format";
+import type { SortMode } from "../lib/listing";
 import { classifySeasonMembership } from "../lib/season";
 import { getBeijingUpdateSlot, getUpdateWeekdaySlot } from "../lib/timezone";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
 
-export function AnimeTable({ items, currentSeason }: { items: AnimeItem[]; currentSeason: SeasonKey }) {
+export function AnimeTable({
+  items,
+  currentSeason,
+  sortMode,
+  onSortModeChange
+}: {
+  items: AnimeItem[];
+  currentSeason: SeasonKey;
+  sortMode: SortMode;
+  onSortModeChange: (sortMode: SortMode) => void;
+}) {
   return (
     <div className="tableShell">
+      <div className="tableMobileSorts" aria-label="排序">
+        <HeaderSortButton
+          field="updateTime"
+          label="更新时间"
+          sortMode={sortMode}
+          onChange={onSortModeChange}
+        />
+        <HeaderSortButton
+          field="startDate"
+          label="首播"
+          sortMode={sortMode}
+          onChange={onSortModeChange}
+        />
+        <HeaderSortButton
+          field="rating"
+          label="评分"
+          sortMode={sortMode}
+          onChange={onSortModeChange}
+        />
+      </div>
       <table className="animeTable">
         <thead>
           <tr>
             <th>作品</th>
-            <th>更新时间</th>
-            <th>首播</th>
+            <th>
+              <HeaderSortButton
+                field="updateTime"
+                label="更新时间"
+                sortMode={sortMode}
+                onChange={onSortModeChange}
+              />
+            </th>
+            <th>
+              <HeaderSortButton
+                field="startDate"
+                label="首播"
+                sortMode={sortMode}
+                onChange={onSortModeChange}
+              />
+            </th>
             <th>集数</th>
-            <th>评分</th>
+            <th>
+              <HeaderSortButton
+                field="rating"
+                label="评分"
+                sortMode={sortMode}
+                onChange={onSortModeChange}
+              />
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -62,6 +114,73 @@ export function AnimeTable({ items, currentSeason }: { items: AnimeItem[]; curre
       </table>
     </div>
   );
+}
+
+function HeaderSortButton({
+  field,
+  label,
+  sortMode,
+  onChange
+}: {
+  field: SortField;
+  label: string;
+  sortMode: SortMode;
+  onChange: (sortMode: SortMode) => void;
+}) {
+  const state = getSortState(field, sortMode);
+  const nextMode = getNextSortMode(field, sortMode);
+
+  return (
+    <button
+      aria-label={`${label}排序：${state.label}`}
+      className="tableSortButton"
+      data-active={state.direction !== "default"}
+      title={`当前：${state.label}。点击切换排序。`}
+      type="button"
+      onClick={() => onChange(nextMode)}
+    >
+      <span>{label}</span>
+      <span aria-hidden="true" className="sortIcon">
+        {state.icon}
+      </span>
+    </button>
+  );
+}
+
+type SortField = "updateTime" | "startDate" | "rating";
+
+function getSortState(field: SortField, sortMode: SortMode) {
+  if (field === "updateTime") {
+    if (sortMode === "updateTimeAsc") return { direction: "down", icon: "↓", label: "更新时间早到晚" };
+    if (sortMode === "updateTimeDesc") return { direction: "up", icon: "↑", label: "更新时间晚到早" };
+  }
+  if (field === "startDate") {
+    if (sortMode === "startDateAsc") return { direction: "down", icon: "↓", label: "首播早到晚" };
+    if (sortMode === "startDateDesc") return { direction: "up", icon: "↑", label: "首播晚到早" };
+  }
+  if (field === "rating") {
+    if (sortMode === "ratingDesc") return { direction: "down", icon: "↓", label: "评分高到低" };
+    if (sortMode === "ratingAsc") return { direction: "up", icon: "↑", label: "评分低到高" };
+  }
+  return { direction: "default", icon: "↕", label: "默认" };
+}
+
+function getNextSortMode(field: SortField, sortMode: SortMode): SortMode {
+  if (field === "updateTime") {
+    if (sortMode === "updateTimeAsc") return "updateTimeDesc";
+    if (sortMode === "updateTimeDesc") return "default";
+    return "updateTimeAsc";
+  }
+
+  if (field === "startDate") {
+    if (sortMode === "startDateAsc") return "startDateDesc";
+    if (sortMode === "startDateDesc") return "default";
+    return "startDateAsc";
+  }
+
+  if (sortMode === "ratingDesc") return "ratingAsc";
+  if (sortMode === "ratingAsc") return "default";
+  return "ratingDesc";
 }
 
 function getSecondaryTitle(item: AnimeItem, displayTitle: string): string | null {

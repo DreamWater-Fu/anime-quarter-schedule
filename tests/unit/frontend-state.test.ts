@@ -83,6 +83,14 @@ describe("frontend season interaction helpers", () => {
       sortAnimeItems(cache.items, "startDateDesc").map((item) => item.id),
       ["anime:june-to-july", "anime:march-to-april", "anime:winter-jan-mar", "anime:october-to-next-january"]
     );
+    assert.deepEqual(
+      sortAnimeItems(cache.items, "updateTimeAsc").map((item) => item.id),
+      ["anime:winter-jan-mar", "anime:march-to-april", "anime:october-to-next-january", "anime:june-to-july"]
+    );
+    assert.deepEqual(
+      sortAnimeItems(cache.items, "updateTimeDesc").map((item) => item.id),
+      ["anime:june-to-july", "anime:october-to-next-january", "anime:march-to-april", "anime:winter-jan-mar"]
+    );
   });
 
   it("builds today's following schedule in Beijing update-time order", () => {

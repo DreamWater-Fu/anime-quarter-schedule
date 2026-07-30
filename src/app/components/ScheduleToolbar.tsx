@@ -37,7 +37,7 @@ export function ScheduleToolbar({
             {staticMode ? (
               <>
                 <span className="metaDivider">/</span>
-                <span>静态只读</span>
+                <span>只读</span>
               </>
             ) : null}
           </p>

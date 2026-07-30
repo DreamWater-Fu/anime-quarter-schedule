@@ -26,6 +26,9 @@
   --state-layer: rgb(0 106 106 / 8%);
   --shadow: 0 1px 2px rgb(0 0 0 / 12%), 0 1px 3px 1px rgb(0 0 0 / 8%);
   --shadow-raised: 0 3px 6px rgb(0 0 0 / 12%), 0 6px 16px rgb(0 0 0 / 10%);
+  --motion-fast: 140ms;
+  --motion-standard: 190ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
 * {
@@ -312,12 +315,14 @@ a:hover {
   min-height: 44px;
   border-radius: 999px;
   cursor: pointer;
+  white-space: nowrap;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease,
     opacity 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    transform var(--motion-fast) var(--motion-ease);
 }
 
 .segmentedButton,
@@ -335,6 +340,19 @@ a:hover {
 .ghostButton:hover,
 .secondaryButton:hover {
   background: var(--state-layer);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 9%);
+}
+
+.segmentedButton:active,
+.chipButton:active,
+.ghostButton:active,
+.secondaryButton:active,
+.primaryButton:active,
+.weekdayButton:active,
+.tableSortButton:active {
+  transform: translateY(0) scale(0.985);
 }
 
 .segmentedButton[data-active="true"],
@@ -361,6 +379,7 @@ a:hover {
 .primaryButton:hover {
   background: var(--primary-strong);
   box-shadow: var(--shadow-raised);
+  transform: translateY(-1px);
 }
 
 .primaryButton:disabled {
@@ -371,6 +390,7 @@ a:hover {
 .primaryButton:disabled:hover {
   background: var(--primary);
   box-shadow: var(--shadow);
+  transform: none;
 }
 
 .buttonSpinner {
@@ -383,15 +403,115 @@ a:hover {
 }
 
 .controls {
+  border: 1px solid rgb(214 223 221 / 82%);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 88%);
+  padding: 8px;
+  box-shadow: var(--shadow);
+  transition:
+    border-color var(--motion-standard) var(--motion-ease),
+    box-shadow var(--motion-standard) var(--motion-ease),
+    transform var(--motion-standard) var(--motion-ease);
+}
+
+.controls:hover {
+  border-color: rgb(0 106 106 / 24%);
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-1px);
+}
+
+.controls:focus-within {
+  border-color: rgb(0 106 106 / 35%);
+  box-shadow: var(--shadow-raised);
+}
+
+.controlsSummary {
+  display: grid;
+  min-height: 44px;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+  padding: 0 8px 0 10px;
+  user-select: none;
+}
+
+.controlsSummary::-webkit-details-marker {
+  display: none;
+}
+
+.controlsSummary:focus-visible {
+  border-radius: 12px;
+  outline: 2px solid rgb(0 106 106 / 45%);
+  outline-offset: 2px;
+}
+
+.controlsSummaryTitle {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.controlsSummaryText {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.controlsSummaryIcon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform var(--motion-standard) var(--motion-ease);
+}
+
+.controlsSummaryIcon::before,
+.controlsSummaryIcon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.controlsSummaryIcon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.controls[open] .controlsSummaryIcon {
+  border-color: var(--primary-container);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  transform: rotate(180deg);
+}
+
+.controls[open] .controlsSummaryIcon::after {
+  opacity: 0;
+}
+
+.controlsBody {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
   gap: 12px;
-  border: 1px solid rgb(214 223 221 / 82%);
-  border-radius: 16px;
-  background: rgb(255 255 255 / 88%);
-  padding: 12px;
-  box-shadow: var(--shadow);
+  border-top: 1px solid rgb(214 223 221 / 62%);
+  margin-top: 8px;
+  padding: 12px 4px 4px;
 }
 
 .controlGroup {
@@ -429,6 +549,16 @@ a:hover {
   background: var(--surface);
   padding: 12px;
   box-shadow: var(--shadow);
+  transition:
+    border-color var(--motion-standard) var(--motion-ease),
+    box-shadow var(--motion-standard) var(--motion-ease),
+    transform var(--motion-standard) var(--motion-ease);
+}
+
+.summaryItem:hover {
+  border-color: rgb(0 106 106 / 24%);
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-2px);
 }
 
 .summaryItem span {
@@ -623,6 +753,15 @@ a:hover {
   border-radius: 8px;
   background: var(--surface);
   padding: 12px 14px;
+  transition:
+    border-color var(--motion-standard) var(--motion-ease),
+    box-shadow var(--motion-standard) var(--motion-ease),
+    transform var(--motion-standard) var(--motion-ease);
+}
+
+.stateView:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
 }
 
 .stateView h2 {
@@ -661,6 +800,9 @@ a:hover {
   border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition:
+    border-color var(--motion-standard) var(--motion-ease),
+    box-shadow var(--motion-standard) var(--motion-ease);
 }
 
 .followSchedule {
@@ -669,6 +811,15 @@ a:hover {
   border-radius: 16px;
   background: linear-gradient(180deg, #ffffff, #fbfdfc);
   box-shadow: var(--shadow);
+  transition:
+    border-color var(--motion-standard) var(--motion-ease),
+    box-shadow var(--motion-standard) var(--motion-ease);
+}
+
+.scheduleGroup:hover,
+.followSchedule:hover {
+  border-color: rgb(0 106 106 / 22%);
+  box-shadow: var(--shadow-raised);
 }
 
 .groupHeader {
@@ -709,6 +860,7 @@ a:hover {
 }
 
 .weekdayButton {
+  position: relative;
   display: inline-flex;
   min-height: 40px;
   align-items: center;
@@ -722,15 +874,20 @@ a:hover {
   font-size: 13px;
   font-weight: 800;
   padding: 0 11px;
+  white-space: nowrap;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    transform var(--motion-fast) var(--motion-ease);
 }
 
 .weekdayButton:hover {
   background: var(--state-layer);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 9%);
 }
 
 .weekdayButton[data-active="true"] {
@@ -753,37 +910,38 @@ a:hover {
   color: var(--success-text);
 }
 
-.boardSorts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
-.sortToggle {
+.tableSortButton {
   display: inline-flex;
-  min-height: 44px;
+  min-height: 34px;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  border: 1px solid var(--border-strong);
+  gap: 5px;
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--surface);
+  background: transparent;
   color: var(--text);
   cursor: pointer;
-  font-weight: 700;
-  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0 9px;
+  white-space: nowrap;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
-    color 180ms ease;
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform var(--motion-fast) var(--motion-ease);
 }
 
-.sortToggle:hover {
+.tableSortButton:hover {
   background: var(--state-layer);
+  border-color: rgb(0 106 106 / 22%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 9%);
 }
 
-.sortToggle[data-active="true"] {
+.tableSortButton[data-active="true"] {
   border-color: var(--primary-container);
   background: var(--primary-container);
   color: var(--on-primary-container);
@@ -801,6 +959,10 @@ a:hover {
 .tableShell {
   width: 100%;
   overflow-x: auto;
+}
+
+.tableMobileSorts {
+  display: none;
 }
 
 .animeTable {
@@ -830,11 +992,14 @@ a:hover {
   --weekday-border: var(--border);
   --weekday-text: var(--primary-strong);
 
-  transition: background-color 160ms ease;
+  transition:
+    background-color 160ms ease,
+    box-shadow var(--motion-standard) var(--motion-ease);
 }
 
 .animeTable tbody tr:hover {
   background: rgb(0 106 106 / 5%);
+  box-shadow: inset 4px 0 0 rgb(0 106 106 / 24%);
 }
 
 .animeTable tbody tr[data-weekday="1"] {
@@ -952,6 +1117,15 @@ a:hover {
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
   padding: 0 10px;
+  transition:
+    border-color var(--motion-fast) var(--motion-ease),
+    box-shadow var(--motion-fast) var(--motion-ease),
+    transform var(--motion-fast) var(--motion-ease);
+}
+
+.animeTable tbody tr:hover .updatePill {
+  box-shadow: 0 2px 7px rgb(0 0 0 / 10%);
+  transform: translateY(-1px);
 }
 
 .timezoneHint {
@@ -1171,8 +1345,18 @@ a:hover {
 
 .followCard:hover {
   background: #fbfdfc;
-  box-shadow: var(--shadow);
-  transform: translateY(-1px);
+  border-color: rgb(0 106 106 / 24%);
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-2px);
+}
+
+.followCard:active {
+  transform: translateY(0) scale(0.995);
+}
+
+.followCard:hover .coverImage,
+.followCard:hover .coverPlaceholder {
+  transform: scale(1.025);
 }
 
 .followRow[data-current="true"] .followTimeline span {
@@ -1223,6 +1407,7 @@ a:hover {
   flex-wrap: wrap;
   align-items: center;
   gap: 6px;
+  overflow-wrap: anywhere;
 }
 
 .liveBadge {
@@ -1250,6 +1435,9 @@ a:hover {
   border-radius: 12px;
   object-fit: cover;
   background: var(--surface-subtle);
+  transition:
+    transform var(--motion-standard) var(--motion-ease),
+    box-shadow var(--motion-standard) var(--motion-ease);
 }
 
 .coverPlaceholder {
@@ -1400,6 +1588,30 @@ a:hover {
   }
 }
 
+@media (hover: none) {
+  .segmentedButton:hover,
+  .chipButton:hover,
+  .ghostButton:hover,
+  .secondaryButton:hover,
+  .primaryButton:hover,
+  .weekdayButton:hover,
+  .tableSortButton:hover,
+  .summaryItem:hover,
+  .controls:hover,
+  .stateView:hover,
+  .followCard:hover,
+  .scheduleGroup:hover,
+  .followSchedule:hover {
+    transform: none;
+  }
+
+  .followCard:hover .coverImage,
+  .followCard:hover .coverPlaceholder,
+  .animeTable tbody tr:hover .updatePill {
+    transform: none;
+  }
+}
+
 @media (max-width: 900px) {
   .toolbarMain {
     grid-template-columns: 1fr;
@@ -1447,6 +1659,11 @@ a:hover {
     font-size: 12px;
   }
 
+  .titleMeta {
+    gap: 5px 6px;
+    line-height: 1.35;
+  }
+
   .statusBadge {
     min-height: 28px;
     font-size: 12px;
@@ -1454,9 +1671,30 @@ a:hover {
   }
 
   .controls {
-    gap: 10px;
     border-radius: 14px;
-    padding: 10px;
+    padding: 6px;
+  }
+
+  .controlsSummary {
+    gap: 8px;
+    padding-inline: 8px 6px;
+  }
+
+  .controlsSummaryTitle {
+    font-size: 14px;
+  }
+
+  .controlsSummaryText {
+    font-size: 12px;
+  }
+
+  .controlsBody {
+    gap: 10px;
+    padding: 10px 2px 2px;
+  }
+
+  .controlGroup {
+    width: 100%;
   }
 
   .summaryItem {
@@ -1470,7 +1708,7 @@ a:hover {
   }
 
   .toolbarActions,
-  .controls {
+  .controlsBody {
     align-items: stretch;
     flex-direction: column;
   }
@@ -1523,9 +1761,22 @@ a:hover {
     width: 100%;
   }
 
+  .controlGroup > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
   .segmentedButton,
   .chipButton {
-    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 40px;
+    justify-content: center;
+    overflow: hidden;
+    padding-inline: 8px;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    line-height: 1;
   }
 
   .summaryGrid {
@@ -1544,31 +1795,33 @@ a:hover {
   .weekdayPicker {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     justify-content: stretch;
-    gap: 6px;
+    gap: 4px;
   }
 
   .weekdayButton {
     min-width: 0;
-    min-height: 40px;
-    gap: 3px;
-    padding-inline: 6px;
+    min-height: 38px;
+    gap: 0;
+    overflow: hidden;
+    padding-inline: 2px;
+    font-size: 12px;
+    line-height: 1;
+    text-overflow: ellipsis;
   }
 
   .weekdayButton small {
-    font-size: 10px;
-  }
-
-  .boardSorts {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .sortToggle {
-    flex: 1 1 132px;
-    min-height: 44px;
-    padding-inline: 10px;
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    width: 5px;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: currentColor;
+    font-size: 0;
+    opacity: 0.72;
   }
 
   .reportGrid {
@@ -1656,6 +1909,21 @@ a:hover {
     overflow-x: visible;
   }
 
+  .tableMobileSorts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px 8px 0;
+  }
+
+  .tableMobileSorts .tableSortButton {
+    min-height: 40px;
+    border-color: var(--border-strong);
+    background: var(--surface);
+    font-size: 12px;
+    padding-inline: 6px;
+  }
+
   .animeTable {
     min-width: 0;
     border-collapse: separate;
@@ -1731,6 +1999,16 @@ a:hover {
   .tableTitleCell {
     grid-template-columns: 48px minmax(0, 1fr);
     gap: 8px;
+  }
+
+  .tableTitleCell strong,
+  .tableTitleCell > div > span,
+  .followMain strong,
+  .followMetaLine {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .coverImage,

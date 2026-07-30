@@ -79,7 +79,7 @@ function shiftWeekdayAndMinutes(weekday: number, minutes: number): { weekday: nu
   return { weekday: nextWeekday, minutes: nextMinutes };
 }
 
-function parseTimeToMinutes(value: string): number | null {
+export function parseTimeToMinutes(value: string): number | null {
   const match = /^(\d{2}):(\d{2})$/.exec(value);
   if (!match) return null;
   const hours = Number(match[1]);
