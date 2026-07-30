@@ -10,11 +10,39 @@ export const seasonOptions: Array<{ label: string; value: SeasonMonth; quarter: 
 export const weekdayLabels = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
 
 export function getCurrentSeasonMonth(date = new Date()): SeasonMonth {
-  const month = date.getMonth() + 1;
-  if (month <= 3) return 1;
-  if (month <= 6) return 4;
-  if (month <= 9) return 7;
-  return 10;
+  return seasonOptions.find((item) => item.quarter === getCurrentSeasonKey(date).quarter)?.value ?? 7;
+}
+
+export function getCurrentSeasonKey(date = new Date()): SeasonKey {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date);
+  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return calculateSeasonKeyFromDate(`${byType.year}-${byType.month}-${byType.day}`);
+}
+
+function calculateSeasonKeyFromDate(date: string): SeasonKey {
+  const year = Number(date.slice(0, 4));
+  const month = Number(date.slice(5, 7));
+  const day = Number(date.slice(8, 10));
+  const quarter = getQuarterForMonth(month);
+
+  if (month === 3 && day >= 18) return { year, quarter: "spring" };
+  if (month === 6 && day >= 17) return { year, quarter: "summer" };
+  if (month === 9 && day >= 17) return { year, quarter: "fall" };
+  if (month === 12 && day >= 18) return { year: year + 1, quarter: "winter" };
+
+  return { year, quarter };
+}
+
+function getQuarterForMonth(month: number): AnimeQuarter {
+  if (month <= 3) return "winter";
+  if (month <= 6) return "spring";
+  if (month <= 9) return "summer";
+  return "fall";
 }
 
 export function getQuarterBySeason(season: SeasonMonth): AnimeQuarter {

@@ -1,7 +1,11 @@
 node_modules/
 dist/
 .next/
+.static-export-disabled/
+out/
 coverage/
 .env.local
 tsconfig.tsbuildinfo
 *.bak
+public/static-data/
+public/.nojekyll

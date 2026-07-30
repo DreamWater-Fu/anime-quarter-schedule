@@ -8,7 +8,7 @@ import { type FilterState, ScheduleControls } from "./ScheduleControls";
 import { ScheduleToolbar } from "./ScheduleToolbar";
 import { SkeletonRows, StateView } from "./StateView";
 import { StatusSummary } from "./StatusSummary";
-import { FrontendApiError, loadSeasonAnime, loadUpdateStatus, runSeasonUpdate } from "../lib/apiClient";
+import { FrontendApiError, isStaticExportMode, loadSeasonAnime, loadUpdateStatus, runSeasonUpdate } from "../lib/apiClient";
 import { getTodayFollowItems, sortAnimeItems } from "../lib/listing";
 import {
   classifySeasonMembership,
@@ -173,6 +173,7 @@ export function AnimeSchedulePage() {
     <main className="pageShell">
       <ScheduleToolbar
         cacheUpdatedAt={queryState.data?.meta.cacheUpdatedAt ?? null}
+        disableUpdate={isStaticExportMode()}
         season={season}
         updateState={updateState}
         year={year}

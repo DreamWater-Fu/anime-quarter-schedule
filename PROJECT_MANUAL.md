@@ -11,7 +11,7 @@
 - 存储：本地 JSON 文件，核心缓存为 `data/anime.json`
 - 当前缓存：468 条；全部为 TV、日本动画、非 excluded，封面缺失为 0
 - 测试：92 个单元测试；最近 `npm run check` 通过
-- 当前用途：个人使用的新番时间表；可作为只读公开网页部署到 Vercel
+- 当前用途：个人使用的新番时间表；可作为只读公开网页部署到 Vercel 或 GitHub Pages
 - 最近自检：2026-07-30 删除 14 条误入缓存的非日漫 TV 条目，包含 `anime:547751` 幸福公寓、`anime:538958` 冰球旋风 第2季；Bangumi 映射已加入明确排除。
 
 ## 2. 产品边界
@@ -197,6 +197,14 @@ Vercel 简单公开部署建议：
 - 不依赖 Vercel 函数写入本地 JSON 做持久更新。
 - 公开内容来自随部署产物发布的 `data/*.json`。
 
+GitHub Pages 静态部署：
+
+- `npm run build:static` 会复制 `data/anime.json`、`data/status.json` 到 `public/static-data/`，再执行 Next 静态导出。
+- 静态导出期间 `app/api` 会被构建脚本临时移走并自动恢复；普通本地/Vercel API 不受影响。
+- 静态页面通过 `NEXT_PUBLIC_STATIC_EXPORT=true` 读取 `/static-data/*.json`，不调用 `/api/*`。
+- GitHub Actions 工作流：`.github/workflows/pages.yml`，发布目录为 `out/`。
+- GitHub Pages 项目站点需要 `basePath`；构建脚本会在 Actions 中按仓库名自动设置。
+
 ## 10. 常用命令
 
 ```powershell
@@ -205,6 +213,7 @@ npm run dev:local
 npm run test
 npm run check
 npm run build
+npm run build:static
 ```
 
 部署前至少运行：
@@ -226,7 +235,17 @@ npm run build
 
 如需线上自动更新，必须先接入外部持久化，例如对象存储、数据库或 KV；不能依赖 Vercel Serverless 写入项目内 JSON 文件。
 
-## 12. 后续 AI 约束
+## 12. GitHub Pages 部署规则
+
+当前目标是“只读静态网页”：
+
+- 静态构建命令：`npm run build:static`。
+- 输出目录：`out/`。
+- 静态数据：`out/static-data/anime.json`、`out/static-data/status.json`。
+- 线上不能手动更新数据；要更新公开内容，先本地更新 `data/*.json`，再重新 push 触发 Actions。
+- 不要提交 `out/`、`public/static-data/` 或 `public/.nojekyll`；它们是构建产物。
+
+## 13. 后续 AI 约束
 
 必须：
 

@@ -10,6 +10,7 @@ export function ScheduleToolbar({
   season,
   updateState,
   cacheUpdatedAt,
+  disableUpdate,
   onYearChange,
   onSeasonChange,
   onUpdate
@@ -18,6 +19,7 @@ export function ScheduleToolbar({
   season: SeasonMonth;
   updateState: UpdateStatusPayload;
   cacheUpdatedAt: string | null;
+  disableUpdate?: boolean;
   onYearChange: (year: number) => void;
   onSeasonChange: (season: SeasonMonth) => void;
   onUpdate: () => void;
@@ -36,7 +38,7 @@ export function ScheduleToolbar({
         <div className="toolbarActions">
           <YearSelector value={year} onChange={onYearChange} />
           <SeasonSelector value={season} onChange={onSeasonChange} />
-          <UpdateButton status={updateState.status} onClick={onUpdate} />
+          <UpdateButton disabled={disableUpdate} status={updateState.status} onClick={onUpdate} />
         </div>
       </div>
     </header>
