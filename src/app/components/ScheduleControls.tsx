@@ -20,7 +20,7 @@ const viewModeLabels: Record<ViewMode, string> = {
 };
 
 const scopeLabels: Record<ScopeFilter, string> = {
-  all: "全部",
+  all: "全部范围",
   new: "本季新开播",
   continuing: "跨季度续播"
 };
@@ -54,7 +54,7 @@ export function ScheduleControls({
 
         <ControlGroup label="范围">
           <SegmentButton active={value.scope === "all"} onClick={() => onChange({ scope: "all" })}>
-            全部
+            全部范围
           </SegmentButton>
           <SegmentButton active={value.scope === "new"} onClick={() => onChange({ scope: "new" })}>
             本季新开播
@@ -130,7 +130,7 @@ function ChipGroup<T extends string>({
           type="button"
           onClick={() => onChange("all")}
         >
-          全部
+          全部状态
         </button>
         {options.map((option) => {
           const active = values !== "all" && values.includes(option);
