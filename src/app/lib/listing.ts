@@ -24,6 +24,10 @@ export function sortAnimeItems(items: AnimeItem[], sortMode: SortMode): AnimeIte
 
 export function getTodayFollowItems(items: AnimeItem[], date = new Date()): AnimeItem[] {
   const weekday = getBeijingWeekday(date);
+  return getFollowItemsByWeekday(items, weekday);
+}
+
+export function getFollowItemsByWeekday(items: AnimeItem[], weekday: number): AnimeItem[] {
   return items
     .filter((item) => (getBeijingUpdateSlot(item)?.weekday ?? getUpdateWeekdaySlot(item)?.weekday) === weekday)
     .filter((item) => item.status === "airing" || item.status === "delayed")

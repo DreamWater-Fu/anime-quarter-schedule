@@ -73,6 +73,15 @@ a:hover {
   text-decoration: underline;
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .pageShell {
   min-height: 100dvh;
   background:
@@ -84,9 +93,9 @@ a:hover {
   display: flex;
   width: min(100%, 1280px);
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
   margin: 0 auto;
-  padding: 18px 16px 28px;
+  padding: 16px 16px 28px;
 }
 
 .toolbar {
@@ -100,23 +109,25 @@ a:hover {
 }
 
 .toolbarMain {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) auto;
   width: min(100%, 1280px);
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  align-items: stretch;
+  gap: 18px;
   margin: 0 auto;
-  padding: 14px 16px;
+  padding: 12px 16px;
 }
 
 .titleBlock {
+  display: grid;
+  align-content: center;
   min-width: 240px;
 }
 
 .titleBlock h1 {
   margin: 0;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
   line-height: 1.28;
 }
 
@@ -127,17 +138,87 @@ a:hover {
   line-height: 1.5;
 }
 
+.titleMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+}
+
+.titleMeta .statusBadge {
+  min-height: 26px;
+  font-size: 12px;
+  padding-inline: 10px;
+}
+
 .metaDivider {
-  margin: 0 8px;
+  margin: 0 2px;
   color: var(--border-strong);
+}
+
+.toolbarRight {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.statusBadge {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-container);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0 12px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+}
+
+.statusBadge[data-status="success"] {
+  border-color: #afd9bf;
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.statusBadge[data-status="running"] {
+  border-color: #f0d28a;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+}
+
+.statusBadge[data-status="failed"] {
+  border-color: #ffc0b7;
+  background: var(--danger-bg);
+  color: var(--danger-text);
 }
 
 .toolbarActions {
   display: flex;
   flex-wrap: wrap;
-  align-items: end;
+  align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 8px;
+}
+
+.toolbarActions .primaryButton {
+  min-height: 52px;
+  border-radius: 16px;
+}
+
+.timePickerPanel {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgb(214 223 221 / 88%);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 76%);
+  padding: 4px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 72%);
 }
 
 .field {
@@ -148,14 +229,51 @@ a:hover {
   font-weight: 600;
 }
 
+.timePickerPanel .field {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 0 8px 0 12px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 7%);
+}
+
+.timePickerPanel .field span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
 .field input {
   width: 108px;
   min-height: 44px;
   border: 1px solid var(--border-strong);
-  border-radius: 12px;
+  border-radius: 10px;
   background: var(--surface);
   color: var(--text);
   padding: 0 10px;
+}
+
+.timePickerPanel .field input {
+  width: 72px;
+  min-height: 34px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  padding: 0;
+  text-align: center;
+}
+
+.timePickerPanel .field input:focus-visible {
+  outline-offset: 1px;
 }
 
 .segmented,
@@ -169,9 +287,21 @@ a:hover {
   min-height: 44px;
   align-items: center;
   border: 1px solid var(--border-strong);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--surface-container);
   padding: 4px;
+}
+
+.timePickerPanel .segmented {
+  border-color: transparent;
+  background: transparent;
+  padding: 0;
+}
+
+.timePickerPanel .segmentedButton {
+  min-width: 48px;
+  min-height: 44px;
+  padding: 0 14px;
 }
 
 .segmentedButton,
@@ -238,6 +368,11 @@ a:hover {
   opacity: 0.55;
 }
 
+.primaryButton:disabled:hover {
+  background: var(--primary);
+  box-shadow: var(--shadow);
+}
+
 .buttonSpinner {
   width: 14px;
   height: 14px;
@@ -251,11 +386,11 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
-  gap: 14px;
+  gap: 12px;
   border: 1px solid rgb(214 223 221 / 82%);
-  border-radius: 20px;
+  border-radius: 16px;
   background: rgb(255 255 255 / 88%);
-  padding: 14px;
+  padding: 12px;
   box-shadow: var(--shadow);
 }
 
@@ -281,16 +416,16 @@ a:hover {
 
 .summaryGrid {
   display: grid;
-  grid-template-columns: minmax(0, 220px);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
 }
 
 .summaryItem {
   display: grid;
   gap: 6px;
-  min-height: 72px;
+  min-height: 68px;
   border: 1px solid rgb(214 223 221 / 76%);
-  border-radius: 20px;
+  border-radius: 16px;
   background: var(--surface);
   padding: 12px;
   box-shadow: var(--shadow);
@@ -500,6 +635,7 @@ a:hover {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .stateView[data-type="error"] {
@@ -522,7 +658,7 @@ a:hover {
 .scheduleGroup {
   overflow: hidden;
   border: 1px solid rgb(214 223 221 / 78%);
-  border-radius: 24px;
+  border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--shadow);
 }
@@ -530,7 +666,7 @@ a:hover {
 .followSchedule {
   overflow: hidden;
   border: 1px solid rgb(214 223 221 / 78%);
-  border-radius: 24px;
+  border-radius: 16px;
   background: linear-gradient(180deg, #ffffff, #fbfdfc);
   box-shadow: var(--shadow);
 }
@@ -538,11 +674,12 @@ a:hover {
 .groupHeader {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
   border-bottom: 1px solid var(--border);
   background: var(--surface-container);
-  padding: 16px 18px;
+  padding: 14px 16px;
 }
 
 .groupHeader h2 {
@@ -564,6 +701,103 @@ a:hover {
   white-space: nowrap;
 }
 
+.weekdayPicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.weekdayButton {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 0 11px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.weekdayButton:hover {
+  background: var(--state-layer);
+}
+
+.weekdayButton[data-active="true"] {
+  border-color: var(--primary-container);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 9%);
+}
+
+.weekdayButton small {
+  color: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  opacity: 0.72;
+}
+
+.weekdayButton[data-today="true"]:not([data-active="true"]) {
+  border-color: #afd9bf;
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.boardSorts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.sortToggle {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0 12px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.sortToggle:hover {
+  background: var(--state-layer);
+}
+
+.sortToggle[data-active="true"] {
+  border-color: var(--primary-container);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+}
+
+.sortIcon {
+  display: inline-grid;
+  width: 18px;
+  place-items: center;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
 .tableShell {
   width: 100%;
   overflow-x: auto;
@@ -571,7 +805,7 @@ a:hover {
 
 .animeTable {
   width: 100%;
-  min-width: 780px;
+  min-width: 840px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -592,11 +826,57 @@ a:hover {
 }
 
 .animeTable tbody tr {
+  --weekday-bg: var(--surface-container);
+  --weekday-border: var(--border);
+  --weekday-text: var(--primary-strong);
+
   transition: background-color 160ms ease;
 }
 
 .animeTable tbody tr:hover {
   background: rgb(0 106 106 / 5%);
+}
+
+.animeTable tbody tr[data-weekday="1"] {
+  --weekday-bg: #e8f2ff;
+  --weekday-border: #bfd7f5;
+  --weekday-text: #25557c;
+}
+
+.animeTable tbody tr[data-weekday="2"] {
+  --weekday-bg: #e7f6ef;
+  --weekday-border: #b9ddcb;
+  --weekday-text: #285f43;
+}
+
+.animeTable tbody tr[data-weekday="3"] {
+  --weekday-bg: #fff4cf;
+  --weekday-border: #ead27f;
+  --weekday-text: #67510c;
+}
+
+.animeTable tbody tr[data-weekday="4"] {
+  --weekday-bg: #eeeaff;
+  --weekday-border: #cfc5f4;
+  --weekday-text: #4f4580;
+}
+
+.animeTable tbody tr[data-weekday="5"] {
+  --weekday-bg: #ffeaf1;
+  --weekday-border: #efc0d0;
+  --weekday-text: #794258;
+}
+
+.animeTable tbody tr[data-weekday="6"] {
+  --weekday-bg: #ffeedf;
+  --weekday-border: #ecc5a3;
+  --weekday-text: #77502e;
+}
+
+.animeTable tbody tr[data-weekday="7"] {
+  --weekday-bg: #e9f5d8;
+  --weekday-border: #c7dfa0;
+  --weekday-text: #49631e;
 }
 
 .animeTable th:nth-child(1) {
@@ -607,9 +887,21 @@ a:hover {
   width: 180px;
 }
 
-.animeTable th:nth-child(3),
+.animeTable th:nth-child(3) {
+  width: 118px;
+}
+
 .animeTable th:nth-child(4) {
+  width: 92px;
+}
+
+.animeTable th:nth-child(5) {
   width: 128px;
+}
+
+.animeTable th:nth-child(n + 2),
+.animeTable td:nth-child(n + 2) {
+  text-align: center;
 }
 
 .tableTitleCell {
@@ -637,15 +929,40 @@ a:hover {
 
 .updateCell {
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+.updateStack {
+  display: inline-grid;
+  justify-items: center;
+}
+
+.updatePill {
+  display: inline-flex;
+  min-width: 104px;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--weekday-border, var(--border));
+  border-radius: 999px;
+  background: var(--weekday-bg, var(--surface-container));
+  color: var(--weekday-text, var(--primary-strong));
+  font-size: 13px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  padding: 0 10px;
 }
 
 .timezoneHint {
   display: block;
-  margin-top: 4px;
+  width: fit-content;
+  min-width: 104px;
+  margin: 4px auto 0;
   color: var(--muted);
   font-size: 12px;
   font-variant-numeric: normal;
+  text-align: center;
 }
 
 .followList {
@@ -654,12 +971,79 @@ a:hover {
   padding: 8px 0 12px;
 }
 
-.followRow {
+.followEmpty {
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 5px;
+  margin: 8px 16px 0;
+  border: 1px dashed var(--border-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 16px;
+  text-align: center;
+}
+
+.followEmpty strong {
+  font-size: 15px;
+}
+
+.followEmpty span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.followRow {
+  --weekday-bg: var(--primary-container);
+  --weekday-border: #7fd7d4;
+  --weekday-text: var(--on-primary-container);
+
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
   gap: 12px;
   align-items: stretch;
   padding: 8px 16px;
+}
+
+.followRow[data-weekday="1"] {
+  --weekday-bg: #e8f2ff;
+  --weekday-border: #bfd7f5;
+  --weekday-text: #25557c;
+}
+
+.followRow[data-weekday="2"] {
+  --weekday-bg: #e7f6ef;
+  --weekday-border: #b9ddcb;
+  --weekday-text: #285f43;
+}
+
+.followRow[data-weekday="3"] {
+  --weekday-bg: #fff4cf;
+  --weekday-border: #ead27f;
+  --weekday-text: #67510c;
+}
+
+.followRow[data-weekday="4"] {
+  --weekday-bg: #eeeaff;
+  --weekday-border: #cfc5f4;
+  --weekday-text: #4f4580;
+}
+
+.followRow[data-weekday="5"] {
+  --weekday-bg: #ffeaf1;
+  --weekday-border: #efc0d0;
+  --weekday-text: #794258;
+}
+
+.followRow[data-weekday="6"] {
+  --weekday-bg: #ffeedf;
+  --weekday-border: #ecc5a3;
+  --weekday-text: #77502e;
+}
+
+.followRow[data-weekday="7"] {
+  --weekday-bg: #e9f5d8;
+  --weekday-border: #c7dfa0;
+  --weekday-text: #49631e;
 }
 
 .followRow:last-child {
@@ -689,40 +1073,124 @@ a:hover {
   position: relative;
   z-index: 1;
   display: inline-flex;
-  min-width: 66px;
-  min-height: 36px;
+  width: 70px;
+  min-height: 34px;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--primary-container);
+  border: 1px solid var(--weekday-border);
   border-radius: 999px;
-  background: var(--primary-container);
-  color: var(--on-primary-container);
-  font-size: 14px;
+  background: var(--weekday-bg);
+  color: var(--weekday-text);
+  font-size: 13px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
 }
 
-.followCard {
+.followNowRow {
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr) 104px;
-  gap: 14px;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 2px 16px;
+}
+
+.followNowMarker {
+  position: relative;
+  display: grid;
+  min-height: 24px;
+  place-items: center;
+}
+
+.followNowMarker::before {
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  left: 50%;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--surface-container-high);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.followNowMarker span {
+  position: relative;
+  z-index: 2;
+  width: 13px;
+  height: 13px;
+  border: 3px solid var(--surface);
+  border-radius: 999px;
+  background: var(--secondary);
+  box-shadow:
+    0 0 0 3px rgb(160 24 87 / 16%),
+    0 2px 5px rgb(0 0 0 / 15%);
+}
+
+.followNowLabel {
+  width: fit-content;
+  border: 1px solid rgb(160 24 87 / 20%);
+  border-radius: 999px;
+  background: #fff3f8;
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  padding: 6px 10px;
+}
+
+.followCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 96px;
+  gap: 12px;
   align-items: center;
   border: 1px solid rgb(214 223 221 / 78%);
-  border-radius: 18px;
+  border-radius: 16px;
   background: var(--surface);
-  padding: 10px;
+  padding: 8px;
   box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
   transition:
     background-color 160ms ease,
+    border-color 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
+}
+
+.followCard::before {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  width: 4px;
+  border-radius: 0 999px 999px 0;
+  background: var(--weekday-border);
+  content: "";
 }
 
 .followCard:hover {
   background: #fbfdfc;
   box-shadow: var(--shadow);
   transform: translateY(-1px);
+}
+
+.followRow[data-current="true"] .followTimeline span {
+  border-color: var(--secondary);
+  background: #fff3f8;
+  color: var(--secondary);
+}
+
+.followRow[data-current="true"] .followCard {
+  border-color: rgb(160 24 87 / 44%);
+  background: linear-gradient(90deg, #fff6fa 0, #ffffff 48%);
+  box-shadow:
+    0 0 0 3px rgb(160 24 87 / 8%),
+    var(--shadow-raised);
+}
+
+.followRow[data-current="true"] .followCard::before {
+  background: var(--secondary);
 }
 
 .followTime {
@@ -740,7 +1208,7 @@ a:hover {
 
 .followMain strong {
   overflow-wrap: anywhere;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.35;
 }
 
@@ -748,6 +1216,27 @@ a:hover {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.4;
+}
+
+.followMetaLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.liveBadge {
+  display: inline-flex;
+  min-height: 22px;
+  align-items: center;
+  border: 1px solid rgb(160 24 87 / 22%);
+  border-radius: 999px;
+  background: #fff3f8;
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 0 8px;
 }
 
 .animeTable tr:last-child td {
@@ -797,6 +1286,10 @@ a:hover {
   justify-items: start;
 }
 
+.animeTable td .bangumiBadge {
+  justify-items: center;
+}
+
 .bangumiBadge strong {
   font-size: 16px;
   font-weight: 800;
@@ -813,15 +1306,15 @@ a:hover {
 
 .followCard .coverImage,
 .followCard .coverPlaceholder {
-  width: 64px;
+  width: 56px;
 }
 
 .followCard .bangumiBadge {
   justify-self: end;
-  min-width: 88px;
-  border-radius: 14px;
+  min-width: 84px;
+  border-radius: 12px;
   background: var(--surface-container);
-  padding: 8px 10px;
+  padding: 7px 9px;
 }
 
 .badge {
@@ -909,16 +1402,20 @@ a:hover {
 
 @media (max-width: 900px) {
   .toolbarMain {
-    align-items: stretch;
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .toolbarRight {
+    justify-items: stretch;
+  }
+
+  .statusBadge {
+    justify-self: end;
   }
 
   .toolbarActions {
     justify-content: flex-start;
-  }
-
-  .summaryGrid {
-    grid-template-columns: minmax(0, 220px);
   }
 
 }
@@ -929,18 +1426,89 @@ a:hover {
     padding-inline: 12px;
   }
 
+  .contentShell {
+    gap: 12px;
+    padding-block: 12px 20px;
+  }
+
   .toolbar {
     position: static;
   }
 
   .titleBlock h1 {
-    font-size: 20px;
+    font-size: 22px;
+  }
+
+  .titleBlock {
+    min-width: 0;
+  }
+
+  .titleBlock p {
+    font-size: 12px;
+  }
+
+  .statusBadge {
+    min-height: 28px;
+    font-size: 12px;
+    padding-inline: 10px;
+  }
+
+  .controls {
+    gap: 10px;
+    border-radius: 14px;
+    padding: 10px;
+  }
+
+  .summaryItem {
+    min-height: 60px;
+    border-radius: 14px;
+    padding: 10px;
+  }
+
+  .summaryItem strong {
+    font-size: 21px;
   }
 
   .toolbarActions,
   .controls {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .toolbarActions {
+    gap: 8px;
+  }
+
+  .timePickerPanel {
+    width: 100%;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    border-radius: 14px;
+    padding: 6px;
+  }
+
+  .timePickerPanel .field {
+    width: 100%;
+    justify-content: space-between;
+    padding-inline: 12px;
+  }
+
+  .timePickerPanel .field input {
+    width: 96px;
+    text-align: right;
+  }
+
+  .timePickerPanel .segmented {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .timePickerPanel .segmentedButton {
+    min-width: 0;
+    padding-inline: 6px;
   }
 
   .field input,
@@ -964,6 +1532,45 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
+  .groupHeader {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .groupHeader h2 {
+    font-size: 16px;
+  }
+
+  .weekdayPicker {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 6px;
+  }
+
+  .weekdayButton {
+    min-width: 0;
+    min-height: 40px;
+    gap: 3px;
+    padding-inline: 6px;
+  }
+
+  .weekdayButton small {
+    font-size: 10px;
+  }
+
+  .boardSorts {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .sortToggle {
+    flex: 1 1 132px;
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+
   .reportGrid {
     grid-template-columns: 1fr;
   }
@@ -974,32 +1581,71 @@ a:hover {
   }
 
   .followRow {
-    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-columns: 62px minmax(0, 1fr);
     gap: 8px;
-    padding: 8px 10px;
+    padding: 6px 8px;
+  }
+
+  .followEmpty {
+    margin: 8px 8px 0;
+    padding: 14px 10px;
+  }
+
+  .followNowRow {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 8px;
+    padding: 2px 8px;
+  }
+
+  .followNowLabel {
+    font-size: 11px;
+    padding: 6px 9px;
+  }
+
+  .followTimeline {
+    padding-top: 6px;
   }
 
   .followTimeline span {
-    min-width: 56px;
-    min-height: 34px;
-    font-size: 13px;
+    width: 54px;
+    min-height: 32px;
+    font-size: 12px;
   }
 
   .followCard {
-    grid-template-columns: 56px minmax(0, 1fr);
-    gap: 10px;
-    border-radius: 16px;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 8px;
+    border-radius: 12px;
+    padding: 8px;
   }
 
   .followCard .coverImage,
   .followCard .coverPlaceholder {
-    width: 56px;
+    width: 48px;
+    border-radius: 10px;
+  }
+
+  .followMain {
+    gap: 4px;
+  }
+
+  .followMain strong {
+    font-size: 14px;
+  }
+
+  .followMain span {
+    font-size: 12px;
   }
 
   .followCard .bangumiBadge {
     grid-column: 2;
     justify-self: start;
-    min-width: 88px;
+    min-width: 76px;
+    padding: 6px 8px;
+  }
+
+  .followCard .bangumiBadge strong {
+    font-size: 14px;
   }
 
   .skeletonRow {
@@ -1035,30 +1681,38 @@ a:hover {
 
   .animeTable tbody {
     display: grid;
-    gap: 10px;
-    padding: 10px;
+    gap: 8px;
+    padding: 8px;
   }
 
   .animeTable tr {
     display: grid;
-    gap: 10px;
+    gap: 8px;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-left: 4px solid var(--weekday-border, var(--border));
+    border-radius: 10px;
     background: var(--surface);
-    padding: 10px;
+    padding: 8px;
   }
 
   .animeTable td {
     display: grid;
-    grid-template-columns: 76px minmax(0, 1fr);
-    gap: 10px;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
     border-bottom: 0;
     padding: 0;
+    text-align: center;
     white-space: normal;
   }
 
   .animeTable td::before {
+    display: flex;
+    min-height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--surface-container);
     content: attr(data-label);
     color: var(--muted);
     font-size: 12px;
@@ -1072,5 +1726,39 @@ a:hover {
 
   .animeTable td:first-child::before {
     display: none;
+  }
+
+  .tableTitleCell {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .coverImage,
+  .coverPlaceholder {
+    width: 48px;
+    border-radius: 10px;
+  }
+
+  .updatePill {
+    width: 100%;
+    min-width: 0;
+    min-height: 30px;
+    font-size: 12px;
+    padding-inline: 8px;
+  }
+
+  .updateStack {
+    width: 100%;
+  }
+
+  .timezoneHint {
+    width: 100%;
+    min-width: 0;
+    font-size: 11px;
+  }
+
+  .animeTable td .bangumiBadge {
+    width: 100%;
+    justify-items: center;
   }
 }

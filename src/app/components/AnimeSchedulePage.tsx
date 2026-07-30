@@ -9,7 +9,7 @@ import { ScheduleToolbar } from "./ScheduleToolbar";
 import { SkeletonRows, StateView } from "./StateView";
 import { StatusSummary } from "./StatusSummary";
 import { FrontendApiError, isStaticExportMode, loadSeasonAnime, loadUpdateStatus, runSeasonUpdate } from "../lib/apiClient";
-import { getTodayFollowItems, sortAnimeItems } from "../lib/listing";
+import { getFollowItemsByWeekday, sortAnimeItems } from "../lib/listing";
 import {
   classifySeasonMembership,
   getCurrentSeasonMonth,
@@ -17,6 +17,7 @@ import {
   parseSeasonFromUrl,
   seasonKeyEquals
 } from "../lib/season";
+import { getBeijingWeekday } from "../lib/timezone";
 import type { AnimeItem, AnimeSeasonPayload, SeasonKey, SeasonMonth } from "@/src/server/types/anime";
 import type { PublicApiError, UpdateResult, UpdateStatusPayload } from "@/src/server/types/api";
 
@@ -43,6 +44,8 @@ const emptyUpdateStatus: UpdateStatusPayload = {
 export function AnimeSchedulePage() {
   const [year, setYear] = useState(() => new Date().getFullYear());
   const [season, setSeason] = useState<SeasonMonth>(() => getCurrentSeasonMonth());
+  const [todayWeekday, setTodayWeekday] = useState(() => getBeijingWeekday());
+  const [followWeekday, setFollowWeekday] = useState(() => getBeijingWeekday());
   const [filters, setFilters] = useState<FilterState>(defaultFilterState);
   const [queryState, setQueryState] = useState<{
     status: "idle" | "loading" | "success" | "error";
@@ -55,6 +58,8 @@ export function AnimeSchedulePage() {
     data: AnimeSeasonPayload;
   } | null>(null);
   const [updateError, setUpdateError] = useState<PublicApiError | null>(null);
+  const [statusWarning, setStatusWarning] = useState<PublicApiError | null>(null);
+  const staticMode = isStaticExportMode();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -64,24 +69,39 @@ export function AnimeSchedulePage() {
     if (urlSeason) setSeason(urlSeason);
   }, []);
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setTodayWeekday(getBeijingWeekday());
+    }, 60_000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   const loadData = useCallback(async () => {
     setQueryState((current) => ({ ...current, status: "loading", error: null }));
-    try {
-      const [nextData, nextStatus] = await Promise.all([
-        loadSeasonAnime({
-          year,
-          season
-        }),
-        loadUpdateStatus()
-      ]);
-      setQueryState({ status: "success", error: null, data: nextData });
-      setUpdateState(nextStatus);
-    } catch (error) {
+    const [dataResult, statusResult] = await Promise.allSettled([
+      loadSeasonAnime({
+        year,
+        season
+      }),
+      loadUpdateStatus()
+    ]);
+
+    if (dataResult.status === "fulfilled") {
+      setQueryState({ status: "success", error: null, data: dataResult.value });
+    } else {
       setQueryState((current) => ({
         ...current,
         status: "error",
-        error: toApiError(error, "加载失败，请稍后重试")
+        error: toApiError(dataResult.reason, "加载失败，请稍后重试")
       }));
+    }
+
+    if (statusResult.status === "fulfilled") {
+      setUpdateState(statusResult.value);
+      setStatusWarning(null);
+    } else {
+      setStatusWarning(toApiError(statusResult.reason, "更新状态读取失败，请稍后重试"));
     }
   }, [season, year]);
 
@@ -140,6 +160,7 @@ export function AnimeSchedulePage() {
       ]);
       setQueryState({ status: "success", error: null, data: nextData });
       setUpdateState(nextStatus);
+      setStatusWarning(null);
       setUpdateReport({ result, data: nextData });
     } catch (error) {
       const apiError = toApiError(error, "本次更新失败，当前仍显示上次成功缓存");
@@ -163,17 +184,17 @@ export function AnimeSchedulePage() {
     [currentSeason, filters, queryState.data?.items]
   );
   const displayItems = useMemo(() => sortAnimeItems(filteredItems, filters.sortMode), [filteredItems, filters.sortMode]);
-  const followItems = useMemo(() => getTodayFollowItems(filteredItems), [filteredItems]);
+  const followItems = useMemo(() => getFollowItemsByWeekday(filteredItems, followWeekday), [filteredItems, followWeekday]);
   const hasSourceData = (queryState.data?.items.length ?? 0) > 0;
   const hasFilteredEmpty = hasSourceData && filteredItems.length === 0;
-  const hasFollowEmpty = filters.viewMode === "following" && hasSourceData && filteredItems.length > 0 && followItems.length === 0;
   const showBlockingError = queryState.status === "error" && !queryState.data;
 
   return (
     <main className="pageShell">
       <ScheduleToolbar
         cacheUpdatedAt={queryState.data?.meta.cacheUpdatedAt ?? null}
-        disableUpdate={isStaticExportMode()}
+        disableUpdate={staticMode}
+        staticMode={staticMode}
         season={season}
         updateState={updateState}
         year={year}
@@ -189,7 +210,7 @@ export function AnimeSchedulePage() {
           onReset={() => setFilters(defaultFilterState)}
         />
 
-        <StatusSummary data={queryState.data} />
+        <StatusSummary data={queryState.data} updateState={updateState} />
 
         <div className="stateStack" aria-live="polite">
           {queryState.status === "loading" ? (
@@ -198,13 +219,29 @@ export function AnimeSchedulePage() {
           {updateState.status === "running" ? (
             <StateView type="updating" title="更新中" description="正在更新当前季度数据，页面仍可浏览旧缓存。" />
           ) : null}
+          {staticMode ? (
+            <StateView
+              type="partial"
+              title="静态只读模式"
+              description="当前页面读取随部署发布的静态 JSON，不会调用 /api/update；请在本地更新数据后重新部署。"
+            />
+          ) : null}
+          {statusWarning ? (
+            <StateView
+              type="partial"
+              title="状态读取失败"
+              description={`${statusWarning.code}：${statusWarning.message}。番剧列表已尽量正常显示。`}
+              actionLabel="重试状态"
+              onAction={loadData}
+            />
+          ) : null}
           {updateState.status === "failed" && updateState.lastError ? (
             <StateView
               type="error"
               title="更新失败"
               description={`${updateState.lastError.code}：${updateState.lastError.message}。当前仍显示上次成功缓存。`}
-              actionLabel="重试更新"
-              onAction={handleUpdate}
+              actionLabel={staticMode ? undefined : "重试更新"}
+              onAction={staticMode ? undefined : handleUpdate}
             />
           ) : null}
           {queryState.status === "error" && queryState.data ? (
@@ -234,9 +271,13 @@ export function AnimeSchedulePage() {
           <StateView
             type="empty"
             title="无数据"
-            description="当前季度暂无数据，可以尝试手动更新，或切换年份/季度。"
-            actionLabel="更新数据"
-            onAction={handleUpdate}
+            description={
+              staticMode
+                ? "当前季度暂无静态数据，请切换年份/季度，或在本地更新 JSON 后重新部署。"
+                : "当前季度暂无数据，可以尝试手动更新，或切换年份/季度。"
+            }
+            actionLabel={staticMode ? undefined : "更新数据"}
+            onAction={staticMode ? undefined : handleUpdate}
           />
         ) : null}
 
@@ -244,28 +285,29 @@ export function AnimeSchedulePage() {
           <StateView
             type="empty"
             title="没有符合筛选条件的作品"
-            description="可以放宽状态、范围或数据状态筛选。"
+            description="可以放宽状态或范围筛选。"
             actionLabel="清空筛选"
             onAction={() => setFilters(defaultFilterState)}
           />
         ) : null}
 
-        {hasFollowEmpty ? (
-          <StateView
-            type="empty"
-            title="今日暂无更新"
-            description="当前筛选条件下，今天没有按时刻表更新的新番。"
-            actionLabel="查看统计列表"
-            onAction={() => setFilters((current) => ({ ...current, viewMode: "stats" }))}
+        {filters.viewMode === "stats" && displayItems.length > 0 ? (
+          <ScheduleBoard
+            currentSeason={currentSeason}
+            items={displayItems}
+            sortMode={filters.sortMode}
+            onSortModeChange={(sortMode) => setFilters((current) => ({ ...current, sortMode }))}
           />
         ) : null}
 
-        {filters.viewMode === "stats" && displayItems.length > 0 ? (
-          <ScheduleBoard currentSeason={currentSeason} items={displayItems} />
-        ) : null}
-
-        {filters.viewMode === "following" && followItems.length > 0 ? (
-          <FollowSchedule currentSeason={currentSeason} items={followItems} />
+        {filters.viewMode === "following" && filteredItems.length > 0 ? (
+          <FollowSchedule
+            currentSeason={currentSeason}
+            items={followItems}
+            selectedWeekday={followWeekday}
+            todayWeekday={todayWeekday}
+            onWeekdayChange={setFollowWeekday}
+          />
         ) : null}
       </div>
 
@@ -286,9 +328,6 @@ function UpdateReportDialog({
   report: { result: UpdateResult; data: AnimeSeasonPayload };
   onClose: () => void;
 }) {
-  const summary = report.data.meta.dataStatusSummary;
-  const incomplete = summary.partial + summary.unverified + summary.conflicting;
-
   return (
     <div className="modalScrim" role="presentation" onClick={onClose}>
       <section
@@ -308,20 +347,8 @@ function UpdateReportDialog({
             <dd>{report.data.meta.total}</dd>
           </div>
           <div>
-            <dt>信息完整</dt>
-            <dd>{summary.complete}</dd>
-          </div>
-          <div>
-            <dt>信息不完整</dt>
-            <dd>{incomplete}</dd>
-          </div>
-          <div>
             <dt>缺少评分</dt>
             <dd>{report.result.summary.missingRating}</dd>
-          </div>
-          <div>
-            <dt>来源冲突</dt>
-            <dd>{report.result.summary.conflicting}</dd>
           </div>
           <div>
             <dt>过滤非日漫</dt>

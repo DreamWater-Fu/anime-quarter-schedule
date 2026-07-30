@@ -35,30 +35,6 @@ export function ScheduleControls({
         </SegmentButton>
       </ControlGroup>
 
-      <ControlGroup label="排序">
-        <SegmentButton active={value.sortMode === "default"} onClick={() => onChange({ sortMode: "default" })}>
-          默认
-        </SegmentButton>
-        <SegmentButton active={value.sortMode === "ratingDesc"} onClick={() => onChange({ sortMode: "ratingDesc" })}>
-          评分高到低
-        </SegmentButton>
-        <SegmentButton active={value.sortMode === "ratingAsc"} onClick={() => onChange({ sortMode: "ratingAsc" })}>
-          评分低到高
-        </SegmentButton>
-        <SegmentButton
-          active={value.sortMode === "startDateAsc"}
-          onClick={() => onChange({ sortMode: "startDateAsc" })}
-        >
-          首播早到晚
-        </SegmentButton>
-        <SegmentButton
-          active={value.sortMode === "startDateDesc"}
-          onClick={() => onChange({ sortMode: "startDateDesc" })}
-        >
-          首播晚到早
-        </SegmentButton>
-      </ControlGroup>
-
       <ControlGroup label="范围">
         <SegmentButton active={value.scope === "all"} onClick={() => onChange({ scope: "all" })}>
           全部
