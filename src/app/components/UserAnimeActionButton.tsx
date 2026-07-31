@@ -1,11 +1,13 @@
 import type { UserAnimePrefsControls } from "../lib/userAnimePrefs";
 import type { AnimeItem } from "@/src/server/types/anime";
 
+type ActionAnimeItem = Pick<AnimeItem, "id" | "title" | "status">;
+
 export function UserAnimeActionButton({
   item,
   userPrefs
 }: {
-  item: AnimeItem;
+  item: ActionAnimeItem;
   userPrefs: UserAnimePrefsControls;
 }) {
   const title = item.title.chinese || item.title.japanese || item.title.original;

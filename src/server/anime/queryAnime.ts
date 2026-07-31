@@ -1,5 +1,6 @@
 import {
   type AnimeItem,
+  type AnimeSearchPayload,
   type AnimeSeasonPayload,
   type AnimeQuarter,
   type DataStatus,
@@ -8,6 +9,7 @@ import {
 import { getDefaultStorage } from "../cache/jsonFileStorage.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { ApiErrorException } from "../utils/errors.ts";
+import { DEFAULT_ANIME_SEARCH_LIMIT, searchAnimeItems } from "../../shared/animeSearch.ts";
 import {
   compareSeasonKey,
   getCurrentSeasonKey,
@@ -24,6 +26,12 @@ export interface QueryAnimeInput {
   includeNeedsReview?: boolean;
   storage?: AnimeStorage;
   now?: Date;
+}
+
+export interface SearchAnimeInput {
+  query: string;
+  limit?: number;
+  storage?: AnimeStorage;
 }
 
 const EMPTY_STATUS_SUMMARY: Record<DataStatus, number> = {
@@ -67,10 +75,32 @@ export async function queryAnimeBySeason(input: QueryAnimeInput): Promise<AnimeS
   };
 }
 
+export async function searchAnimeLibrary(input: SearchAnimeInput): Promise<AnimeSearchPayload> {
+  const storage = input.storage ?? getDefaultStorage();
+  const cache = await storage.readAnimeCache();
+  const query = input.query.trim();
+  const limit = normalizeSearchLimit(input.limit);
+  const results = searchAnimeItems(cache.items, query, limit);
+
+  return {
+    query,
+    results,
+    meta: {
+      total: results.length,
+      cacheUpdatedAt: cache.updatedAt
+    }
+  };
+}
+
 function assertYear(year: number): void {
   if (!Number.isInteger(year) || year < 1900 || year > 2100) {
     throw new ApiErrorException("INVALID_QUERY", "year is invalid", { status: 400 });
   }
+}
+
+function normalizeSearchLimit(limit: number | undefined): number {
+  if (limit === undefined || !Number.isInteger(limit)) return DEFAULT_ANIME_SEARCH_LIMIT;
+  return Math.min(Math.max(limit, 1), 50);
 }
 
 function isIncludedForQuery(item: AnimeItem, includeOptional: boolean, includeNeedsReview: boolean): boolean {

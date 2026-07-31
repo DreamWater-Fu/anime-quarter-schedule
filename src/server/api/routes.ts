@@ -1,7 +1,7 @@
 import { readUpdateStatus } from "../cache/statusCache.ts";
-import { queryAnimeBySeason } from "../anime/queryAnime.ts";
+import { queryAnimeBySeason, searchAnimeLibrary } from "../anime/queryAnime.ts";
 import { updateAnimeData } from "../anime/updateAnimeData.ts";
-import type { AnimeSeasonPayload, SeasonMonth } from "../types/anime.ts";
+import type { AnimeSearchPayload, AnimeSeasonPayload, SeasonMonth } from "../types/anime.ts";
 import type { ApiResponse, UpdateInput, UpdateResult, UpdateStatusPayload } from "../types/api.ts";
 import { getHttpStatus, toPublicApiError } from "../utils/errors.ts";
 import { isSeasonMonth } from "../anime/calculateSeason.ts";
@@ -21,6 +21,19 @@ export async function getAnimeApi(query: URLSearchParams): Promise<ApiHandlerRes
       season,
       includeOptional: query.get("includeOptional") !== "false",
       includeNeedsReview: query.get("includeNeedsReview") !== "false"
+    });
+    return { status: 200, body: { ok: true, data } };
+  } catch (error) {
+    return { status: getHttpStatus(error), body: { ok: false, error: toPublicApiError(error) } };
+  }
+}
+
+export async function getSearchApi(query: URLSearchParams): Promise<ApiHandlerResult<AnimeSearchPayload>> {
+  try {
+    const limitValue = query.get("limit");
+    const data = await searchAnimeLibrary({
+      query: query.get("q") ?? "",
+      limit: limitValue === null ? undefined : Number(limitValue)
     });
     return { status: 200, body: { ok: true, data } };
   } catch (error) {
@@ -49,12 +62,15 @@ export async function getStatusApi(): Promise<ApiHandlerResult<UpdateStatusPaylo
 
 export async function handleApiRequest(input: {
   method: "GET" | "POST";
-  path: "/api/anime" | "/api/update" | "/api/status";
+  path: "/api/anime" | "/api/update" | "/api/status" | "/api/search";
   query?: URLSearchParams;
   body?: unknown;
 }): Promise<ApiHandlerResult<unknown>> {
   if (input.method === "GET" && input.path === "/api/anime") {
     return getAnimeApi(input.query ?? new URLSearchParams());
+  }
+  if (input.method === "GET" && input.path === "/api/search") {
+    return getSearchApi(input.query ?? new URLSearchParams());
   }
   if (input.method === "POST" && input.path === "/api/update") {
     return postUpdateApi(input.body);

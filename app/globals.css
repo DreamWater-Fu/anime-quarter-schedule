@@ -465,11 +465,386 @@ a:hover {
   animation: spin 900ms linear infinite;
 }
 
+.utilityRow {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.modePanel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgb(214 223 221 / 82%);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 88%);
+  padding: 6px;
+  box-shadow: var(--shadow);
+}
+
+.modeLabel {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  padding-inline: 8px 2px;
+  white-space: nowrap;
+}
+
+.modeSwitcher {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.modeButton {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0 10px;
+  text-align: center;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform var(--motion-fast) var(--motion-ease);
+}
+
+.modeButton:hover {
+  border-color: var(--primary);
+  background: var(--state-layer);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+  transform: translateY(-1px);
+}
+
+.modeButton[data-active="true"] {
+  border-color: var(--primary-container);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+}
+
+.modeButton span {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.animeSearch {
+  border: 1px solid rgb(214 223 221 / 82%);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 88%);
+  padding: 6px;
+  box-shadow: var(--shadow);
+  transition:
+    border-color var(--motion-standard) var(--motion-ease),
+    box-shadow var(--motion-standard) var(--motion-ease),
+    transform var(--motion-standard) var(--motion-ease);
+}
+
+.animeSearch:hover,
+.animeSearch:focus-within {
+  border-color: rgb(0 106 106 / 24%);
+  box-shadow: var(--shadow);
+}
+
+.animeSearch:hover {
+  transform: none;
+}
+
+.toolSummary {
+  display: grid;
+  min-height: 42px;
+  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+  padding: 0 6px 0 8px;
+  user-select: none;
+}
+
+.toolSummary::-webkit-details-marker {
+  display: none;
+}
+
+.toolSummary:focus-visible {
+  border-radius: 10px;
+  outline: 2px solid rgb(0 106 106 / 45%);
+  outline-offset: 2px;
+}
+
+.toolSummaryTitle {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.toolSummaryText {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toolSummaryIcon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform var(--motion-standard) var(--motion-ease);
+}
+
+.toolSummaryIcon::before,
+.toolSummaryIcon::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.toolSummaryIcon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.animeSearch[open] .toolSummaryIcon {
+  border-color: var(--primary-container);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  transform: rotate(180deg);
+}
+
+.animeSearch[open] .toolSummaryIcon::after {
+  opacity: 0;
+}
+
+.searchBody {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid rgb(214 223 221 / 62%);
+  margin-top: 6px;
+  padding: 10px 2px 2px;
+}
+
+.searchField {
+  display: grid;
+  gap: 7px;
+}
+
+.searchField label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.searchInputWrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.searchInputWrap input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0 14px;
+}
+
+.searchInputWrap input::placeholder {
+  color: var(--muted);
+  opacity: 0.78;
+}
+
+.searchClearButton {
+  min-width: 72px;
+  min-height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface-container);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 0 14px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform var(--motion-fast) var(--motion-ease);
+}
+
+.searchClearButton:hover {
+  border-color: var(--primary);
+  background: var(--state-layer);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 9%);
+  transform: translateY(-1px);
+}
+
+.searchResults {
+  display: grid;
+  gap: 6px;
+}
+
+.searchResults ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.searchResultRow {
+  display: grid;
+  width: 100%;
+  min-height: 52px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfdfc;
+  padding: 6px;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.searchResultRow:hover {
+  border-color: rgb(0 106 106 / 30%);
+  background: rgb(0 106 106 / 5%);
+  box-shadow: 0 2px 7px rgb(0 0 0 / 9%);
+}
+
+.searchResultJump {
+  display: grid;
+  min-width: 0;
+  min-height: 44px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  padding: 4px 6px;
+  text-align: left;
+  transition:
+    background-color 180ms ease,
+    transform var(--motion-fast) var(--motion-ease);
+}
+
+.searchResultJump:hover {
+  background: rgb(0 106 106 / 7%);
+  transform: translateY(-1px);
+}
+
+.searchResultJump:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+}
+
+.searchResultJump:disabled:hover {
+  background: transparent;
+  transform: none;
+}
+
+.searchResultMain {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.searchResultMain strong {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.searchResultMain span,
+.searchResultMain small {
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.searchSeasonBadge {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-container);
+  border-radius: 999px;
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.searchResultAction {
+  display: inline-flex;
+  justify-content: end;
+}
+
+.searchResultAction .userActionButton,
+.searchResultAction .userActionEmpty {
+  min-width: 82px;
+  min-height: 40px;
+}
+
+.searchHint {
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 10px;
+}
+
+.searchHint[data-tone="danger"] {
+  border-color: #ffc0b7;
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
 .controls {
   border: 1px solid rgb(214 223 221 / 82%);
-  border-radius: 16px;
+  border-radius: 12px;
   background: rgb(255 255 255 / 88%);
-  padding: 8px;
+  padding: 6px;
   box-shadow: var(--shadow);
   transition:
     border-color var(--motion-standard) var(--motion-ease),
@@ -479,18 +854,18 @@ a:hover {
 
 .controls:hover {
   border-color: rgb(0 106 106 / 24%);
-  box-shadow: var(--shadow-raised);
-  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+  transform: none;
 }
 
 .controls:focus-within {
   border-color: rgb(0 106 106 / 35%);
-  box-shadow: var(--shadow-raised);
+  box-shadow: var(--shadow);
 }
 
 .controlsSummary {
   display: grid;
-  min-height: 44px;
+  min-height: 42px;
   align-items: center;
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 10px;
@@ -512,7 +887,7 @@ a:hover {
 
 .controlsSummaryTitle {
   color: var(--text);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -520,7 +895,7 @@ a:hover {
   min-width: 0;
   overflow: hidden;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -528,8 +903,8 @@ a:hover {
 
 .controlsSummaryIcon {
   position: relative;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   background: var(--surface);
@@ -571,10 +946,10 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
-  gap: 12px;
+  gap: 8px;
   border-top: 1px solid rgb(214 223 221 / 62%);
-  margin-top: 8px;
-  padding: 12px 4px 4px;
+  margin-top: 6px;
+  padding: 10px 2px 2px;
 }
 
 .controlGroup {
@@ -1669,6 +2044,10 @@ a:hover {
   .weekdayButton:hover,
   .tableSortButton:hover,
   .summaryItem:hover,
+  .modeButton:hover,
+  .animeSearch:hover,
+  .searchClearButton:hover,
+  .searchResultJump:hover,
   .controls:hover,
   .stateView:hover,
   .followCard:hover,
@@ -1715,6 +2094,11 @@ a:hover {
     padding-block: 12px 20px;
   }
 
+  .utilityRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
   .toolbar {
     position: static;
   }
@@ -1743,8 +2127,76 @@ a:hover {
   }
 
   .controls {
-    border-radius: 14px;
+    border-radius: 12px;
     padding: 6px;
+  }
+
+  .modePanel {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    border-radius: 12px;
+    padding: 6px;
+  }
+
+  .modeLabel {
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+
+  .modeSwitcher {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .modeButton {
+    min-height: 40px;
+    border-radius: 999px;
+    padding-inline: 6px;
+  }
+
+  .modeButton span {
+    font-size: 12px;
+  }
+
+  .animeSearch {
+    border-radius: 12px;
+    padding: 6px;
+  }
+
+  .searchInputWrap {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .searchClearButton {
+    width: 100%;
+  }
+
+  .searchResultRow {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .searchResultJump {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .searchSeasonBadge {
+    width: fit-content;
+    min-height: 30px;
+    white-space: normal;
+  }
+
+  .searchResultAction {
+    justify-content: start;
+  }
+
+  .searchResultAction .userActionButton,
+  .searchResultAction .userActionEmpty {
+    width: 100%;
   }
 
   .controlsSummary {
@@ -1761,8 +2213,8 @@ a:hover {
   }
 
   .controlsBody {
-    gap: 10px;
-    padding: 10px 2px 2px;
+    gap: 8px;
+    padding: 8px 2px 2px;
   }
 
   .controlGroup {

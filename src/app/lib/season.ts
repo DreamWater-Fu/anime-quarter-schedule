@@ -49,6 +49,10 @@ export function getQuarterBySeason(season: SeasonMonth): AnimeQuarter {
   return seasonOptions.find((item) => item.value === season)?.quarter ?? "summer";
 }
 
+export function getSeasonMonthByQuarter(quarter: AnimeQuarter): SeasonMonth {
+  return seasonOptions.find((item) => item.quarter === quarter)?.value ?? 7;
+}
+
 export function isSeasonMonth(value: number): value is SeasonMonth {
   return value === 1 || value === 4 || value === 7 || value === 10;
 }

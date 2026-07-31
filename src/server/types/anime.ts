@@ -161,6 +161,26 @@ export interface AnimeSeasonPayload {
   };
 }
 
+export interface AnimeSearchResult {
+  id: string;
+  title: AnimeTitle;
+  displayTitle: string;
+  secondaryTitle: string | null;
+  matchedTitle: string;
+  startDate: string | null;
+  primarySeason: SeasonKey | null;
+  status: AnimeStatus;
+}
+
+export interface AnimeSearchPayload {
+  query: string;
+  results: AnimeSearchResult[];
+  meta: {
+    total: number;
+    cacheUpdatedAt: string | null;
+  };
+}
+
 export const DEFAULT_DISPLAY_FORMATS: readonly AnimeFormat[] = ["tv"];
 export const OPTIONAL_DISPLAY_FORMATS: readonly AnimeFormat[] = [];
 export const DEFAULT_HIDDEN_FORMATS: readonly AnimeFormat[] = [

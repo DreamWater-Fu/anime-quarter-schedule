@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import type { AnimeItem } from "@/src/server/types/anime";
 
 const STORAGE_KEY = "anime-quarter-schedule:user-prefs:v1";
 
@@ -15,6 +16,7 @@ export interface UserAnimePrefsControls {
   isLoaded: boolean;
   toggleFollow: (id: string) => void;
   toggleCompleted: (id: string) => void;
+  reconcileAnimeStatuses: (items: Array<Pick<AnimeItem, "id" | "status">>) => void;
 }
 
 const emptyPrefs: UserAnimePrefs = {
@@ -49,15 +51,25 @@ export function useUserAnimePrefs(): UserAnimePrefsControls {
     });
   }, []);
 
+  const reconcileAnimeStatuses = useCallback((items: Array<Pick<AnimeItem, "id" | "status">>) => {
+    setPrefs((current) => {
+      const next = reconcilePrefsWithAnimeStatuses(current, items);
+      if (next === current) return current;
+      writePrefs(next);
+      return next;
+    });
+  }, []);
+
   return useMemo(
     () => ({
       followedIds: new Set(prefs.followedIds),
       completedIds: new Set(prefs.completedIds),
       isLoaded,
       toggleFollow,
-      toggleCompleted
+      toggleCompleted,
+      reconcileAnimeStatuses
     }),
-    [isLoaded, prefs.completedIds, prefs.followedIds, toggleCompleted, toggleFollow]
+    [isLoaded, prefs.completedIds, prefs.followedIds, reconcileAnimeStatuses, toggleCompleted, toggleFollow]
   );
 }
 
@@ -92,6 +104,19 @@ function normalizePrefs(input: Partial<UserAnimePrefs>): UserAnimePrefs {
     followedIds: normalizeIds(input.followedIds),
     completedIds: normalizeIds(input.completedIds)
   };
+}
+
+export function reconcilePrefsWithAnimeStatuses(
+  prefs: UserAnimePrefs,
+  items: Array<Pick<AnimeItem, "id" | "status">>
+): UserAnimePrefs {
+  const finishedIds = new Set(items.filter((item) => item.status === "finished").map((item) => item.id));
+  if (finishedIds.size === 0 || !prefs.followedIds.some((id) => finishedIds.has(id))) return prefs;
+
+  return normalizePrefs({
+    ...prefs,
+    followedIds: prefs.followedIds.filter((id) => !finishedIds.has(id))
+  });
 }
 
 function normalizeIds(value: unknown): string[] {

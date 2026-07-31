@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { handleApiRequest } from "../../src/server/api/routes.ts";
-import { classifySeasonMembership, queryAnimeBySeason } from "../../src/server/anime/index.ts";
+import { classifySeasonMembership, queryAnimeBySeason, searchAnimeLibrary } from "../../src/server/anime/index.ts";
 import type { AnimeCache } from "../../src/server/types/anime.ts";
 import { MemoryStorage, readFixture } from "./test-utils.ts";
 
@@ -109,6 +109,40 @@ describe("quarter query coverage", () => {
     });
 
     assert.equal(summer.items.some((item) => item.id === "anime:web-format"), false);
+  });
+
+  it("searches stored TV anime by title and returns premiere season", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const storage = new MemoryStorage(cache);
+
+    const result = await searchAnimeLibrary({ query: "March", storage });
+
+    assert.equal(result.results[0]?.id, "anime:march-to-april");
+    assert.deepEqual(result.results[0]?.primarySeason, { year: 2026, quarter: "spring" });
+    assert.equal(result.results[0]?.displayTitle, "March To April");
+  });
+
+  it("keeps hidden formats and excluded non-Japanese entries out of search", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const webItem = {
+      ...cache.items[1]!,
+      id: "anime:march-web-format",
+      title: { ...cache.items[1]!.title, original: "March Search Hidden Web", japanese: "March Search Hidden Web" },
+      format: "web" as const
+    };
+    const excludedItem = {
+      ...cache.items[1]!,
+      id: "anime:march-excluded",
+      title: { ...cache.items[1]!.title, original: "March Search Hidden Excluded", japanese: "March Search Hidden Excluded" },
+      isJapaneseAnime: false,
+      inclusionStatus: "excluded" as const,
+      exclusionReason: "Not Japanese anime"
+    };
+    const storage = new MemoryStorage({ ...cache, items: [...cache.items, webItem, excludedItem] });
+
+    const result = await searchAnimeLibrary({ query: "Hidden", storage });
+
+    assert.deepEqual(result.results.map((item) => item.id), []);
   });
 });
 

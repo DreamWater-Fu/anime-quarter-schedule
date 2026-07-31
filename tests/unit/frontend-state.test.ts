@@ -5,10 +5,12 @@ import {
   buildSeasonQuery,
   classifySeasonMembership,
   getCurrentSeasonMonth,
+  getSeasonMonthByQuarter,
   parseSeasonFromUrl
 } from "../../src/app/lib/season.ts";
 import { formatUpdateDisplay } from "../../src/app/lib/format.ts";
 import { getTodayFollowItems, sortAnimeItems } from "../../src/app/lib/listing.ts";
+import { reconcilePrefsWithAnimeStatuses } from "../../src/app/lib/userAnimePrefs.ts";
 import type { AnimeCache } from "../../src/server/types/anime.ts";
 import { findFixtureItem, readFixture } from "./test-utils.ts";
 
@@ -20,6 +22,10 @@ describe("frontend season interaction helpers", () => {
     assert.equal(getCurrentSeasonMonth(new Date("2026-10-15T00:00:00Z")), 10);
     assert.equal(parseSeasonFromUrl("7"), 7);
     assert.equal(parseSeasonFromUrl("2"), null);
+    assert.equal(getSeasonMonthByQuarter("winter"), 1);
+    assert.equal(getSeasonMonthByQuarter("spring"), 4);
+    assert.equal(getSeasonMonthByQuarter("summer"), 7);
+    assert.equal(getSeasonMonthByQuarter("fall"), 10);
   });
 
   it("builds API query strings for includeOptional and includeNeedsReview toggles", () => {
@@ -106,5 +112,20 @@ describe("frontend season interaction helpers", () => {
       getTodayFollowItems(cache.items, fridayInBeijing).map((item) => item.id),
       ["anime:october-to-next-january"]
     );
+  });
+
+  it("clears followed state when a followed anime becomes finished without marking it completed", () => {
+    const prefs = {
+      followedIds: ["anime:airing", "anime:finished"],
+      completedIds: []
+    };
+
+    const next = reconcilePrefsWithAnimeStatuses(prefs, [
+      { id: "anime:airing", status: "airing" },
+      { id: "anime:finished", status: "finished" }
+    ]);
+
+    assert.deepEqual(next.followedIds, ["anime:airing"]);
+    assert.deepEqual(next.completedIds, []);
   });
 });

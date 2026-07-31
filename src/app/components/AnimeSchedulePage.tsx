@@ -2,18 +2,21 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { AnimeSearch } from "./AnimeSearch";
 import { FollowSchedule } from "./FollowSchedule";
 import { ScheduleBoard } from "./ScheduleBoard";
 import { type FilterState, ScheduleControls } from "./ScheduleControls";
 import { ScheduleToolbar } from "./ScheduleToolbar";
 import { SkeletonRows, StateView } from "./StateView";
 import { StatusSummary } from "./StatusSummary";
+import { ViewModeSwitcher } from "./ViewModeSwitcher";
 import { FrontendApiError, isStaticExportMode, loadSeasonAnime, loadUpdateStatus, runSeasonUpdate } from "../lib/apiClient";
-import { getFollowItemsByWeekday, sortAnimeItems } from "../lib/listing";
+import { getFollowItemsByWeekday, sortAnimeItems, type ViewMode } from "../lib/listing";
 import {
   classifySeasonMembership,
-  getCurrentSeasonMonth,
+  getCurrentSeasonKey,
   getQuarterBySeason,
+  getSeasonMonthByQuarter,
   parseSeasonFromUrl,
   seasonKeyEquals
 } from "../lib/season";
@@ -23,7 +26,6 @@ import type { AnimeItem, AnimeSeasonPayload, SeasonKey, SeasonMonth } from "@/sr
 import type { PublicApiError, UpdateResult, UpdateStatusPayload } from "@/src/server/types/api";
 
 const defaultFilterState: FilterState = {
-  viewMode: "stats",
   sortMode: "default",
   scope: "all",
   statuses: "all"
@@ -42,11 +44,20 @@ const emptyUpdateStatus: UpdateStatusPayload = {
   }
 };
 
+function getDefaultSeasonSelection(): { year: number; season: SeasonMonth } {
+  const currentSeason = getCurrentSeasonKey();
+  return {
+    year: currentSeason.year,
+    season: getSeasonMonthByQuarter(currentSeason.quarter)
+  };
+}
+
 export function AnimeSchedulePage() {
-  const [year, setYear] = useState(() => new Date().getFullYear());
-  const [season, setSeason] = useState<SeasonMonth>(() => getCurrentSeasonMonth());
+  const [year, setYear] = useState(() => getDefaultSeasonSelection().year);
+  const [season, setSeason] = useState<SeasonMonth>(() => getDefaultSeasonSelection().season);
   const [todayWeekday, setTodayWeekday] = useState(() => getBeijingWeekday());
   const [followWeekday, setFollowWeekday] = useState(() => getBeijingWeekday());
+  const [viewMode, setViewMode] = useState<ViewMode>("stats");
   const [filters, setFilters] = useState<FilterState>(defaultFilterState);
   const [queryState, setQueryState] = useState<{
     status: "idle" | "loading" | "success" | "error";
@@ -62,6 +73,7 @@ export function AnimeSchedulePage() {
   const [statusWarning, setStatusWarning] = useState<PublicApiError | null>(null);
   const staticMode = isStaticExportMode();
   const userPrefs = useUserAnimePrefs();
+  const reconcileAnimeStatuses = userPrefs.reconcileAnimeStatuses;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -137,6 +149,11 @@ export function AnimeSchedulePage() {
     return () => window.clearInterval(timer);
   }, [loadData, updateState.status]);
 
+  useEffect(() => {
+    if (!queryState.data) return;
+    reconcileAnimeStatuses(queryState.data.items);
+  }, [queryState.data, reconcileAnimeStatuses]);
+
   async function handleUpdate() {
     setUpdateReport(null);
     setUpdateError(null);
@@ -199,6 +216,7 @@ export function AnimeSchedulePage() {
   const hasSourceData = (queryState.data?.items.length ?? 0) > 0;
   const hasFilteredEmpty = hasSourceData && filteredItems.length === 0;
   const showBlockingError = queryState.status === "error" && !queryState.data;
+  const searchRefreshKey = `${queryState.data?.meta.cacheUpdatedAt ?? ""}:${updateState.cache.animeUpdatedAt ?? ""}`;
 
   return (
     <main className="pageShell">
@@ -215,11 +233,24 @@ export function AnimeSchedulePage() {
       />
 
       <div className="contentShell">
-        <ScheduleControls
-          value={filters}
-          onChange={(patch) => setFilters((current) => ({ ...current, ...patch }))}
-          onReset={() => setFilters(defaultFilterState)}
-        />
+        <ViewModeSwitcher value={viewMode} onChange={setViewMode} />
+
+        <div className="utilityRow">
+          <AnimeSearch
+            refreshKey={searchRefreshKey}
+            userPrefs={userPrefs}
+            onSeasonSelect={(selectedSeason) => {
+              setYear(selectedSeason.year);
+              setSeason(getSeasonMonthByQuarter(selectedSeason.quarter));
+            }}
+          />
+
+          <ScheduleControls
+            value={filters}
+            onChange={(patch) => setFilters((current) => ({ ...current, ...patch }))}
+            onReset={() => setFilters(defaultFilterState)}
+          />
+        </div>
 
         <StatusSummary data={queryState.data} updateState={updateState} />
 
@@ -302,7 +333,7 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {filters.viewMode === "stats" && displayItems.length > 0 ? (
+        {viewMode === "stats" && displayItems.length > 0 ? (
           <ScheduleBoard
             currentSeason={currentSeason}
             items={displayItems}
@@ -312,7 +343,7 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {filters.viewMode === "following" && filteredItems.length > 0 ? (
+        {viewMode === "following" && filteredItems.length > 0 ? (
           <FollowSchedule
             currentSeason={currentSeason}
             items={followItems}
@@ -323,7 +354,7 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {filters.viewMode === "personalFollowing" && hasPersonalFollowSelection ? (
+        {viewMode === "personalFollowing" && hasPersonalFollowSelection ? (
           <FollowSchedule
             ariaLabel={"\u4e2a\u4eba\u8ffd\u756a"}
             currentSeason={currentSeason}
@@ -338,7 +369,7 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {filters.viewMode === "personalFollowing" && filteredItems.length > 0 && !hasPersonalFollowSelection ? (
+        {viewMode === "personalFollowing" && filteredItems.length > 0 && !hasPersonalFollowSelection ? (
           <StateView
             type="empty"
             title={"\u8fd8\u6ca1\u6709\u4e2a\u4eba\u8ffd\u756a"}
@@ -346,7 +377,7 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {filters.viewMode === "watchHistory" && completedItems.length > 0 ? (
+        {viewMode === "watchHistory" && completedItems.length > 0 ? (
           <ScheduleBoard
             ariaLabel={"\u89c2\u770b\u8bb0\u5f55"}
             currentSeason={currentSeason}
@@ -359,7 +390,7 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {filters.viewMode === "watchHistory" && filteredItems.length > 0 && completedItems.length === 0 ? (
+        {viewMode === "watchHistory" && filteredItems.length > 0 && completedItems.length === 0 ? (
           <StateView
             type="empty"
             title={"\u6682\u65e0\u89c2\u770b\u8bb0\u5f55"}

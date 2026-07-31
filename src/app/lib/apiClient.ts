@@ -5,7 +5,8 @@ import {
   getQuarterBySeason,
   seasonKeyEquals
 } from "./season";
-import type { AnimeCache, AnimeItem, AnimeSeasonPayload, DataStatus, SeasonKey, SeasonMonth } from "@/src/server/types/anime";
+import { DEFAULT_ANIME_SEARCH_LIMIT, searchAnimeItems } from "@/src/shared/animeSearch";
+import type { AnimeCache, AnimeItem, AnimeSearchPayload, AnimeSeasonPayload, DataStatus, SeasonKey, SeasonMonth } from "@/src/server/types/anime";
 import type { ApiResponse, PublicApiError, UpdateResult, UpdateStatusPayload } from "@/src/server/types/api";
 
 export class FrontendApiError extends Error {
@@ -53,6 +54,19 @@ export function loadSeasonAnime(input: {
     true,
     true
   )}`);
+}
+
+export async function loadAnimeSearch(input: {
+  query: string;
+  limit?: number;
+}): Promise<AnimeSearchPayload> {
+  if (isStaticExportMode()) return loadStaticAnimeSearch(input);
+
+  const query = new URLSearchParams({
+    q: input.query,
+    limit: String(input.limit ?? DEFAULT_ANIME_SEARCH_LIMIT)
+  });
+  return fetchApi<AnimeSearchPayload>(`/api/search?${query.toString()}`);
 }
 
 export function loadUpdateStatus() {
@@ -107,6 +121,21 @@ async function loadStaticSeasonAnime(input: { year: number; season: SeasonMonth 
 
 async function loadStaticUpdateStatus(): Promise<UpdateStatusPayload> {
   return fetchStaticJson<UpdateStatusPayload>("status.json");
+}
+
+async function loadStaticAnimeSearch(input: { query: string; limit?: number }): Promise<AnimeSearchPayload> {
+  const cache = await fetchStaticJson<AnimeCache>("anime.json");
+  const query = input.query.trim();
+  const results = searchAnimeItems(cache.items, query, input.limit ?? DEFAULT_ANIME_SEARCH_LIMIT);
+
+  return {
+    query,
+    results,
+    meta: {
+      total: results.length,
+      cacheUpdatedAt: cache.updatedAt
+    }
+  };
 }
 
 async function fetchStaticJson<T>(fileName: string): Promise<T> {

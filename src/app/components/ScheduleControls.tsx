@@ -1,26 +1,18 @@
 import { statusLabels } from "../lib/format";
 import type { ReactNode } from "react";
 import type { AnimeStatus } from "@/src/server/types/anime";
-import type { SortMode, ViewMode } from "../lib/listing";
+import type { SortMode } from "../lib/listing";
 
 export type ScopeFilter = "all" | "new" | "continuing";
 export type FieldFilter<T extends string> = "all" | T[];
 
 export interface FilterState {
-  viewMode: ViewMode;
   sortMode: SortMode;
   scope: ScopeFilter;
   statuses: FieldFilter<AnimeStatus>;
 }
 
 const statusOptions: AnimeStatus[] = ["announced", "airing", "finished", "delayed"];
-const viewModeLabels: Record<ViewMode, string> = {
-  stats: "\u7edf\u8ba1\u5217\u8868",
-  following: "\u8ffd\u756a\u5217\u8868",
-  personalFollowing: "\u4e2a\u4eba\u8ffd\u756a",
-  watchHistory: "\u89c2\u770b\u8bb0\u5f55"
-};
-
 const scopeLabels: Record<ScopeFilter, string> = {
   all: "\u5168\u90e8\u8303\u56f4",
   new: "\u672c\u5b63\u65b0\u5f00\u64ad",
@@ -45,27 +37,6 @@ export function ScheduleControls({
       </summary>
 
       <div className="controlsBody">
-        <ControlGroup label={"\u89c6\u56fe"}>
-          <SegmentButton active={value.viewMode === "stats"} onClick={() => onChange({ viewMode: "stats" })}>
-            {"\u7edf\u8ba1\u5217\u8868"}
-          </SegmentButton>
-          <SegmentButton active={value.viewMode === "following"} onClick={() => onChange({ viewMode: "following" })}>
-            {"\u8ffd\u756a\u5217\u8868"}
-          </SegmentButton>
-          <SegmentButton
-            active={value.viewMode === "personalFollowing"}
-            onClick={() => onChange({ viewMode: "personalFollowing" })}
-          >
-            {"\u4e2a\u4eba\u8ffd\u756a"}
-          </SegmentButton>
-          <SegmentButton
-            active={value.viewMode === "watchHistory"}
-            onClick={() => onChange({ viewMode: "watchHistory" })}
-          >
-            {"\u89c2\u770b\u8bb0\u5f55"}
-          </SegmentButton>
-        </ControlGroup>
-
         <ControlGroup label={"\u8303\u56f4"}>
           <SegmentButton active={value.scope === "all"} onClick={() => onChange({ scope: "all" })}>
             {"\u5168\u90e8\u8303\u56f4"}
@@ -95,7 +66,7 @@ export function ScheduleControls({
 }
 
 function getFilterSummary(value: FilterState): string {
-  return [viewModeLabels[value.viewMode], scopeLabels[value.scope], getStatusSummary(value.statuses)].join(" / ");
+  return [scopeLabels[value.scope], getStatusSummary(value.statuses)].join(" / ");
 }
 
 function getStatusSummary(statuses: FieldFilter<AnimeStatus>): string {

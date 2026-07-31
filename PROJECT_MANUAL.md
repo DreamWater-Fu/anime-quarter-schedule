@@ -10,7 +10,7 @@
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
 - 当前缓存: 468 条, 只保留 TV、日本动画、非 excluded 条目
-- 测试: 92 个单元测试; 最近 `npm run check` 通过
+- 测试: 95 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
 - 最近数据自检: 2026-07-30 删除 14 条误入缓存的非日漫 TV 条目, 包含 `anime:547751` 幸福公寓、`anime:538958` 冰球旋风 第2季
 
@@ -104,6 +104,7 @@ tests/fixtures/               测试夹具
 动态 API:
 
 - `GET /api/anime?year=YYYY&season=1|4|7|10`
+- `GET /api/search?q=keyword&limit=20`: 在当前 `data/anime.json` 可展示 TV 日漫库内按标题、中文名、日文名、英文名和别名搜索, 返回轻量结果及 `primarySeason`
 - `GET /api/status`
 - `POST /api/update` body: `{ year, season, force? }`
 
@@ -115,6 +116,7 @@ GitHub Pages 静态模式:
 
 - 前端通过 `NEXT_PUBLIC_STATIC_EXPORT=true` 读取 `/static-data/anime.json` 和 `/static-data/status.json`
 - 静态页面不调用 `/api/*`
+- 静态搜索不调用 `/api/search`, 直接读取 `/static-data/anime.json` 并复用 `src/shared/animeSearch.ts` 的过滤和匹配规则
 - 更新按钮在静态模式下禁用
 
 PWA 与缓存:
@@ -196,11 +198,16 @@ npm run build:static
 
 当前前端支持纯本地个人状态，不写入 `data/*.json`，不进入 GitHub Pages 构建产物，也不改变公共数据口径。
 
+默认进入页面时使用北京时间当前年份与当前季度。例如 2026-07-31 默认进入 `2026` 年 `七月新番`。URL 中显式提供 `year` 与 `season` 时, 仍以 URL 为准。
+
 实现位置:
 
 - `src/app/lib/userAnimePrefs.ts`: 读写 `localStorage`
 - `src/app/components/UserAnimeActionButton.tsx`: 追番 / 观毕按钮
-- `src/app/components/ScheduleControls.tsx`: 视图切换入口
+- `src/app/components/ViewModeSwitcher.tsx`: 独立且紧凑的浏览模式入口, 从筛选中剥离统计列表、追番列表、个人追番和观看记录
+- `src/app/components/ScheduleControls.tsx`: 范围与状态筛选入口, 不再承载视图切换
+- `src/app/components/AnimeSearch.tsx`: 默认折叠的全库番剧搜索入口, 展示匹配番剧的播放年份与季度, 点击结果切换到对应 `primarySeason`; 搜索结果可直接追番或观毕; 缓存更新时间变化后会刷新已有搜索词
+- `src/shared/animeSearch.ts`: 动态 API 与静态页面共用的搜索过滤、匹配和排序规则
 - `src/app/components/FollowSchedule.tsx`: 追番时间轴与个人追番复用视图
 - `src/app/components/ScheduleBoard.tsx` / `src/app/components/AnimeTable.tsx`: 统计列表与观看记录复用视图
 
@@ -215,6 +222,7 @@ npm run build:static
 
 视图:
 
+- `search`: 全库搜索入口, 不受当前季度筛选影响; 只搜索可展示 TV 日本动画, 排除 `isJapaneseAnime=false`、`inclusionStatus="excluded"` 和非 TV 条目
 - `stats`: 统计列表, 展示当前筛选后的季度条目
 - `following`: 追番列表, 按周几展示当前筛选后的连载/延期条目
 - `personalFollowing`: 个人追番, 与追番列表形式一致, 在追番列表的周几、连载状态判断上额外要求 `followedIds` 包含条目 `id`
@@ -225,6 +233,7 @@ npm run build:static
 - `status === "airing"` 的条目显示“追番”, 点击后变为“已追番”, 再点取消
 - `status === "finished"` 的条目显示“观毕”, 点击后变为“已观毕”, 再点取消
 - 其他状态暂不显示个人状态操作
+- 当本地已追番条目在新公共数据中变为 `status === "finished"` 时, 自动从 `followedIds` 清除, 不自动加入 `completedIds`; 该作品回到未交互过的完结动画状态, 用户可再手动点“观毕”
 - 个人状态只与当前加载到前端的季度数据按 `id` 匹配; 不要用本地个人状态反向修改公共缓存
 
 ## 10. 后续 AI 约束
