@@ -46,9 +46,14 @@ export function getFollowItemsByWeekday(
   shouldInclude?: (item: AnimeItem) => boolean
 ): AnimeItem[] {
   return items
-    .filter((item) => (getBeijingUpdateSlot(item)?.weekday ?? getUpdateWeekdaySlot(item)?.weekday) === weekday)
-    .filter((item) => item.status === "airing" || item.status === "delayed")
-    .filter((item) => shouldInclude?.(item) ?? true)
+    .filter((item) => {
+      const updateWeekday = getBeijingUpdateSlot(item)?.weekday ?? getUpdateWeekdaySlot(item)?.weekday;
+      return (
+        updateWeekday === weekday &&
+        (item.status === "airing" || item.status === "delayed") &&
+        (shouldInclude?.(item) ?? true)
+      );
+    })
     .sort((left, right) => {
       const leftTime = getBeijingUpdateSlot(left)?.time ?? null;
       const rightTime = getBeijingUpdateSlot(right)?.time ?? null;

@@ -198,8 +198,8 @@ npm run build:static
 本地存储:
 
 - key: `anime-quarter-schedule:user-prefs:v1`
-- schema: `{ version: 1, followedIds: string[], completedIds: string[], updatedAt: string | null }`
-- 只保存 `AnimeItem.id`, 不保存完整番剧对象
+- schema: `{ followedIds: string[], completedIds: string[] }`
+- 只保存 `AnimeItem.id`, 不保存完整番剧对象、标题、时间、封面或公共数据副本
 - GitHub Pages 更新公共 JSON 后, 用户本地 `localStorage` 不会被覆盖
 - 若用户清理浏览器数据、换浏览器、换域名或换设备, 本地个人状态不会自动迁移
 
@@ -207,8 +207,8 @@ npm run build:static
 
 - `stats`: 统计列表, 展示当前筛选后的季度条目
 - `following`: 追番列表, 按周几展示当前筛选后的连载/延期条目
-- `personalFollowing`: 个人追番, 与追番列表形式一致, 只展示用户点过“追番”的条目
-- `watchHistory`: 观看记录, 与统计列表形式一致, 只展示用户点过“观毕”的条目
+- `personalFollowing`: 个人追番, 与追番列表形式一致, 在追番列表的周几、连载状态判断上额外要求 `followedIds` 包含条目 `id`
+- `watchHistory`: 观看记录, 与统计列表形式一致, 只展示 `completedIds` 包含条目 `id` 的作品
 
 操作规则:
 

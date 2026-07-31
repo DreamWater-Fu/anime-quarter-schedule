@@ -5,10 +5,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 const STORAGE_KEY = "anime-quarter-schedule:user-prefs:v1";
 
 export interface UserAnimePrefs {
-  version: 1;
   followedIds: string[];
   completedIds: string[];
-  updatedAt: string | null;
 }
 
 export interface UserAnimePrefsControls {
@@ -20,10 +18,8 @@ export interface UserAnimePrefsControls {
 }
 
 const emptyPrefs: UserAnimePrefs = {
-  version: 1,
   followedIds: [],
-  completedIds: [],
-  updatedAt: null
+  completedIds: []
 };
 
 export function useUserAnimePrefs(): UserAnimePrefsControls {
@@ -38,7 +34,7 @@ export function useUserAnimePrefs(): UserAnimePrefsControls {
   const toggleFollow = useCallback((id: string) => {
     setPrefs((current) => {
       const followedIds = toggleId(current.followedIds, id);
-      const next = normalizePrefs({ ...current, followedIds, updatedAt: new Date().toISOString() });
+      const next = normalizePrefs({ ...current, followedIds });
       writePrefs(next);
       return next;
     });
@@ -47,7 +43,7 @@ export function useUserAnimePrefs(): UserAnimePrefsControls {
   const toggleCompleted = useCallback((id: string) => {
     setPrefs((current) => {
       const completedIds = toggleId(current.completedIds, id);
-      const next = normalizePrefs({ ...current, completedIds, updatedAt: new Date().toISOString() });
+      const next = normalizePrefs({ ...current, completedIds });
       writePrefs(next);
       return next;
     });
@@ -93,10 +89,8 @@ function canUseLocalStorage() {
 
 function normalizePrefs(input: Partial<UserAnimePrefs>): UserAnimePrefs {
   return {
-    version: 1,
     followedIds: normalizeIds(input.followedIds),
-    completedIds: normalizeIds(input.completedIds),
-    updatedAt: typeof input.updatedAt === "string" ? input.updatedAt : null
+    completedIds: normalizeIds(input.completedIds)
   };
 }
 
