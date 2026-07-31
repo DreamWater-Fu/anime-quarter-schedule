@@ -6,7 +6,7 @@
 
 ## 1. 当前状态
 
-- 版本: `0.1.4`
+- 版本: `0.2.1`
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
 - 当前缓存: 468 条, 只保留 TV、日本动画、非 excluded 条目
@@ -117,6 +117,15 @@ GitHub Pages 静态模式:
 - 静态页面不调用 `/api/*`
 - 更新按钮在静态模式下禁用
 
+PWA 与缓存:
+
+- Web App Manifest 位于 `public/manifest.webmanifest`, 通过 `app/layout.tsx` metadata 挂载; manifest 内的 `start_url`、`scope` 和图标路径使用相对路径, 兼容 GitHub Pages 的 `basePath`。
+- PNG 图标位于 `public/icons/`, 至少包含 `icon-192.png`、`icon-512.png`、`maskable-512.png` 和 `apple-touch-icon.png`; 不依赖远程图标。
+- Service Worker 位于 `public/sw.js`, 由 `src/app/components/PwaServiceWorker.tsx` 在生产环境注册; 注册地址和 scope 使用 `NEXT_PUBLIC_BASE_PATH` 适配 GitHub Pages。
+- 页面壳、Next 静态资源、manifest 和图标可缓存以提升再次打开速度。
+- `/static-data/anime.json` 与 `/static-data/status.json` 必须采用 network-first 策略: 有网优先读取 GitHub Pages 最新 JSON, 网络失败时才回退到缓存, 不允许长期锁死旧公开数据。
+- Service Worker 不读取、不写入、不清空 `localStorage`, 不参与个人追番状态迁移。
+
 ## 7. 数据源与更新
 
 数据源:
@@ -201,6 +210,7 @@ npm run build:static
 - schema: `{ followedIds: string[], completedIds: string[] }`
 - 只保存 `AnimeItem.id`, 不保存完整番剧对象、标题、时间、封面或公共数据副本
 - GitHub Pages 更新公共 JSON 后, 用户本地 `localStorage` 不会被覆盖
+- PWA 安装、重新部署或 Service Worker 缓存更新不会覆盖、清空或反向迁移本地 `localStorage` 个人状态
 - 若用户清理浏览器数据、换浏览器、换域名或换设备, 本地个人状态不会自动迁移
 
 视图:
