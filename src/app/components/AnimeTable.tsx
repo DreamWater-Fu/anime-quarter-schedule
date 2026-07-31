@@ -1,7 +1,9 @@
 import { BangumiBadge } from "./BangumiBadge";
 import { CoverImage } from "./CoverImage";
+import { UserAnimeActionButton } from "./UserAnimeActionButton";
 import { formatDate, formatUpdateDisplay, statusLabels } from "../lib/format";
 import type { SortMode } from "../lib/listing";
+import type { UserAnimePrefsControls } from "../lib/userAnimePrefs";
 import { classifySeasonMembership } from "../lib/season";
 import { getBeijingUpdateSlot, getUpdateWeekdaySlot } from "../lib/timezone";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
@@ -10,11 +12,13 @@ export function AnimeTable({
   items,
   currentSeason,
   sortMode,
+  userPrefs,
   onSortModeChange
 }: {
   items: AnimeItem[];
   currentSeason: SeasonKey;
   sortMode: SortMode;
+  userPrefs: UserAnimePrefsControls;
   onSortModeChange: (sortMode: SortMode) => void;
 }) {
   return (
@@ -68,6 +72,7 @@ export function AnimeTable({
                 onChange={onSortModeChange}
               />
             </th>
+            <th>{"\u64cd\u4f5c"}</th>
           </tr>
         </thead>
         <tbody>
@@ -106,6 +111,9 @@ export function AnimeTable({
                 </td>
                 <td data-label="评分">
                   <BangumiBadge item={item} />
+                </td>
+                <td data-label="操作">
+                  <UserAnimeActionButton item={item} userPrefs={userPrefs} />
                 </td>
               </tr>
             );

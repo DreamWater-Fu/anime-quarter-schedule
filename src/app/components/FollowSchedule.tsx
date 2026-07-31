@@ -1,11 +1,14 @@
 "use client";
 
+import { Fragment, useEffect, useMemo, useState } from "react";
+
 import { BangumiBadge } from "./BangumiBadge";
 import { CoverImage } from "./CoverImage";
+import { UserAnimeActionButton } from "./UserAnimeActionButton";
 import { formatUpdateDisplay, statusLabels } from "../lib/format";
 import { weekdayLabels } from "../lib/season";
 import { getBeijingUpdateSlot, getUpdateWeekdaySlot } from "../lib/timezone";
-import { Fragment, useEffect, useMemo, useState } from "react";
+import type { UserAnimePrefsControls } from "../lib/userAnimePrefs";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
 
 const CURRENT_WINDOW_MINUTES = 10;
@@ -15,17 +18,31 @@ export function FollowSchedule({
   currentSeason,
   selectedWeekday,
   todayWeekday,
+  userPrefs,
+  title = "\u8ffd\u756a\u5217\u8868",
+  description,
+  emptyTitle,
+  emptyDescription = "\u53ef\u4ee5\u5207\u6362\u5230\u5176\u4ed6\u65e5\u671f\u67e5\u770b\u672c\u5468\u5185\u7684\u8ffd\u756a\u65f6\u95f4\u8868\u3002",
+  ariaLabel = title,
   onWeekdayChange
 }: {
   items: AnimeItem[];
   currentSeason: SeasonKey;
   selectedWeekday: number;
   todayWeekday: number;
+  userPrefs: UserAnimePrefsControls;
+  title?: string;
+  description?: string;
+  emptyTitle?: string;
+  emptyDescription?: string;
+  ariaLabel?: string;
   onWeekdayChange: (weekday: number) => void;
 }) {
   const [now, setNow] = useState(() => getBeijingNow());
   const isViewingToday = selectedWeekday === todayWeekday;
-  const selectedWeekdayLabel = weekdayLabels[selectedWeekday - 1] ?? "本周";
+  const selectedWeekdayLabel = weekdayLabels[selectedWeekday - 1] ?? "\u672c\u5468";
+  const headerDescription = description ?? `\u672c\u5468${selectedWeekdayLabel}\u5171 ${items.length} \u90e8\u66f4\u65b0`;
+  const emptyHeading = emptyTitle ?? `\u672c\u5468${selectedWeekdayLabel}\u6682\u65e0\u66f4\u65b0`;
   const entries = useMemo(
     () =>
       items.map((item) => {
@@ -64,13 +81,13 @@ export function FollowSchedule({
   }, []);
 
   return (
-    <section className="followSchedule" aria-label="追番列表">
+    <section className="followSchedule" aria-label={ariaLabel}>
       <div className="groupHeader">
         <div>
-          <h2>追番列表</h2>
-          <p>本周{selectedWeekdayLabel}共 {items.length} 部更新</p>
+          <h2>{title}</h2>
+          <p>{headerDescription}</p>
         </div>
-        <div className="weekdayPicker" aria-label="选择本周日期">
+        <div className="weekdayPicker" aria-label={"\u9009\u62e9\u672c\u5468\u65e5\u671f"}>
           {weekdayLabels.map((label, index) => {
             const weekday = index + 1;
             const active = weekday === selectedWeekday;
@@ -86,7 +103,7 @@ export function FollowSchedule({
                 onClick={() => onWeekdayChange(weekday)}
               >
                 <span>{label}</span>
-                {today ? <small>今天</small> : null}
+                {today ? <small>{"\u4eca\u5929"}</small> : null}
               </button>
             );
           })}
@@ -96,8 +113,8 @@ export function FollowSchedule({
       <div className="followList">
         {entries.length === 0 ? (
           <div className="followEmpty">
-            <strong>本周{selectedWeekdayLabel}暂无更新</strong>
-            <span>可以切换到其他日期查看本周内的追番时间表。</span>
+            <strong>{emptyHeading}</strong>
+            <span>{emptyDescription}</span>
           </div>
         ) : null}
         {entries.map((entry, index) => {
@@ -105,26 +122,23 @@ export function FollowSchedule({
           return (
             <Fragment key={item.id}>
               {isViewingToday && index === nowMarkerIndex ? <CurrentTimeMarker key="current-time-marker" now={now} /> : null}
-              <article
-                className="followRow"
-                data-current={isCurrent}
-                data-weekday={weekday ?? undefined}
-              >
-              <div className="followTimeline" aria-label={formatUpdateDisplay(item, currentSeason)}>
-                <span>{beijingUpdateSlot?.time ?? (weekdaySlot ? "待定" : "未定")}</span>
-              </div>
-              <div className="followCard">
-                <CoverImage item={item} />
-                <div className="followMain">
-                  <strong>{displayTitle}</strong>
-                  <span className="followMetaLine">
-                    {formatUpdateDisplay(item, currentSeason)} / {statusLabels[item.status]}
-                    {isCurrent ? <span className="liveBadge">播放窗口</span> : null}
-                  </span>
+              <article className="followRow" data-current={isCurrent} data-weekday={weekday ?? undefined}>
+                <div className="followTimeline" aria-label={formatUpdateDisplay(item, currentSeason)}>
+                  <span>{beijingUpdateSlot?.time ?? (weekdaySlot ? "\u5f85\u5b9a" : "\u672a\u5b9a")}</span>
                 </div>
-                <BangumiBadge item={item} />
-              </div>
-            </article>
+                <div className="followCard">
+                  <CoverImage item={item} />
+                  <div className="followMain">
+                    <strong>{displayTitle}</strong>
+                    <span className="followMetaLine">
+                      {formatUpdateDisplay(item, currentSeason)} / {statusLabels[item.status]}
+                      {isCurrent ? <span className="liveBadge">{"\u64ad\u653e\u7a97\u53e3"}</span> : null}
+                    </span>
+                  </div>
+                  <BangumiBadge item={item} />
+                  <UserAnimeActionButton item={item} userPrefs={userPrefs} />
+                </div>
+              </article>
             </Fragment>
           );
         })}
@@ -136,11 +150,11 @@ export function FollowSchedule({
 
 function CurrentTimeMarker({ now }: { now: BeijingNow }) {
   return (
-    <div className="followNowRow" aria-label={`当前北京时间 ${now.label}`}>
+    <div className="followNowRow" aria-label={`\u5f53\u524d\u5317\u4eac\u65f6\u95f4 ${now.label}`}>
       <div className="followNowMarker">
         <span />
       </div>
-      <div className="followNowLabel">现在 {now.label}</div>
+      <div className="followNowLabel">{"\u73b0\u5728"} {now.label}</div>
     </div>
   );
 }

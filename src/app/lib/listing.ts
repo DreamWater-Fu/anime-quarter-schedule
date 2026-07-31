@@ -1,7 +1,7 @@
 import type { AnimeItem } from "@/src/server/types/anime";
 import { getBeijingUpdateSlot, getBeijingWeekday, getUpdateWeekdaySlot, parseTimeToMinutes } from "./timezone.ts";
 
-export type ViewMode = "stats" | "following";
+export type ViewMode = "stats" | "following" | "personalFollowing" | "watchHistory";
 export type SortMode =
   | "default"
   | "ratingAsc"
@@ -40,10 +40,15 @@ export function getTodayFollowItems(items: AnimeItem[], date = new Date()): Anim
   return getFollowItemsByWeekday(items, weekday);
 }
 
-export function getFollowItemsByWeekday(items: AnimeItem[], weekday: number): AnimeItem[] {
+export function getFollowItemsByWeekday(
+  items: AnimeItem[],
+  weekday: number,
+  shouldInclude?: (item: AnimeItem) => boolean
+): AnimeItem[] {
   return items
     .filter((item) => (getBeijingUpdateSlot(item)?.weekday ?? getUpdateWeekdaySlot(item)?.weekday) === weekday)
     .filter((item) => item.status === "airing" || item.status === "delayed")
+    .filter((item) => shouldInclude?.(item) ?? true)
     .sort((left, right) => {
       const leftTime = getBeijingUpdateSlot(left)?.time ?? null;
       const rightTime = getBeijingUpdateSlot(right)?.time ?? null;

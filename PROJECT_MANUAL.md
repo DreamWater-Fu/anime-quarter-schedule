@@ -1,6 +1,6 @@
 # Project Manual: 日本季度新番时间表
 
-最后更新: 2026-07-30
+最后更新: 2026-07-31
 
 本文件是后续 AI 的项目入口。先读本文件，再读相关代码。修改项目边界、季度规则、数据源、部署方式、缓存状态或数据口径时，必须同步更新本文件。
 
@@ -183,7 +183,41 @@ npm run build:static
 - GitHub Actions 工作流发布 `out/`
 - 更新公开数据: 本地更新 `data/*.json`, 提交并 push, 让 Actions 重新发布
 
-## 9. 后续 AI 约束
+## 9. 本地个人状态与视图
+
+当前前端支持纯本地个人状态，不写入 `data/*.json`，不进入 GitHub Pages 构建产物，也不改变公共数据口径。
+
+实现位置:
+
+- `src/app/lib/userAnimePrefs.ts`: 读写 `localStorage`
+- `src/app/components/UserAnimeActionButton.tsx`: 追番 / 观毕按钮
+- `src/app/components/ScheduleControls.tsx`: 视图切换入口
+- `src/app/components/FollowSchedule.tsx`: 追番时间轴与个人追番复用视图
+- `src/app/components/ScheduleBoard.tsx` / `src/app/components/AnimeTable.tsx`: 统计列表与观看记录复用视图
+
+本地存储:
+
+- key: `anime-quarter-schedule:user-prefs:v1`
+- schema: `{ version: 1, followedIds: string[], completedIds: string[], updatedAt: string | null }`
+- 只保存 `AnimeItem.id`, 不保存完整番剧对象
+- GitHub Pages 更新公共 JSON 后, 用户本地 `localStorage` 不会被覆盖
+- 若用户清理浏览器数据、换浏览器、换域名或换设备, 本地个人状态不会自动迁移
+
+视图:
+
+- `stats`: 统计列表, 展示当前筛选后的季度条目
+- `following`: 追番列表, 按周几展示当前筛选后的连载/延期条目
+- `personalFollowing`: 个人追番, 与追番列表形式一致, 只展示用户点过“追番”的条目
+- `watchHistory`: 观看记录, 与统计列表形式一致, 只展示用户点过“观毕”的条目
+
+操作规则:
+
+- `status === "airing"` 的条目显示“追番”, 点击后变为“已追番”, 再点取消
+- `status === "finished"` 的条目显示“观毕”, 点击后变为“已观毕”, 再点取消
+- 其他状态暂不显示个人状态操作
+- 个人状态只与当前加载到前端的季度数据按 `id` 匹配; 不要用本地个人状态反向修改公共缓存
+
+## 10. 后续 AI 约束
 
 必须:
 

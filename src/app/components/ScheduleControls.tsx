@@ -15,14 +15,16 @@ export interface FilterState {
 
 const statusOptions: AnimeStatus[] = ["announced", "airing", "finished", "delayed"];
 const viewModeLabels: Record<ViewMode, string> = {
-  stats: "统计列表",
-  following: "追番列表"
+  stats: "\u7edf\u8ba1\u5217\u8868",
+  following: "\u8ffd\u756a\u5217\u8868",
+  personalFollowing: "\u4e2a\u4eba\u8ffd\u756a",
+  watchHistory: "\u89c2\u770b\u8bb0\u5f55"
 };
 
 const scopeLabels: Record<ScopeFilter, string> = {
-  all: "全部范围",
-  new: "本季新开播",
-  continuing: "跨季度续播"
+  all: "\u5168\u90e8\u8303\u56f4",
+  new: "\u672c\u5b63\u65b0\u5f00\u64ad",
+  continuing: "\u8de8\u5b63\u5ea6\u7eed\u64ad"
 };
 
 export function ScheduleControls({
@@ -35,37 +37,49 @@ export function ScheduleControls({
   onReset: () => void;
 }) {
   return (
-    <details className="controls" aria-label="筛选控制">
+    <details className="controls" aria-label={"\u7b5b\u9009\u63a7\u5236"}>
       <summary className="controlsSummary">
-        <span className="controlsSummaryTitle">筛选</span>
+        <span className="controlsSummaryTitle">{"\u7b5b\u9009"}</span>
         <span className="controlsSummaryText">{getFilterSummary(value)}</span>
         <span aria-hidden="true" className="controlsSummaryIcon" />
       </summary>
 
       <div className="controlsBody">
-        <ControlGroup label="视图">
+        <ControlGroup label={"\u89c6\u56fe"}>
           <SegmentButton active={value.viewMode === "stats"} onClick={() => onChange({ viewMode: "stats" })}>
-            统计列表
+            {"\u7edf\u8ba1\u5217\u8868"}
           </SegmentButton>
           <SegmentButton active={value.viewMode === "following"} onClick={() => onChange({ viewMode: "following" })}>
-            追番列表
+            {"\u8ffd\u756a\u5217\u8868"}
+          </SegmentButton>
+          <SegmentButton
+            active={value.viewMode === "personalFollowing"}
+            onClick={() => onChange({ viewMode: "personalFollowing" })}
+          >
+            {"\u4e2a\u4eba\u8ffd\u756a"}
+          </SegmentButton>
+          <SegmentButton
+            active={value.viewMode === "watchHistory"}
+            onClick={() => onChange({ viewMode: "watchHistory" })}
+          >
+            {"\u89c2\u770b\u8bb0\u5f55"}
           </SegmentButton>
         </ControlGroup>
 
-        <ControlGroup label="范围">
+        <ControlGroup label={"\u8303\u56f4"}>
           <SegmentButton active={value.scope === "all"} onClick={() => onChange({ scope: "all" })}>
-            全部范围
+            {"\u5168\u90e8\u8303\u56f4"}
           </SegmentButton>
           <SegmentButton active={value.scope === "new"} onClick={() => onChange({ scope: "new" })}>
-            本季新开播
+            {"\u672c\u5b63\u65b0\u5f00\u64ad"}
           </SegmentButton>
           <SegmentButton active={value.scope === "continuing"} onClick={() => onChange({ scope: "continuing" })}>
-            跨季度续播
+            {"\u8de8\u5b63\u5ea6\u7eed\u64ad"}
           </SegmentButton>
         </ControlGroup>
 
         <ChipGroup
-          label="状态"
+          label={"\u72b6\u6001"}
           values={value.statuses}
           options={statusOptions}
           labelMap={statusLabels}
@@ -73,7 +87,7 @@ export function ScheduleControls({
         />
 
         <button className="ghostButton" type="button" onClick={onReset}>
-          重置
+          {"\u91cd\u7f6e"}
         </button>
       </div>
     </details>
@@ -85,8 +99,8 @@ function getFilterSummary(value: FilterState): string {
 }
 
 function getStatusSummary(statuses: FieldFilter<AnimeStatus>): string {
-  if (statuses === "all") return "全部状态";
-  return statuses.map((status) => statusLabels[status]).join("、");
+  if (statuses === "all") return "\u5168\u90e8\u72b6\u6001";
+  return statuses.map((status) => statusLabels[status]).join("\u3001");
 }
 
 function ControlGroup({ label, children }: { label: string; children: ReactNode }) {
@@ -130,7 +144,7 @@ function ChipGroup<T extends string>({
           type="button"
           onClick={() => onChange("all")}
         >
-          全部状态
+          {"\u5168\u90e8\u72b6\u6001"}
         </button>
         {options.map((option) => {
           const active = values !== "all" && values.includes(option);

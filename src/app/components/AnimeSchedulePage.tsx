@@ -18,6 +18,7 @@ import {
   seasonKeyEquals
 } from "../lib/season";
 import { getBeijingWeekday } from "../lib/timezone";
+import { useUserAnimePrefs } from "../lib/userAnimePrefs";
 import type { AnimeItem, AnimeSeasonPayload, SeasonKey, SeasonMonth } from "@/src/server/types/anime";
 import type { PublicApiError, UpdateResult, UpdateStatusPayload } from "@/src/server/types/api";
 
@@ -60,6 +61,7 @@ export function AnimeSchedulePage() {
   const [updateError, setUpdateError] = useState<PublicApiError | null>(null);
   const [statusWarning, setStatusWarning] = useState<PublicApiError | null>(null);
   const staticMode = isStaticExportMode();
+  const userPrefs = useUserAnimePrefs();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -185,6 +187,15 @@ export function AnimeSchedulePage() {
   );
   const displayItems = useMemo(() => sortAnimeItems(filteredItems, filters.sortMode), [filteredItems, filters.sortMode]);
   const followItems = useMemo(() => getFollowItemsByWeekday(filteredItems, followWeekday), [filteredItems, followWeekday]);
+  const personalFollowItems = useMemo(
+    () => getFollowItemsByWeekday(filteredItems, followWeekday, (item) => userPrefs.followedIds.has(item.id)),
+    [filteredItems, followWeekday, userPrefs.followedIds]
+  );
+  const completedItems = useMemo(
+    () => sortAnimeItems(filteredItems.filter((item) => userPrefs.completedIds.has(item.id)), filters.sortMode),
+    [filteredItems, filters.sortMode, userPrefs.completedIds]
+  );
+  const hasPersonalFollowSelection = userPrefs.followedIds.size > 0;
   const hasSourceData = (queryState.data?.items.length ?? 0) > 0;
   const hasFilteredEmpty = hasSourceData && filteredItems.length === 0;
   const showBlockingError = queryState.status === "error" && !queryState.data;
@@ -296,6 +307,7 @@ export function AnimeSchedulePage() {
             currentSeason={currentSeason}
             items={displayItems}
             sortMode={filters.sortMode}
+            userPrefs={userPrefs}
             onSortModeChange={(sortMode) => setFilters((current) => ({ ...current, sortMode }))}
           />
         ) : null}
@@ -306,7 +318,52 @@ export function AnimeSchedulePage() {
             items={followItems}
             selectedWeekday={followWeekday}
             todayWeekday={todayWeekday}
+            userPrefs={userPrefs}
             onWeekdayChange={setFollowWeekday}
+          />
+        ) : null}
+
+        {filters.viewMode === "personalFollowing" && hasPersonalFollowSelection ? (
+          <FollowSchedule
+            ariaLabel={"\u4e2a\u4eba\u8ffd\u756a"}
+            currentSeason={currentSeason}
+            emptyDescription={"\u8fd9\u4e00\u5929\u6ca1\u6709\u5df2\u8ffd\u756a\u4f5c\u54c1\u66f4\u65b0\uff0c\u53ef\u4ee5\u5207\u6362\u5230\u5176\u4ed6\u65e5\u671f\u67e5\u770b\u3002"}
+            emptyTitle={"\u5f53\u5929\u6682\u65e0\u4e2a\u4eba\u8ffd\u756a"}
+            items={personalFollowItems}
+            selectedWeekday={followWeekday}
+            todayWeekday={todayWeekday}
+            title={"\u4e2a\u4eba\u8ffd\u756a"}
+            userPrefs={userPrefs}
+            onWeekdayChange={setFollowWeekday}
+          />
+        ) : null}
+
+        {filters.viewMode === "personalFollowing" && filteredItems.length > 0 && !hasPersonalFollowSelection ? (
+          <StateView
+            type="empty"
+            title={"\u8fd8\u6ca1\u6709\u4e2a\u4eba\u8ffd\u756a"}
+            description={"\u5728\u8fde\u8f7d\u4e2d\u7684\u4f5c\u54c1\u4e0a\u70b9\u51fb\u8ffd\u756a\u540e\uff0c\u8fd9\u91cc\u4f1a\u751f\u6210\u53ea\u5c5e\u4e8e\u4f60\u7684\u8ffd\u756a\u8868\u3002"}
+          />
+        ) : null}
+
+        {filters.viewMode === "watchHistory" && completedItems.length > 0 ? (
+          <ScheduleBoard
+            ariaLabel={"\u89c2\u770b\u8bb0\u5f55"}
+            currentSeason={currentSeason}
+            description={`\u5f53\u524d\u7b5b\u9009\u4e0b\u5171 ${completedItems.length} \u90e8\u5df2\u89c2\u6bd5`}
+            items={completedItems}
+            sortMode={filters.sortMode}
+            title={"\u89c2\u770b\u8bb0\u5f55"}
+            userPrefs={userPrefs}
+            onSortModeChange={(sortMode) => setFilters((current) => ({ ...current, sortMode }))}
+          />
+        ) : null}
+
+        {filters.viewMode === "watchHistory" && filteredItems.length > 0 && completedItems.length === 0 ? (
+          <StateView
+            type="empty"
+            title={"\u6682\u65e0\u89c2\u770b\u8bb0\u5f55"}
+            description={"\u5728\u5df2\u5b8c\u7ed3\u4f5c\u54c1\u4e0a\u70b9\u51fb\u89c2\u6bd5\u540e\uff0c\u8fd9\u91cc\u4f1a\u663e\u793a\u4f60\u6807\u8bb0\u8fc7\u7684\u4f5c\u54c1\u3002"}
           />
         ) : null}
       </div>
