@@ -11,7 +11,11 @@ import {
 } from "../../src/app/lib/season.ts";
 import { formatUpdateDisplay } from "../../src/app/lib/format.ts";
 import { getTodayFollowItems, sortAnimeItems } from "../../src/app/lib/listing.ts";
-import { reconcilePrefsWithAnimeStatuses } from "../../src/app/lib/userAnimePrefs.ts";
+import {
+  reconcilePrefsWithAnimeStatuses,
+  toggleCompletedInPrefs,
+  toggleWatchingInPrefs
+} from "../../src/app/lib/userAnimePrefs.ts";
 import type { AnimeCache } from "../../src/server/types/anime.ts";
 import { findFixtureItem, readFixture } from "./test-utils.ts";
 
@@ -119,6 +123,7 @@ describe("frontend season interaction helpers", () => {
   it("clears followed state when a followed anime becomes finished without marking it completed", () => {
     const prefs = {
       followedIds: ["anime:airing", "anime:finished"],
+      watchingIds: [],
       completedIds: []
     };
 
@@ -128,6 +133,44 @@ describe("frontend season interaction helpers", () => {
     ]);
 
     assert.deepEqual(next.followedIds, ["anime:airing"]);
+    assert.deepEqual(next.watchingIds, []);
     assert.deepEqual(next.completedIds, []);
+  });
+
+  it("keeps only finished anime in the watching record during reconciliation", () => {
+    const prefs = {
+      followedIds: ["anime:finished"],
+      watchingIds: ["anime:airing", "anime:finished", "anime:unknown"],
+      completedIds: []
+    };
+
+    const next = reconcilePrefsWithAnimeStatuses(prefs, [
+      { id: "anime:airing", status: "airing" },
+      { id: "anime:finished", status: "finished" }
+    ]);
+
+    assert.deepEqual(next.followedIds, []);
+    assert.deepEqual(next.watchingIds, ["anime:finished", "anime:unknown"]);
+    assert.deepEqual(next.completedIds, []);
+  });
+
+  it("moves watching anime to completed and prevents completed anime from becoming watching", () => {
+    const markedWatching = toggleWatchingInPrefs(
+      {
+        followedIds: [],
+        watchingIds: [],
+        completedIds: []
+      },
+      "anime:finished"
+    );
+    assert.deepEqual(markedWatching.watchingIds, ["anime:finished"]);
+
+    const markedCompleted = toggleCompletedInPrefs(markedWatching, "anime:finished");
+    assert.deepEqual(markedCompleted.watchingIds, []);
+    assert.deepEqual(markedCompleted.completedIds, ["anime:finished"]);
+
+    const afterWatchingToggle = toggleWatchingInPrefs(markedCompleted, "anime:finished");
+    assert.deepEqual(afterWatchingToggle.watchingIds, []);
+    assert.deepEqual(afterWatchingToggle.completedIds, ["anime:finished"]);
   });
 });

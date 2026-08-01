@@ -7,20 +7,24 @@ const STORAGE_KEY = "anime-quarter-schedule:user-prefs:v1";
 
 export interface UserAnimePrefs {
   followedIds: string[];
+  watchingIds: string[];
   completedIds: string[];
 }
 
 export interface UserAnimePrefsControls {
   followedIds: ReadonlySet<string>;
+  watchingIds: ReadonlySet<string>;
   completedIds: ReadonlySet<string>;
   isLoaded: boolean;
   toggleFollow: (id: string) => void;
+  toggleWatching: (id: string) => void;
   toggleCompleted: (id: string) => void;
   reconcileAnimeStatuses: (items: Array<Pick<AnimeItem, "id" | "status">>) => void;
 }
 
 const emptyPrefs: UserAnimePrefs = {
   followedIds: [],
+  watchingIds: [],
   completedIds: []
 };
 
@@ -44,8 +48,15 @@ export function useUserAnimePrefs(): UserAnimePrefsControls {
 
   const toggleCompleted = useCallback((id: string) => {
     setPrefs((current) => {
-      const completedIds = toggleId(current.completedIds, id);
-      const next = normalizePrefs({ ...current, completedIds });
+      const next = toggleCompletedInPrefs(current, id);
+      writePrefs(next);
+      return next;
+    });
+  }, []);
+
+  const toggleWatching = useCallback((id: string) => {
+    setPrefs((current) => {
+      const next = toggleWatchingInPrefs(current, id);
       writePrefs(next);
       return next;
     });
@@ -63,13 +74,24 @@ export function useUserAnimePrefs(): UserAnimePrefsControls {
   return useMemo(
     () => ({
       followedIds: new Set(prefs.followedIds),
+      watchingIds: new Set(prefs.watchingIds),
       completedIds: new Set(prefs.completedIds),
       isLoaded,
       toggleFollow,
+      toggleWatching,
       toggleCompleted,
       reconcileAnimeStatuses
     }),
-    [isLoaded, prefs.completedIds, prefs.followedIds, reconcileAnimeStatuses, toggleCompleted, toggleFollow]
+    [
+      isLoaded,
+      prefs.completedIds,
+      prefs.followedIds,
+      prefs.watchingIds,
+      reconcileAnimeStatuses,
+      toggleCompleted,
+      toggleFollow,
+      toggleWatching
+    ]
   );
 }
 
@@ -100,10 +122,36 @@ function canUseLocalStorage() {
 }
 
 function normalizePrefs(input: Partial<UserAnimePrefs>): UserAnimePrefs {
+  const completedIds = normalizeIds(input.completedIds);
+  const completedIdSet = new Set(completedIds);
+
   return {
     followedIds: normalizeIds(input.followedIds),
-    completedIds: normalizeIds(input.completedIds)
+    watchingIds: normalizeIds(input.watchingIds).filter((id) => !completedIdSet.has(id)),
+    completedIds
   };
+}
+
+export function toggleWatchingInPrefs(prefs: UserAnimePrefs, id: string): UserAnimePrefs {
+  const current = normalizePrefs(prefs);
+  if (current.completedIds.includes(id)) return current;
+
+  return normalizePrefs({
+    ...current,
+    watchingIds: toggleId(current.watchingIds, id)
+  });
+}
+
+export function toggleCompletedInPrefs(prefs: UserAnimePrefs, id: string): UserAnimePrefs {
+  const current = normalizePrefs(prefs);
+  const completedIds = toggleId(current.completedIds, id);
+  const completedIdSet = new Set(completedIds);
+
+  return normalizePrefs({
+    ...current,
+    watchingIds: current.watchingIds.filter((watchingId) => !completedIdSet.has(watchingId)),
+    completedIds
+  });
 }
 
 export function reconcilePrefsWithAnimeStatuses(
@@ -111,12 +159,14 @@ export function reconcilePrefsWithAnimeStatuses(
   items: Array<Pick<AnimeItem, "id" | "status">>
 ): UserAnimePrefs {
   const finishedIds = new Set(items.filter((item) => item.status === "finished").map((item) => item.id));
-  if (finishedIds.size === 0 || !prefs.followedIds.some((id) => finishedIds.has(id))) return prefs;
-
-  return normalizePrefs({
+  const knownIds = new Set(items.map((item) => item.id));
+  const next = normalizePrefs({
     ...prefs,
-    followedIds: prefs.followedIds.filter((id) => !finishedIds.has(id))
+    followedIds: prefs.followedIds.filter((id) => !finishedIds.has(id)),
+    watchingIds: prefs.watchingIds.filter((id) => !knownIds.has(id) || finishedIds.has(id))
   });
+
+  return prefsEqual(normalizePrefs(prefs), next) ? prefs : next;
 }
 
 function normalizeIds(value: unknown): string[] {
@@ -126,4 +176,16 @@ function normalizeIds(value: unknown): string[] {
 
 function toggleId(ids: string[], id: string): string[] {
   return ids.includes(id) ? ids.filter((item) => item !== id) : [...ids, id];
+}
+
+function prefsEqual(left: UserAnimePrefs, right: UserAnimePrefs): boolean {
+  return (
+    arrayEqual(left.followedIds, right.followedIds) &&
+    arrayEqual(left.watchingIds, right.watchingIds) &&
+    arrayEqual(left.completedIds, right.completedIds)
+  );
+}
+
+function arrayEqual(left: string[], right: string[]): boolean {
+  return left.length === right.length && left.every((value, index) => value === right[index]);
 }

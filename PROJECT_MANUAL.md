@@ -10,7 +10,7 @@
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
 - 当前缓存: 468 条, 只保留 TV、日本动画、非 excluded 条目
-- 测试: 97 个单元测试; 最近 `npm run check` 通过
+- 测试: 99 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
 - 最近数据自检: 2026-07-30 删除 14 条误入缓存的非日漫 TV 条目, 包含 `anime:547751` 幸福公寓、`anime:538958` 冰球旋风 第2季
 
@@ -105,7 +105,7 @@ tests/fixtures/               测试夹具
 
 - `GET /api/anime?year=YYYY&season=1|4|7|10`
 - `GET /api/search?q=keyword&limit=20`: 在当前 `data/anime.json` 可展示 TV 日漫库内按标题、中文名、日文名、英文名和别名搜索, 返回轻量结果及 `primarySeason`
-- `GET /api/items?ids=id1,id2`: 按 `AnimeItem.id` 从全库读取可展示 TV 日漫条目, 供观看记录等本地个人状态跨季度回查完整公共数据
+- `GET /api/items?ids=id1,id2`: 按 `AnimeItem.id` 从全库读取可展示 TV 日漫条目, 供在看记录、观看记录等本地个人状态跨季度回查完整公共数据
 - `GET /api/status`
 - `POST /api/update` body: `{ year, season, force? }`
 
@@ -118,7 +118,7 @@ GitHub Pages 静态模式:
 - 前端通过 `NEXT_PUBLIC_STATIC_EXPORT=true` 读取 `/static-data/anime.json` 和 `/static-data/status.json`
 - 静态页面不调用 `/api/*`
 - 静态搜索不调用 `/api/search`, 直接读取 `/static-data/anime.json` 并复用 `src/shared/animeSearch.ts` 的过滤和匹配规则
-- 静态观看记录不调用 `/api/items`, 直接读取 `/static-data/anime.json` 后按本地 `completedIds` 匹配
+- 静态在看记录和观看记录不调用 `/api/items`, 直接读取 `/static-data/anime.json` 后按本地 `watchingIds` / `completedIds` 匹配
 - 更新按钮在静态模式下禁用
 
 PWA 与缓存:
@@ -205,18 +205,18 @@ npm run build:static
 实现位置:
 
 - `src/app/lib/userAnimePrefs.ts`: 读写 `localStorage`
-- `src/app/components/UserAnimeActionButton.tsx`: 追番 / 观毕按钮
-- `src/app/components/ViewModeSwitcher.tsx`: 独立且紧凑的浏览模式入口, 从筛选中剥离统计列表、追番列表、个人追番和观看记录
+- `src/app/components/UserAnimeActionButton.tsx`: 追番 / 在看 / 观毕按钮
+- `src/app/components/ViewModeSwitcher.tsx`: 独立且紧凑的浏览模式入口, 从筛选中剥离统计列表、追番列表、个人追番、在看记录和观看记录
 - `src/app/components/ScheduleControls.tsx`: 范围与状态筛选入口, 不再承载视图切换
-- `src/app/components/AnimeSearch.tsx`: 默认折叠的全库番剧搜索入口, 展示匹配番剧的播放年份与季度, 点击结果切换到对应 `primarySeason`; 搜索结果可直接追番或观毕; 缓存更新时间变化后会刷新已有搜索词
+- `src/app/components/AnimeSearch.tsx`: 默认折叠的全库番剧搜索入口, 展示匹配番剧的播放年份与季度, 点击结果切换到对应 `primarySeason`; 搜索结果可直接追番、在看或观毕; 缓存更新时间变化后会刷新已有搜索词
 - `src/shared/animeSearch.ts`: 动态 API 与静态页面共用的搜索过滤、匹配和排序规则
 - `src/app/components/FollowSchedule.tsx`: 追番时间轴与个人追番复用视图
-- `src/app/components/ScheduleBoard.tsx` / `src/app/components/AnimeTable.tsx`: 统计列表与观看记录复用视图
+- `src/app/components/ScheduleBoard.tsx` / `src/app/components/AnimeTable.tsx`: 统计列表、在看记录与观看记录复用视图
 
 本地存储:
 
 - key: `anime-quarter-schedule:user-prefs:v1`
-- schema: `{ followedIds: string[], completedIds: string[] }`
+- schema: `{ followedIds: string[], watchingIds: string[], completedIds: string[] }`
 - 只保存 `AnimeItem.id`, 不保存完整番剧对象、标题、时间、封面或公共数据副本
 - GitHub Pages 更新公共 JSON 后, 用户本地 `localStorage` 不会被覆盖
 - PWA 安装、重新部署或 Service Worker 缓存更新不会覆盖、清空或反向迁移本地 `localStorage` 个人状态
@@ -228,15 +228,18 @@ npm run build:static
 - `stats`: 统计列表, 展示当前筛选后的季度条目
 - `following`: 追番列表, 按周几展示当前筛选后的连载/延期条目
 - `personalFollowing`: 个人追番, 与追番列表形式一致, 在追番列表的周几、连载状态判断上额外要求 `followedIds` 包含条目 `id`
+- `watching`: 在看记录, 不受当前年份、季度、范围和状态筛选影响; 按 `watchingIds` 从全库回查可展示条目并显示全部未看完的已完结作品, 表格额外显示作品所属 `primarySeason` 季度
 - `watchHistory`: 观看记录, 不受当前年份、季度、范围和状态筛选影响; 按 `completedIds` 从全库回查可展示条目并显示全部已观毕作品, 表格额外显示作品所属 `primarySeason` 季度
 
 操作规则:
 
 - `status === "airing"` 的条目显示“追番”, 点击后变为“已追番”, 再点取消
-- `status === "finished"` 的条目显示“观毕”, 点击后变为“已观毕”, 再点取消
+- `status === "finished"` 且未观毕的条目显示“在看”和“观毕”; “在看”可切换为“已在看”, 用于标记未看完的已完结作品
+- 从“已在看”点击“观毕”会从 `watchingIds` 移除并加入 `completedIds`; `completedIds` 是终态, 已观毕作品不显示“在看”入口, 取消“已观毕”后回到未交互过的完结动画状态
 - 其他状态暂不显示个人状态操作
 - 当本地已追番条目在新公共数据中变为 `status === "finished"` 时, 自动从 `followedIds` 清除, 不自动加入 `completedIds`; 该作品回到未交互过的完结动画状态, 用户可再手动点“观毕”
-- 个人状态只与当前加载到前端的季度数据按 `id` 匹配; 不要用本地个人状态反向修改公共缓存
+- `watchingIds` 只保留已完结作品; 当加载到的公共数据表明某条记录不再是 `status === "finished"` 时, 自动从 `watchingIds` 清除
+- 个人状态只保存并按 `AnimeItem.id` 匹配; 个人追番视图使用当前季度数据, 在看记录和观看记录通过全库回查匹配; 不要用本地个人状态反向修改公共缓存
 
 ## 10. 后续 AI 约束
 

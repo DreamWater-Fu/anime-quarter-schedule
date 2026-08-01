@@ -4,6 +4,7 @@ const viewModes: Array<{ value: ViewMode; label: string; description: string }> 
   { value: "stats", label: "统计列表", description: "查看当前季度作品" },
   { value: "following", label: "追番列表", description: "按周几看连载更新" },
   { value: "personalFollowing", label: "个人追番", description: "只看已追番作品" },
+  { value: "watching", label: "在看记录", description: "标记未看完的完结作品" },
   { value: "watchHistory", label: "观看记录", description: "回看已观毕作品" }
 ];
 

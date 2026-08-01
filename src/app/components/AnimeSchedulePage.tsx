@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type Dispatch, type SetStateAction } from "react";
 
 import { AnimeSearch } from "./AnimeSearch";
 import { FollowSchedule } from "./FollowSchedule";
@@ -44,6 +44,12 @@ const emptyUpdateStatus: UpdateStatusPayload = {
   }
 };
 
+type LocalRecordState = {
+  status: "idle" | "loading" | "success" | "error";
+  error: PublicApiError | null;
+  items: AnimeItem[];
+};
+
 function getDefaultSeasonSelection(): { year: number; season: SeasonMonth } {
   const currentSeason = getCurrentSeasonKey();
   return {
@@ -69,11 +75,8 @@ export function AnimeSchedulePage() {
     result: UpdateResult;
     data: AnimeSeasonPayload;
   } | null>(null);
-  const [watchHistoryState, setWatchHistoryState] = useState<{
-    status: "idle" | "loading" | "success" | "error";
-    error: PublicApiError | null;
-    items: AnimeItem[];
-  }>({ status: "idle", error: null, items: [] });
+  const [watchingState, setWatchingState] = useState<LocalRecordState>({ status: "idle", error: null, items: [] });
+  const [watchHistoryState, setWatchHistoryState] = useState<LocalRecordState>({ status: "idle", error: null, items: [] });
   const [updateError, setUpdateError] = useState<PublicApiError | null>(null);
   const [statusWarning, setStatusWarning] = useState<PublicApiError | null>(null);
   const staticMode = isStaticExportMode();
@@ -159,6 +162,42 @@ export function AnimeSchedulePage() {
     reconcileAnimeStatuses(queryState.data.items);
   }, [queryState.data, reconcileAnimeStatuses]);
 
+  const loadLocalRecordItems = useCallback(
+    async (
+      ids: string[],
+      setState: Dispatch<SetStateAction<LocalRecordState>>,
+      fallback: string,
+      shouldCommit: () => boolean = () => true
+    ) => {
+      if (ids.length === 0) {
+        if (shouldCommit()) setState({ status: "idle", error: null, items: [] });
+        return;
+      }
+
+      setState((current) => ({ ...current, status: "loading", error: null }));
+
+      try {
+        const payload = await loadAnimeItemsByIds({ ids });
+        if (!shouldCommit()) return;
+        setState({ status: "success", error: null, items: payload.items });
+        reconcileAnimeStatuses(payload.items);
+      } catch (error) {
+        if (!shouldCommit()) return;
+        setState((current) => ({
+          ...current,
+          status: "error",
+          error: toApiError(error, fallback)
+        }));
+      }
+    },
+    [reconcileAnimeStatuses]
+  );
+
+  const watchingIdsKey = useMemo(
+    () => [...userPrefs.watchingIds].sort().join("\n"),
+    [userPrefs.watchingIds]
+  );
+
   const completedIdsKey = useMemo(
     () => [...userPrefs.completedIds].sort().join("\n"),
     [userPrefs.completedIds]
@@ -167,34 +206,26 @@ export function AnimeSchedulePage() {
   useEffect(() => {
     if (!userPrefs.isLoaded) return;
 
-    const ids = completedIdsKey ? completedIdsKey.split("\n") : [];
-    if (ids.length === 0) {
-      setWatchHistoryState({ status: "idle", error: null, items: [] });
-      return;
-    }
-
     let active = true;
-    setWatchHistoryState((current) => ({ ...current, status: "loading", error: null }));
-
-    void loadAnimeItemsByIds({ ids })
-      .then((payload) => {
-        if (!active) return;
-        setWatchHistoryState({ status: "success", error: null, items: payload.items });
-        reconcileAnimeStatuses(payload.items);
-      })
-      .catch((error) => {
-        if (!active) return;
-        setWatchHistoryState((current) => ({
-          ...current,
-          status: "error",
-          error: toApiError(error, "观看记录读取失败，请稍后重试")
-        }));
-      });
+    const ids = watchingIdsKey ? watchingIdsKey.split("\n") : [];
+    void loadLocalRecordItems(ids, setWatchingState, "在看记录读取失败，请稍后重试", () => active);
 
     return () => {
       active = false;
     };
-  }, [completedIdsKey, reconcileAnimeStatuses, userPrefs.isLoaded]);
+  }, [loadLocalRecordItems, userPrefs.isLoaded, watchingIdsKey]);
+
+  useEffect(() => {
+    if (!userPrefs.isLoaded) return;
+
+    let active = true;
+    const ids = completedIdsKey ? completedIdsKey.split("\n") : [];
+    void loadLocalRecordItems(ids, setWatchHistoryState, "观看记录读取失败，请稍后重试", () => active);
+
+    return () => {
+      active = false;
+    };
+  }, [completedIdsKey, loadLocalRecordItems, userPrefs.isLoaded]);
 
   async function handleUpdate() {
     setUpdateReport(null);
@@ -250,15 +281,19 @@ export function AnimeSchedulePage() {
     () => getFollowItemsByWeekday(filteredItems, followWeekday, (item) => userPrefs.followedIds.has(item.id)),
     [filteredItems, followWeekday, userPrefs.followedIds]
   );
+  const watchingItems = useMemo(
+    () => sortAnimeItems(watchingState.items, filters.sortMode),
+    [filters.sortMode, watchingState.items]
+  );
   const completedItems = useMemo(
     () => sortAnimeItems(watchHistoryState.items, filters.sortMode),
     [filters.sortMode, watchHistoryState.items]
   );
   const hasPersonalFollowSelection = userPrefs.followedIds.size > 0;
   const hasSourceData = (queryState.data?.items.length ?? 0) > 0;
-  const hasFilteredEmpty = viewMode !== "watchHistory" && hasSourceData && filteredItems.length === 0;
+  const usesSeasonItems = viewMode !== "watching" && viewMode !== "watchHistory";
+  const hasFilteredEmpty = usesSeasonItems && hasSourceData && filteredItems.length === 0;
   const showBlockingError = queryState.status === "error" && !queryState.data;
-  const usesSeasonItems = viewMode !== "watchHistory";
   const searchRefreshKey = `${queryState.data?.meta.cacheUpdatedAt ?? ""}:${updateState.cache.animeUpdatedAt ?? ""}`;
 
   return (
@@ -420,6 +455,53 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
+        {viewMode === "watching" && watchingState.status === "loading" && watchingItems.length === 0 ? (
+          <StateView type="loading" title={"\u8bfb\u53d6\u5728\u770b\u8bb0\u5f55"} description={"\u6b63\u5728\u4ece\u756a\u5267\u5e93\u5339\u914d\u5728\u770b\u4f5c\u54c1\u3002"} />
+        ) : null}
+
+        {viewMode === "watching" && watchingState.status === "error" ? (
+          <StateView
+            type="error"
+            title={"\u5728\u770b\u8bb0\u5f55\u8bfb\u53d6\u5931\u8d25"}
+            description={`${watchingState.error?.code ?? "UNKNOWN"}\uff1a${watchingState.error?.message ?? "\u8bf7\u7a0d\u540e\u91cd\u8bd5\u3002"}`}
+            actionLabel={"\u91cd\u8bd5"}
+            onAction={() => {
+              const ids = watchingIdsKey ? watchingIdsKey.split("\n") : [];
+              void loadLocalRecordItems(ids, setWatchingState, "\u5728\u770b\u8bb0\u5f55\u8bfb\u53d6\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5");
+            }}
+          />
+        ) : null}
+
+        {viewMode === "watching" && watchingItems.length > 0 ? (
+          <ScheduleBoard
+            ariaLabel={"\u5728\u770b\u8bb0\u5f55"}
+            currentSeason={currentSeason}
+            description={`\u5168\u90e8\u8bb0\u5f55\u4e2d\u5171 ${watchingItems.length} \u90e8\u5728\u770b`}
+            items={watchingItems}
+            showSeasonColumn={true}
+            sortMode={filters.sortMode}
+            title={"\u5728\u770b\u8bb0\u5f55"}
+            userPrefs={userPrefs}
+            onSortModeChange={(sortMode) => setFilters((current) => ({ ...current, sortMode }))}
+          />
+        ) : null}
+
+        {viewMode === "watching" && userPrefs.isLoaded && watchingIdsKey.length === 0 ? (
+          <StateView
+            type="empty"
+            title={"\u6682\u65e0\u5728\u770b\u8bb0\u5f55"}
+            description={"\u5728\u5df2\u5b8c\u7ed3\u4f5c\u54c1\u4e0a\u70b9\u51fb\u5728\u770b\u540e\uff0c\u8fd9\u91cc\u4f1a\u663e\u793a\u4f60\u5c1a\u672a\u770b\u5b8c\u7684\u5b8c\u7ed3\u756a\u5267\u3002"}
+          />
+        ) : null}
+
+        {viewMode === "watching" && watchingIdsKey.length > 0 && watchingState.status === "success" && watchingItems.length === 0 ? (
+          <StateView
+            type="empty"
+            title={"\u6682\u65e0\u53ef\u663e\u793a\u7684\u5728\u770b\u8bb0\u5f55"}
+            description={"\u5df2\u6807\u8bb0\u7684\u4f5c\u54c1\u672a\u5728\u5f53\u524d\u516c\u5171\u756a\u5267\u5e93\u4e2d\u5339\u914d\u5230\uff0c\u53ef\u80fd\u5df2\u88ab\u8fc7\u6ee4\u6216\u79fb\u9664\u3002"}
+          />
+        ) : null}
+
         {viewMode === "watchHistory" && watchHistoryState.status === "loading" && completedItems.length === 0 ? (
           <StateView type="loading" title="读取观看记录" description="正在从番剧库匹配已观毕作品。" />
         ) : null}
@@ -432,16 +514,7 @@ export function AnimeSchedulePage() {
             actionLabel="重试"
             onAction={() => {
               const ids = completedIdsKey ? completedIdsKey.split("\n") : [];
-              setWatchHistoryState((current) => ({ ...current, status: "loading", error: null }));
-              void loadAnimeItemsByIds({ ids })
-                .then((payload) => setWatchHistoryState({ status: "success", error: null, items: payload.items }))
-                .catch((error) =>
-                  setWatchHistoryState((current) => ({
-                    ...current,
-                    status: "error",
-                    error: toApiError(error, "观看记录读取失败，请稍后重试")
-                  }))
-                );
+              void loadLocalRecordItems(ids, setWatchHistoryState, "观看记录读取失败，请稍后重试");
             }}
           />
         ) : null}

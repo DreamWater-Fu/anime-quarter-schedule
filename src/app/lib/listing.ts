@@ -1,7 +1,7 @@
 import type { AnimeItem } from "@/src/server/types/anime";
 import { getBeijingUpdateSlot, getBeijingWeekday, getUpdateWeekdaySlot, parseTimeToMinutes } from "./timezone.ts";
 
-export type ViewMode = "stats" | "following" | "personalFollowing" | "watchHistory";
+export type ViewMode = "stats" | "following" | "personalFollowing" | "watching" | "watchHistory";
 export type SortMode =
   | "default"
   | "ratingAsc"

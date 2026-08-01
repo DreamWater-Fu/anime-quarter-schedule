@@ -397,8 +397,8 @@ a:hover {
 
 .userActionButton {
   display: inline-flex;
-  min-width: 96px;
-  min-height: 44px;
+  min-width: 76px;
+  min-height: 36px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border-strong);
@@ -406,16 +406,27 @@ a:hover {
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   line-height: 1;
-  padding: 0 12px;
+  padding: 0 10px;
+}
+
+.userActionGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.userActionGroup .userActionButton {
+  min-width: 62px;
 }
 
 .userActionButton:hover {
   border-color: var(--primary);
   background: var(--state-layer);
-  box-shadow: 0 2px 5px rgb(0 0 0 / 9%);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
   transform: translateY(-1px);
 }
 
@@ -437,8 +448,27 @@ a:hover {
   color: #ffffff;
 }
 
+.userActionButton[data-kind="follow"][data-active="false"] {
+  border-color: rgb(0 106 106 / 38%);
+  background: rgb(215 247 245 / 48%);
+  color: var(--primary-strong);
+}
+
+.userActionButton[data-kind="watching"] {
+  border-color: rgb(183 121 31 / 52%);
+  background: #fff7df;
+  color: #7a4d00;
+}
+
+.userActionButton[data-kind="watching"][data-active="true"] {
+  border-color: #9a5d00;
+  background: #9a5d00;
+  color: #ffffff;
+}
+
 .userActionButton[data-kind="completed"] {
-  border-color: rgb(160 24 87 / 34%);
+  border-color: rgb(160 24 87 / 46%);
+  background: #fff3f8;
   color: var(--secondary);
 }
 
@@ -494,7 +524,7 @@ a:hover {
 
 .modeSwitcher {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 4px;
 }
 
@@ -818,10 +848,18 @@ a:hover {
   justify-content: end;
 }
 
+.searchResultAction .userActionGroup {
+  justify-content: end;
+}
+
 .searchResultAction .userActionButton,
 .searchResultAction .userActionEmpty {
-  min-width: 82px;
-  min-height: 40px;
+  min-width: 72px;
+  min-height: 36px;
+}
+
+.searchResultAction .userActionGroup .userActionButton {
+  min-width: 58px;
 }
 
 .searchHint {
@@ -1503,7 +1541,7 @@ a:hover {
 }
 
 .animeTable th:nth-child(6) {
-  width: 124px;
+  width: 132px;
 }
 
 .animeTable[data-season-column="true"] th:nth-child(2) {
@@ -1527,7 +1565,7 @@ a:hover {
 }
 
 .animeTable[data-season-column="true"] th:nth-child(7) {
-  width: 118px;
+  width: 132px;
 }
 
 .animeTable th:nth-child(n + 2),
@@ -2234,9 +2272,17 @@ a:hover {
     justify-content: start;
   }
 
+  .searchResultAction .userActionGroup {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+  }
+
   .searchResultAction .userActionButton,
   .searchResultAction .userActionEmpty {
     width: 100%;
+    min-height: 40px;
   }
 
   .controlsSummary {
@@ -2612,6 +2658,13 @@ a:hover {
 
   .animeTable td .userActionButton {
     width: 100%;
+    min-height: 40px;
     min-width: 0;
+  }
+
+  .animeTable td .userActionGroup {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
