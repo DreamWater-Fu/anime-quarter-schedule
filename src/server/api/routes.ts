@@ -1,7 +1,7 @@
 import { readUpdateStatus } from "../cache/statusCache.ts";
-import { queryAnimeBySeason, searchAnimeLibrary } from "../anime/queryAnime.ts";
+import { queryAnimeBySeason, queryAnimeItemsByIds, searchAnimeLibrary } from "../anime/queryAnime.ts";
 import { updateAnimeData } from "../anime/updateAnimeData.ts";
-import type { AnimeSearchPayload, AnimeSeasonPayload, SeasonMonth } from "../types/anime.ts";
+import type { AnimeItemsPayload, AnimeSearchPayload, AnimeSeasonPayload, SeasonMonth } from "../types/anime.ts";
 import type { ApiResponse, UpdateInput, UpdateResult, UpdateStatusPayload } from "../types/api.ts";
 import { getHttpStatus, toPublicApiError } from "../utils/errors.ts";
 import { isSeasonMonth } from "../anime/calculateSeason.ts";
@@ -41,6 +41,17 @@ export async function getSearchApi(query: URLSearchParams): Promise<ApiHandlerRe
   }
 }
 
+export async function getAnimeItemsApi(query: URLSearchParams): Promise<ApiHandlerResult<AnimeItemsPayload>> {
+  try {
+    const data = await queryAnimeItemsByIds({
+      ids: parseIds(query.get("ids"))
+    });
+    return { status: 200, body: { ok: true, data } };
+  } catch (error) {
+    return { status: getHttpStatus(error), body: { ok: false, error: toPublicApiError(error) } };
+  }
+}
+
 export async function postUpdateApi(body: unknown): Promise<ApiHandlerResult<UpdateResult>> {
   try {
     const input = parseUpdateInput(body);
@@ -62,7 +73,7 @@ export async function getStatusApi(): Promise<ApiHandlerResult<UpdateStatusPaylo
 
 export async function handleApiRequest(input: {
   method: "GET" | "POST";
-  path: "/api/anime" | "/api/update" | "/api/status" | "/api/search";
+  path: "/api/anime" | "/api/update" | "/api/status" | "/api/search" | "/api/items";
   query?: URLSearchParams;
   body?: unknown;
 }): Promise<ApiHandlerResult<unknown>> {
@@ -71,6 +82,9 @@ export async function handleApiRequest(input: {
   }
   if (input.method === "GET" && input.path === "/api/search") {
     return getSearchApi(input.query ?? new URLSearchParams());
+  }
+  if (input.method === "GET" && input.path === "/api/items") {
+    return getAnimeItemsApi(input.query ?? new URLSearchParams());
   }
   if (input.method === "POST" && input.path === "/api/update") {
     return postUpdateApi(input.body);
@@ -102,4 +116,9 @@ function parseUpdateInput(body: unknown): UpdateInput {
 function parseSeasonMonth(value: number): SeasonMonth {
   if (isSeasonMonth(value)) return value;
   return value as SeasonMonth;
+}
+
+function parseIds(value: string | null): string[] {
+  if (!value) return [];
+  return value.split(",");
 }

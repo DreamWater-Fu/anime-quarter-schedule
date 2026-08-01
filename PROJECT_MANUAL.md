@@ -1,6 +1,6 @@
 # Project Manual: 日本季度新番时间表
 
-最后更新: 2026-07-31
+最后更新: 2026-08-01
 
 本文件是后续 AI 的项目入口。先读本文件，再读相关代码。修改项目边界、季度规则、数据源、部署方式、缓存状态或数据口径时，必须同步更新本文件。
 
@@ -10,7 +10,7 @@
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
 - 当前缓存: 468 条, 只保留 TV、日本动画、非 excluded 条目
-- 测试: 95 个单元测试; 最近 `npm run check` 通过
+- 测试: 97 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
 - 最近数据自检: 2026-07-30 删除 14 条误入缓存的非日漫 TV 条目, 包含 `anime:547751` 幸福公寓、`anime:538958` 冰球旋风 第2季
 
@@ -105,6 +105,7 @@ tests/fixtures/               测试夹具
 
 - `GET /api/anime?year=YYYY&season=1|4|7|10`
 - `GET /api/search?q=keyword&limit=20`: 在当前 `data/anime.json` 可展示 TV 日漫库内按标题、中文名、日文名、英文名和别名搜索, 返回轻量结果及 `primarySeason`
+- `GET /api/items?ids=id1,id2`: 按 `AnimeItem.id` 从全库读取可展示 TV 日漫条目, 供观看记录等本地个人状态跨季度回查完整公共数据
 - `GET /api/status`
 - `POST /api/update` body: `{ year, season, force? }`
 
@@ -117,6 +118,7 @@ GitHub Pages 静态模式:
 - 前端通过 `NEXT_PUBLIC_STATIC_EXPORT=true` 读取 `/static-data/anime.json` 和 `/static-data/status.json`
 - 静态页面不调用 `/api/*`
 - 静态搜索不调用 `/api/search`, 直接读取 `/static-data/anime.json` 并复用 `src/shared/animeSearch.ts` 的过滤和匹配规则
+- 静态观看记录不调用 `/api/items`, 直接读取 `/static-data/anime.json` 后按本地 `completedIds` 匹配
 - 更新按钮在静态模式下禁用
 
 PWA 与缓存:
@@ -226,7 +228,7 @@ npm run build:static
 - `stats`: 统计列表, 展示当前筛选后的季度条目
 - `following`: 追番列表, 按周几展示当前筛选后的连载/延期条目
 - `personalFollowing`: 个人追番, 与追番列表形式一致, 在追番列表的周几、连载状态判断上额外要求 `followedIds` 包含条目 `id`
-- `watchHistory`: 观看记录, 与统计列表形式一致, 只展示 `completedIds` 包含条目 `id` 的作品
+- `watchHistory`: 观看记录, 不受当前年份、季度、范围和状态筛选影响; 按 `completedIds` 从全库回查可展示条目并显示全部已观毕作品, 表格额外显示作品所属 `primarySeason` 季度
 
 操作规则:
 

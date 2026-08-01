@@ -8,6 +8,7 @@ export function ScheduleBoard({
   currentSeason,
   sortMode,
   userPrefs,
+  showSeasonColumn = false,
   title = "\u7edf\u8ba1\u5217\u8868",
   description,
   ariaLabel = "\u7edf\u8ba1\u5217\u8868",
@@ -17,6 +18,7 @@ export function ScheduleBoard({
   currentSeason: SeasonKey;
   sortMode: SortMode;
   userPrefs: UserAnimePrefsControls;
+  showSeasonColumn?: boolean;
   title?: string;
   description?: string;
   ariaLabel?: string;
@@ -36,6 +38,7 @@ export function ScheduleBoard({
       <AnimeTable
         currentSeason={currentSeason}
         items={items}
+        showSeasonColumn={showSeasonColumn}
         sortMode={sortMode}
         userPrefs={userPrefs}
         onSortModeChange={onSortModeChange}

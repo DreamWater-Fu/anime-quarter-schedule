@@ -1,4 +1,5 @@
 import {
+  type AnimeItemsPayload,
   type AnimeItem,
   type AnimeSearchPayload,
   type AnimeSeasonPayload,
@@ -31,6 +32,11 @@ export interface QueryAnimeInput {
 export interface SearchAnimeInput {
   query: string;
   limit?: number;
+  storage?: AnimeStorage;
+}
+
+export interface QueryAnimeItemsInput {
+  ids: string[];
   storage?: AnimeStorage;
 }
 
@@ -92,10 +98,36 @@ export async function searchAnimeLibrary(input: SearchAnimeInput): Promise<Anime
   };
 }
 
+export async function queryAnimeItemsByIds(input: QueryAnimeItemsInput): Promise<AnimeItemsPayload> {
+  const storage = input.storage ?? getDefaultStorage();
+  const cache = await storage.readAnimeCache();
+  const ids = normalizeIds(input.ids);
+  const idSet = new Set(ids);
+  const items = cache.items
+    .filter((item) => idSet.has(item.id))
+    .filter((item) => item.format === "tv")
+    .filter((item) => item.isJapaneseAnime !== false)
+    .filter((item) => item.inclusionStatus !== "excluded")
+    .sort(compareAnimeForLibraryPage);
+
+  return {
+    ids,
+    items,
+    meta: {
+      total: items.length,
+      cacheUpdatedAt: cache.updatedAt
+    }
+  };
+}
+
 function assertYear(year: number): void {
   if (!Number.isInteger(year) || year < 1900 || year > 2100) {
     throw new ApiErrorException("INVALID_QUERY", "year is invalid", { status: 400 });
   }
+}
+
+function normalizeIds(ids: string[]): string[] {
+  return [...new Set(ids.map((id) => id.trim()).filter(Boolean))].slice(0, 500);
 }
 
 function normalizeSearchLimit(limit: number | undefined): number {
@@ -129,6 +161,24 @@ function compareAnimeForSeasonPage(left: AnimeItem, right: AnimeItem): number {
     compareNullableString(left.startDate, right.startDate) ||
     left.title.original.localeCompare(right.title.original)
   );
+}
+
+function compareAnimeForLibraryPage(left: AnimeItem, right: AnimeItem): number {
+  return (
+    compareNullableSeasonKeyDesc(left.primarySeason, right.primarySeason) ||
+    compareNullableString(left.startDate, right.startDate) ||
+    left.title.original.localeCompare(right.title.original)
+  );
+}
+
+function compareNullableSeasonKeyDesc(
+  left: AnimeItem["primarySeason"],
+  right: AnimeItem["primarySeason"]
+): number {
+  if (left === null && right === null) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return compareSeasonKey(right, left);
 }
 
 function compareNullableNumber(left: number | null, right: number | null): number {

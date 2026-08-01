@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { handleApiRequest } from "../../src/server/api/routes.ts";
-import { classifySeasonMembership, queryAnimeBySeason, searchAnimeLibrary } from "../../src/server/anime/index.ts";
+import { classifySeasonMembership, queryAnimeBySeason, queryAnimeItemsByIds, searchAnimeLibrary } from "../../src/server/anime/index.ts";
 import type { AnimeCache } from "../../src/server/types/anime.ts";
 import { MemoryStorage, readFixture } from "./test-utils.ts";
 
@@ -143,6 +143,52 @@ describe("quarter query coverage", () => {
     const result = await searchAnimeLibrary({ query: "Hidden", storage });
 
     assert.deepEqual(result.results.map((item) => item.id), []);
+  });
+
+  it("returns selected library items by id across seasons for watch history", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const storage = new MemoryStorage(cache);
+
+    const result = await queryAnimeItemsByIds({
+      ids: ["anime:winter-jan-mar", "anime:october-to-next-january"],
+      storage
+    });
+
+    assert.deepEqual(
+      result.items.map((item) => item.id),
+      ["anime:winter-jan-mar", "anime:october-to-next-january"]
+    );
+    assert.deepEqual(
+      result.items.map((item) => item.primarySeason),
+      [
+        { year: 2026, quarter: "winter" },
+        { year: 2025, quarter: "fall" }
+      ]
+    );
+  });
+
+  it("keeps non-TV and excluded entries out of selected library item queries", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const webItem = {
+      ...cache.items[0]!,
+      id: "anime:selected-web-format",
+      format: "web" as const
+    };
+    const excludedItem = {
+      ...cache.items[0]!,
+      id: "anime:selected-excluded",
+      isJapaneseAnime: false,
+      inclusionStatus: "excluded" as const,
+      exclusionReason: "Not Japanese anime"
+    };
+    const storage = new MemoryStorage({ ...cache, items: [...cache.items, webItem, excludedItem] });
+
+    const result = await queryAnimeItemsByIds({
+      ids: ["anime:winter-jan-mar", "anime:selected-web-format", "anime:selected-excluded"],
+      storage
+    });
+
+    assert.deepEqual(result.items.map((item) => item.id), ["anime:winter-jan-mar"]);
   });
 });
 

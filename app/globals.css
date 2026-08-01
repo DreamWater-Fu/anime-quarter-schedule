@@ -1506,6 +1506,30 @@ a:hover {
   width: 124px;
 }
 
+.animeTable[data-season-column="true"] th:nth-child(2) {
+  width: 124px;
+}
+
+.animeTable[data-season-column="true"] th:nth-child(3) {
+  width: 164px;
+}
+
+.animeTable[data-season-column="true"] th:nth-child(4) {
+  width: 108px;
+}
+
+.animeTable[data-season-column="true"] th:nth-child(5) {
+  width: 86px;
+}
+
+.animeTable[data-season-column="true"] th:nth-child(6) {
+  width: 118px;
+}
+
+.animeTable[data-season-column="true"] th:nth-child(7) {
+  width: 118px;
+}
+
 .animeTable th:nth-child(n + 2),
 .animeTable td:nth-child(n + 2) {
   text-align: center;
@@ -1532,6 +1556,22 @@ a:hover {
 
 .numericCell {
   font-variant-numeric: tabular-nums;
+}
+
+.seasonCell {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-container);
+  color: var(--primary-strong);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  padding: 0 9px;
+  white-space: nowrap;
 }
 
 .updateCell {

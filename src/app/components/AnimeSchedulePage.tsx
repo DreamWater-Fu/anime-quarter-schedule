@@ -10,7 +10,7 @@ import { ScheduleToolbar } from "./ScheduleToolbar";
 import { SkeletonRows, StateView } from "./StateView";
 import { StatusSummary } from "./StatusSummary";
 import { ViewModeSwitcher } from "./ViewModeSwitcher";
-import { FrontendApiError, isStaticExportMode, loadSeasonAnime, loadUpdateStatus, runSeasonUpdate } from "../lib/apiClient";
+import { FrontendApiError, isStaticExportMode, loadAnimeItemsByIds, loadSeasonAnime, loadUpdateStatus, runSeasonUpdate } from "../lib/apiClient";
 import { getFollowItemsByWeekday, sortAnimeItems, type ViewMode } from "../lib/listing";
 import {
   classifySeasonMembership,
@@ -69,6 +69,11 @@ export function AnimeSchedulePage() {
     result: UpdateResult;
     data: AnimeSeasonPayload;
   } | null>(null);
+  const [watchHistoryState, setWatchHistoryState] = useState<{
+    status: "idle" | "loading" | "success" | "error";
+    error: PublicApiError | null;
+    items: AnimeItem[];
+  }>({ status: "idle", error: null, items: [] });
   const [updateError, setUpdateError] = useState<PublicApiError | null>(null);
   const [statusWarning, setStatusWarning] = useState<PublicApiError | null>(null);
   const staticMode = isStaticExportMode();
@@ -154,6 +159,43 @@ export function AnimeSchedulePage() {
     reconcileAnimeStatuses(queryState.data.items);
   }, [queryState.data, reconcileAnimeStatuses]);
 
+  const completedIdsKey = useMemo(
+    () => [...userPrefs.completedIds].sort().join("\n"),
+    [userPrefs.completedIds]
+  );
+
+  useEffect(() => {
+    if (!userPrefs.isLoaded) return;
+
+    const ids = completedIdsKey ? completedIdsKey.split("\n") : [];
+    if (ids.length === 0) {
+      setWatchHistoryState({ status: "idle", error: null, items: [] });
+      return;
+    }
+
+    let active = true;
+    setWatchHistoryState((current) => ({ ...current, status: "loading", error: null }));
+
+    void loadAnimeItemsByIds({ ids })
+      .then((payload) => {
+        if (!active) return;
+        setWatchHistoryState({ status: "success", error: null, items: payload.items });
+        reconcileAnimeStatuses(payload.items);
+      })
+      .catch((error) => {
+        if (!active) return;
+        setWatchHistoryState((current) => ({
+          ...current,
+          status: "error",
+          error: toApiError(error, "观看记录读取失败，请稍后重试")
+        }));
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [completedIdsKey, reconcileAnimeStatuses, userPrefs.isLoaded]);
+
   async function handleUpdate() {
     setUpdateReport(null);
     setUpdateError(null);
@@ -209,13 +251,14 @@ export function AnimeSchedulePage() {
     [filteredItems, followWeekday, userPrefs.followedIds]
   );
   const completedItems = useMemo(
-    () => sortAnimeItems(filteredItems.filter((item) => userPrefs.completedIds.has(item.id)), filters.sortMode),
-    [filteredItems, filters.sortMode, userPrefs.completedIds]
+    () => sortAnimeItems(watchHistoryState.items, filters.sortMode),
+    [filters.sortMode, watchHistoryState.items]
   );
   const hasPersonalFollowSelection = userPrefs.followedIds.size > 0;
   const hasSourceData = (queryState.data?.items.length ?? 0) > 0;
-  const hasFilteredEmpty = hasSourceData && filteredItems.length === 0;
+  const hasFilteredEmpty = viewMode !== "watchHistory" && hasSourceData && filteredItems.length === 0;
   const showBlockingError = queryState.status === "error" && !queryState.data;
+  const usesSeasonItems = viewMode !== "watchHistory";
   const searchRefreshKey = `${queryState.data?.meta.cacheUpdatedAt ?? ""}:${updateState.cache.animeUpdatedAt ?? ""}`;
 
   return (
@@ -252,10 +295,10 @@ export function AnimeSchedulePage() {
           />
         </div>
 
-        <StatusSummary data={queryState.data} updateState={updateState} />
+        {usesSeasonItems ? <StatusSummary data={queryState.data} updateState={updateState} /> : null}
 
         <div className="stateStack" aria-live="polite">
-          {queryState.status === "loading" ? (
+          {usesSeasonItems && queryState.status === "loading" ? (
             <StateView type="loading" title="加载中" description="正在读取当前季度新番缓存。" />
           ) : null}
           {updateState.status === "running" ? (
@@ -286,7 +329,7 @@ export function AnimeSchedulePage() {
               onAction={staticMode ? undefined : handleUpdate}
             />
           ) : null}
-          {queryState.status === "error" && queryState.data ? (
+          {usesSeasonItems && queryState.status === "error" && queryState.data ? (
             <StateView
               type="error"
               title="加载失败"
@@ -297,9 +340,9 @@ export function AnimeSchedulePage() {
           ) : null}
         </div>
 
-        {queryState.status === "loading" && !queryState.data ? <SkeletonRows /> : null}
+        {usesSeasonItems && queryState.status === "loading" && !queryState.data ? <SkeletonRows /> : null}
 
-        {showBlockingError ? (
+        {usesSeasonItems && showBlockingError ? (
           <StateView
             type="error"
             title="加载失败"
@@ -309,7 +352,7 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {queryState.status !== "loading" && queryState.data && queryState.data.items.length === 0 ? (
+        {usesSeasonItems && queryState.status !== "loading" && queryState.data && queryState.data.items.length === 0 ? (
           <StateView
             type="empty"
             title="无数据"
@@ -377,12 +420,39 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
+        {viewMode === "watchHistory" && watchHistoryState.status === "loading" && completedItems.length === 0 ? (
+          <StateView type="loading" title="读取观看记录" description="正在从番剧库匹配已观毕作品。" />
+        ) : null}
+
+        {viewMode === "watchHistory" && watchHistoryState.status === "error" ? (
+          <StateView
+            type="error"
+            title="观看记录读取失败"
+            description={`${watchHistoryState.error?.code ?? "UNKNOWN"}：${watchHistoryState.error?.message ?? "请稍后重试。"}`}
+            actionLabel="重试"
+            onAction={() => {
+              const ids = completedIdsKey ? completedIdsKey.split("\n") : [];
+              setWatchHistoryState((current) => ({ ...current, status: "loading", error: null }));
+              void loadAnimeItemsByIds({ ids })
+                .then((payload) => setWatchHistoryState({ status: "success", error: null, items: payload.items }))
+                .catch((error) =>
+                  setWatchHistoryState((current) => ({
+                    ...current,
+                    status: "error",
+                    error: toApiError(error, "观看记录读取失败，请稍后重试")
+                  }))
+                );
+            }}
+          />
+        ) : null}
+
         {viewMode === "watchHistory" && completedItems.length > 0 ? (
           <ScheduleBoard
             ariaLabel={"\u89c2\u770b\u8bb0\u5f55"}
             currentSeason={currentSeason}
-            description={`\u5f53\u524d\u7b5b\u9009\u4e0b\u5171 ${completedItems.length} \u90e8\u5df2\u89c2\u6bd5`}
+            description={`\u5168\u90e8\u8bb0\u5f55\u4e2d\u5171 ${completedItems.length} \u90e8\u5df2\u89c2\u6bd5`}
             items={completedItems}
+            showSeasonColumn={true}
             sortMode={filters.sortMode}
             title={"\u89c2\u770b\u8bb0\u5f55"}
             userPrefs={userPrefs}
@@ -390,11 +460,19 @@ export function AnimeSchedulePage() {
           />
         ) : null}
 
-        {viewMode === "watchHistory" && filteredItems.length > 0 && completedItems.length === 0 ? (
+        {viewMode === "watchHistory" && userPrefs.isLoaded && completedIdsKey.length === 0 ? (
           <StateView
             type="empty"
             title={"\u6682\u65e0\u89c2\u770b\u8bb0\u5f55"}
             description={"\u5728\u5df2\u5b8c\u7ed3\u4f5c\u54c1\u4e0a\u70b9\u51fb\u89c2\u6bd5\u540e\uff0c\u8fd9\u91cc\u4f1a\u663e\u793a\u4f60\u6807\u8bb0\u8fc7\u7684\u4f5c\u54c1\u3002"}
+          />
+        ) : null}
+
+        {viewMode === "watchHistory" && completedIdsKey.length > 0 && watchHistoryState.status === "success" && completedItems.length === 0 ? (
+          <StateView
+            type="empty"
+            title={"\u6682\u65e0\u53ef\u663e\u793a\u7684\u89c2\u770b\u8bb0\u5f55"}
+            description={"\u5df2\u6807\u8bb0\u7684\u4f5c\u54c1\u672a\u5728\u5f53\u524d\u516c\u5171\u756a\u5267\u5e93\u4e2d\u5339\u914d\u5230\uff0c\u53ef\u80fd\u5df2\u88ab\u8fc7\u6ee4\u6216\u79fb\u9664\u3002"}
           />
         ) : null}
       </div>

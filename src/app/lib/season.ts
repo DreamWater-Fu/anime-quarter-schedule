@@ -53,6 +53,12 @@ export function getSeasonMonthByQuarter(quarter: AnimeQuarter): SeasonMonth {
   return seasonOptions.find((item) => item.quarter === quarter)?.value ?? 7;
 }
 
+export function formatSeasonKey(season: SeasonKey | null | undefined): string {
+  if (!season) return "季度待确认";
+  const label = seasonOptions.find((item) => item.quarter === season.quarter)?.label ?? "未知季度";
+  return `${season.year}年 ${label}`;
+}
+
 export function isSeasonMonth(value: number): value is SeasonMonth {
   return value === 1 || value === 4 || value === 7 || value === 10;
 }

@@ -4,19 +4,21 @@ import { UserAnimeActionButton } from "./UserAnimeActionButton";
 import { formatDate, formatUpdateDisplay, statusLabels } from "../lib/format";
 import type { SortMode } from "../lib/listing";
 import type { UserAnimePrefsControls } from "../lib/userAnimePrefs";
-import { classifySeasonMembership } from "../lib/season";
+import { classifySeasonMembership, formatSeasonKey } from "../lib/season";
 import { getBeijingUpdateSlot, getUpdateWeekdaySlot } from "../lib/timezone";
 import type { AnimeItem, SeasonKey } from "@/src/server/types/anime";
 
 export function AnimeTable({
   items,
   currentSeason,
+  showSeasonColumn = false,
   sortMode,
   userPrefs,
   onSortModeChange
 }: {
   items: AnimeItem[];
   currentSeason: SeasonKey;
+  showSeasonColumn?: boolean;
   sortMode: SortMode;
   userPrefs: UserAnimePrefsControls;
   onSortModeChange: (sortMode: SortMode) => void;
@@ -43,10 +45,11 @@ export function AnimeTable({
           onChange={onSortModeChange}
         />
       </div>
-      <table className="animeTable">
+      <table className="animeTable" data-season-column={showSeasonColumn}>
         <thead>
           <tr>
             <th>作品</th>
+            {showSeasonColumn ? <th>季度</th> : null}
             <th>
               <HeaderSortButton
                 field="updateTime"
@@ -97,6 +100,11 @@ export function AnimeTable({
                     </div>
                   </div>
                 </td>
+                {showSeasonColumn ? (
+                  <td className="numericCell" data-label="季度">
+                    <span className="seasonCell">{formatSeasonKey(item.primarySeason)}</span>
+                  </td>
+                ) : null}
                 <td className="updateCell" data-label="更新时间">
                   <div className="updateStack">
                     <span className="updatePill">{formatUpdateDisplay(item, currentSeason)}</span>

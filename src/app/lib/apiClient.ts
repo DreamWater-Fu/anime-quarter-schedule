@@ -6,7 +6,7 @@ import {
   seasonKeyEquals
 } from "./season";
 import { DEFAULT_ANIME_SEARCH_LIMIT, searchAnimeItems } from "@/src/shared/animeSearch";
-import type { AnimeCache, AnimeItem, AnimeSearchPayload, AnimeSeasonPayload, DataStatus, SeasonKey, SeasonMonth } from "@/src/server/types/anime";
+import type { AnimeCache, AnimeItem, AnimeItemsPayload, AnimeSearchPayload, AnimeSeasonPayload, DataStatus, SeasonKey, SeasonMonth } from "@/src/server/types/anime";
 import type { ApiResponse, PublicApiError, UpdateResult, UpdateStatusPayload } from "@/src/server/types/api";
 
 export class FrontendApiError extends Error {
@@ -67,6 +67,17 @@ export async function loadAnimeSearch(input: {
     limit: String(input.limit ?? DEFAULT_ANIME_SEARCH_LIMIT)
   });
   return fetchApi<AnimeSearchPayload>(`/api/search?${query.toString()}`);
+}
+
+export async function loadAnimeItemsByIds(input: { ids: string[] }): Promise<AnimeItemsPayload> {
+  const ids = normalizeIds(input.ids);
+  if (ids.length === 0) return { ids, items: [], meta: { total: 0, cacheUpdatedAt: null } };
+  if (isStaticExportMode()) return loadStaticAnimeItemsByIds(ids);
+
+  const query = new URLSearchParams({
+    ids: ids.join(",")
+  });
+  return fetchApi<AnimeItemsPayload>(`/api/items?${query.toString()}`);
 }
 
 export function loadUpdateStatus() {
@@ -138,6 +149,26 @@ async function loadStaticAnimeSearch(input: { query: string; limit?: number }): 
   };
 }
 
+async function loadStaticAnimeItemsByIds(ids: string[]): Promise<AnimeItemsPayload> {
+  const cache = await fetchStaticJson<AnimeCache>("anime.json");
+  const idSet = new Set(ids);
+  const items = cache.items
+    .filter((item) => idSet.has(item.id))
+    .filter((item) => item.format === "tv")
+    .filter((item) => item.isJapaneseAnime !== false)
+    .filter((item) => item.inclusionStatus !== "excluded")
+    .sort(compareAnimeForLibraryPage);
+
+  return {
+    ids,
+    items,
+    meta: {
+      total: items.length,
+      cacheUpdatedAt: cache.updatedAt
+    }
+  };
+}
+
 async function fetchStaticJson<T>(fileName: string): Promise<T> {
   const response = await fetch(`${getStaticBasePath()}/static-data/${fileName}`, { cache: "no-store" });
   if (!response.ok) {
@@ -174,6 +205,25 @@ function compareAnimeForSeasonPage(left: AnimeItem, right: AnimeItem): number {
     compareNullableString(left.startDate, right.startDate) ||
     left.title.original.localeCompare(right.title.original)
   );
+}
+
+function compareAnimeForLibraryPage(left: AnimeItem, right: AnimeItem): number {
+  return (
+    compareNullableSeasonKeyDesc(left.primarySeason, right.primarySeason) ||
+    compareNullableString(left.startDate, right.startDate) ||
+    left.title.original.localeCompare(right.title.original)
+  );
+}
+
+function compareNullableSeasonKeyDesc(left: SeasonKey | null, right: SeasonKey | null): number {
+  if (left === null && right === null) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return compareSeasonKey(right, left);
+}
+
+function normalizeIds(ids: string[]): string[] {
+  return [...new Set(ids.map((id) => id.trim()).filter(Boolean))].slice(0, 500);
 }
 
 function compareNullableNumber(left: number | null, right: number | null): number {

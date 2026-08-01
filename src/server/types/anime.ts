@@ -181,6 +181,15 @@ export interface AnimeSearchPayload {
   };
 }
 
+export interface AnimeItemsPayload {
+  ids: string[];
+  items: AnimeItem[];
+  meta: {
+    total: number;
+    cacheUpdatedAt: string | null;
+  };
+}
+
 export const DEFAULT_DISPLAY_FORMATS: readonly AnimeFormat[] = ["tv"];
 export const OPTIONAL_DISPLAY_FORMATS: readonly AnimeFormat[] = [];
 export const DEFAULT_HIDDEN_FORMATS: readonly AnimeFormat[] = [

@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 import {
   buildSeasonQuery,
   classifySeasonMembership,
+  formatSeasonKey,
   getCurrentSeasonMonth,
   getSeasonMonthByQuarter,
   parseSeasonFromUrl
@@ -26,6 +27,7 @@ describe("frontend season interaction helpers", () => {
     assert.equal(getSeasonMonthByQuarter("spring"), 4);
     assert.equal(getSeasonMonthByQuarter("summer"), 7);
     assert.equal(getSeasonMonthByQuarter("fall"), 10);
+    assert.equal(formatSeasonKey({ year: 2026, quarter: "summer" }), "2026年 七月新番");
   });
 
   it("builds API query strings for includeOptional and includeNeedsReview toggles", () => {
