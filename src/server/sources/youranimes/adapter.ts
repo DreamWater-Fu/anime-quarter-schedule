@@ -10,6 +10,7 @@ import {
 } from "../../anime/calculateSeason.ts";
 import type { AnimeItem, AnimeSource, SeasonKey, SeasonMonth } from "../../types/anime.ts";
 import type { AnimeSourceAdapter, SourceFetchInput, SourceFetchResult, SourceIssue } from "../types.ts";
+import { inferReferenceLifecycle } from "../referenceLifecycle.ts";
 
 export interface YourAnimesAdapterOptions {
   enabled?: boolean;
@@ -230,6 +231,8 @@ export function mapYourAnimesReferenceToAnimeItem(
   ];
   const primarySeason = calculatePrimarySeason(beijingSlot.date);
   const bangumiSubjectId = Number.isInteger(entry.bangumiSubjectId) ? Number(entry.bangumiSubjectId) : null;
+  const lifecycle = inferReferenceLifecycle(beijingSlot.date, new Date(retrievedAt));
+  const isFinished = lifecycle.status === "finished";
 
   return {
     id: bangumiSubjectId !== null ? `anime:${bangumiSubjectId}` : `anime:youranimes:${slugify(entry.title)}`,
@@ -241,14 +244,14 @@ export function mapYourAnimesReferenceToAnimeItem(
       aliases: entry.aliases
     },
     format: "tv",
-    status: "airing",
+    status: lifecycle.status,
     startDate: beijingSlot.date,
-    endDate: null,
+    endDate: lifecycle.endDate,
     datePrecision: "day",
     primarySeason,
     activeSeasons: calculateActiveSeasons({ schedule, fallbackPrimarySeason: primarySeason }),
-    updateWeekday: inferUpdateWeekday({ schedule, startDate: beijingSlot.date }),
-    updateTime: beijingSlot.time,
+    updateWeekday: isFinished ? null : inferUpdateWeekday({ schedule, startDate: beijingSlot.date }),
+    updateTime: isFinished ? null : beijingSlot.time,
     timezone: "Asia/Shanghai",
     episodeCount: null,
     airedEpisodeCount: null,

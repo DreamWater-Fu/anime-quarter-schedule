@@ -270,6 +270,15 @@ export function AnimeSchedulePage() {
     }
   }
 
+  function handleViewModeChange(nextViewMode: ViewMode) {
+    if (nextViewMode === "following") {
+      const currentSeasonSelection = getDefaultSeasonSelection();
+      setYear(currentSeasonSelection.year);
+      setSeason(currentSeasonSelection.season);
+    }
+    setViewMode(nextViewMode);
+  }
+
   const currentSeason = useMemo<SeasonKey>(() => ({ year, quarter: getQuarterBySeason(season) }), [season, year]);
   const filteredItems = useMemo(
     () => filterItems(queryState.data?.items ?? [], filters, currentSeason),
@@ -311,7 +320,7 @@ export function AnimeSchedulePage() {
       />
 
       <div className="contentShell">
-        <ViewModeSwitcher value={viewMode} onChange={setViewMode} />
+        <ViewModeSwitcher value={viewMode} onChange={handleViewModeChange} />
 
         <div className="utilityRow">
           <AnimeSearch

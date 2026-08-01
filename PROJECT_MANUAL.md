@@ -6,13 +6,13 @@
 
 ## 1. 当前状态
 
-- 版本: `0.2.1`
+- 版本: `0.2.5`
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
-- 当前缓存: 468 条, 只保留 TV、日本动画、非 excluded 条目
-- 测试: 99 个单元测试; 最近 `npm run check` 通过
+- 当前缓存: 930 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2023-2026 多个季度均可被全库搜索与全库个人记录回查, Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
+- 测试: 107 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
-- 最近数据自检: 2026-07-30 删除 14 条误入缓存的非日漫 TV 条目, 包含 `anime:547751` 幸福公寓、`anime:538958` 冰球旋风 第2季
+- 最近数据自检: 2026-08-01 全库审查并清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
 
 ## 2. 产品边界
 
@@ -20,10 +20,19 @@
 
 必须排除:
 
-- 中国动画、中日合作动画、海外动画
+- 中国动画、中日合作动画、海外动画、韩产动画、欧美动画
 - WEB、OVA、MOVIE、SP 等非 TV 条目
+- 标题或元数据表明为剧场版、电影、MOVIE、THE MOVIE、film 的条目, 即使平台误标为 TV 也必须排除
+- 标题明确标为第 11 季及以上的条目必须排除; 第 10 季及以下可以保留; 规则覆盖中文 `第十一季`、日文 `第26シリーズ` 和英文 `Series 32` / `Season 32` 等写法
 - R18、NSFW、成人内容
 - `isJapaneseAnime=false` 或 `inclusionStatus="excluded"` 条目
+
+非日漫过滤必须先统一修复 UTF-8 被误读为 Latin-1 的 mojibake 文本, 再判断:
+
+- 标题、中文名、别名或官网命中明确海外 IP / 国产少儿动画 / 韩产儿童动画标题信号时排除
+- Bangumi tags 或产地字段命中 `中国`、`中国大陆`、`国产`、`国创`、`国产动画`、`中国动画`、`美国`、`欧美`、`英国`、`法国`、`加拿大`、`韩国`、`韩产` 等强元数据时排除
+- Bangumi 主标题为韩文且没有日文假名信号时排除
+- 命中强元数据时仍要检查是否存在日文假名、`日本动画`、日本电视台、日方官网或日方制作公司等强日方制作信号; 不要仅因 `韩国`、`韩漫`、`韩国原作改编`、`中国原作`、`国产`、`中国` 等原作或标签信号删除日方制作的 TV 动画, 例如 `明日方舟` 系列以动画制作/播放形态为准
 
 缺失字段用 `null`, 不要用空字符串、`N/A` 或 `0` 占位。不要重新引入 Syoboi、AniList、中国动画数据源、官方站批量爬虫或海外动画数据源。
 
@@ -97,7 +106,7 @@ tests/fixtures/               测试夹具
 - `episodeCount` 与 `airedEpisodeCount` 不得矛盾
 - 巴哈姆特、YourAnimes、人工覆盖写入的展示时间按北京时间 `Asia/Shanghai` 处理
 - Bangumi 标题映射会修复 UTF-8 被误读为 Latin-1 的 mojibake, 不要移除
-- Bangumi 非日漫过滤包含明确排除 subjectId, 不要把已确认的国产/海外动画重新放回可展示缓存
+- Bangumi 非日漫过滤包含明确排除 subjectId、标题/IP 规则、tags/产地强元数据规则、韩文主标题规则、已知 SP 标题规则和第 11 季以上规则, 不要把已确认的国产/海外/韩产动画、SP、剧场版或超十季条目重新放回可展示缓存
 
 ## 6. API 与静态模式
 
@@ -134,9 +143,9 @@ PWA 与缓存:
 
 数据源:
 
-- Bangumi: 主源, 提供标题、subjectId、评分、封面、日期、集数、官网、制作信息
+- Bangumi: 主源, 提供标题、subjectId、评分、封面、日期、集数、官网、制作信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照
 - 巴哈姆特: 参考源, 补充 UTC+8 / 北京时间更新时刻
-- YourAnimes: 低优先级参考源, 补充日本首播时间和 Bangumi subjectId
+- YourAnimes: 低优先级参考源, 补充日本首播时间和 Bangumi subjectId; 当 Bangumi 不可用且目标季度无旧缓存时, 可信参考源可冷启动导入 `partial` / `needs_review` 条目
 - `data/manual-broadcast-overrides.json`: 最终人工覆盖, 只对未完结、未取消条目生效
 
 常用数据命令:
@@ -154,16 +163,22 @@ npm run data:validate
 2. 检查更新锁
 3. 读取 Bangumi、巴哈姆特、YourAnimes
 4. 归一化、去重、按 `primarySeason` 过滤目标季度
-5. 过滤 TV、日本动画、非成人内容
-6. 与旧缓存合并, 保留可靠旧信息
-7. 应用人工广播覆盖
-8. 校验并写入 `data/anime.json`, `data/status.json`, `data/update-log.jsonl`
+5. 若 Bangumi 主目录有可写入条目, 丢弃所有未合并成功且无 Bangumi ID 的 YourAnimes / 巴哈姆特参考条目, 防止备用源重复项残留
+6. Bangumi 不可用且目标季度无旧缓存时, 对无 Bangumi ID 且无旧缓存匹配的 YourAnimes / 巴哈姆特参考条目, 仅在来源可信、格式为 TV、具备开播日期与排期时允许冷启动, 并标记为 `needs_review`
+7. 过滤 TV、日本动画、非成人内容、剧场版/电影标题、已知 SP 标题和第 11 季及以上条目; 非日漫过滤必须同时读取标题/别名/官网、Bangumi tags、产地字段和韩文主标题信号, 并用强日方制作信号保护 `明日方舟` 这类特殊条目
+8. 与旧缓存合并, 保留可靠旧信息
+9. 应用人工广播覆盖
+10. 校验并写入 `data/anime.json`, `data/status.json`, `data/update-log.jsonl`
 
 失败策略:
 
 - 写入前校验失败: 不覆盖旧缓存
 - 外部源失败: 记录 warning, 尽量保留可用旧缓存
-- 目标季度无旧缓存且外部源无可用条目但有 warning: 返回 `SOURCE_UNAVAILABLE`, 不写入空成功
+- 目标季度无旧缓存且外部源无可写入条目但有 warning: 返回 `SOURCE_UNAVAILABLE`, 不写入空成功
+- Bangumi 月度快照存在时优先读取本地文件; 页面更新在网络不可用时仍可刷新已缓存月份
+- `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存
+- 旧季度导入优先使用 Bangumi; Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用 Bangumi 同步补齐评分、封面和 subjectId
+- 参考源冷启动的历史季度条目会按导入时刻推断为 `finished`, 顶层 `updateTime` / `updateWeekday` 置空, 但 `schedule[]` 仍保留首播日期和时间用于搜索与回查
 
 ## 8. 部署
 
@@ -226,7 +241,7 @@ npm run build:static
 
 - `search`: 全库搜索入口, 不受当前季度筛选影响; 只搜索可展示 TV 日本动画, 排除 `isJapaneseAnime=false`、`inclusionStatus="excluded"` 和非 TV 条目
 - `stats`: 统计列表, 展示当前筛选后的季度条目
-- `following`: 追番列表, 按周几展示当前筛选后的连载/延期条目
+- `following`: 追番列表, 点击进入时切换到北京时间当前年份与当前季度; 按周几展示当前筛选后的连载/延期条目, 仍受范围、状态和排序筛选影响
 - `personalFollowing`: 个人追番, 与追番列表形式一致, 在追番列表的周几、连载状态判断上额外要求 `followedIds` 包含条目 `id`
 - `watching`: 在看记录, 不受当前年份、季度、范围和状态筛选影响; 按 `watchingIds` 从全库回查可展示条目并显示全部未看完的已完结作品, 表格额外显示作品所属 `primarySeason` 季度
 - `watchHistory`: 观看记录, 不受当前年份、季度、范围和状态筛选影响; 按 `completedIds` 从全库回查可展示条目并显示全部已观毕作品, 表格额外显示作品所属 `primarySeason` 季度

@@ -1,7 +1,7 @@
 import { execFile } from "node:child_process";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { promisify } from "node:util";
 
 import { seasonMonthToQuarter } from "../../anime/calculateSeason.ts";
@@ -137,10 +137,12 @@ export class BangumiSourceAdapter implements AnimeSourceAdapter {
 
       try {
         const subjects = await this.client.listSubjectsByMonth({ year, month });
+        await this.writeCachedSubjects(year, month, subjects, warnings);
         for (const subject of subjects) byId.set(subject.id, subject);
       } catch (error) {
         const fallbackSubjects = await this.tryMonthSubjectFallback(year, month, warnings);
         if (fallbackSubjects) {
+          await this.writeCachedSubjects(year, month, fallbackSubjects, warnings);
           for (const subject of fallbackSubjects) {
             byId.set(subject.id, subject);
             cachedSubjectIds.add(subject.id);
@@ -205,6 +207,29 @@ export class BangumiSourceAdapter implements AnimeSourceAdapter {
         details: error instanceof Error ? error.message : error
       });
       return null;
+    }
+  }
+
+  private async writeCachedSubjects(
+    year: number,
+    month: number,
+    subjects: BangumiSubject[],
+    warnings: SourceIssue[]
+  ): Promise<void> {
+    if (subjects.length === 0) return;
+    const file = `${process.env.DATA_DIR ?? "data"}/bangumi-${year}${String(month).padStart(2, "0")}-subjects.json`;
+    try {
+      const absoluteFile = resolve(/* turbopackIgnore: true */ process.cwd(), file);
+      await mkdir(dirname(absoluteFile), { recursive: true });
+      await writeFile(absoluteFile, `${JSON.stringify(subjects, null, 2)}\n`, "utf8");
+    } catch (error) {
+      warnings.push({
+        source: this.name,
+        code: "NETWORK_FAILED",
+        message: `Bangumi cached subject file could not be written: ${file}`,
+        retryable: false,
+        details: error instanceof Error ? error.message : error
+      });
     }
   }
 

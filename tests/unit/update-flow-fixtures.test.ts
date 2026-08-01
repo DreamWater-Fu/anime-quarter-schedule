@@ -436,6 +436,195 @@ describe("update data merge and rollback", () => {
     assert.equal(nextCache.items.some((item) => item.id === "anime:100001"), true);
   });
 
+  it("can cold-start a season from trusted reference sources when Bangumi is unavailable", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const referenceItem = {
+      ...toSummerFixtureItem(cache),
+      id: "anime:youranimes:cold-start-reference",
+      title: {
+        original: "Cold Start Reference",
+        japanese: "Cold Start Reference",
+        chinese: "冷启动参考条目",
+        english: null,
+        aliases: []
+      },
+      bangumi: {
+        ...toSummerFixtureItem(cache).bangumi,
+        subjectId: null,
+        url: null,
+        rating: null,
+        rank: null
+      },
+      externalIds: {
+        ...toSummerFixtureItem(cache).externalIds,
+        bangumiSubjectId: null
+      },
+      dataStatus: "partial" as const,
+      inclusionStatus: "included" as const,
+      sources: [
+        {
+          name: "YourAnimes",
+          type: "third_party" as const,
+          url: "https://youranimes.tw/animes/cold-start-reference",
+          retrievedAt: runAt,
+          scope: "japan_broadcast" as const
+        }
+      ]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [] });
+
+    const result = await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [new FailingAdapter(), new StaticAdapter("YourAnimes", "third_party", [referenceItem])],
+        now: () => new Date(runAt)
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    const item = nextCache.items.find((candidate) => candidate.id === referenceItem.id);
+
+    assert.equal(result.status, "success");
+    assert.equal(result.summary.fetched, 1);
+    assert.equal(result.summary.missingBangumi, 1);
+    assert.equal(item?.inclusionStatus, "needs_review");
+    assert.equal(item?.dataStatus, "partial");
+    assert.equal(storage.logs.some((entry) => entry.event === "source_warnings"), true);
+  });
+
+  it("does not cold-start unmatched reference-only rows when Bangumi catalog items are available", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const catalogItem = {
+      ...toSummerFixtureItem(cache),
+      sources: [{ name: "Bangumi", type: "bangumi" as const, retrievedAt: runAt }]
+    };
+    const referenceOnlyItem = {
+      ...catalogItem,
+      id: "anime:youranimes:unmatched-reference",
+      title: {
+        original: "Unmatched Reference Only",
+        japanese: "Unmatched Reference Only",
+        chinese: "未匹配参考条目",
+        english: null,
+        aliases: []
+      },
+      bangumi: {
+        ...catalogItem.bangumi,
+        subjectId: null,
+        url: null,
+        rating: null,
+        rank: null
+      },
+      externalIds: {
+        ...catalogItem.externalIds,
+        bangumiSubjectId: null
+      },
+      sources: [
+        {
+          name: "YourAnimes",
+          type: "third_party" as const,
+          url: "https://youranimes.tw/animes/unmatched-reference",
+          retrievedAt: runAt,
+          scope: "japan_broadcast" as const
+        }
+      ]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [] });
+
+    const result = await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [
+          new StaticAdapter("Bangumi", "bangumi", [catalogItem]),
+          new StaticAdapter("YourAnimes", "third_party", [referenceOnlyItem])
+        ],
+        now: () => new Date(runAt)
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+
+    assert.equal(result.summary.fetched, 1);
+    assert.equal(nextCache.items.length, 1);
+    assert.equal(nextCache.items[0]?.id, catalogItem.id);
+  });
+
+  it("removes old unmatched reference-only rows when a later Bangumi refresh has the catalog item", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const catalogItem = {
+      ...toSummerFixtureItem(cache),
+      id: "anime:364522",
+      title: {
+        original: "魔法科高校の劣等生 第3シーズン",
+        japanese: "魔法科高校の劣等生 第3シーズン",
+        chinese: "魔法科高校的劣等生 第三季",
+        english: null,
+        aliases: []
+      },
+      bangumi: {
+        ...toSummerFixtureItem(cache).bangumi,
+        subjectId: 364522,
+        url: "https://bgm.tv/subject/364522"
+      },
+      externalIds: {
+        ...toSummerFixtureItem(cache).externalIds,
+        bangumiSubjectId: 364522
+      },
+      sources: [{ name: "Bangumi", type: "bangumi" as const, retrievedAt: runAt }]
+    };
+    const oldReferenceOnlyItem = {
+      ...catalogItem,
+      id: "anime:youranimes:魔法科高中的劣等生-第三季",
+      title: {
+        original: "魔法科高中的劣等生 第三季",
+        japanese: null,
+        chinese: "魔法科高中的劣等生 第三季",
+        english: null,
+        aliases: []
+      },
+      bangumi: {
+        ...catalogItem.bangumi,
+        subjectId: null,
+        url: null,
+        rating: null,
+        rank: null
+      },
+      externalIds: {
+        ...catalogItem.externalIds,
+        bangumiSubjectId: null
+      },
+      sources: [
+        {
+          name: "YourAnimes",
+          type: "third_party" as const,
+          url: "https://youranimes.tw/animes/mahouka",
+          retrievedAt: runAt,
+          scope: "japan_broadcast" as const
+        }
+      ]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [oldReferenceOnlyItem] });
+
+    await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [
+          new StaticAdapter("Bangumi", "bangumi", [catalogItem]),
+          new StaticAdapter("YourAnimes", "third_party", [oldReferenceOnlyItem])
+        ],
+        now: () => new Date(runAt)
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+
+    assert.equal(nextCache.items.some((item) => item.id === "anime:364522"), true);
+    assert.equal(nextCache.items.some((item) => item.id === oldReferenceOnlyItem.id), false);
+  });
+
   it("does not write non-Japanese or excluded fetched items into cache", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const japaneseItem = toSummerFixtureItem(cache);

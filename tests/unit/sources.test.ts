@@ -1,4 +1,7 @@
 import assert from "node:assert/strict";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, it } from "node:test";
 
 import { validateAnimeItem } from "../../src/server/anime/index.ts";
@@ -8,6 +11,7 @@ import {
   BangumiSourceAdapter,
   DataSourceError,
   mapBangumiSubjectToAnimeItem,
+  mapBahamutReferenceToAnimeItem,
   mapYourAnimesReferenceToAnimeItem,
   parseBahamutTimetableText,
   parseYourAnimesHtml,
@@ -151,7 +155,31 @@ describe("Bangumi mapper", () => {
       { name: "熊熊帮帮团5", name_cn: "熊熊帮帮团 第5季" },
       { name: "Family Guy Season 24", name_cn: "恶搞之家 第二十四季" },
       { name: "Spidey and His Amazing Friends Season 5", name_cn: "蜘蛛侠与他的神奇朋友们 第五季" },
-      { name: "SEALOOK 2nd season", name_cn: "SEALOOK 2nd season" }
+      { name: "SEALOOK 2nd season", name_cn: "SEALOOK 2nd season" },
+      { name: "Rick and Morty Season 8", name_cn: "瑞克和莫蒂 第八季" },
+      { name: "Rick and Morty: THE ANIME", name_cn: "瑞克和莫蒂：THE ANIME" },
+      { name: "Transformers: Earthspark Season 4", name_cn: "变形金刚：地球火种 第四季" },
+      { name: "Dragon Raja", name_cn: "龍族" },
+      { name: "The Patrick Star Show Season 3", name_cn: "派大星秀 第三季" },
+      { name: "皮皮鲁和鲁西西地球之钟奇遇记3", name_cn: "皮皮鲁和鲁西西地球之钟奇遇记3" },
+      { name: "천재 샤오루반", name_cn: "天才小鲁班" },
+      { name: "新西游历险记", name_cn: "新西游历险记" },
+      { name: "라바 스핀오프 - 라바 인 마스", name_cn: "爆笑虫子之火星冒险" },
+      { name: "Grimsburg", name_cn: "Grimsburg" },
+      { name: "千秋诗颂 第一季", name_cn: "千秋诗颂 第一季" },
+      { name: "꼬마버스 타요 7기", name_cn: "小公交车太友 第七季" },
+      { name: "敦煌的故事", name_cn: "敦煌的故事" },
+      { name: "Wakfu Season 4", name_cn: "沃土 第四季" },
+      { name: "Moon Girl and Devil Dinosaur Season 2", name_cn: "月亮女孩与恶魔恐龙 第二季" },
+      { name: "山海精奇", name_cn: "山海精奇" },
+      { name: "Samuel", name_cn: "Samuel" },
+      { name: "Nyaaaanvy", name_cn: "Nyaaaanvy" },
+      { name: "The Adventures of Paddington Season 3", name_cn: "帕丁顿熊的冒险之旅 第三季" },
+      { name: "Beyblade Burst QuadStrike", name_cn: "Beyblade Burst QuadStrike" },
+      { name: "The Ghost and Molly McGee Season 2", name_cn: "幽灵与莫莉 第二季" },
+      { name: "The Octonauts Season8", name_cn: "海底小纵队 第8季" },
+      { name: "Wild Kratts Season 7", name_cn: "动物兄弟 第七季" },
+      { name: "Monster High Season 2", name_cn: "怪物高中：新世代 第二季" }
     ]) {
       const item = mapBangumiSubjectToAnimeItem(
         {
@@ -166,9 +194,121 @@ describe("Bangumi mapper", () => {
         { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
       );
 
-      assert.equal(item.isJapaneseAnime, false);
-      assert.equal(item.inclusionStatus, "excluded");
+      assert.equal(item.isJapaneseAnime, false, input.name);
+      assert.equal(item.inclusionStatus, "excluded", input.name);
     }
+  });
+
+  it("excludes titles above season ten and theatrical movies", () => {
+    const excludedInputs = [
+      { name: "Yamishibai 11", name_cn: "暗芝居 第十一季", reason: "Season number exceeds 10" },
+      { name: "Nintama Rantarou Series 32", name_cn: "忍者乱太郎 第32季", reason: "Season number exceeds 10" },
+      { name: "おじゃる丸 第26シリーズ", name_cn: "", reason: "Season number exceeds 10" },
+      { name: "Example Anime Movie", name_cn: "示例动画 剧场版", reason: "Theatrical movie" },
+      { name: "テラパゴスのキラキラ探検記", name_cn: "太乐巴戈斯的闪闪发亮探险记", reason: "Non-TV special" }
+    ];
+
+    for (const input of excludedInputs) {
+      const item = mapBangumiSubjectToAnimeItem(
+        {
+          ...subject,
+          id: 3200,
+          name: input.name,
+          name_cn: input.name_cn,
+          platform: "TV",
+          infobox: []
+        },
+        [{ ep: 1, name_cn: "Episode 1", airdate: "2026-07-03", type: 0 }],
+        { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+      );
+
+      assert.equal(item.inclusionStatus, "excluded");
+      assert.equal(item.exclusionReason, input.reason);
+    }
+
+    const tenthSeason = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 3201,
+        name: "Allowed Season 10",
+        name_cn: "允许保留 第十季",
+        platform: "TV",
+        infobox: []
+      },
+      [{ ep: 1, name_cn: "Episode 1", airdate: "2026-07-03", type: 0 }],
+      { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+    );
+
+    assert.equal(tenthSeason.inclusionStatus, "included");
+  });
+
+  it("uses Bangumi tags and primary title script to reject non-Japanese animation without deleting Japanese Korean-source adaptations", () => {
+    const taggedChineseSubject = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 3250,
+        name: "节气密码",
+        name_cn: "节气密码",
+        platform: "TV",
+        tags: [{ name: "中国" }, { name: "TV" }],
+        infobox: []
+      },
+      [{ ep: 1, name_cn: "Episode 1", airdate: "2024-10-30", type: 0 }],
+      { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+    );
+    assert.equal(taggedChineseSubject.isJapaneseAnime, false);
+    assert.equal(taggedChineseSubject.inclusionStatus, "excluded");
+
+    const hangulPrimaryTitle = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 3251,
+        name: "슈팅스타 캐치! 티니핑",
+        name_cn: "闪耀流星 奇妙!萌可",
+        platform: "TV",
+        tags: [{ name: "TV" }],
+        infobox: []
+      },
+      [{ ep: 1, name_cn: "Episode 1", airdate: "2024-10-10", type: 0 }],
+      { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+    );
+    assert.equal(hangulPrimaryTitle.isJapaneseAnime, false);
+    assert.equal(hangulPrimaryTitle.inclusionStatus, "excluded");
+
+    const japaneseKoreanSourceAdaptation = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 3252,
+        name: "俺だけレベルアップな件",
+        name_cn: "我独自升级",
+        platform: "TV",
+        tags: [{ name: "韩国" }, { name: "韩漫" }, { name: "A-1Pictures" }, { name: "TV" }],
+        infobox: [{ key: "官方网站", value: "https://sololeveling-anime.net/" }]
+      },
+      [{ ep: 1, name_cn: "Episode 1", airdate: "2024-01-06", type: 0 }],
+      { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+    );
+    assert.equal(japaneseKoreanSourceAdaptation.isJapaneseAnime, true);
+    assert.equal(japaneseKoreanSourceAdaptation.inclusionStatus, "included");
+
+    const arknightsJapaneseProduction = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 3253,
+        name: "アークナイツ【冬隠帰路/PERISH IN FROST】",
+        name_cn: "明日方舟：冬隐归路",
+        platform: "TV",
+        tags: [{ name: "国产" }, { name: "中国" }, { name: "日本动画" }, { name: "YostarPictures" }],
+        infobox: [
+          { key: "官方网站", value: "https://arknights-anime.jp/" },
+          { key: "播放电视台", value: "テレビ東京" }
+        ]
+      },
+      [{ ep: 1, name_cn: "Episode 1", airdate: "2023-10-06", type: 0 }],
+      { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+    );
+    assert.equal(arknightsJapaneseProduction.isJapaneseAnime, true);
+    assert.equal(arknightsJapaneseProduction.inclusionStatus, "included");
   });
 
   it("excludes NSFW and explicit adult subjects", () => {
@@ -340,7 +480,8 @@ describe("source adapters", () => {
 
   it("uses Bangumi month subject fallback before reporting quarter list failure", async () => {
     const previousDataDir = process.env.DATA_DIR;
-    process.env.DATA_DIR = "tests/fixtures/missing-bangumi-cache";
+    const dataDir = await mkdtemp(join(tmpdir(), "missing-bangumi-cache-"));
+    process.env.DATA_DIR = dataDir;
     const failingClient: BangumiClient = {
       listSubjectsByMonth: async () => {
         throw new DataSourceError({
@@ -372,6 +513,40 @@ describe("source adapters", () => {
       assert.equal(result.items[0]?.bangumi.subjectId, 2001);
       assert.equal(result.warnings.some((warning) => warning.message === "Bangumi quarter subject list could not be fetched"), false);
     } finally {
+      await rm(dataDir, { recursive: true, force: true });
+      if (previousDataDir === undefined) {
+        delete process.env.DATA_DIR;
+      } else {
+        process.env.DATA_DIR = previousDataDir;
+      }
+    }
+  });
+
+  it("writes fetched Bangumi month subjects to the local snapshot cache", async () => {
+    const previousDataDir = process.env.DATA_DIR;
+    const dataDir = await mkdtemp(join(tmpdir(), "bangumi-cache-"));
+    process.env.DATA_DIR = dataDir;
+    const client: BangumiClient = {
+      listSubjectsByMonth: async ({ month }) => (month === 7 ? [subject] : []),
+      searchSubjects: async () => [],
+      getSubject: async (subjectId) => ({ ...subject, id: subjectId }),
+      getEpisodes: async () => []
+    };
+    const adapter = new BangumiSourceAdapter({
+      client,
+      monthSubjectFallback: async () => null,
+      now: () => new Date(retrievedAt)
+    });
+
+    try {
+      const result = await adapter.fetchSeason({ year: 2025, season: 7, quarter: "summer" });
+      const cached = JSON.parse(await readFile(join(dataDir, "bangumi-202507-subjects.json"), "utf8")) as unknown[];
+
+      assert.equal(result.items.length, 1);
+      assert.equal(cached.length, 1);
+      assert.equal((cached[0] as { id?: unknown }).id, subject.id);
+    } finally {
+      await rm(dataDir, { recursive: true, force: true });
       if (previousDataDir === undefined) {
         delete process.env.DATA_DIR;
       } else {
@@ -430,6 +605,28 @@ describe("source adapters", () => {
     assert.equal(item?.schedule[0]?.timezone, "Asia/Shanghai");
     assert.equal(item?.sources[0]?.scope, "taiwan_streaming");
     assert.equal(result.warnings.length, 0);
+  });
+
+  it("marks historical Bahamut reference rows finished", () => {
+    const item = mapBahamutReferenceToAnimeItem(
+      {
+        title: "Historical Bahamut Reference",
+        url: "https://ani.gamer.com.tw/animeVideo.php?sn=2024",
+        sn: "2024",
+        uploadDate: "2024-04-05",
+        uploadTime: "22:30",
+        bangumiSubjectId: null,
+        format: "tv",
+        retrievedAt
+      },
+      retrievedAt
+    );
+
+    assert.equal(item?.status, "finished");
+    assert.equal(item?.endDate, "2024-06-30");
+    assert.equal(item?.updateWeekday, null);
+    assert.equal(item?.updateTime, null);
+    assert.equal(item?.schedule[0]?.airTime, "22:30");
   });
 
   it("parses Bahamut timetable text into structured reference slots", () => {
@@ -537,6 +734,26 @@ describe("source adapters", () => {
     assert.equal(item?.sources[0]?.scope, "japan_broadcast");
   });
 
+  it("marks historical YourAnimes reference rows finished", () => {
+    const item = mapYourAnimesReferenceToAnimeItem(
+      {
+        title: "Historical YourAnimes Reference",
+        aliases: [],
+        url: "https://youranimes.tw/animes/2024",
+        publishedAt: "2024-04-05T23:30:00+09:00",
+        bangumiSubjectId: null,
+        retrievedAt
+      },
+      retrievedAt
+    );
+
+    assert.equal(item?.status, "finished");
+    assert.equal(item?.endDate, "2024-06-30");
+    assert.equal(item?.updateWeekday, null);
+    assert.equal(item?.updateTime, null);
+    assert.equal(item?.schedule[0]?.airTime, "22:30");
+  });
+
   it("reads YourAnimes timetable files as a low-priority reference source", async () => {
     const adapter = new YourAnimesSourceAdapter({
       timetableFiles: ["tests/fixtures/youranimes-sample.html"],
@@ -585,7 +802,9 @@ describe("source adapters", () => {
       assert.equal(result.items.length, 1);
       assert.equal(result.items[0]?.id, "anime:202507");
       assert.equal(result.items[0]?.startDate, "2025-07-04");
-      assert.equal(result.items[0]?.updateTime, "23:30");
+      assert.equal(result.items[0]?.status, "finished");
+      assert.equal(result.items[0]?.updateTime, null);
+      assert.equal(result.items[0]?.schedule[0]?.airTime, "23:30");
       assert.equal(result.warnings.length, 0);
     } finally {
       if (previousDataDir === undefined) {

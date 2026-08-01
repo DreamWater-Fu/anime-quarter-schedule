@@ -4,6 +4,16 @@ import {
   inferUpdateWeekday,
   isValidDateString
 } from "../../anime/calculateSeason.ts";
+import {
+  hasExplicitNonJapaneseMetadataSignal,
+  hasExplicitNonJapaneseSignal,
+  hasForeignPrimaryTitleSignal,
+  hasKnownNonTvSpecialSignal,
+  hasOverSeasonLimitSignal,
+  hasTheatricalMovieSignal,
+  normalizeContentText,
+  repairMojibakeText
+} from "../../anime/contentRules.ts";
 import type { AnimeItem, AnimeSource, CoverImage, DatePrecision, InclusionStatus } from "../../types/anime.ts";
 import type { BangumiEpisode, BangumiFormatMapping, BangumiMapperOptions, BangumiSubject } from "./types.ts";
 
@@ -33,12 +43,13 @@ export function mapBangumiSubjectToAnimeItem(
   const updateWeekday = inferUpdateWeekday({ schedule, startDate });
   const source = createBangumiSource(subject, retrievedAt);
   const japanDecision = resolveJapaneseAnimeDecision(subject);
-  const inclusionStatus: InclusionStatus = japanDecision.isJapaneseAnime
+  const contentExclusionReason = resolveContentExclusionReason(subject);
+  const inclusionStatus: InclusionStatus = japanDecision.isJapaneseAnime && contentExclusionReason === null
     ? formatMapping.inclusionStatus
     : "excluded";
-  const exclusionReason = japanDecision.isJapaneseAnime
-    ? formatMapping.exclusionReason
-    : japanDecision.reason;
+  const exclusionReason = !japanDecision.isJapaneseAnime
+    ? japanDecision.reason
+    : contentExclusionReason ?? formatMapping.exclusionReason;
 
   return {
     id: `anime:${subject.id}`,
@@ -142,6 +153,34 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
     return { isJapaneseAnime: false, reason: "Not Japanese anime" };
   }
 
+  const titleValuesForOrigin = [
+    subject.name,
+    subject.name_cn,
+    extractOfficialUrl(subject),
+    ...extractAliases(subject)
+  ];
+  const metadataValuesForOrigin = [
+    ...extractBangumiTagNames(subject),
+    ...extractStringListFromInfobox(subject, [
+      "国家",
+      "国家/地区",
+      "地区",
+      "产地",
+      "製作国",
+      "制作国",
+      "制作国家",
+      "动画制作国家",
+      "Country"
+    ])
+  ];
+  if (
+    hasExplicitNonJapaneseSignal(titleValuesForOrigin) ||
+    hasForeignPrimaryTitleSignal(subject.name) ||
+    hasExplicitNonJapaneseMetadataSignal([...metadataValuesForOrigin, ...titleValuesForOrigin])
+  ) {
+    return { isJapaneseAnime: false, reason: "Not Japanese anime" };
+  }
+
   const haystack = [
     subject.name,
     subject.name_cn,
@@ -166,13 +205,10 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
     .normalize("NFKC")
     .toLowerCase();
 
-  if (/(日本|japan|japanese)/iu.test(haystack)) return { isJapaneseAnime: true };
-
-  const explicitNonJapanesePattern =
-    /(中国|中國|国产|國產|大陆|大陸|台湾|台灣|香港|美国|美國|欧美|歐美|加拿大|canada|韓国|韩国|south park|paw patrol|汪汪队|汪汪隊|柯蒂斯总统|柯蒂斯總統|curtis|ninjago|lego|乐高|樂高|幻影忍者|喜羊羊|灰太狼|超能猩云队|大头儿子|大頭兒子|小头爸爸|小頭爸爸|無涯之約|无涯之约|東游記|东游记|开心超人|開心超人|熊出没|熊出沒|猪猪侠|豬豬俠|冰球旋风|冰球旋風|primal|genndy\s+tartakovsky|史前战纪|野蛮纪源|原始战纪|熊熊帮帮团|卡酷动画春晚|卡酷2025春节动画大联欢|小小守艺人|幸福公寓|海底小纵队|octonauts|mickey|disney|miraculous|瓢虫雷迪|恶搞之家|family\s+guy|spider-man|spider man|spidey|marvel's spidey|蜘蛛侠与他的神奇朋友们|transformers:\s*earthspark|变形金刚:地球火种|我的哪吒与变形金刚|sealook|pinkfong|baby\s*shark)/iu;
-  if (explicitNonJapanesePattern.test(haystack)) {
+  if (hasExplicitNonJapaneseSignal([haystack])) {
     return { isJapaneseAnime: false, reason: "Not Japanese anime" };
   }
+  if (/(日本|japan|japanese)/iu.test(haystack)) return { isJapaneseAnime: true };
 
   const explicitAdultPattern =
     /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu;
@@ -183,6 +219,20 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
   if (/[ぁ-ゖァ-ヺー]/u.test(subject.name)) return { isJapaneseAnime: true };
 
   return { isJapaneseAnime: true };
+}
+
+function resolveContentExclusionReason(subject: BangumiSubject): string | null {
+  const values = [
+    subject.name,
+    subject.name_cn,
+    subject.platform,
+    extractOfficialUrl(subject),
+    ...extractStringListFromInfobox(subject, ["别名", "aliases", "Alias", "英文名", "English"])
+  ];
+  if (hasTheatricalMovieSignal(values)) return "Theatrical movie";
+  if (hasKnownNonTvSpecialSignal(values)) return "Non-TV special";
+  if (hasOverSeasonLimitSignal(values)) return "Season number exceeds 10";
+  return null;
 }
 
 export function mapBangumiPlatformToFormat(platform: string | undefined): BangumiFormatMapping {
@@ -335,16 +385,25 @@ function extractFirstStringFromInfobox(subject: BangumiSubject, keys: string[]):
 
 function extractStringListFromInfobox(subject: BangumiSubject, keys: string[]): string[] {
   if (!Array.isArray(subject.infobox)) return [];
-  const normalizedKeys = new Set(keys.map((key) => key.toLowerCase()));
+  const normalizedKeys = new Set(keys.map(normalizeContentText));
   const result: string[] = [];
 
   for (const item of subject.infobox) {
-    const key = item.key?.toLowerCase();
+    const key = typeof item.key === "string" ? normalizeContentText(item.key) : null;
     if (!key || !normalizedKeys.has(key)) continue;
     result.push(...unknownToStrings(item.value));
   }
 
   return [...new Set(result.map((value) => repairMojibakeText(value).trim()).filter(Boolean))];
+}
+
+function extractBangumiTagNames(subject: BangumiSubject): string[] {
+  if (!Array.isArray(subject.tags)) return [];
+  return subject.tags
+    .map((tag) => tag.name)
+    .filter((value): value is string => typeof value === "string")
+    .map((value) => repairMojibakeText(value).trim())
+    .filter(Boolean);
 }
 
 function unknownToStrings(value: unknown): string[] {
@@ -370,21 +429,4 @@ function positiveNumberOrNull(value: unknown): number | null {
 
 function positiveIntegerOrNull(value: unknown): number | null {
   return Number.isInteger(value) && Number(value) > 0 ? Number(value) : null;
-}
-
-function repairMojibakeText(value: string): string {
-  if (!looksLikeUtf8AsLatin1(value)) return value;
-
-  const repaired = Buffer.from(value, "latin1").toString("utf8");
-  return scoreMojibake(repaired) < scoreMojibake(value) ? repaired : value;
-}
-
-function looksLikeUtf8AsLatin1(value: string): boolean {
-  return /[\u00c3\u00e3\u00c2\u00c5\u00e6\u00e7\u00e8\u00e9\u00e5\u00e4\u00f0\u00fe]|[\u0080-\u009f]/u.test(value);
-}
-
-function scoreMojibake(value: string): number {
-  const markerCount = (value.match(/[\u00c3\u00e3\u00c2\u00c5\u00e6\u00e7\u00e8\u00e9\u00e5\u00e4\u00f0\u00fe]|[\u0080-\u009f]/gu) ?? []).length;
-  const replacementCount = (value.match(/\uFFFD/gu) ?? []).length;
-  return markerCount + replacementCount * 3;
 }

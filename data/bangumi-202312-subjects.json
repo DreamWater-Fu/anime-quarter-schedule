@@ -1,0 +1,2401 @@
+[
+  {
+    "date": "2023-12-31",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/d0/4b/467713_UusDZ.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/d0/4b/467713_UusDZ.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/d0/4b/467713_UusDZ.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/d0/4b/467713_UusDZ.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/d0/4b/467713_UusDZ.jpg"
+    },
+    "summary": "2023å¹´12æ31æ¥ï¼æ¥ï¼22æããæ¾éã»éä¿¡ããããFate Project å¤§æ¦æ¥TVã¹ãã·ã£ã«2023ãã«ã¦ã¢ãã¡ãFate/Grand Order è¤ä¸¸ç«é¦ã¯ããããªããæ°ä½ã¹ãã·ã£ã«ã®æ¾éãæ±ºå®ãããã¾ããï¼\r\nã¿ã¤ãã«ã¯ãFate/Grand Order è¤ä¸¸ç«é¦ã¯ããããªã ï½å¤§å¿å¹´ãæ¥½ãã¿ä¼ï¼ï¼ï¼ï¼ï½ããããã¹ããªã¼ã³ã³ãµã«ã¿ã³ããã¨ãã¦åå±æ½ãåå ããå®å¨ãªãªã¸ãã«ã¹ãã¼ãªã¼ããå±ããã¾ãã",
+    "name": "Fate/Grand Order è¤ä¸¸ç«é¦ã¯ããããªãï½å¤§å¿å¹´ããã®ãã¿ä¼2023ï½",
+    "name_cn": "Fate/Grand Order è¤ä¸¸ç«é¦æ³ä¸æç½ï½å¤§å¿å¹´æå¿«ä¼2023ï½",
+    "tags": [
+      {
+        "name": "Type-Moon",
+        "count": 82,
+        "total_count": 67399
+      },
+      {
+        "name": "æç¬",
+        "count": 80,
+        "total_count": 632934
+      },
+      {
+        "name": "æ³¡é¢çª",
+        "count": 61,
+        "total_count": 153313
+      },
+      {
+        "name": "Fate",
+        "count": 60,
+        "total_count": 46784
+      },
+      {
+        "name": "2023",
+        "count": 51,
+        "total_count": 81126
+      },
+      {
+        "name": "ç­ç",
+        "count": 43,
+        "total_count": 101612
+      },
+      {
+        "name": "FGO",
+        "count": 39,
+        "total_count": 1870
+      },
+      {
+        "name": "WEB",
+        "count": 28,
+        "total_count": 71024
+      },
+      {
+        "name": "DLE",
+        "count": 25,
+        "total_count": 977
+      },
+      {
+        "name": "ç¹å«ç¯",
+        "count": 24,
+        "total_count": 645
+      },
+      {
+        "name": "æ¼«ç»æ¹",
+        "count": 22,
+        "total_count": 853331
+      },
+      {
+        "name": "OVA",
+        "count": 19,
+        "total_count": 362765
+      },
+      {
+        "name": "è¤ä¸¸ç«é¦å¥é½ä¸ç¥é",
+        "count": 14,
+        "total_count": 14
+      },
+      {
+        "name": "2023å¹´12æ",
+        "count": 13,
+        "total_count": 368
+      },
+      {
+        "name": "TV",
+        "count": 11,
+        "total_count": 1391493
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 8,
+        "total_count": 290689
+      },
+      {
+        "name": "æ¼«æ¹",
+        "count": 7,
+        "total_count": 358953
+      },
+      {
+        "name": "æ§ç°",
+        "count": 4,
+        "total_count": 23
+      },
+      {
+        "name": "å¨ç»",
+        "count": 2,
+        "total_count": 35478
+      },
+      {
+        "name": "åå§",
+        "count": 2,
+        "total_count": 34187
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 2,
+        "total_count": 395877
+      },
+      {
+        "name": "SP",
+        "count": 1,
+        "total_count": 5898
+      },
+      {
+        "name": "ä¸­å½æ°å ç®¡æ§ç»æå",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "2024å¹´1æ",
+        "count": 1,
+        "total_count": 25105
+      },
+      {
+        "name": "æç¾",
+        "count": 1,
+        "total_count": 32
+      },
+      {
+        "name": "æ¸¸ææ¹",
+        "count": 1,
+        "total_count": 161518
+      },
+      {
+        "name": "å¥½ç",
+        "count": 1,
+        "total_count": 1524
+      },
+      {
+        "name": "æ²é",
+        "count": 1,
+        "total_count": 6081
+      },
+      {
+        "name": "2024",
+        "count": 1,
+        "total_count": 71216
+      },
+      {
+        "name": "çªå¤",
+        "count": 1,
+        "total_count": 4283
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "Fate/Grand Order è¤ä¸¸ç«é¦æ³ä¸æç½ï½å¤§å¿å¹´æå¿«ä¼2023ï½"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "1"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ31æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æææ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://anime.fate-go.jp/nazomaru/"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "æ§ç°"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "æ¯è¹ï¼LIVE LAB.ï¼ãIruma Riokaï¼LIVE LAB.ï¼ãPanï¼LIVE LAB.ï¼"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©TYPE-MOON / FGO PROJECT"
+      },
+      {
+        "key": "åæ¡",
+        "value": "æ§ç°ï¼TYPE-MOONã³ããã¯ã¨ã¼ã¹é£è¼ãKADOKAWAåï¼"
+      },
+      {
+        "key": "èæ¬",
+        "value": "æ§ç°"
+      },
+      {
+        "key": "æ¼åº",
+        "value": "æ§ç°"
+      },
+      {
+        "key": "åªè¾",
+        "value": "æ§ç°"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "æ§ç°"
+      },
+      {
+        "key": "é³ä¹å¶ä½",
+        "value": "INSPIONã¨ãã¸"
+      },
+      {
+        "key": "æ¨çé¡¾é®",
+        "value": "åå±æ½"
+      }
+    ],
+    "rating": {
+      "rank": 3797,
+      "total": 287,
+      "count": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 25,
+        "6": 83,
+        "7": 135,
+        "8": 30,
+        "9": 4,
+        "10": 7
+      },
+      "score": 6.7
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 19,
+      "dropped": 11,
+      "wish": 133,
+      "collect": 694,
+      "doing": 23
+    },
+    "id": 467713,
+    "eps": 1,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "æ¼«ç»æ¹"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-31",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/5d/65/475745_ZdAeo.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/5d/65/475745_ZdAeo.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/5d/65/475745_ZdAeo.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/5d/65/475745_ZdAeo.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/5d/65/475745_ZdAeo.jpg"
+    },
+    "summary": "2023å¹´12æ31æ¥æ¾éã®ãFate Project å¤§æ¦æ¥TVã¹ãã·ã£ã«2023ãã®åé¨ã®ã³ã¼ãã¼ã\r\nãFate/SamuraiRemnantãã«ç»å ´ããã»ã¤ãã¼ã¨ãã¼ãµã¼ã«ã¼ããç¾ä»£ã§èªåéã«ãããããå ´æãå·¡ã£ã¦ç¾å³ãããã®ãé£ã¹æ­©ãããã¨è¨ããæçªçµãã¿ãåå®¹ã\r\nå®åãã¼ãã«å ãã¦ææãæ°ä½ã¢ãã¡ãæãã¨è¨ãæµããããã\r\næ¸©æ³ã§ã®å¥æµ´ã·ã¼ã³ãããããã»ã¤ãã¼ã®å¥æµ´ã·ã¼ã³ã¯è¦ãã¦ãããªãã",
+    "name": "ã»ã¤ãã¼ã¨ãã¼ãµã¼ã«ã¼ã®æ¥æ¬åå³¶ããã ããã®æ",
+    "name_cn": "Saberä¸Berserkerçæ¥æ¬åå²ç¾é£ä¹æ",
+    "tags": [
+      {
+        "name": "Type-Moon",
+        "count": 29,
+        "total_count": 67353
+      },
+      {
+        "name": "Fate",
+        "count": 25,
+        "total_count": 46779
+      },
+      {
+        "name": "2024",
+        "count": 24,
+        "total_count": 71208
+      },
+      {
+        "name": "ç­ç",
+        "count": 24,
+        "total_count": 101584
+      },
+      {
+        "name": "OVA",
+        "count": 14,
+        "total_count": 362742
+      },
+      {
+        "name": "æ³¡é¢çª",
+        "count": 13,
+        "total_count": 153301
+      },
+      {
+        "name": "æ¸¸ææ¹",
+        "count": 11,
+        "total_count": 161496
+      },
+      {
+        "name": "ç­ç¯",
+        "count": 10,
+        "total_count": 2751
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 7,
+        "total_count": 290549
+      },
+      {
+        "name": "RouseAct",
+        "count": 6,
+        "total_count": 12
+      },
+      {
+        "name": "TV",
+        "count": 6,
+        "total_count": 1391344
+      },
+      {
+        "name": "2023",
+        "count": 6,
+        "total_count": 81124
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 6,
+        "total_count": 395835
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 4,
+        "total_count": 34754
+      },
+      {
+        "name": "ã©ã¦ãºã¢ã¯ã",
+        "count": 2,
+        "total_count": 10
+      },
+      {
+        "name": "RouseAct",
+        "count": 1,
+        "total_count": 7
+      },
+      {
+        "name": "è¡¨å",
+        "count": 1,
+        "total_count": 448
+      },
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 614367
+      },
+      {
+        "name": "D",
+        "count": 1,
+        "total_count": 322
+      },
+      {
+        "name": "SP",
+        "count": 1,
+        "total_count": 5900
+      },
+      {
+        "name": "5",
+        "count": 1,
+        "total_count": 1039
+      },
+      {
+        "name": "ç¾é£",
+        "count": 1,
+        "total_count": 28954
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35477
+      },
+      {
+        "name": "æ¸¸æ¹",
+        "count": 1,
+        "total_count": 2479
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "Saberä¸Berserkerçæ¥æ¬åå²ç¾é£ä¹æ"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "6"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ31æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.aniplex.co.jp/fateproject/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "TOKYO MXã»BS11ã»ç¾¤é¦¬ãã¬ãã»ã¨ã¡ããã¬ã"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´12æ31æ¥"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©TYPE-MOON / FGO PROJECT"
+      }
+    ],
+    "rating": {
+      "rank": 5439,
+      "total": 62,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 2,
+        "4": 0,
+        "5": 13,
+        "6": 35,
+        "7": 7,
+        "8": 3,
+        "9": 0,
+        "10": 2
+      },
+      "score": 6
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 8,
+      "dropped": 12,
+      "wish": 84,
+      "collect": 197,
+      "doing": 12
+    },
+    "id": 475745,
+    "eps": 6,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "åå",
+      "ç¾é£"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-29",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/d5/44/454887_26bbm.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/d5/44/454887_26bbm.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/d5/44/454887_26bbm.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/d5/44/454887_26bbm.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/d5/44/454887_26bbm.jpg"
+    },
+    "summary": "ä¹ä¿å¸¯äººã«ããããä¸ã¤ã®å°¸é­ç\r\n2äººã®é­å¥³ã®åæ¥è­ã¢ãã¡å",
+    "name": "BURN THE WITCH #0.8",
+    "name_cn": "é¾ä¸é­å¥³ #0.8",
+    "tags": [
+      {
+        "name": "OVA",
+        "count": 453,
+        "total_count": 362814
+      },
+      {
+        "name": "StudioColorido",
+        "count": 348,
+        "total_count": 3797
+      },
+      {
+        "name": "2023",
+        "count": 341,
+        "total_count": 81134
+      },
+      {
+        "name": "æ¼«ç»æ¹",
+        "count": 327,
+        "total_count": 853573
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 283,
+        "total_count": 464378
+      },
+      {
+        "name": "ææ",
+        "count": 280,
+        "total_count": 465636
+      },
+      {
+        "name": "æ¼«æ¹",
+        "count": 175,
+        "total_count": 358975
+      },
+      {
+        "name": "2024å¹´1æ",
+        "count": 155,
+        "total_count": 25105
+      },
+      {
+        "name": "ä¹ä¿å¸¦äºº",
+        "count": 150,
+        "total_count": 1403
+      },
+      {
+        "name": "TV",
+        "count": 135,
+        "total_count": 1391619
+      },
+      {
+        "name": "teamYamahitsuji",
+        "count": 83,
+        "total_count": 94
+      },
+      {
+        "name": "ç­ç",
+        "count": 65,
+        "total_count": 101620
+      },
+      {
+        "name": "å·ééæ",
+        "count": 53,
+        "total_count": 193
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 42,
+        "total_count": 290781
+      },
+      {
+        "name": "2024",
+        "count": 18,
+        "total_count": 71222
+      },
+      {
+        "name": "å·éè¾¾æ",
+        "count": 15,
+        "total_count": 63
+      },
+      {
+        "name": "é­æ³",
+        "count": 14,
+        "total_count": 19873
+      },
+      {
+        "name": "å±±ç°å¯è",
+        "count": 14,
+        "total_count": 28
+      },
+      {
+        "name": "teamã¤ãããã",
+        "count": 10,
+        "total_count": 26
+      },
+      {
+        "name": "2023å¹´",
+        "count": 9,
+        "total_count": 3587
+      },
+      {
+        "name": "TVSP",
+        "count": 8,
+        "total_count": 1962
+      },
+      {
+        "name": "ç°éã¢ãµã",
+        "count": 8,
+        "total_count": 21
+      },
+      {
+        "name": "2023å¹´10æ",
+        "count": 7,
+        "total_count": 37416
+      },
+      {
+        "name": "é¾ä¸é­å¥³",
+        "count": 7,
+        "total_count": 20
+      },
+      {
+        "name": "2023å¹´12æ",
+        "count": 7,
+        "total_count": 368
+      },
+      {
+        "name": "ã¹ã¿ã¸ãªã³ã­ãªã",
+        "count": 6,
+        "total_count": 141
+      },
+      {
+        "name": "Colorido",
+        "count": 5,
+        "total_count": 733
+      },
+      {
+        "name": "ç»­ä½",
+        "count": 5,
+        "total_count": 45586
+      },
+      {
+        "name": "ç¾å",
+        "count": 4,
+        "total_count": 398744
+      },
+      {
+        "name": "å²¸æ¬å",
+        "count": 4,
+        "total_count": 1325
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "é¾ä¸é­å¥³ #0.8"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "Burn the Witch #0.8: Don`t Judge a Book by Its Cover"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "1"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ29æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææäº"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://burn-the-witch-anime.com/story-zeropointeight/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "ãã¬ãæ±äº¬"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´12æ29æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "å·ééæ"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©ä¹ä¿å¸¯äººï¼éè±ç¤¾ ã»ãBURN THE WITCHãè£½ä½å§å¡ä¼"
+      },
+      {
+        "key": "åä½",
+        "value": "ä¹ä¿å¸¯äººï¼éè±ç¤¾ãé±åå°å¹´ã¸ã£ã³ããé£è¼ï¼"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "å±±ç°å¥æ"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "teamã¤ããããï¼ã¹ã¿ã¸ãªã³ã­ãªã"
+      },
+      {
+        "key": "èæ¯ç¾æ¯",
+        "value": "ã¹ã¿ã¸ãªã³ã­ãªãç¾è¡é¨"
+      },
+      {
+        "key": "3DCG",
+        "value": "Peakys"
+      },
+      {
+        "key": "æå½±",
+        "value": "EOTAæ®å½±ã¦ããã"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "ãBURN THE WITCHãè£½ä½å§å¡ä¼ï¼ãã³ãã¤ãã ã³ãã£ã«ã ã¯ã¼ã¯ã¹ããã³ãã¤ãã ã³ãã¥ã¼ã¸ãã¯ã©ã¤ããéè±ç¤¾ããã¤ã³ã¨ã³ã¸ã³ï¼ï¼æµæ²¼èª ãè¨æ¨æ¿å½¦"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "ä¼è³ä¸çµ±ãç¶å­åä¹ãå±±æ¬å¹¸æ²»ï¼ä¼ç»ååï¼ä¸­éåä¹ãå°æ± åãæè¶å¨"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "ä»²åæ²»äººãå·éååºãå¤§å¥½èª ãå±±æ¬å¹¸æ²»"
+      },
+      {
+        "key": "æ»å¶çäºº",
+        "value": "èå·è£ä¹ãåæ±è¼æãè¤å°¾æå²ãè¤å±±ç´å»ï¼å¶ä½ç»æ¬ï¼éèå°å®"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "æ°äºçµå¤ªãå°éå¯ç¹ãæ«åå­åãä»å·è¯è®"
+      },
+      {
+        "key": "å©çå¶çäºº",
+        "value": "å¨ç°éå ãé è¤èå¤®"
+      },
+      {
+        "key": "é³ä¹å¶ä½",
+        "value": "ãã³ãã¤ãã ã³ãã¥ã¼ã¸ãã¯ã©ã¤ã"
+      },
+      {
+        "key": "é³ä¹å¶ä½äºº",
+        "value": "å°éå¯ç¹"
+      },
+      {
+        "key": "å¨ç»å¶çäºº",
+        "value": "å æ²»å±æéãçéè¯é£"
+      }
+    ],
+    "rating": {
+      "rank": 2873,
+      "total": 1792,
+      "count": {
+        "1": 1,
+        "2": 4,
+        "3": 1,
+        "4": 21,
+        "5": 67,
+        "6": 374,
+        "7": 931,
+        "8": 326,
+        "9": 44,
+        "10": 23
+      },
+      "score": 6.9
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 45,
+      "dropped": 11,
+      "wish": 746,
+      "collect": 3170,
+      "doing": 123
+    },
+    "id": 454887,
+    "eps": 1,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "å¥å¹»",
+      "æ¼«ç»æ¹",
+      "ææ"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-29",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/ed/d8/471441_GMuJt.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/ed/d8/471441_GMuJt.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/ed/d8/471441_GMuJt.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/ed/d8/471441_GMuJt.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/ed/d8/471441_GMuJt.jpg"
+    },
+    "summary": "",
+    "name": "çªçªä¾ ä¹ç«éå°è±é 7",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 26775
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1275000
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 151783
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 1388
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ29æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 4,
+      "dropped": 3,
+      "wish": 1,
+      "collect": 2,
+      "doing": 0
+    },
+    "id": 471441,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-28",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/85/9c/471493_VRV8b.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/85/9c/471493_VRV8b.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/85/9c/471493_VRV8b.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/85/9c/471493_VRV8b.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/85/9c/471493_VRV8b.jpg"
+    },
+    "summary": "å°é­ä»å¤ä¹å½¤ãé¢å¯å¯ãç½å°¹ç¥å¸¦çå¥¹ä»¬çç©¿æ¢­ç²¾çµä¼ä¼´ï¼å¸ä¸ãåªååé¹¿æ¯ï¼å®æ¤ççµæ¥ä¹åº­ãå¹»å¤ä¹å±¿åæç§ä¹èãæ¥èªåå¬ä¹å´çå®æ¤èå¸é½ï¼å¨å¤è½çèè½åèæä¸ï¼å¸®å©ä»çªç ´äºå°å¢å°å°ãæ¢å¤èªç±çå¤è½ä¸ºäºè·åå¼ºå¤§çèªç¶è½éï¼æ¢å¤ºè¶æ¢¦æï¼ä¼å¾è®©é»æç¬¼ç½©åå­£ãææ¨ä¸å·²çå¸é½ä¸ºäºå¯¹æå¤è½ï¼å å¥å°é­ä»ï¼å¹¶è¿å¥æç¼ä¸­å­¦å­¦ä¹ ç¥è¯ãå¼éäºç¼ççä»ï¼éæ¸åç°èªç¶çå¥¥å¦ï¼æ±èäºå±äºèªå·±çè¶æ¢¦æãå¨è¿ä¸ªè¿ç¨ä¸­ï¼ä»åå°é­ä»å½¼æ­¤åå®¹ï¼å±åå¯¹æå¤è½ï¼å»ºç«äºæ°çç¾ç»ãåå­£å¾ªç¯ï¼ççä¸æ¯ï¼æç»ï¼ä»ä»¬å­åå¼ºå¤§çæå¿ï¼åå®æ¤åå­£çä¿¡å¿µï¼éé½åäºé¢è¶æ¢¦æï¼ç¨åå­£çèªç¶è½éï¼æè´¥å¤è½ï¼åè§£äºé»æå±æºã",
+    "name": "å·´å¦å¦å°é­ä»ä¹æç¼è¶å¯2",
+    "name_cn": "å·´å¦å¦å°é­ä»ä¹æç¼è¶å¯2",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 30638
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 1497
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1378073
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 158734
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å·´å¦å¦å°é­ä»ä¹æç¼è¶å¯2"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ28æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "ç¬¦äº®ãæåé"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "å¥¥é£å¨±ä¹ãå±±æ°´ååå¨æ¼«ï¼åºåäººï¼è¡ä¸éãè´ºææ³"
+      },
+      {
+        "key": "çå¶",
+        "value": "è¡æä¸ãéæ¯é"
+      },
+      {
+        "key": "æ»å¯¼æ¼",
+        "value": "è´ºææ³"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "æ´è³ãåè"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "èµèè"
+      },
+      {
+        "key": "ç³»åææ",
+        "value": "ç¼å§ç»é¿ï¼ææ³é£"
+      },
+      {
+        "key": "èæ¬",
+        "value": "ç¼å§ï¼è°­å®é¦ãæ±æè"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "å¶ä½å¬å¸ï¼å¹¿å·å¥¥é£æåä¼ æ­æéå¬å¸(å¥¥é£å¨±ä¹)ãæ·±å³å¸å±±æ°´ååå¨æ¼«æåæéå¬å¸"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 7,
+      "wish": 1,
+      "collect": 2,
+      "doing": 1
+    },
+    "id": 471493,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-26",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/e0/72/433729_ZxFiS.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/e0/72/433729_ZxFiS.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/e0/72/433729_ZxFiS.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/e0/72/433729_ZxFiS.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/e0/72/433729_ZxFiS.jpg"
+    },
+    "summary": "å®å®ããã®é£æ¥ç©ã«ããå»å¢ã¨åããç¥ä¿çºãæ´åã ããæ¯éãããã®çºãçµ±ã¹ãè±åããã­ãè¨ã¤ãããæã«å°ããã¦åã«åããéªç¥ã¡ãããèªç¶è±ããªé¿èå±±èã®ãµãã¨ã«ããé«æ£®çºã§åºä¼ã£ãã®ã¯â¦â¦ã",
+    "name": "éªç¥ã¡ãããã­ããã­ãã¯ãä¸ç´æ«ç·¨ã",
+    "name_cn": "éªç¥ä¸å¨äºçå°å¥³ãä¸çºªæ«ç¯ã",
+    "tags": [
+      {
+        "name": "OVA",
+        "count": 279,
+        "total_count": 362851
+      },
+      {
+        "name": "æç¬",
+        "count": 237,
+        "total_count": 633170
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 184,
+        "total_count": 396043
+      },
+      {
+        "name": "2023",
+        "count": 161,
+        "total_count": 81142
+      },
+      {
+        "name": "ç¾å",
+        "count": 158,
+        "total_count": 398802
+      },
+      {
+        "name": "æ¼«ç»æ¹",
+        "count": 132,
+        "total_count": 853720
+      },
+      {
+        "name": "Makaria",
+        "count": 89,
+        "total_count": 630
+      },
+      {
+        "name": "2023å¹´10æ",
+        "count": 86,
+        "total_count": 37420
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 66,
+        "total_count": 464478
+      },
+      {
+        "name": "TV",
+        "count": 63,
+        "total_count": 1391817
+      },
+      {
+        "name": "æ¼«æ¹",
+        "count": 50,
+        "total_count": 359037
+      },
+      {
+        "name": "è½»ç¾å",
+        "count": 34,
+        "total_count": 37864
+      },
+      {
+        "name": "å°éªç¥é£è¸¢",
+        "count": 30,
+        "total_count": 35
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 24,
+        "total_count": 290908
+      },
+      {
+        "name": "ç»­ä½",
+        "count": 24,
+        "total_count": 45595
+      },
+      {
+        "name": "éªç¥ä¸å¨äºçå°å¥³",
+        "count": 22,
+        "total_count": 743
+      },
+      {
+        "name": "å®®åå¤§ç¿",
+        "count": 10,
+        "total_count": 13
+      },
+      {
+        "name": "è",
+        "count": 6,
+        "total_count": 71110
+      },
+      {
+        "name": "2023å¹´",
+        "count": 6,
+        "total_count": 3587
+      },
+      {
+        "name": "è½»ç¾",
+        "count": 4,
+        "total_count": 4038
+      },
+      {
+        "name": "2023å¹´12æ",
+        "count": 4,
+        "total_count": 368
+      },
+      {
+        "name": "å®«åå¤§ç¿",
+        "count": 3,
+        "total_count": 3
+      },
+      {
+        "name": "æä¸æ¡å­",
+        "count": 3,
+        "total_count": 27
+      },
+      {
+        "name": "ãã«ãªã¢",
+        "count": 2,
+        "total_count": 52
+      },
+      {
+        "name": "2023ç§",
+        "count": 2,
+        "total_count": 286
+      },
+      {
+        "name": "çªå¤",
+        "count": 2,
+        "total_count": 4284
+      },
+      {
+        "name": "åå§",
+        "count": 2,
+        "total_count": 34211
+      },
+      {
+        "name": "TVSP",
+        "count": 2,
+        "total_count": 1962
+      },
+      {
+        "name": "ææ¸¸å®£ä¼ ",
+        "count": 2,
+        "total_count": 133
+      },
+      {
+        "name": "èè±",
+        "count": 1,
+        "total_count": 7931
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "éªç¥ä¸å¨äºçå°å¥³ãä¸çºªæ«ç¯ã"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "1"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ26æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææäº"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://jashinchan.com/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "BSæ¥ãã¬"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´12æ26æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "å®®åå¤§ç¿"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©ï¸ã¦ã­ã²ã»COMICã¡ããªï¼éªç¥ã¡ãããã­ããã­ãã¯è£½ä½å§å¡ä¼"
+      },
+      {
+        "key": "åä½",
+        "value": "ã¦ã­ã²ï¼COMICã¡ããªé£è¼ï¼ãã¬ãã¯ã¹ã³ããã¯ã¹åï¼"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "å¤ç®å¬ä¸æ"
+      },
+      {
+        "key": "èæ¬",
+        "value": "æä¸æ¡å­"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "å¤è³èª "
+      },
+      {
+        "key": "è²å½©è®¾è®¡",
+        "value": "å¤§äºç¾ç©º"
+      },
+      {
+        "key": "æå½±çç£",
+        "value": "æ´æ¯è±ª"
+      },
+      {
+        "key": "åªè¾",
+        "value": "ä¸¹å½©å­ï¼ã°ã©ãã£ãã«ï¼"
+      },
+      {
+        "key": "é³åçç£",
+        "value": "ä»æ³éä¸"
+      },
+      {
+        "key": "é³å",
+        "value": "ã¯ã¼ã"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "ãã«ãªã¢"
+      },
+      {
+        "key": "ç¹å«åå",
+        "value": "çæ¬çé¿èé¡é«æ£®çº"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "BSæ¥ãã¬ï¼BSæ¥æ¬ï¼ãéªç¥ã¡ãããã­ããã­ãã¯ä¸ç´æ«ç·¨ãã­ã¸ã§ã¯ã"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "BSæ¥ãã¬ï¼BSæ¥æ¬ï¼ãéªç¥ã¡ãããã­ããã­ãã¯ä¸ç´æ«ç·¨ãã­ã¸ã§ã¯ã"
+      }
+    ],
+    "rating": {
+      "rank": 8314,
+      "total": 852,
+      "count": {
+        "1": 2,
+        "2": 4,
+        "3": 18,
+        "4": 61,
+        "5": 213,
+        "6": 377,
+        "7": 123,
+        "8": 42,
+        "9": 4,
+        "10": 8
+      },
+      "score": 5.8
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 80,
+      "dropped": 25,
+      "wish": 577,
+      "collect": 1758,
+      "doing": 77
+    },
+    "id": 433729,
+    "eps": 1,
+    "meta_tags": [
+      "ç¾å",
+      "TV",
+      "æ¥æ¬",
+      "æ¼«ç»æ¹",
+      "æ¥å¸¸"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-26",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/08/3c/629649_pIKKn.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/08/3c/629649_pIKKn.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/08/3c/629649_pIKKn.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/08/3c/629649_pIKKn.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/08/3c/629649_pIKKn.jpg"
+    },
+    "summary": "ãå¤©ç¼ä¹ç¶åä»ä¸ãæ¹ç¼èªéè¨åèçæ¼«ç»ä¹¦ãäººæ°ç§å­¦å®¶:åä»ä¸ä¸ä¸­å½å¤©ç¼ãã",
+    "name": "å¤©ç¼ä¹ç¶åä»ä¸",
+    "name_cn": "å¤©ç¼ä¹ç¶åä»ä¸",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¤©ç¼ä¹ç¶åä»ä¸"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "10"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023-12-26"
+      },
+      {
+        "key": "é¾æ¥",
+        "value": [
+          {
+            "k": "bilibili",
+            "v": "https://www.bilibili.com/bangumi/media/md21164723"
+          }
+        ]
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 629649,
+    "eps": 10,
+    "meta_tags": [
+      "TV"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-22",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/cc/e4/470278_y17Sn.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/cc/e4/470278_y17Sn.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/cc/e4/470278_y17Sn.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/cc/e4/470278_y17Sn.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/cc/e4/470278_y17Sn.jpg"
+    },
+    "summary": "",
+    "name": "åµè½æå£«",
+    "name_cn": "åµè½æå£«",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 11164
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 845
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 119446
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 943715
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "åµè½æå£«"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ22æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 4,
+      "wish": 0,
+      "collect": 1,
+      "doing": 0
+    },
+    "id": 470278,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-20",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/87/10/469530_M3uT1.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/87/10/469530_M3uT1.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/87/10/469530_M3uT1.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/87/10/469530_M3uT1.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/87/10/469530_M3uT1.jpg"
+    },
+    "summary": "",
+    "name": "å¼å¿è¶äººèçä¹åæ¢ä¹å2ï¼è¶äººè®¡å",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 26522
+      },
+      {
+        "name": "å½æ¼«",
+        "count": 1,
+        "total_count": 14093
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 151428
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1271505
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 32802
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "25"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ20æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æ¯æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "éé¹°å¡é"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "é»éå©·"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 5,
+      "count": {
+        "1": 2,
+        "2": 0,
+        "3": 1,
+        "4": 2,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 2.6
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 3,
+      "dropped": 4,
+      "wish": 1,
+      "collect": 5,
+      "doing": 1
+    },
+    "id": 469530,
+    "eps": 25,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-20",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/3e/28/630372_J418Z.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/3e/28/630372_J418Z.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/3e/28/630372_J418Z.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/3e/28/630372_J418Z.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/3e/28/630372_J418Z.jpg"
+    },
+    "summary": "å¨ç»çãå¥½ä¼ä¼´ãä¸»è¦è®²è¿°äºåäº¬æ´çå¹²é¨çé£é£ââä¸ä½çç§å­¦åå£«,æ¥å°æ°çåç°åä¸ç»´å¾å°æè¨å¦²èå®¶å»ºç«äºä¸å¯¹ä¸çå¸®æ¶å¯¹è±¡,å¹¶å¸®å©å¥¹å®¶è±è´«çæäºãè¯¥çä»¥å«éçç¯å¹æç»äºä¸å¹æ¸©é¦¨èåæ»¡ä¹è¶£çæ´çç»å·,æ´çå¹²é¨çé£é£å¨æ°çä¸ç»´å¾å°æè¨å¦²èä¸å®¶äººçæ´»å¨ä¸èµ·,æåå°äº,çé£é£å°å¿å­å°æºä»åäº¬æ¥æ¥æ°çåç°,ä¸æ¥å¸æè®©ä»å¨è´«å°å°åºæ¥åæè²,äºæ¥å¸®å©è¨å¦²èçå­å¥³å·´åå°å­¦æåãå°æºå¨æåéç»è¯äºç»´å¾å°æå°æåå°é¿å¡æåå·´åå°ç­ãä»ä»¬å¨ä¸èµ·äºç¸å­¦ä¹ ,ä¸æ­è¿å,ä¸ä»å¸®å©è¨å¦²èå¤§å©¶æ¾åäºä¸¢å¤±çç¾ãå¸®å©è¨å¦²èå¤§å©¶ç ´äºä¸¢é¸¡èçæ¡,è¿ä¸èµ·ä¸º...",
+    "name": "å¥½ä¼ä¼´",
+    "name_cn": "å¥½ä¼ä¼´",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1278301
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 1,
+        "total_count": 27376
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¥½ä¼ä¼´"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "8"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023-12-20"
+      },
+      {
+        "key": "é¾æ¥",
+        "value": [
+          {
+            "k": "ç±å¥èº",
+            "v": "https://www.iqiyi.com/v_1jev7w7f1j4.html?ischarge=false&tvname=%E5%A5%BD%E4%BC%99%E4%BC%B4+%E7%AC%AC1%E9%9B%86+%E7%A0%B4%E6%A1%88&vid=1cf400202f8f156c1770547856e067cc&fid=4919382331863501&vtype=0&f_block=selector_bk-undefined&s2=wna_tvg_1st&s3=wna_tvg_select&s4=title_1&pb2=bkt%3D%26c1%3D%26childinfo%3D%26e%3D%26fatherid%3D%26position%3D3%26r_area%3D%26r_source%3D%26recext%3D%26sc1%3D15%26sqpid%3D%26stype%3D%26tagemode%3D0"
+          },
+          {
+            "k": "bilibili",
+            "v": "https://www.bilibili.com/bangumi/play/ss46876"
+          }
+        ]
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 630372,
+    "eps": 8,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-18",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/aa/1c/468115_zy6ih.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/aa/1c/468115_zy6ih.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/aa/1c/468115_zy6ih.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/aa/1c/468115_zy6ih.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/aa/1c/468115_zy6ih.jpg"
+    },
+    "summary": "ã¸ããããªã®ã«æ³£ãã»ã©ç¬ããï¼\r\n\r\nå¹¼å°æã®æãåºãæ¥å¸¸ã®æ°ã¾ãããªã¨ãã½ã¼ãã\r\nã«ã©ãã«ã«ãã¸ãããã ãã©ä¼¸ã³ä¼¸ã³ã¨æããæãï¼\r\n\r\nXï¼æ§Twitterï¼ã§å¤§ããºããã¦ãã\r\nå½æã®ãã¨ããã¥ã¼ã¹ã¿ã¼ãããã®çç¬ã³ããã¯ã¨ãã»ã¤ã\r\nã¾ããã®ã¢ãã¡åï¼ï¼\r\nã»ã¼æ¯æ¥æ¾éããã£ã¦ãâ¦ã¾ããï¼ï¼ï¼",
+    "name": "ã«ãã©ãã«ãªã¨ããããªãã¤",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ç­ç",
+        "count": 2,
+        "total_count": 100156
+      },
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1358062
+      },
+      {
+        "name": "ä¸­äº¬ãã¬ã",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "CTVMIDENJIN",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "å è¤ç´å¼",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "æ³¡é¢",
+        "count": 1,
+        "total_count": 10322
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 1,
+        "total_count": 271925
+      },
+      {
+        "name": "æ¼«ç»æ¹",
+        "count": 1,
+        "total_count": 828742
+      },
+      {
+        "name": "2023",
+        "count": 1,
+        "total_count": 80384
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ18æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.ctv.co.jp/karaebu-anime/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "ä¸­äº¬ãã¬ã"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2024å¹´1æ13æ¥"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©ä¸­äº¬ãã¬ã"
+      },
+      {
+        "key": "åä½",
+        "value": "ããã"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 2,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 4.5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 6,
+      "wish": 2,
+      "collect": 0,
+      "doing": 1
+    },
+    "id": 468115,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-15",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/86/ff/470261_b55b5.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/86/ff/470261_b55b5.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/86/ff/470261_b55b5.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/86/ff/470261_b55b5.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/86/ff/470261_b55b5.jpg"
+    },
+    "summary": "å¨æ¬å­£æäºä¸­ï¼ä¸æ¡©ä¸èµ·ç¼çççªæ¡æç ´äºèåè´å¡èªç©ºå¬å¸çå¹³éæ¥å¸¸ï¼ç¥ç§çå¤é¼ ææå¼çæç§å³å°é¢ è¦æ´ä¸ªé­æ¹å¸çå±é©ï¼èè¿çé´å½±çç§å¯ï¼ä¼¼ä¹é½èå¨é£åº§çæçæµ·å²ä¹ä¸­ã\r\nèåè´å¡å³å¿è¸ä¸æéï¼è©è´èµ·ä¿æ¤å¤§å®¶çè´£ä»»ï¼å¨é£åº§å°å²ä¸ï¼ä»ä»¬æç¶éå°äºé£ä¸ªäººï¼ç¶èäºæåå±å´è¿è¿è¶åºäºä»ä»¬çé¢æâ¦â¦\r\nè¿ä¸æ¬¡ï¼ä»ä»¬å°å¸¦é¢å¤§å®¶æ½å¥ç¥ç§çå°åºä¸çï¼å¼å¯å¨æ°è¶£å³åé©å°å¾ãæ´å¤æ¬å¿µï¼å°½å¨æ­£çæ­æï¼",
+    "name": "èåè´å¡å°ä¸ä¹è°",
+    "name_cn": "èåè´å¡å°ä¸ä¹è°",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 11164
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 845
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 119446
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 943715
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "èåè´å¡å°ä¸ä¹è°"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ15æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "éäºæ"
+      },
+      {
+        "key": "ç¼å§",
+        "value": "éäºæ"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 3,
+      "dropped": 4,
+      "wish": 0,
+      "collect": 2,
+      "doing": 0
+    },
+    "id": 470261,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-12",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/da/ed/526808_kAJja.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/da/ed/526808_kAJja.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/da/ed/526808_kAJja.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/da/ed/526808_kAJja.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/da/ed/526808_kAJja.jpg"
+    },
+    "summary": "",
+    "name": "å¨è½¦ä¾ ä¹åå¸å®å«è",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 1,
+        "total_count": 17432
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1100632
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ12æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "å¼ å«ä¸"
+      },
+      {
+        "key": "èæ¬",
+        "value": "è±ä¿ãç³å·ãè°¢éç"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 2,
+      "wish": 1,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 526808,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-08",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/fa/ee/469362_KC37R.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/fa/ee/469362_KC37R.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/fa/ee/469362_KC37R.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/fa/ee/469362_KC37R.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/fa/ee/469362_KC37R.jpg"
+    },
+    "summary": "è¿æ¯ä¸é¨é¢å80ã90åæå¹´äººçç«¥å¹´åå¿å¨ç»çãå¨å§è®²è¿°äºå¨90å¹´ä»£åæ¹é©å¼æ¾çåå²å¤§èæ¯ä¸ï¼ä¸»äººå¬æ§å¥½ï¼æµç§°ï¼é¿æ§ï¼ä¸å®¶äººåå°ä¼ä¼´ççæ´»ä¸æé¿æäºï¼æ¯ä¸é¨åæ»¡ç±ä¸æ¸©æçæ²»æç³»å¨ç»ãé¢å·å¹´ä»£æçåºæ¯ä¸éå·ï¼èåå½æ¶çåç´ ä¸èæ¯äºä»¶ï¼åç°ä¸æ®µç¬å±äº80ã90åçç¾å¥½æ¶åãå¤§å­©å­ä»¬ï¼åªååè¡å§ï¼",
+    "name": "æ§å¥½æ¶åÂ·ååå¿äº",
+    "name_cn": "æ§å¥½æ¶åÂ·ååå¿äº",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 22472
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 143656
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 1266
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1185099
+      },
+      {
+        "name": "åæåæï¼å­æ",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "å´å¤§å¸",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "å­æ",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "ï¼èï¼å¨å®¡å­2022ç¬¬039å·",
+        "count": 1,
+        "total_count": 1
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æ§å¥½æ¶åÂ·ååå¿äº"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ8æ¥"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "æçº¢è"
+      },
+      {
+        "key": "åºåäºº",
+        "value": "æçº¢è"
+      },
+      {
+        "key": "æ»å¯¼æ¼",
+        "value": "éç«å³°"
+      },
+      {
+        "key": "æ§è¡å¯¼æ¼",
+        "value": "å´è¿è¾¾ï¼å®ç¿ï¼æ¹æ­"
+      },
+      {
+        "key": "ç¼å§",
+        "value": "éç«å³°ï¼çäº®ï¼è´¹éªå©ï¼é«æ«ï¼çå²©"
+      },
+      {
+        "key": "å¶ç",
+        "value": "å¼ æ¢¦è¾ï¼æ¹èæ´ï¼çæ å¨"
+      },
+      {
+        "key": "åé",
+        "value": "æ¹ä¸æ³¢ï¼å®å¨ï¼åæ¥·åï¼å´æ°ï¼èå¶å³°"
+      },
+      {
+        "key": "åç»",
+        "value": "æ¹æ­ï¼å´ä¼ï¼å¼ æ ï¼é©¬æ¯è²ï¼ä½è¿æï¼å´çå¡ï¼è´¾çåï¼é»è"
+      },
+      {
+        "key": "å¨ç»",
+        "value": "å¼ ä¸¹ï¼å³é°ï¼éæºä½³ï¼èå±å¹³ï¼æåé¹ ï¼å­å°åï¼çé¡ç"
+      },
+      {
+        "key": "åæå¶ä½",
+        "value": "å­æï¼éå¼º"
+      },
+      {
+        "key": "éé³ç»ç­¹",
+        "value": "æ±ææï¼å°éª"
+      },
+      {
+        "key": "é³ä¹é³æ",
+        "value": "èåºé"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 3,
+      "wish": 1,
+      "collect": 2,
+      "doing": 0
+    },
+    "id": 469362,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/74/54/497294_eeN17.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/74/54/497294_eeN17.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/74/54/497294_eeN17.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/74/54/497294_eeN17.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/74/54/497294_eeN17.jpg"
+    },
+    "summary": "",
+    "name": "Quentin Blake's Box of Treasures",
+    "name_cn": "ææ±Â·å¸è±åçå®ç®±",
+    "tags": [
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 1256
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 1,
+        "total_count": 75382
+      },
+      {
+        "name": "æ¯å©æ¶",
+        "count": 1,
+        "total_count": 140
+      },
+      {
+        "name": "è±å½",
+        "count": 1,
+        "total_count": 527
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1170084
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ææ±Â·å¸è±åçå®ç®±"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "6"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ1æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææäº"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "BBC"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "Eagle Eye DramaãCreative Conspiracy"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 2,
+      "wish": 3,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 497294,
+    "eps": 6,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/b8/99/504032_wa4oP.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/b8/99/504032_wa4oP.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/b8/99/504032_wa4oP.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/b8/99/504032_wa4oP.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/b8/99/504032_wa4oP.jpg"
+    },
+    "summary": "å¤ªä¹å·´ææ¯çéªéªåäº®æ¢é©è®°ï¼æ¥æï¸°ãã©ãã´ã¹ã®ã­ã©ã­ã©æ¢æ¤è¨ï¼æ¯å®å¯æ¢¦ å°å¹³çº¿çä¸ä¸ªç­ç¯å¨ç»ç³»åãæäºçä¸»è§ä¸ºå¤ªä¹å·´ææ¯ï¼ä¸»è¦æè¿°äºå®å¨è±åæµè±å·ä¸ççæ´»ä»¥ååé£è¹ä¸çå®å¯æ¢¦ä»¬çäºå¨ã\r\n\r\nè¯¥ç­ç¯å¨ç»å±3éï¼äºç¬¬31è³33éæ¯éç»æçä¸éé¢åä¹åä½ä¸ºå°æ ç®æ­åºã",
+    "name": "ãã©ãã´ã¹ã®ã­ã©ã­ã©æ¢æ¤è¨",
+    "name_cn": "å¤ªä¹å·´ææ¯çéªéªåäº®æ¢é©è®°",
+    "tags": [
+      {
+        "name": "2023",
+        "count": 5,
+        "total_count": 76484
+      },
+      {
+        "name": "TV",
+        "count": 3,
+        "total_count": 1270545
+      },
+      {
+        "name": "OLM",
+        "count": 2,
+        "total_count": 11871
+      },
+      {
+        "name": "æ¸¸ææ¹",
+        "count": 2,
+        "total_count": 146356
+      },
+      {
+        "name": "2023å¹´12æ",
+        "count": 1,
+        "total_count": 347
+      },
+      {
+        "name": "pokemon",
+        "count": 1,
+        "total_count": 7424
+      },
+      {
+        "name": "OVA",
+        "count": 1,
+        "total_count": 341866
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 1,
+        "total_count": 220546
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¤ªä¹å·´ææ¯çéªéªåäº®æ¢é©è®°"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "3"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ1æ¥"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´12æ15æ¥"
+      },
+      {
+        "key": "åé",
+        "value": "å¨å®å¤§è²´ãæ¹¯å±±é¦å½¦ãæ¡å¤§å°"
+      },
+      {
+        "key": "æ¼åº",
+        "value": "å¨å®å¤§è²´ãä¸­ç°èª ãæ¡å¤§å°"
+      },
+      {
+        "key": "ä½ç»çç£",
+        "value": "é«æä½å¹³ãå·åå½©é¦ãåå¡åæ¶"
+      },
+      {
+        "key": "åç»",
+        "value": "é«æä½å¹³ãå·åå½©é¦ãéäºè£æªãå¤§è¥¿éä¹"
+      },
+      {
+        "key": "ç¬¬äºåç»",
+        "value": "æµ·èæ²¢å²å¸"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 11,
+      "count": {
+        "1": 0,
+        "2": 1,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 7,
+        "7": 2,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 5.7
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 3,
+      "wish": 0,
+      "collect": 18,
+      "doing": 0
+    },
+    "id": 504032,
+    "eps": 3,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "æ¸¸ææ¹"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": true,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-12-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/7e/0b/563512_43fd3.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/7e/0b/563512_43fd3.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/7e/0b/563512_43fd3.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/7e/0b/563512_43fd3.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/7e/0b/563512_43fd3.jpg"
+    },
+    "summary": "When the Ninja find a young boy, Jan, under attack by strange shadow creatures, they leap into action. But their fighting skills prove useless against their new enemies' powers and Jan is captured.\r\n\r\nJust as hope begins to fade, the dream chasers arrive to help. Together, they turn the tide, only to discover they're actually in Jan's dream. Now, united with the dream chasers, the Ninja must free Jan and the dream world from the sinister Nightmare King.",
+    "name": "Ninjago - Dream Team",
+    "name_cn": "ä¹é«å¹»å½±å¿èï¼æ¢¦ä¹é",
+    "tags": [
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 555681
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 1,
+        "total_count": 79012
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ä¹é«å¹»å½±å¿èï¼æ¢¦ä¹é"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "1"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´12æ1æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Joel Salaysay"
+      },
+      {
+        "key": "ç¼å§",
+        "value": "Tommy Andreasen"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 3,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 2,
+        "9": 0,
+        "10": 1
+      },
+      "score": 8.7
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 2,
+      "wish": 0,
+      "collect": 4,
+      "doing": 0
+    },
+    "id": 563512,
+    "eps": 1,
+    "meta_tags": [
+      "åå",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

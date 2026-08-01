@@ -1,0 +1,716 @@
+[
+  {
+    "date": "2023-06-29",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/e7/a7/428735_1v11n.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/e7/a7/428735_1v11n.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/e7/a7/428735_1v11n.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/e7/a7/428735_1v11n.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/e7/a7/428735_1v11n.jpg"
+    },
+    "summary": "ãè½ä¸è¾å­åææä¹éåï¼ã\r\n\r\nå¨é«ä¸çæ¥å­£å³å°ç»æä¹æ¶ï¼ç¾½ä¸å¥³å­å­¦å­éäººäººé½å¨åå ä¹éæ´»å¨ã\r\nå¥å­¦è¾æçç±é³ï¼ä¹ä¸ºäºå°½å¿«èå¥ç­çº§ï¼æ¥å¿å¯»æ¾ä¹éæåã\r\nå¨å¯»æ¾æ¶ï¼å¥¹åç°è¢«ç§°ä¸ºãç¾½ä¸çä¸å¯æè®®å°å¥³ãçç¯è¿æ²¡æåå ä¹éï¼\r\näºæ¯ç±é³ä¸ç±å¾åå¥¹ååºéè¯·â¦\r\n\r\næä»¬ç<é³ä¹(åå)>ï¼ä¼¤çç´¯ç´¯èåæ»¡ç¼çã\r\nè¿·è«ä¹æ æè°ï¼è¿·è«ä¹è¦åè¿ã",
+    "name": "BanG Dream! It's MyGO!!!!!",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "BanGDream",
+        "count": 8036,
+        "total_count": 19973
+      },
+      {
+        "name": "åå",
+        "count": 7426,
+        "total_count": 614709
+      },
+      {
+        "name": "é³ä¹",
+        "count": 6798,
+        "total_count": 101740
+      },
+      {
+        "name": "ç¾å",
+        "count": 5961,
+        "total_count": 398804
+      },
+      {
+        "name": "æ­æ²",
+        "count": 5505,
+        "total_count": 12015
+      },
+      {
+        "name": "2023å¹´7æ",
+        "count": 3541,
+        "total_count": 27963
+      },
+      {
+        "name": "ä¹é",
+        "count": 3022,
+        "total_count": 22479
+      },
+      {
+        "name": "å¶å",
+        "count": 2985,
+        "total_count": 71072
+      },
+      {
+        "name": "TV",
+        "count": 2867,
+        "total_count": 1391835
+      },
+      {
+        "name": "3D",
+        "count": 2582,
+        "total_count": 50814
+      },
+      {
+        "name": "2023",
+        "count": 1817,
+        "total_count": 81142
+      },
+      {
+        "name": "SANZIGEN",
+        "count": 998,
+        "total_count": 3831
+      },
+      {
+        "name": "ç¾å®®å¦é£",
+        "count": 866,
+        "total_count": 1854
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 796,
+        "total_count": 290918
+      },
+      {
+        "name": "æ¿æ¬åºå¤§",
+        "count": 499,
+        "total_count": 1133
+      },
+      {
+        "name": "ä¸æ¬¡å",
+        "count": 258,
+        "total_count": 1583
+      },
+      {
+        "name": "æ æ³é¢æµçå½è¿ä¹èå°",
+        "count": 231,
+        "total_count": 11309
+      },
+      {
+        "name": "æ ¡å­",
+        "count": 184,
+        "total_count": 448033
+      },
+      {
+        "name": "è½»ç¾å",
+        "count": 143,
+        "total_count": 37864
+      },
+      {
+        "name": "éæ¥",
+        "count": 117,
+        "total_count": 106383
+      },
+      {
+        "name": "ç¶¾å¥ãã«ã",
+        "count": 79,
+        "total_count": 831
+      },
+      {
+        "name": "å°å¥³ä¹é",
+        "count": 79,
+        "total_count": 475
+      },
+      {
+        "name": "æ¿æ¬å¹¿å¤§",
+        "count": 78,
+        "total_count": 647
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 61,
+        "total_count": 396051
+      },
+      {
+        "name": "MYGO",
+        "count": 60,
+        "total_count": 304
+      },
+      {
+        "name": "2023å¹´",
+        "count": 48,
+        "total_count": 3587
+      },
+      {
+        "name": "è½»ç¾",
+        "count": 47,
+        "total_count": 4038
+      },
+      {
+        "name": "ä¹éé¢æ",
+        "count": 47,
+        "total_count": 4742
+      },
+      {
+        "name": "ç¥ä½",
+        "count": 45,
+        "total_count": 47570
+      },
+      {
+        "name": "ãµã³ã¸ã²ã³",
+        "count": 43,
+        "total_count": 651
+      }
+    ],
+    "infobox": [
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "k": "å¤§éçæè¯",
+            "v": "è¿·éä¹å­!!!!!"
+          },
+          {
+            "v": "BanG Dream! è¿·éä¹å­!!!!!"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "13"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´6æ29æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææå"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://anime.bang-dream.com/mygo/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "TOKYO MX"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "ãã¬ãæç¥ / ãµã³ãã¬ã / éå²¡æ¾é / BSæ¥ãã¬ / AT-X"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´9æ14æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "æ¿æ¬åºå¤§"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "è¤ç°æ·³å¹³(Elements Garden)ãè¤éä»(Elements Garden)"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©BanG Dream! Project"
+      },
+      {
+        "key": "åä½",
+        "value": "ãã·ã­ã¼ã"
+      },
+      {
+        "key": "äººç©åæ¡",
+        "value": "ã²ã¨åãæ¤ç°åå¹¸"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "Craft Eggï¼å¨ç»äººç©è®¾å®ï¼è¶ä¹åæä¹ãå«æ£®åªé¦ãShin Joseph"
+      },
+      {
+        "key": "åæ¡",
+        "value": "ç¶¾å¥ãã«ã (MyGO!!!!!/Ave Mujicaåæ¡)"
+      },
+      {
+        "key": "èæ¬",
+        "value": "ç¶¾å¥ãã«ã(1,3,7,13)ãå¾è¤ã¿ã©ã(2,6,10)ãå°å·ã²ã¨ã¿(4,8,11)ãåå ´æå­(5,9,12)"
+      },
+      {
+        "key": "ç¾æ¯çç£",
+        "value": "å±±æ ¹å·¦å¸ãå¯¾é¦¬éç´"
+      },
+      {
+        "key": "åªè¾",
+        "value": "æ¥é«åç¾"
+      },
+      {
+        "key": "æ¨¡åçç£",
+        "value": "æ­¦åæ³°ä¹ãå¯ºæå¯"
+      },
+      {
+        "key": "ç»éª¨çç£",
+        "value": "ç¢ä»£å¥æ´¥å­ãææ¨äº¨"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "BanG Dream! Projectï¼ãã·ã­ã¼ããTOKYO MXãGood Smile Companyãããªãã­ã¤ã³ã¿ã¼ãã·ã§ãã«ãã¦ã«ãã©ã¹ã¼ãã¼ãã¯ãã£ã¼ãºï¼"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "æ ¹æ¬éè²´ãéå­åºå­ãå®ä½ç¾©å¤§ãç¢ç°é¨è¡åº¸ãæ¾æµ¦è£æ"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "ä¸­éåäººãåæ¾¤å²éãåæ¡ãéæéæãç¶å­ä¿®ä¸ï¼MyGO!!!!!å¶çäººï¼æ¥ä¸äºç¾"
+      },
+      {
+        "key": "å©çå¶çäºº",
+        "value": "é«æ¯è¯ä½é¦ãå°è¥¿è£è²´ãå®®åæµãé·å°¾ç¥å¤ãé«æ ¹å¯¿ç¾å­"
+      },
+      {
+        "key": "å¨ç»å¶çäºº",
+        "value": "æ¾æµ¦è£æãä¿ä½ææ±°"
+      },
+      {
+        "key": "é³ä¹å¶ä½äºº",
+        "value": "åæç§è³"
+      },
+      {
+        "key": "åé",
+        "value": "æ¿æ¬åºå¤§(1,3)ãæ¢æ´¥æç¾(2,7,10)ãæç¿å­(4,12)ãæ£®ç°ç´å(5,8,11)ãå²¡ããã(6)ãå¥¥å·å°å¼¥(9,13)"
+      },
+      {
+        "key": "Live åéæ¼åº",
+        "value": "åéï¼æ¥é«åç¾(12,13)ãé´æ¨å¤§ä»(12)ï¼æ¼åºï¼å±±ä¹å£åµ(3)"
+      },
+      {
+        "key": "OPã»ED åé",
+        "value": "æ¢æ´¥æç¾ / æ± ç°æ°å©"
+      },
+      {
+        "key": "OPã»ED æ¼åº",
+        "value": "æ¢æ´¥æç¾ / æ± ç°æ°å©"
+      },
+      {
+        "key": "æ¼åº",
+        "value": "é è¤æ±(1,2,9)ãå¤§æ£®å¤§å°(3,5,12)ãå±±ä¹å£åµ(13)ãå¤è³å¬ä¸é(4,6,8,11)ãæ¢æ´¥æç¾(7,10)"
+      },
+      {
+        "key": "CG å¯¼æ¼",
+        "value": "å¥¥å·å°å¼¥(CGæ»ç)ãé è¤æ±(1-2,7,9)ãå¤§æ£®å¤§å°(3,5,10,12)ãå¤è³å¬ä¸é(4,6,8,11)ãå±±ä¹å£åµ(13)ï¼Liveï¼å±±ä¹å£åµ(3,12)ãå®®ç°æå®(7)ãé è¤æ±(10)ãé´æ¨å¤§ä»(12)ãå°å·æµ©å¤ªæ(13)"
+      },
+      {
+        "key": "ä½ç»çç£",
+        "value": "åç°äºç´ãè¶ä¹åæä¹ãä¾ç°ç¥è¼ãå«æ£®åªé¦ãå¤§å³°èª ä¹ãShin Joseph"
+      },
+      {
+        "key": "æ»ä½ç»çç£",
+        "value": "è¶ä¹åæä¹"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½è¯",
+        "value": "è¤ååªæ¨¹(SUPA LOVE) / ç¹ç°ããã(Elements Garden)"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½æ²",
+        "value": "hisakuni(SUPA LOVE) /  è¤ç°æ·³å¹³(Elements Garden)"
+      },
+      {
+        "key": "ä¸»é¢æ­ç¼æ²",
+        "value": "hisakuni(SUPA LOVE) / è¤ç°æ·³å¹³(Elements Garden)"
+      },
+      {
+        "key": "ä¸»é¢æ­æ¼åº",
+        "value": "MyGO!!!!!"
+      },
+      {
+        "key": "æå¥æ­ä½è¯",
+        "value": "ç¶¾å¥ãã«ããè¤ååªæ¨¹ãç¹ç°ããããä¸æ¾ç¯åº·"
+      },
+      {
+        "key": "æå¥æ­ä½æ²",
+        "value": "è¤ç°æ·³å¹³ãæ¨ä¸é¾å¹³ãæ¨ªå°å¥å¤ªãé·è°·å·å¤§ä»ãæ¾ååº·å¸ãä¸æ¾ç¯åº·"
+      },
+      {
+        "key": "æå¥æ­ç¼æ²",
+        "value": "è¤ç°æ·³å¹³ãæ¨ä¸é¾å¹³ãæ¨ªå°å¥å¤ªãé·è°·å·å¤§ä»ãæ¾ååº·å¸ãè¤éä»"
+      },
+      {
+        "key": "æå¥æ­æ¼åº",
+        "value": "CRYCHICãè±å·ç¥¥å­(é«å°¾å¥é³)ãMyGO!!!!!ãAve Mujica"
+      }
+    ],
+    "rating": {
+      "rank": 272,
+      "total": 31375,
+      "count": {
+        "1": 525,
+        "2": 167,
+        "3": 127,
+        "4": 248,
+        "5": 574,
+        "6": 1975,
+        "7": 5627,
+        "8": 10622,
+        "9": 7254,
+        "10": 4256
+      },
+      "score": 7.9
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 711,
+      "dropped": 639,
+      "wish": 3928,
+      "collect": 47483,
+      "doing": 3601
+    },
+    "id": 428735,
+    "eps": 13,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "åå",
+      "é³ä¹"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-06-21",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/98/c6/631049_vVj3g.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/98/c6/631049_vVj3g.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/98/c6/631049_vVj3g.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/98/c6/631049_vVj3g.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/98/c6/631049_vVj3g.jpg"
+    },
+    "summary": "Minnie and Daisy have adventures in the great outdoors as they open their latest enterprise, Camp Minnie! They have lots of fun under the sun at this cool, new campground in the woods: horseback riding, water sports, sing-alongs, s'mores by the campfire, and even a wilderness fashion show. With Clarabelle as Activities Director, Cuckoo-Loca there to lend a wing, and surprise visits from woodland creatures, hijinks abound. Along the way, theyâre joined by old friends and new, because the sâmore the merrier!",
+    "name": "Minnie's Bow-Toons: Camp Minnie",
+    "name_cn": "ç±³å¦®æ¬¢ä¹å±ï¼ä¸èµ·æ¥é²è¥",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ç±³å¦®æ¬¢ä¹å±ï¼ä¸èµ·æ¥é²è¥"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "20"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´6æ21æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Disney Junior"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2024å¹´7æ31æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 631049,
+    "eps": 20,
+    "meta_tags": [
+      "TV"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-06-17",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/69/f6/451984_EmMxU.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/69/f6/451984_EmMxU.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/69/f6/451984_EmMxU.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/69/f6/451984_EmMxU.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/69/f6/451984_EmMxU.jpg"
+    },
+    "summary": "ãå±ä»¬å°è£¸ç ç¬¬äºå­£ï¼æ°ææ§åæ¥ç¸ä¼ãå»¶ç»­ä¸ä¸å­£å°å¥¶ççå¯»å®¶æäºï¼ä¸ç¹å«éè¯·äºHarvey Guillen, Tom Kenny, Carmen EspositoåToby Foxå®¢ä¸²éé³ã",
+    "name": "We Baby Bears Season 2",
+    "name_cn": "å±ä»¬å°è£¸ç ç¬¬äºå­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 84630
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1356542
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å±ä»¬å°è£¸ç ç¬¬äºå­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "11"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´6æ17æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææå­"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´8æ26æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 2,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 2,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 6
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 4,
+      "wish": 5,
+      "collect": 4,
+      "doing": 1
+    },
+    "id": 451984,
+    "eps": 11,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2023-06-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/36/19/554022_6DJho.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/36/19/554022_6DJho.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/36/19/554022_6DJho.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/36/19/554022_6DJho.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/36/19/554022_6DJho.jpg"
+    },
+    "summary": "In the series, many legendary realms have suddenly combined into one, but their union is unstable. A Spinjitzu Ninja Master must train a new generation of heroes to help find Elemental Dragons who can save the planet before the forces of evil use the same dragon energy to destroy this new world.\r\n",
+    "name": "Ninjago:Dragons Rising Season 1",
+    "name_cn": "ä¹é«å¹»å½±å¿èï¼ç¥é¾å´èµ· ç¬¬ä¸å­£",
+    "tags": [
+      {
+        "name": "åå",
+        "count": 7,
+        "total_count": 612928
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 7,
+        "total_count": 86080
+      },
+      {
+        "name": "åé©",
+        "count": 5,
+        "total_count": 52782
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 4,
+        "total_count": 12539
+      },
+      {
+        "name": "ææ",
+        "count": 4,
+        "total_count": 463857
+      },
+      {
+        "name": "TV",
+        "count": 4,
+        "total_count": 1389626
+      },
+      {
+        "name": "ä¹é«",
+        "count": 3,
+        "total_count": 259
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 3,
+        "total_count": 249641
+      },
+      {
+        "name": "ä¹é«å¹»å½±å¿è",
+        "count": 1,
+        "total_count": 45
+      },
+      {
+        "name": "å¿è",
+        "count": 1,
+        "total_count": 2081
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ä¹é«å¹»å½±å¿èï¼ç¥é¾å´èµ· ç¬¬ä¸å­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "æ¨é«æé¢¨å¿è"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "20"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2023å¹´6æ1æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.netflix.com/jp-en/title/81519765?preventIntent=true"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "Netflix"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´10æ12æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Rich JohnsonãDaniel IfeãShane Poettcker"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "MichaelÂ·KramerãJayÂ·VincentãAdamÂ·Dib"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "JasonÂ·Cosler ãRyanÂ·Pears"
+      },
+      {
+        "key": "å¶ä½å¬å¸",
+        "value": "WildBrain Studios ãThe Lego Group"
+      },
+      {
+        "key": "åºåå¬å¸",
+        "value": "The Lego Group"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "JillÂ·WilfertãKeithÂ·MaloneãAsaÂ·TaitãRyanÂ·BurnsãLarsÂ·DanielsenãRobertÂ·MayãPamelaÂ·J. KellerãKevinÂ·BurkeãChris \"Doc\" WyattãJoshÂ·ScherbaãStephanieÂ·BettsãMorganaÂ·Duque"
+      },
+      {
+        "key": "ç¼å§",
+        "value": "Kevin BurkeãChris \"Doc\" WyattãLiz HaraãHanah Lee CookãEugene SonãGlen Lakin"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 8,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 3,
+        "6": 1,
+        "7": 1,
+        "8": 2,
+        "9": 0,
+        "10": 0
+      },
+      "score": 6
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 4,
+      "wish": 7,
+      "collect": 17,
+      "doing": 9
+    },
+    "id": 554022,
+    "eps": 20,
+    "meta_tags": [
+      "ç§å¹»",
+      "ç§å¹»",
+      "TV",
+      "TV",
+      "åå",
+      "åå",
+      "ææ",
+      "ææ",
+      "åé©",
+      "åé©",
+      "å­ä¾å",
+      "å­ä¾å",
+      "æ¬§ç¾",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

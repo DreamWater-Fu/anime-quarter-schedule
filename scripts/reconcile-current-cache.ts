@@ -1,48 +1,27 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 
 import {
   calculateActiveSeasons,
   calculatePrimarySeason,
   inferUpdateWeekday
 } from "../src/server/anime/calculateSeason.ts";
+import {
+  hasExplicitNonJapaneseMetadataSignal,
+  hasExplicitNonJapaneseSignal,
+  hasForeignPrimaryTitleSignal,
+  hasKnownNonTvSpecialSignal,
+  hasOverSeasonLimitSignal,
+  hasTheatricalMovieSignal,
+  repairMojibakeText
+} from "../src/server/anime/contentRules.ts";
 import { getDefaultStorage } from "../src/server/cache/jsonFileStorage.ts";
 import {
   mapYourAnimesReferenceToAnimeItem,
   parseYourAnimesHtml
 } from "../src/server/sources/youranimes/adapter.ts";
 import type { AnimeCache, AnimeItem, AnimeSource } from "../src/server/types/anime.ts";
+import type { BangumiSubject } from "../src/server/sources/bangumi/types.ts";
 
-const NON_JAPANESE_PATTERN = new RegExp(
-  [
-    String.raw`primal`,
-    String.raw`genndy\s+tartakovsky`,
-    String.raw`\u53f2\u524d\u6218\u7eaa`,
-    String.raw`\u91ce\u86ee\u7eaa\u6e90`,
-    String.raw`\u539f\u59cb\u6218\u7eaa`,
-    String.raw`\u718a\u718a\u5e2e\u5e2e\u56e2`,
-    String.raw`\u5361\u9177\u52a8\u753b\u6625\u665a`,
-    String.raw`\u6076\u641e\u4e4b\u5bb6`,
-    String.raw`family\s+guy`,
-    String.raw`spider-man`,
-    String.raw`spider man`,
-    String.raw`\u8718\u86db\u4fa0\u4e0e\u4ed6\u7684\u795e\u5947\u670b\u53cb\u4eec`,
-    String.raw`paw\s*patrol`,
-    String.raw`\u6c6a\u6c6a\u961f\u7acb\u5927\u529f`,
-    String.raw`curtis`,
-    String.raw`\u67ef\u8482\u65af\u603b\u7edf`,
-    String.raw`ninjago`,
-    String.raw`lego`,
-    String.raw`\u4e50\u9ad8`,
-    String.raw`\u5927\u5934\u513f\u5b50`,
-    String.raw`\u5c0f\u5934\u7238\u7238`,
-    String.raw`\u559c\u7f8a\u7f8a`,
-    String.raw`\u718a\u51fa\u6ca1`,
-    String.raw`sealook`,
-    String.raw`pinkfong`,
-    String.raw`baby\s*shark`
-  ].join("|"),
-  "iu"
-);
 const ADULT_PATTERN = /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu;
 
 interface ManualBroadcastOverride {
@@ -60,6 +39,7 @@ async function main() {
   const now = new Date().toISOString();
   const references = await readYourAnimesReferences(now);
   const manualOverrides = await readManualBroadcastOverrides();
+  const bangumiSubjects = await readBangumiSubjectSnapshots();
   const byBangumiId = new Map<number, AnimeItem>();
   const byTitle = new Map<string, AnimeItem>();
   for (const item of references) {
@@ -77,7 +57,15 @@ async function main() {
   const nextItems: AnimeItem[] = [];
 
   for (const item of cache.items) {
-    if (item.format !== "tv" || isExplicitNonJapanese(item) || isExplicitAdult(item) || isUnmatchedReferenceOnlyItem(item)) {
+    if (
+      item.format !== "tv" ||
+      isExplicitNonJapanese(item, bangumiSubjects) ||
+      isExplicitAdult(item) ||
+      isTheatricalMovie(item) ||
+      isKnownNonTvSpecial(item) ||
+      isOverSeasonLimit(item) ||
+      isUnmatchedReferenceOnlyItem(item)
+    ) {
       removed += 1;
       continue;
     }
@@ -163,20 +151,127 @@ async function readManualBroadcastOverrides(): Promise<Map<string, ManualBroadca
   }
 }
 
-function isExplicitNonJapanese(item: AnimeItem): boolean {
-  const haystack = [
+async function readBangumiSubjectSnapshots(): Promise<Map<number, BangumiSubject>> {
+  const result = new Map<number, BangumiSubject>();
+  let files: string[] = [];
+  try {
+    files = await readdir("data");
+  } catch {
+    return result;
+  }
+
+  for (const file of files) {
+    if (!/^bangumi-\d{6}-subjects\.json$/u.test(file)) continue;
+    try {
+      const parsed = JSON.parse(await readFile(`data/${file}`, "utf8")) as BangumiSubject[];
+      for (const subject of parsed) {
+        if (Number.isInteger(subject.id)) result.set(subject.id, subject);
+      }
+    } catch {
+      // Corrupt or incomplete local snapshots should not block cache cleanup.
+    }
+  }
+  return result;
+}
+
+function isExplicitNonJapanese(item: AnimeItem, bangumiSubjects: Map<number, BangumiSubject>): boolean {
+  const textValues = getAnimeTextValues(item);
+  const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
+  const subject = subjectId !== null ? bangumiSubjects.get(subjectId) : null;
+  return (
+    hasExplicitNonJapaneseSignal(textValues) ||
+    hasForeignPrimaryTitleSignal(item.title.original) ||
+    (subject !== null && subject !== undefined && (
+      hasExplicitNonJapaneseSignal(getBangumiTitleValues(subject)) ||
+      hasForeignPrimaryTitleSignal(subject.name) ||
+      hasExplicitNonJapaneseMetadataSignal([...getBangumiMetadataValues(subject), ...getBangumiTitleValues(subject)])
+    ))
+  );
+}
+
+function isTheatricalMovie(item: AnimeItem): boolean {
+  return hasTheatricalMovieSignal(getAnimeTextValues(item));
+}
+
+function isKnownNonTvSpecial(item: AnimeItem): boolean {
+  return hasKnownNonTvSpecialSignal(getAnimeTextValues(item));
+}
+
+function isOverSeasonLimit(item: AnimeItem): boolean {
+  return hasOverSeasonLimitSignal(getAnimeTextValues(item));
+}
+
+function getAnimeTextValues(item: AnimeItem): Array<string | null | undefined> {
+  return [
     item.title.original,
     item.title.japanese,
     item.title.chinese,
     item.title.english,
     ...item.title.aliases,
-    item.officialUrl
-  ]
+    item.officialUrl,
+    item.exclusionReason
+  ];
+}
+
+function getBangumiTitleValues(subject: BangumiSubject): Array<string | null | undefined> {
+  return [
+    subject.name,
+    subject.name_cn,
+    ...extractStringListFromInfobox(subject, ["别名", "別名", "aliases", "Alias", "英文名", "English"])
+  ];
+}
+
+function getBangumiMetadataValues(subject: BangumiSubject): Array<string | null | undefined> {
+  return [
+    ...extractBangumiTagNames(subject),
+    ...extractStringListFromInfobox(subject, [
+      "国家",
+      "国家/地区",
+      "地区",
+      "产地",
+      "製作国",
+      "制作国",
+      "制作国家",
+      "动画制作国家",
+      "Country"
+    ])
+  ];
+}
+
+function extractBangumiTagNames(subject: BangumiSubject): string[] {
+  if (!Array.isArray(subject.tags)) return [];
+  return subject.tags
+    .map((tag) => tag.name)
     .filter((value): value is string => typeof value === "string")
-    .join(" ")
-    .normalize("NFKC")
-    .toLowerCase();
-  return NON_JAPANESE_PATTERN.test(haystack);
+    .map((value) => repairMojibakeText(value).trim())
+    .filter(Boolean);
+}
+
+function extractStringListFromInfobox(subject: BangumiSubject, keys: string[]): string[] {
+  if (!Array.isArray(subject.infobox)) return [];
+  const normalizedKeys = new Set(keys.map((key) => repairMojibakeText(key).normalize("NFKC").trim().toLowerCase()));
+  const result: string[] = [];
+
+  for (const item of subject.infobox) {
+    const key = typeof item.key === "string"
+      ? repairMojibakeText(item.key).normalize("NFKC").trim().toLowerCase()
+      : null;
+    if (!key || !normalizedKeys.has(key)) continue;
+    result.push(...unknownToStrings(item.value));
+  }
+
+  return [...new Set(result.map((value) => repairMojibakeText(value).trim()).filter(Boolean))];
+}
+
+function unknownToStrings(value: unknown): string[] {
+  if (typeof value === "string") return [value];
+  if (Array.isArray(value)) return value.flatMap(unknownToStrings);
+  if (value && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    if (typeof record.v === "string") return [record.v];
+    if (typeof record.value === "string") return [record.value];
+  }
+  return [];
 }
 
 function isUnmatchedReferenceOnlyItem(item: AnimeItem): boolean {

@@ -1,0 +1,802 @@
+[
+  {
+    "date": "2024-08-25",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/cc/fd/559072_11CGX.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/cc/fd/559072_11CGX.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/cc/fd/559072_11CGX.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/cc/fd/559072_11CGX.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/cc/fd/559072_11CGX.jpg"
+    },
+    "summary": "",
+    "name": "Les Schtroumpfs Season 3",
+    "name_cn": "èç²¾çµ ç¬¬ä¸å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 83962
+      },
+      {
+        "name": "æ¼«ç»æ¹",
+        "count": 1,
+        "total_count": 817632
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 1,
+        "total_count": 11780
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "èç²¾çµ ç¬¬ä¸å­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "The Smurfs"
+          },
+          {
+            "v": "èç²¾çµ2021"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "52"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2024-08-25(æ¯å©æ¶) / 2024-03-09(ç¾å½)"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.smurf.com/fr"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "William Renaud"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "Brad Breeck"
+      },
+      {
+        "key": "è¯­è¨",
+        "value": "æ³è¯­ãè±è¯­"
+      },
+      {
+        "key": "åä½",
+        "value": "Peyo"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "Nele De Wilde"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½æ²",
+        "value": "Brad BreeckãJustin Bates"
+      },
+      {
+        "key": "å¶çå½å®¶/å°åº",
+        "value": "æ¯å©æ¶ / æ³å½ / ç¾å½ / å¾·å½"
+      },
+      {
+        "key": "IMDb",
+        "value": "tt14670820"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 4,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 559072,
+    "eps": 52,
+    "meta_tags": [
+      "æ¼«ç»æ¹",
+      "å­ä¾å",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2024-08-22",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/fe/eb/616232_6RRpO.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/fe/eb/616232_6RRpO.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/fe/eb/616232_6RRpO.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/fe/eb/616232_6RRpO.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/fe/eb/616232_6RRpO.jpg"
+    },
+    "summary": "Princess Merlinda, Sasha, and Nerissa emerge from the sea, embarking on an adventure to stop Pirate Barbarossa's nefarious plan of draining the ocean's magic.",
+    "name": "Mermaid Magic",
+    "name_cn": "é­æ³ç¾äººé±¼",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 3,
+        "total_count": 83973
+      },
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1344449
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "é­æ³ç¾äººé±¼"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "ç¥å¥çç¾äººé±¼"
+          },
+          {
+            "v": "ç¾äººé±¼çé­æ¯"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "10"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2024-08-22"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://mermaidmagic.com/"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "è¾è®¯è§é¢"
+      },
+      {
+        "key": "é¾æ¥",
+        "value": [
+          {
+            "k": "è¾è®¯è§é¢",
+            "v": "https://v.qq.com/x/cover/mzc00200hdd8cst/i4101wx67yi.html"
+          }
+        ]
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 1,
+        "9": 0,
+        "10": 0
+      },
+      "score": 8
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 2,
+      "wish": 1,
+      "collect": 1,
+      "doing": 0
+    },
+    "id": 616232,
+    "eps": 10,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2024-08-15",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/77/a9/383338_drzrn.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/77/a9/383338_drzrn.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/77/a9/383338_drzrn.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/77/a9/383338_drzrn.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/77/a9/383338_drzrn.jpg"
+    },
+    "summary": "It's life mostly as usual for the Smith family. Rick relaxes in a pseudo-world between multiverses, Summer helps Space Beth fight the evil Galactic Federation, and Morty falls in love with a mysterious girl. And theyâre all an anime.",
+    "name": "Rick and Morty: The Anime",
+    "name_cn": "çååè«èï¼THE ANIME",
+    "tags": [
+      {
+        "name": "åå",
+        "count": 16,
+        "total_count": 614009
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 14,
+        "total_count": 86176
+      },
+      {
+        "name": "TV",
+        "count": 11,
+        "total_count": 1390878
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 10,
+        "total_count": 250103
+      },
+      {
+        "name": "TelecomAnimationFilm",
+        "count": 9,
+        "total_count": 2761
+      },
+      {
+        "name": "2024å¹´7æ",
+        "count": 9,
+        "total_count": 36907
+      },
+      {
+        "name": "åé©",
+        "count": 8,
+        "total_count": 52938
+      },
+      {
+        "name": "2024",
+        "count": 8,
+        "total_count": 71202
+      },
+      {
+        "name": "çååè«è",
+        "count": 7,
+        "total_count": 1034
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 5,
+        "total_count": 463924
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 5,
+        "total_count": 290214
+      },
+      {
+        "name": "æç¬",
+        "count": 4,
+        "total_count": 632583
+      },
+      {
+        "name": "WEB",
+        "count": 4,
+        "total_count": 70984
+      },
+      {
+        "name": "2023",
+        "count": 2,
+        "total_count": 81107
+      },
+      {
+        "name": "åå§",
+        "count": 1,
+        "total_count": 34099
+      },
+      {
+        "name": "Rick_and_Morty",
+        "count": 1,
+        "total_count": 797
+      },
+      {
+        "name": "Telecom_Animation_Film",
+        "count": 1,
+        "total_count": 111
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35445
+      },
+      {
+        "name": "æ½è±¡",
+        "count": 1,
+        "total_count": 3933
+      },
+      {
+        "name": "ç¾å½",
+        "count": 1,
+        "total_count": 26990
+      },
+      {
+        "name": "åäºº",
+        "count": 1,
+        "total_count": 8201
+      },
+      {
+        "name": "2023å¹´",
+        "count": 1,
+        "total_count": 3586
+      },
+      {
+        "name": "æ²»æ",
+        "count": 1,
+        "total_count": 299617
+      },
+      {
+        "name": "é¿å§é",
+        "count": 1,
+        "total_count": 598
+      },
+      {
+        "name": "ç»­ä½",
+        "count": 1,
+        "total_count": 45661
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "çååè«èï¼THE ANIME"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "RICK & MORTY: THE ANIME"
+          },
+          {
+            "v": "çååè«èï¼æ¥æ¬å¨ç»"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "10"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2024å¹´8æ15æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææå"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.warnerbros.com/tv/rick-and-morty-anime"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Adult Swim / HBO Max"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "ä½ééå²"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "Jason DemargoãJoseph Ghou"
+      },
+      {
+        "key": "ç¾æ¯çç£",
+        "value": "æ¾æ²¢æç´"
+      },
+      {
+        "key": "æå½±çç£",
+        "value": "éå£é¾ç"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "Maki NaganoãMax Nishiãåç°å¥æ"
+      },
+      {
+        "key": "å©çå¶çäºº",
+        "value": "æ¿æ·»åªå¸"
+      },
+      {
+        "key": "é³ä¹å¶ä½",
+        "value": "TERRA-MUSICA"
+      },
+      {
+        "key": "ä¸»é¢æ­æ¼åº",
+        "value": "OC from COOE OF ZERPãCameron Earnshaw"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½è¯",
+        "value": "otonez"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½æ²",
+        "value": "otonez"
+      },
+      {
+        "key": "ä¸»é¢æ­ç¼æ²",
+        "value": "otonez"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "Telecom Animation Film"
+      },
+      {
+        "key": "ç³»åææ",
+        "value": "ä½ééå²"
+      }
+    ],
+    "rating": {
+      "rank": 6291,
+      "total": 57,
+      "count": {
+        "1": 1,
+        "2": 1,
+        "3": 5,
+        "4": 5,
+        "5": 9,
+        "6": 19,
+        "7": 11,
+        "8": 4,
+        "9": 0,
+        "10": 2
+      },
+      "score": 5.7
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 21,
+      "dropped": 30,
+      "wish": 83,
+      "collect": 115,
+      "doing": 25
+    },
+    "id": 383338,
+    "eps": 10,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "åå",
+      "åé©",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2024-08-07",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/b7/15/448879_b6Jb9.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/b7/15/448879_b6Jb9.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/b7/15/448879_b6Jb9.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/b7/15/448879_b6Jb9.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/b7/15/448879_b6Jb9.jpg"
+    },
+    "summary": "åéããªã³å®¶ã®è²´æã§ããã\r\nå°æ¥ãå±æããã¦ãããè¡çè­°ä¼ãã®ã¨ãªã¼ãè­°å¡ ãããªã»ããªã³ã\r\nå¸è¡ç¨®ãã¡ã®æé«çµ±æ²»æ©é¢ã§ãããè¡çè­°ä¼ããã\r\nããä»»åãå½ãããããã®ã®ãããªã¯ã«ã¹ããªãæ­ã£ã¦ãã¾ãã\r\næ¥­ãç®ãããåæè­°å¡ã§ããã²ã«ãã«ãããã£ã¼ããã¨ã³ãªã±ãèª¬å¾ã«åããã¨ã\r\nããã«ã¯èªãå¹¼å­ããããããªã®å§¿ãã\r\nä¸æ¹å··ã§ã¯ãå¸è¡ç¨®ãçã£ãè¬ã®é£ç¶æ®ºäººäºä»¶ãçºçã\r\nãã®é»å¹ã¨æãããåç¤¾ä¼çµç¹ããã³ãã¥ã©ã ãã¨ãããªã®éã«ã¯ããªã«ããéå»ã®å ç¸ãããããã§â¦â¦ã\r\nãè¡ã¨èªãã«ããã¦ãä»»åã¨è²åã®ä¸¡ç«ââæãéãã¦ã¿ãããã§ã¯ãªããï¼ã\r\nå¸è¡ç¨®ã®è²´æãã¡ã«ããããã¬ã¹ã»ãªããªã¼ã¸ã¥è²åå¥®éè¨ã\r\nå£®éºãªã´ã·ãã¯ã¯ã¼ã«ãÃèªãã«ããããã¿ãã¿è²åã¯ã\r\næããã¦ä¸¡ç«ãããã¨ãã§ããã®ãï¼ï¼",
+    "name": "ããªã³ãºã»ãã¼ãµãªã¼",
+    "name_cn": "å¾·éç§çæå¿æ",
+    "tags": [
+      {
+        "name": "2024å¹´7æ",
+        "count": 135,
+        "total_count": 36910
+      },
+      {
+        "name": "åå",
+        "count": 123,
+        "total_count": 614329
+      },
+      {
+        "name": "J.C.STAFF",
+        "count": 119,
+        "total_count": 136217
+      },
+      {
+        "name": "TV",
+        "count": 85,
+        "total_count": 1391297
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 76,
+        "total_count": 464114
+      },
+      {
+        "name": "å¸è¡é¬¼",
+        "count": 70,
+        "total_count": 10978
+      },
+      {
+        "name": "2024",
+        "count": 56,
+        "total_count": 71209
+      },
+      {
+        "name": "ææ",
+        "count": 43,
+        "total_count": 465331
+      },
+      {
+        "name": "æ¬ç",
+        "count": 38,
+        "total_count": 112478
+      },
+      {
+        "name": "èå°å§æ¹",
+        "count": 26,
+        "total_count": 28
+      },
+      {
+        "name": "é¦ç¹å",
+        "count": 24,
+        "total_count": 349
+      },
+      {
+        "name": "é¦ç»å",
+        "count": 23,
+        "total_count": 466
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 19,
+        "total_count": 290523
+      },
+      {
+        "name": "æ«æºå¥ä¸",
+        "count": 12,
+        "total_count": 20
+      },
+      {
+        "name": "æªå®æ¡£",
+        "count": 6,
+        "total_count": 4103
+      },
+      {
+        "name": "åï¼jzb",
+        "count": 5,
+        "total_count": 5
+      },
+      {
+        "name": "2024å¤",
+        "count": 4,
+        "total_count": 245
+      },
+      {
+        "name": "å°è¥¿åå¹¸",
+        "count": 3,
+        "total_count": 2110
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 3,
+        "total_count": 395819
+      },
+      {
+        "name": "ä¸éç´",
+        "count": 3,
+        "total_count": 2727
+      },
+      {
+        "name": "æ£®ç°æä¸",
+        "count": 2,
+        "total_count": 207
+      },
+      {
+        "name": "å»å¨",
+        "count": 2,
+        "total_count": 23
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 2,
+        "total_count": 34754
+      },
+      {
+        "name": "å¥³æ§å",
+        "count": 2,
+        "total_count": 6843
+      },
+      {
+        "name": "æªä¸æ ",
+        "count": 2,
+        "total_count": 633
+      },
+      {
+        "name": "TVA",
+        "count": 2,
+        "total_count": 15421
+      },
+      {
+        "name": "2024å¹´",
+        "count": 2,
+        "total_count": 2629
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¾·éç§çæå¿æ"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "TRUMPã·ãªã¼ãº TVã¢ãã¡ãããªã³ãºã»ãã¼ãµãªã¼ã"
+          },
+          {
+            "v": "TRUMPç³»å å¾·éç§çæå¿æ"
+          },
+          {
+            "v": "Delico's Nursery"
+          },
+          {
+            "v": "Delicos Nursery"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "13"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2024å¹´8æ7æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææä¸"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://delicosnursery.com"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "TOKYO MX / BS11 / ç¾¤é¦¬ãã¬ã / ã¨ã¡ããã¬ã"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "MBS"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2024å¹´11æ27æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "é¦ç¹å"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©æ«æºå¥ä¸ï¼ããªã³ãºã»ãã¼ãµãªã¼è£½ä½å§å¡ä¼"
+      },
+      {
+        "key": "åä½",
+        "value": "æ«æºå¥ä¸"
+      },
+      {
+        "key": "äººç©åæ¡",
+        "value": "èé"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "ä¼æ±èå­"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "å²©ä¸æ¦å®ãæ¸¡è¾ºãã­ãä½è¤çç´ãç°ï¨åä¹ãå®®ç°ç¥è¡ãå¤§å¡åç¥"
+      },
+      {
+        "key": "åªè¾",
+        "value": "è¥¿å±±èãä»åçå¸(å©æ)"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "ä¸å®å°å¸ãæ¸¡é¨é"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "æ´ç°å²¬ãå è¤ç¾ç§ãé·å¶ºå©æ±å­ãå¤§åç°æºå­ãæ¾ååäºãå«éæ¨«éç¾"
+      },
+      {
+        "key": "ä¸»é¢æ­æ¼åº",
+        "value": "ä¸­å³¶ç¾å / Anonymouz"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½è¯",
+        "value": "ä¸­å³¶ç¾åãéæé½ä¸é / Anonymouz"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½æ²",
+        "value": "ä¸­å³¶ç¾åãéæé½ä¸é / Anonymouz"
+      },
+      {
+        "key": "ä¸»é¢æ­ç¼æ²",
+        "value": "éæé½ä¸é / Ryuichi Kureha"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "ããªã³ãºã»ãã¼ãµãªã¼è£½ä½å§å¡ä¼ï¼AniplexãWatanabe EntertainmentãTOKYO MXãæ¥æ¬BSæ¾éãJ.C.STAFFãã³ã³ãã³ãã·ã¼ãï¼"
+      }
+    ],
+    "rating": {
+      "rank": 8951,
+      "total": 334,
+      "count": {
+        "1": 4,
+        "2": 5,
+        "3": 12,
+        "4": 42,
+        "5": 100,
+        "6": 112,
+        "7": 44,
+        "8": 9,
+        "9": 3,
+        "10": 3
+      },
+      "score": 5.5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 85,
+      "dropped": 193,
+      "wish": 326,
+      "collect": 440,
+      "doing": 158
+    },
+    "id": 448879,
+    "eps": 13,
+    "meta_tags": [
+      "æ¬ç",
+      "TV",
+      "æ¥æ¬",
+      "å¥å¹»",
+      "åå",
+      "ææ"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

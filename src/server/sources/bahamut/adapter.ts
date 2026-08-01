@@ -11,6 +11,7 @@ import {
 } from "../../anime/calculateSeason.ts";
 import type { AnimeFormat, AnimeItem, AnimeSource, SeasonKey } from "../../types/anime.ts";
 import type { AnimeSourceAdapter, SourceFetchInput, SourceFetchResult, SourceIssue } from "../types.ts";
+import { inferReferenceLifecycle } from "../referenceLifecycle.ts";
 
 export interface BahamutReferenceEntry {
   title: string;
@@ -276,6 +277,7 @@ export function mapBahamutReferenceToAnimeItem(entry: BahamutReferenceEntry, fal
   const beijingSlot = isValidTimeString(entry.uploadTime)
     ? taipeiTimeToBeijingDateTime(entry.uploadDate, entry.uploadTime)
     : { date: entry.uploadDate, time: null };
+  const startDate = beijingSlot.date;
   const schedule = [
     {
       episodeNumber: null,
@@ -287,9 +289,11 @@ export function mapBahamutReferenceToAnimeItem(entry: BahamutReferenceEntry, fal
       source: createBahamutReferenceSource(entry)
     }
   ];
-  const primarySeason = calculatePrimarySeason(entry.uploadDate);
+  const primarySeason = calculatePrimarySeason(startDate);
   const activeSeasons = calculateActiveSeasons({ schedule, fallbackPrimarySeason: primarySeason });
   const bangumiSubjectId = Number.isInteger(entry.bangumiSubjectId) ? Number(entry.bangumiSubjectId) : null;
+  const lifecycle = inferReferenceLifecycle(startDate, new Date(retrievedAt));
+  const isFinished = lifecycle.status === "finished";
 
   return {
     id: bangumiSubjectId !== null ? `anime:${bangumiSubjectId}` : `anime:bahamut:${entry.sn ?? slugify(entry.title)}`,
@@ -301,14 +305,14 @@ export function mapBahamutReferenceToAnimeItem(entry: BahamutReferenceEntry, fal
       aliases: []
     },
     format: entry.format ?? "unknown",
-    status: "airing",
-    startDate: entry.uploadDate,
-    endDate: null,
+    status: lifecycle.status,
+    startDate,
+    endDate: lifecycle.endDate,
     datePrecision: "day",
     primarySeason,
     activeSeasons,
-    updateWeekday: inferUpdateWeekday({ schedule, startDate: entry.uploadDate }),
-    updateTime: beijingSlot.time,
+    updateWeekday: isFinished ? null : inferUpdateWeekday({ schedule, startDate }),
+    updateTime: isFinished ? null : beijingSlot.time,
     timezone: "Asia/Shanghai",
     episodeCount: null,
     airedEpisodeCount: null,

@@ -20,6 +20,13 @@ import {
   seasonKeyEquals,
   seasonMonthToQuarter
 } from "./calculateSeason.ts";
+import {
+  hasExplicitNonJapaneseSignal,
+  hasForeignPrimaryTitleSignal,
+  hasKnownNonTvSpecialSignal,
+  hasOverSeasonLimitSignal,
+  hasTheatricalMovieSignal
+} from "./contentRules.ts";
 
 export interface UpdateAnimeDataOptions {
   storage?: AnimeStorage;
@@ -84,12 +91,14 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
 
     const targetSeason: SeasonKey = { year: input.year, quarter };
     const normalizedItems = fetched.items.map((item) => normalizeFetchedItem(item, now().toISOString()));
-    const targetItems = mergeDuplicateItems(normalizedItems)
-      .filter((item) => isPrimaryInSeason(item, targetSeason))
-      .filter((item) => !isUnmatchedReferenceOnlyItem(item, oldCache.items));
+    const seasonCandidates = mergeDuplicateItems(normalizedItems).filter((item) => isPrimaryInSeason(item, targetSeason));
+    const hasCatalogCandidates = seasonCandidates.some((item) => isCatalogItem(item) && isCacheEligibleAnime(item));
+    const targetItems = seasonCandidates
+      .filter((item) => !shouldDropReferenceOnlyItem(item, oldCache.items, !hasCatalogCandidates))
+      .map(markReferenceColdStartItem);
     const eligibleTargetItems = targetItems.filter(isCacheEligibleAnime);
     const fallbackSeasonItems = getOldSeasonItems(oldCache.items, targetSeason);
-    if (shouldFailEmptyUpdate(fetched.warnings, targetItems, fallbackSeasonItems)) {
+    if (shouldFailEmptyUpdate(fetched.warnings, eligibleTargetItems, fallbackSeasonItems)) {
       throw new ApiErrorException("SOURCE_UNAVAILABLE", "target season has no cached items and external sources did not return usable data", {
         status: 503,
         details: {
@@ -572,6 +581,33 @@ function isUnmatchedReferenceOnlyItem(item: AnimeItem, oldItems: AnimeItem[]): b
   return findOldItemByTitle(item, oldItems) === null;
 }
 
+function shouldDropReferenceOnlyItem(item: AnimeItem, oldItems: AnimeItem[], allowColdStart: boolean): boolean {
+  if (!isScheduleReviewItem(item) || isCatalogItem(item)) return false;
+  if (item.bangumi.subjectId !== null || item.externalIds.bangumiSubjectId !== null) return false;
+  if (!allowColdStart) return true;
+  if (findOldItemByTitle(item, oldItems) !== null) return false;
+  return !isTrustedReferenceColdStartItem(item);
+}
+
+function isTrustedReferenceColdStartItem(item: AnimeItem): boolean {
+  const hasTrustedSource = item.sources.some(
+    (source) =>
+      (source.name === "YourAnimes" && source.scope === "japan_broadcast") ||
+      (source.name === "Bahamut Anime Crazy" && source.scope === "taiwan_streaming")
+  );
+  return hasTrustedSource && item.format === "tv" && item.startDate !== null && item.schedule.length > 0;
+}
+
+function markReferenceColdStartItem(item: AnimeItem): AnimeItem {
+  if (!isScheduleReviewItem(item) || isCatalogItem(item)) return item;
+  if (item.bangumi.subjectId !== null || item.externalIds.bangumiSubjectId !== null) return item;
+  return {
+    ...item,
+    inclusionStatus: item.inclusionStatus === "included" ? "needs_review" : item.inclusionStatus,
+    dataStatus: item.dataStatus === "complete" ? "partial" : item.dataStatus
+  };
+}
+
 function mergeScheduleReviewWithOldItem(oldItem: AnimeItem, scheduleItem: AnimeItem): AnimeItem {
   const merged = mergeTwoItems(oldItem, scheduleItem);
   if (isFinalStatus(merged.status)) {
@@ -630,11 +666,31 @@ function isPrimaryInSeason(item: Pick<AnimeItem, "primarySeason">, targetSeason:
 }
 
 function isCacheEligibleAnime(item: AnimeItem): boolean {
-  return item.format === "tv" && item.isJapaneseAnime !== false && item.inclusionStatus !== "excluded" && !isAdultAnime(item);
+  const textValues = getAnimeTextValues(item);
+  return (
+    item.format === "tv" &&
+    item.isJapaneseAnime !== false &&
+    item.inclusionStatus !== "excluded" &&
+    !isAdultAnime(item) &&
+    !hasExplicitNonJapaneseSignal(textValues) &&
+    !hasForeignPrimaryTitleSignal(item.title.original) &&
+    !hasTheatricalMovieSignal(textValues) &&
+    !hasKnownNonTvSpecialSignal(textValues) &&
+    !hasOverSeasonLimitSignal(textValues)
+  );
 }
 
 function isAdultAnime(item: AnimeItem): boolean {
-  const haystack = [
+  const haystack = getAnimeTextValues(item)
+    .filter((value): value is string => typeof value === "string")
+    .join(" ")
+    .normalize("NFKC")
+    .toLowerCase();
+  return /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu.test(haystack);
+}
+
+function getAnimeTextValues(item: AnimeItem): Array<string | null | undefined> {
+  return [
     item.title.original,
     item.title.japanese,
     item.title.chinese,
@@ -642,12 +698,7 @@ function isAdultAnime(item: AnimeItem): boolean {
     ...item.title.aliases,
     item.officialUrl,
     item.exclusionReason
-  ]
-    .filter((value): value is string => typeof value === "string")
-    .join(" ")
-    .normalize("NFKC")
-    .toLowerCase();
-  return /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu.test(haystack);
+  ];
 }
 
 function summarizeUpdate(seasonItems: AnimeItem[], nextCache: AnimeCache, skippedNonJapanese: number): UpdateSummary {

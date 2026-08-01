@@ -25,6 +25,7 @@ export interface BangumiSubject {
   type: number;
   name: string;
   name_cn?: string;
+  summary?: string;
   date?: string;
   platform?: string;
   images?: BangumiImageSet;
@@ -33,6 +34,7 @@ export interface BangumiSubject {
   rating?: BangumiRating;
   rank?: number;
   infobox?: BangumiInfoboxItem[];
+  tags?: Array<{ name?: string; count?: number; total_count?: number }>;
   nsfw?: boolean;
 }
 
