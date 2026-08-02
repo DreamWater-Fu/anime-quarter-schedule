@@ -2232,6 +2232,12 @@ a:hover {
     padding-inline: 6px;
   }
 
+  .modeButton[data-mode="stats"] {
+    grid-column: 1 / -1;
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+
   .modeButton span {
     font-size: 12px;
   }

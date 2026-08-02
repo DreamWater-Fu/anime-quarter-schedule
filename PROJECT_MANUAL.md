@@ -1,6 +1,6 @@
 # Project Manual: 日本季度新番时间表
 
-最后更新: 2026-08-01
+最后更新: 2026-08-02
 
 本文件是后续 AI 的项目入口。先读本文件，再读相关代码。修改项目边界、季度规则、数据源、部署方式、缓存状态或数据口径时，必须同步更新本文件。
 
@@ -221,7 +221,7 @@ npm run build:static
 
 - `src/app/lib/userAnimePrefs.ts`: 读写 `localStorage`
 - `src/app/components/UserAnimeActionButton.tsx`: 追番 / 在看 / 观毕按钮
-- `src/app/components/ViewModeSwitcher.tsx`: 独立且紧凑的浏览模式入口, 从筛选中剥离统计列表、追番列表、个人追番、在看记录和观看记录
+- `src/app/components/ViewModeSwitcher.tsx`: 独立且紧凑的浏览模式入口, 从筛选中剥离统计列表、追番列表、个人追番、在看记录和观看记录; 移动端主列表入口独占第一行突出显示, 其余四个模式保持小尺寸并以 2x2 对称排列
 - `src/app/components/ScheduleControls.tsx`: 范围与状态筛选入口, 不再承载视图切换
 - `src/app/components/AnimeSearch.tsx`: 默认折叠的全库番剧搜索入口, 展示匹配番剧的播放年份与季度, 点击结果切换到对应 `primarySeason`; 搜索结果可直接追番、在看或观毕; 缓存更新时间变化后会刷新已有搜索词
 - `src/shared/animeSearch.ts`: 动态 API 与静态页面共用的搜索过滤、匹配和排序规则

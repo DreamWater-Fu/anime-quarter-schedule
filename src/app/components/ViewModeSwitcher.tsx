@@ -25,6 +25,7 @@ export function ViewModeSwitcher({
             aria-label={`${mode.label}：${mode.description}`}
             className="modeButton"
             data-active={value === mode.value}
+            data-mode={mode.value}
             key={mode.value}
             title={mode.description}
             type="button"
