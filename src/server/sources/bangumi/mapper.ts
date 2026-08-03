@@ -5,6 +5,8 @@ import {
   isValidDateString
 } from "../../anime/calculateSeason.ts";
 import {
+  hasExplicitExcludedBangumiSubjectId,
+  hasExplicitNonJapaneseBangumiSubjectId,
   hasExplicitNonJapaneseMetadataSignal,
   hasExplicitNonJapaneseSignal,
   hasForeignPrimaryTitleSignal,
@@ -130,26 +132,9 @@ function createBangumiSource(subject: BangumiSubject, retrievedAt: string): Anim
   };
 }
 
-const EXPLICIT_NON_JAPANESE_BANGUMI_SUBJECT_IDS = new Set([
-  219760,
-  499548,
-  529532,
-  538958,
-  547751,
-  556595,
-  561911,
-  564419,
-  587898,
-  608842,
-  609708,
-  624845,
-  625477,
-  640936
-]);
-
 function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnime: boolean; reason?: string } {
   if (subject.nsfw === true) return { isJapaneseAnime: false, reason: "R18 or NSFW content" };
-  if (EXPLICIT_NON_JAPANESE_BANGUMI_SUBJECT_IDS.has(subject.id)) {
+  if (hasExplicitNonJapaneseBangumiSubjectId(subject.id)) {
     return { isJapaneseAnime: false, reason: "Not Japanese anime" };
   }
 
@@ -222,6 +207,8 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
 }
 
 function resolveContentExclusionReason(subject: BangumiSubject): string | null {
+  if (hasExplicitExcludedBangumiSubjectId(subject.id)) return "Known out-of-scope subject";
+
   const values = [
     subject.name,
     subject.name_cn,

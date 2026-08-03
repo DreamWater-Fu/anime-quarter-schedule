@@ -24,6 +24,7 @@ import {
   seasonMonthToQuarter
 } from "./calculateSeason.ts";
 import {
+  hasExplicitExcludedBangumiSubjectId,
   hasExplicitNonJapaneseSignal,
   hasForeignPrimaryTitleSignal,
   hasKnownNonTvSpecialSignal,
@@ -820,8 +821,10 @@ function isPrimaryInSeason(item: Pick<AnimeItem, "primarySeason">, targetSeason:
 
 function isCacheEligibleAnime(item: AnimeItem): boolean {
   const textValues = getAnimeTextValues(item);
+  const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
   return (
     item.format === "tv" &&
+    !hasExplicitExcludedBangumiSubjectId(subjectId) &&
     item.isJapaneseAnime !== false &&
     item.inclusionStatus !== "excluded" &&
     !isAdultAnime(item) &&

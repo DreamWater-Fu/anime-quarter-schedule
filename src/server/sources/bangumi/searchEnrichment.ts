@@ -203,6 +203,13 @@ function getExplicitBangumiSubjectId(item: AnimeItem): number | null {
     return 294288;
   }
 
+  if (
+    item.startDate === "2020-01-10" &&
+    titles.some((title) => /とある科学の超電磁砲(?:レールガン)?T\.?|某科学的超电磁炮\s*(?:第3期|T)|Toaru Kagaku no Railgun T/iu.test(title))
+  ) {
+    return 262940;
+  }
+
   return null;
 }
 

@@ -1,0 +1,1243 @@
+[
+  {
+    "date": "2020-02-29",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/35/b1/658365_Yttm2.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/35/b1/658365_Yttm2.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/35/b1/658365_Yttm2.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/35/b1/658365_Yttm2.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/35/b1/658365_Yttm2.jpg"
+    },
+    "summary": "",
+    "name": "Ð¤Ð¸ÐºÑÐ¸ÐºÐ¸. ÐÐ¾Ð²ÐµÐ½ÑÐºÐ¸Ðµ",
+    "name_cn": "èºä¸é ç¬¬åå­£",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "èºä¸é ç¬¬åå­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "The Fixies. Newbies"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "53"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´2æ29æ¥"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2022å¹´11æ18æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 658365,
+    "eps": 53,
+    "meta_tags": [
+      "TV",
+      "ä¿ç½æ¯"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-02-21",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/78/86/295039_NgNNx.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/78/86/295039_NgNNx.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/78/86/295039_NgNNx.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/78/86/295039_NgNNx.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/78/86/295039_NgNNx.jpg"
+    },
+    "summary": "å¨2018å¹´å£è¿­ææ¼«æ§ï¼SDCCï¼çãæçå¤§æï¼åéäººæäºã10å¨å¹´åº§è°ä¼ä¸ï¼å¯¼æ¼æ´å¤«Â·è²æ´å°¼å®£å¸ï¼ãæçå¤§æï¼åéäººæäºãå°å¨è¿ªå£«å°¼æµåªä½å¹³å°ä¸åæ­åäºéå¨æ°çæäºââå®ä»¬è¢«ç§°ä¸ºâãåéäººæäºãè·æçâï¼Clone Wars Savedï¼",
+    "name": "Star Wars The Clone Wars Season 7",
+    "name_cn": "æçå¤§æï¼åéäººæäº ç¬¬ä¸å­£",
+    "tags": [
+      {
+        "name": "æçå¤§æ",
+        "count": 26,
+        "total_count": 490
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 14,
+        "total_count": 249449
+      },
+      {
+        "name": "åéäººæäº",
+        "count": 14,
+        "total_count": 59
+      },
+      {
+        "name": "2020",
+        "count": 11,
+        "total_count": 63600
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 11,
+        "total_count": 86057
+      },
+      {
+        "name": "å¤ªç©ºæ­å§",
+        "count": 7,
+        "total_count": 269
+      },
+      {
+        "name": "3D",
+        "count": 6,
+        "total_count": 50753
+      },
+      {
+        "name": "TV",
+        "count": 5,
+        "total_count": 1389323
+      },
+      {
+        "name": "å®ç»",
+        "count": 5,
+        "total_count": 1008
+      },
+      {
+        "name": "ç¾å½",
+        "count": 4,
+        "total_count": 26952
+      },
+      {
+        "name": "éæ¥æ¬",
+        "count": 2,
+        "total_count": 173
+      },
+      {
+        "name": "lucasfilm",
+        "count": 2,
+        "total_count": 36
+      },
+      {
+        "name": "çµè§å§",
+        "count": 1,
+        "total_count": 47
+      },
+      {
+        "name": "WEB",
+        "count": 1,
+        "total_count": 70807
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35398
+      },
+      {
+        "name": "æç å°",
+        "count": 1,
+        "total_count": 36
+      },
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 612370
+      },
+      {
+        "name": "2020å¹´1æ",
+        "count": 1,
+        "total_count": 24875
+      },
+      {
+        "name": "Disney",
+        "count": 1,
+        "total_count": 7557
+      },
+      {
+        "name": "å¨ä½",
+        "count": 1,
+        "total_count": 7613
+      },
+      {
+        "name": "20å¬",
+        "count": 1,
+        "total_count": 54
+      },
+      {
+        "name": "ä¸­å¹´",
+        "count": 1,
+        "total_count": 803
+      },
+      {
+        "name": "åé©",
+        "count": 1,
+        "total_count": 52711
+      },
+      {
+        "name": "Disney+",
+        "count": 1,
+        "total_count": 31
+      },
+      {
+        "name": "TVA",
+        "count": 1,
+        "total_count": 15403
+      },
+      {
+        "name": "Kevin_Kiner",
+        "count": 1,
+        "total_count": 9
+      },
+      {
+        "name": "Dave_Filoni",
+        "count": 1,
+        "total_count": 10
+      },
+      {
+        "name": "8++++",
+        "count": 1,
+        "total_count": 18
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æçå¤§æï¼åéäººæäº ç¬¬ä¸å­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "Star Wars: The Clone Wars The Final Season"
+          },
+          {
+            "v": "The Clone Wars revival"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "12"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´2æ21æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææäº"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.starwars.com/series/star-wars-the-clone-wars"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´5æ4æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Dave Filoni, Kyle Dunlevy,"
+      },
+      {
+        "key": "é¢é",
+        "value": "Disney+"
+      },
+      {
+        "key": "å½å®¶/å°åº",
+        "value": "ç¾å½"
+      },
+      {
+        "key": "è¯­è¨",
+        "value": "è±è¯­"
+      },
+      {
+        "key": "æ¯éé¿",
+        "value": "22åé"
+      },
+      {
+        "key": "èæ¬",
+        "value": "George Lucas, Matt Michnovetz, Brent V. Friedman"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "Caroline Kermel"
+      }
+    ],
+    "rating": {
+      "rank": 474,
+      "total": 60,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 2,
+        "7": 9,
+        "8": 24,
+        "9": 13,
+        "10": 11
+      },
+      "score": 8.3
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 7,
+      "dropped": 17,
+      "wish": 27,
+      "collect": 90,
+      "doing": 4
+    },
+    "id": 295039,
+    "eps": 12,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-02-16",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/2e/b1/303551_6naxY.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/2e/b1/303551_6naxY.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/2e/b1/303551_6naxY.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/2e/b1/303551_6naxY.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/2e/b1/303551_6naxY.jpg"
+    },
+    "summary": "ãã³ãã¡ãªã¼ãµã ã»ã¯ã³ã¨ã´ã¼ã«ãçä¸¸ã®ãã³ã¨ã®æ¿éãããã°ããã®æããã¡ãä¸çã¯å¹³åãåãæ»ãã¦ããããããªä¸­ãä¸ççä¼æ¥­ã®ãã¹ã¯ã»ã¤ã³ãã¹ããªã¼ã®ç¤¾é·ã§ããããã³ãã¡ã®è¯ãçè§£èã§ããããã³ãã³ã»ãã¹ã¯ããçã²ã¼ã ãã¨å¼ã°ãããçä¸¸ããã«ã®ä¸çå¤§ä¼ãéå¬ããã\r\n\r\nçã²ã¼ã ã«ã¯ä¸çä¸­ããçèãã¡ãéãã é ç¹ãç®æãã¦æ¿ããããã«ãç¹°ãåºããããã³ããã¼ããã¼ã®çä¸¸ã§ãããã©ã´ã¨å±ã«ãå¾æã®ããã«ã§è² ããè¨³ã«ã¯è¡ããªãã¨å¤§å¢ã®ã©ã¤ãã«ãã¡ã¨ç«¶ãåãã\r\n\r\nãã ä¸çä¸­ããããã£ã¦çã²ã¼ã ã§çãä¸ããä¸­ãå°çã«ã¯æ°ããªãå±æ©ãè¿«ãã¤ã¤ãã£ããå®å®è¦æ¨¡ã§æªåé«ããããã­èã§ããããã¼ã´ã£ãã¯ãã¨ããç°æäººãå°çã¸ã¨ãã£ã¦ãã¦ãçä¸¸ã¨äººéãæããã¾ã¾ã«æããå°çã«æ··ä¹±ã¨ç ´å£ããããããã¨ããã\r\n\r\nç«ã¡ã¯ã ããæ°ããªãå¼·å¤§ãªæµããã³ã¨ãã©ã´ã¯åããã¨ãåºæ¥ãã®ãï¼ï¼ ",
+    "name": "çä¸¸ã¢ã¼ãã¼ãã¢ã©ã¤ã¢ã³ã¹",
+    "name_cn": "çä¸¸6 è£ç²èç",
+    "tags": [
+      {
+        "name": "ãã ã¹ã»ã¨ã³ã¿ãã¤ã³ã¡ã³ã",
+        "count": 2,
+        "total_count": 924
+      },
+      {
+        "name": "WEB",
+        "count": 2,
+        "total_count": 70789
+      },
+      {
+        "name": "å°æãã",
+        "count": 1,
+        "total_count": 447
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 1,
+        "total_count": 12521
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 1,
+        "total_count": 86021
+      },
+      {
+        "name": "ä»å°ã¨ãª",
+        "count": 1,
+        "total_count": 25
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 1,
+        "total_count": 34703
+      },
+      {
+        "name": "é´æ¨åå°",
+        "count": 1,
+        "total_count": 81
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1389063
+      },
+      {
+        "name": "åå·æ·³",
+        "count": 1,
+        "total_count": 76
+      },
+      {
+        "name": "æ©æ¬ã¿ã¤ã",
+        "count": 1,
+        "total_count": 54
+      },
+      {
+        "name": "2020",
+        "count": 1,
+        "total_count": 63630
+      },
+      {
+        "name": "2020å¹´2æ",
+        "count": 1,
+        "total_count": 113
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 1,
+        "total_count": 288171
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "çä¸¸6 è£ç²èç"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "Bakugan: Armored Alliance"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "52"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´2æ16æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.bakugan.jp/armoredalliance/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Teletoon"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "Cartoon NetworkãYouTube"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2021å¹´1æ3æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "å¸å·éä¹"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©S/T/N/BAA PROJECT"
+      },
+      {
+        "key": "åä½",
+        "value": "SPIN MASTER"
+      },
+      {
+        "key": "åæ¡",
+        "value": "ææ¬éä¿"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "é«ç°çç"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 2,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 2,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 8,
+      "wish": 4,
+      "collect": 6,
+      "doing": 1
+    },
+    "id": 303551,
+    "eps": 52,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-02-16",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/b0/a3/316865_05lS7.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/b0/a3/316865_05lS7.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/b0/a3/316865_05lS7.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/b0/a3/316865_05lS7.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/b0/a3/316865_05lS7.jpg"
+    },
+    "summary": "âDuncanvilleâ is centered around a spectacularly average 15-year-old boy with a rich fantasy life, and the people in his world. Like most 15-year-olds, Duncan can see adulthood on the horizon: money, freedom, cars and girls; but the reality is more like: always being broke, driving with one's mom sitting shotgun and babysitting one's sister. He's not exceptional, but he has a wild imagination in which he's never anything less than amazing. Duncan's mom, Annie, a parking enforcement officer who dreams of someday being a detective, lives in perpetual fear that her teenage son is one bad decision away from ruining his life and will do anything to stop him from doing so. Duncan's father, Jack, is a classic-rock-obsessed plumber who's determined to be a better dad than the one he had. Duncan's 12-year-old sister, Kimberly, is awkward, emotional and can hold grudges forever, while waiting patiently for revenge. She's all emotions all the time and nobody's problems are bigger than hers.",
+    "name": "Duncanville Season 1",
+    "name_cn": "éè¯å°é ç¬¬ä¸å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 3,
+        "total_count": 83817
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1343518
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "éè¯å°é ç¬¬ä¸å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "11"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´2æ16æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æææ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.fox.com/duncanville/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Fox"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´5æ17æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Frank Marino, Anne Walker Farrell, Adam Henry, Chuck Sheetz, Jake Hollander, Will Strode"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "John Frizzell"
+      },
+      {
+        "key": "èæ¬",
+        "value": "Amy Poehler, Eddie Quintana, Mike Scully, Julie Thacker-Scully, Anthony Gioe, Rebecca Hoobler, Nick Mandernach, Ava Tramer, Andy Lee, Sara Scully, Henry Gammill, Isaiah Lester, Andrew Lee, John Viener"
+      },
+      {
+        "key": "åç»",
+        "value": "NE4U: Ji Eun Kim, Chang Jin Park, Mi Na Won"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "Julie Thacker Scully, Amy Poehler, Dave Becky"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "Bento Box Entertainment, NE4U"
+      },
+      {
+        "key": "å¶ä½",
+        "value": "Paper Kite Productions, Scullys Productions, 3 Arts Entertainment, Universal Television, Fox Entertainment, 20th Television"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 10,
+      "wish": 3,
+      "collect": 2,
+      "doing": 1
+    },
+    "id": 316865,
+    "eps": 11,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-02-13",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/05/39/380580_BzuCo.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/05/39/380580_BzuCo.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/05/39/380580_BzuCo.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/05/39/380580_BzuCo.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/05/39/380580_BzuCo.jpg"
+    },
+    "summary": "ä¸äº¬ãã¦ããæ®éã®ç½ãã³ããã³ããã¨ããã´ã­ãã£ã³ãã¨ããã«ããããè¨ããªãã´ã­ãã£ã³ã¨ãã®ä»²éãã¡ã«çãããããããµãããããããã³ãã®ã´ã­ãã®ä¸çã",
+    "name": "ãã³ãã®ã´ã­ ä»¤åç",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ç©º",
+        "count": 1,
+        "total_count": 1458
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 1,
+        "total_count": 271925
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1358062
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "20"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´2æ13æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææå"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "æ±æµ·ãã¬ããä¸­äº¬ãã¬ããCBCãã¬ãããã¬ãæç¥"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "Locipoï¼ã­ã­ãï¼"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´8æ6æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "å°¾ä¸­ããã"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "å£ç¬å¤ªé"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "STUDYåªä½"
+      },
+      {
+        "key": "é³åçç£",
+        "value": "åæå°ç´"
+      },
+      {
+        "key": "é³å",
+        "value": "ãªãã¸ã§ã¯ã"
+      },
+      {
+        "key": "é³æ",
+        "value": "è±å³¶èäºº"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "åé¬¨ã¹ã¿ã¸ãª"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "MMDGP"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 5,
+      "wish": 1,
+      "collect": 1,
+      "doing": 0
+    },
+    "id": 380580,
+    "eps": 20,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-02-05",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/39/51/575435_DDLMq.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/39/51/575435_DDLMq.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/39/51/575435_DDLMq.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/39/51/575435_DDLMq.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/39/51/575435_DDLMq.jpg"
+    },
+    "summary": "ãå½±çä¸»è¦è®²è¿°çæ¯ä¸åªæºååå¨çå°èèå¥å¸ä¹å½å»é£é·è°·åä¸ä»¶éå¸¸éè¦çäºæãéç»æ¸¡å£ï¼æè¹çå°å¦¹è¦å°èèåç­åºææå¥¹æè¯»è¯å¥çä½èååºå¤ï¼æ¹è½ä¸è¹ãå°èèè½»æ¾åºç­ï¼æç»å¾å°äºè¹å®¶çè®¤å¯å¹¶ä¸äºè¹ãå¨è¡è¹è¿ç¨ä¸­ä»ä»¬çªéåé¢å«æ¹è¢­æ¥çé³é±¼ï¼å°èèè¿ç¨èªå·±çç¬é¨ç»å­¦\"æé£ä¼¸è¿\"æåå»éäºé³é±¼ãä½ç±äºææå¤ªè¿æ¿çå¼åäºæµ·å¸ï¼è¹åäººé½ç»ç»è¢«æµ·å¸æåæ²¡ãç¶èè¿åªæ¯æäºçå¼å§ãå½å°èèçå¼åç¼ï¼ä»å·²ç¶èº«å¤é£äºå²ä¸­ï¼å¨è¿éç»è¯äºå¥½åä¸çäºï¼ å¹¶æ­£å¼å¼å§äºä»ä»¬çåé©ä¹æãéä¸­å°èèç»éäºå­æè®¾è®¡çéé¾éµï¼åäººçä¸çäºè¡éµæ³ï¼ååå¦é­ç­ç­ï¼ä½å°èèé½è¿ç¨èªå·±å¯¹å¤å¸æå­¦çç¥è¯ä»¥åæ­¦å­¦çæè½æåè±é©ï¼å¹¶ç¦»å¸åäº¤ä»£çä»»å¡æå¨å°è¶æ¥è¶è¿â¦â¦",
+    "name": "éé¾è°·",
+    "name_cn": "éé¾è°·",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1345466
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 29570
+      },
+      {
+        "name": "WEB",
+        "count": 1,
+        "total_count": 68367
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "éé¾è°·"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "12"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020-02-05(ä¸­å½å¤§é)"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "ç±å¥èº"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "çå·å"
+      },
+      {
+        "key": "èæ¬",
+        "value": "çå·å"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "çå·å"
+      },
+      {
+        "key": "ç¾æ¯è®¾è®¡",
+        "value": "çå·å"
+      },
+      {
+        "key": "é¡¹ç®ç­å",
+        "value": "çå·å"
+      },
+      {
+        "key": "æ¨¡åæ´ç",
+        "value": "çå·å"
+      },
+      {
+        "key": "å¨ä½è®¾è®¡",
+        "value": "çå·å"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "éåºé£çå½±è§å¶ä½æéå¬å¸"
+      },
+      {
+        "key": "æ¸²æè¾åº",
+        "value": "çå·å"
+      },
+      {
+        "key": "éé³ç®¡ç",
+        "value": "æåé¾ãçæå"
+      },
+      {
+        "key": "å½±çåæ",
+        "value": "çå·åãæµ¦è´æãç®¡ç»´åãé­å¨ç¢§"
+      },
+      {
+        "key": "åºåå¬å¸",
+        "value": "éåºé£çå½±è§å¶ä½æéå¬å¸"
+      },
+      {
+        "key": "é¾æ¥",
+        "value": [
+          {
+            "k": "ç±å¥èº",
+            "v": "https://www.iqiyi.com/v_19rw088sr4.html?vid=c7ca2e296c562da648ba6ea1d7057b86&ischarge=false&vtype=0&albumid=250503501&fid=250503501&ht=0&s2=short_half_ply1&s3=tab_tuijian&s4=watch_video"
+          }
+        ]
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 3,
+      "count": {
+        "1": 3,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 1,
+      "collect": 3,
+      "doing": 0
+    },
+    "id": 575435,
+    "eps": 12,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-02-02",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/40/14/297094_4TUt8.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/40/14/297094_4TUt8.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/40/14/297094_4TUt8.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/40/14/297094_4TUt8.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/40/14/297094_4TUt8.jpg"
+    },
+    "summary": "è´è´£å»æ²»å°ççå¼ä¸çâæ²»æè±å­âè¢«ä¼å¾ç¨ç¾çä¾µèå°ççæäººâçå¹»èâè¢­å»èé·å¥å±æºï¼å°çäº¦é·å¥å±æºä¹ä¸­ã\r\n\r\nä¸ºäºæ½æè¿ä¸ªå±æºï¼é¡ºå©éèµ°ç3åªâå°çå»çè§ä¹ çâçâæ²»æå¨ç©âä»¬ï¼å¸¦çèæç¥ç§åéçæ²»æè±å­çå¬ä¸»æ¿éï¼åæ¥å°çå¯»æ¾æ­æ¡£ã\r\n\r\nä¸åæ®éå°å¥³ä¸âæ²»æå¨ç©âç¸éï¼åèº«æåä¹ç¾å°å¥³ï¼åâçå¹»èâå®£æã\r\n\r\nä¸ºäºä¿æ¤æåºå°âçå¹»èâçæ»å»èå¤±å»çæºçæ¿éãéè¦çå°çãè¿æå¨è¿éçé¿çææçå½ï¼åä¹ç¾å°å¥³ä»¬å°ç»åææåéï¼æ²»çå°çï¼\r\n\r\nâåä¹ç¾å°å¥³âçç¨å¼å§ï¼",
+    "name": "ãã¼ãªã³ã°ã£ã©â¥ããªã­ã¥ã¢",
+    "name_cn": "Healin' Good â¥ åä¹ç¾å°å¥³",
+    "tags": [
+      {
+        "name": "åä¹ç¾å°å¥³",
+        "count": 111,
+        "total_count": 7457
+      },
+      {
+        "name": "TV",
+        "count": 101,
+        "total_count": 1392478
+      },
+      {
+        "name": "2020",
+        "count": 92,
+        "total_count": 63662
+      },
+      {
+        "name": "ä¸æ ",
+        "count": 72,
+        "total_count": 20831
+      },
+      {
+        "name": "åå",
+        "count": 69,
+        "total_count": 615046
+      },
+      {
+        "name": "æ±æ ã¢ãã¡ã¼ã·ã§ã³",
+        "count": 45,
+        "total_count": 9871
+      },
+      {
+        "name": "å­ä¾çª",
+        "count": 36,
+        "total_count": 182
+      },
+      {
+        "name": "æ± ç°æ´å­",
+        "count": 24,
+        "total_count": 43
+      },
+      {
+        "name": "é¦æç´å­",
+        "count": 17,
+        "total_count": 27
+      },
+      {
+        "name": "ããªã­ã¥ã¢",
+        "count": 16,
+        "total_count": 1705
+      },
+      {
+        "name": "2020å¹´1æ",
+        "count": 14,
+        "total_count": 24945
+      },
+      {
+        "name": "å¹´çª",
+        "count": 12,
+        "total_count": 1534
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 11,
+        "total_count": 291162
+      },
+      {
+        "name": "ä¸æ å¨ç»",
+        "count": 10,
+        "total_count": 7227
+      },
+      {
+        "name": "æ æ¨ç¢§",
+        "count": 7,
+        "total_count": 12138
+      },
+      {
+        "name": "é­æ³å°å¥³",
+        "count": 7,
+        "total_count": 36514
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 7,
+        "total_count": 12590
+      },
+      {
+        "name": "å¹¼å¥³å",
+        "count": 5,
+        "total_count": 1940
+      },
+      {
+        "name": "å±±å²¡ç´å­",
+        "count": 5,
+        "total_count": 6
+      },
+      {
+        "name": "2020s",
+        "count": 5,
+        "total_count": 3610
+      },
+      {
+        "name": "2020å¹´2æ",
+        "count": 4,
+        "total_count": 115
+      },
+      {
+        "name": "Qå¨",
+        "count": 4,
+        "total_count": 282
+      },
+      {
+        "name": "precure",
+        "count": 4,
+        "total_count": 659
+      },
+      {
+        "name": "ææ",
+        "count": 4,
+        "total_count": 465961
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 3,
+        "total_count": 34806
+      },
+      {
+        "name": "ç¾å",
+        "count": 3,
+        "total_count": 399019
+      },
+      {
+        "name": "TVA",
+        "count": 3,
+        "total_count": 15431
+      },
+      {
+        "name": "å¯ºç°å¿ä¿",
+        "count": 3,
+        "total_count": 11
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 3,
+        "total_count": 464764
+      },
+      {
+        "name": "é¹é³Qå¨",
+        "count": 2,
+        "total_count": 138
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "Healin' Good â¥ åä¹ç¾å°å¥³"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "ãã¼ããª"
+          },
+          {
+            "v": "Healin` Good Precure"
+          },
+          {
+            "v": "Healin` Good Pretty Cure"
+          },
+          {
+            "v": "åæ°é­æ³â¥åä¹ç¾å°å¥³"
+          },
+          {
+            "v": "å®ç¾æ²»æ åä¹ç¾å°å¥³"
+          },
+          {
+            "v": "æ²»Q"
+          },
+          {
+            "v": "å¥¶Q"
+          },
+          {
+            "v": "æ²»æQå¨"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "45"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´2æ2æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æææ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "http://www.toei-anim.co.jp/tv/healingood_precure/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "ABCãã¬ã"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "ãã¬ãææ¥ç³»å"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2021å¹´2æ21æ¥"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "å¯ºç°å¿ä¿"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©ABC-Aã»æ±æ ã¢ãã¡ã¼ã·ã§ã³"
+      },
+      {
+        "key": "åä½",
+        "value": "æ±å ãã¥ã¿"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "è¥¿åºå°ä¹ï¼ABCã¢ãã¡ã¼ã·ã§ã³ï¼ãé«æ©ç¥å­ï¼ADKï¼ãé·²å°¾å¤©ï¼æ±æ ã¢ãã¡ã¼ã·ã§ã³ï¼"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "ä½è¤æï¼ææ¥æ¾éãã¬ãï¼ãå®äºä¸æï¼ABCã¢ãã¡ã¼ã·ã§ã³ï¼ãç¢ï¨å²ï¼ADKã¨ã¢ã¼ã·ã§ã³ãºï¼ãå®è¦é¦ï¼æ±æ ã¢ãã¡ã¼ã·ã§ã³ï¼"
+      },
+      {
+        "key": "ç³»åææ",
+        "value": "é¦æç´å­"
+      },
+      {
+        "key": "å¶ä½ç®¡ç",
+        "value": "å¶ä½æå½ï¼æ¾¤å®æ´¸ãäºæ¡åä»"
+      },
+      {
+        "key": "ç¾æ¯è®¾è®¡",
+        "value": "è¥¿ç°æ¸ãä»äºç¾ç´ï¼ç¬¬1è©± - ç¬¬23è©±ï¼ãæç«å¤ªï¼ç¬¬24è©± - ï¼"
+      },
+      {
+        "key": "è²å½©è®¾è®¡",
+        "value": "åå¥å¸ä»£ç¾"
+      },
+      {
+        "key": "æå½±çç£",
+        "value": "ç½é³¥åå"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "å±±å²¡ç´å­"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "æ±æ ã¢ãã¡ã¼ã·ã§ã³"
+      },
+      {
+        "key": "å¶ä½",
+        "value": "ææ¥æ¾éãã¬ããABCã¢ãã¡ã¼ã·ã§ã³ãã¢ãµãã¼ ãã£ã»ã±ã¤ãæ±æ ã¢ãã¡ã¼ã·ã§ã³"
+      },
+      {
+        "key": "èæ¬",
+        "value": "é¦æç´å­ãé«æ©éå­ãåºç°åæ¯ãéæé¾ä¹ä»ãä¼è¤ç¦ç¾ãç°ä¸­ä»ãå¹³æä½åå­ãéå­é¦ç·é"
+      },
+      {
+        "key": "åé",
+        "value": "æ± ç°æ´å­ãå±±å£ç¥å¸ãå¿æ°´æ·³åãä¸­æäº®å¤ªãè§éåä¹ãè¥¿ç°æ­£ç¾©ãåç°è±ãå¤§çæä¸ãæä¸è²´ä¹ãéç±å©å­ãé£ç°åãç´åª(æ£®å·æ»)ãé«æ¸è°·ä¸æ­©ãå®®åå®å½°ãå°å·å­æ²»ãæ·±æ¾¤æåãä¸ä¸éäººãå¿ç°ç´ä¿ãå°æææ"
+      },
+      {
+        "key": "æ¼åº",
+        "value": "æ± ç°æ´å­ãæä¸è²´ä¹ãéç±å©å­ãä¸­æäº®å¤ªãå²©äºéå¤®ãè§éåä¹ãå¿æ°´æ·³åãå·å´å¼äºãé¢æå­ãé«æ¸è°·ä¸æ­©ãé£ç°åãåºå¶ç§æ¨¹ãä¸ä¸éäººãæ·±æ¾¤æå"
+      },
+      {
+        "key": "ä½ç»çç£",
+        "value": "ç²æäºåç¾ãä¸è°·ç¾ä¿ãç¾é¦¬å¥äºãä»²æ¢ä¹ç¾ãã¢ãªã¹ã»ããªãªãéå±±åãèµ¤ç°ä¿¡äººãä¸éã±ã³ããã©ã³ã·ã¹ã»ã«ãããå°æ¾ããããæ£®äºå¼¥å­ãé«éããããæ¾æµ¦ä»ç¾ãè§ç°èå¤®ãå¢ç°èª æ²»ãæ¿±éè£ä¸ãå°å·ä¸éãæå±±ãããè¤å´çå¾ãã¸ã§ã¼ã¤ã»ã«ã©ã³ã®ã¢ã³ãç¨²ä¸æãæ²¼ç°åºãè¤åæªæ¥å¤«ãæç°æ²æ³°ãåæ£®ç´å­ãå±±å²¡ç´å­"
+      },
+      {
+        "key": "ç³»åçç£",
+        "value": "æ± ç°æ´å­"
+      }
+    ],
+    "rating": {
+      "rank": 4921,
+      "total": 279,
+      "count": {
+        "1": 2,
+        "2": 1,
+        "3": 1,
+        "4": 4,
+        "5": 42,
+        "6": 90,
+        "7": 91,
+        "8": 36,
+        "9": 7,
+        "10": 5
+      },
+      "score": 6.5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 64,
+      "dropped": 47,
+      "wish": 128,
+      "collect": 404,
+      "doing": 96
+    },
+    "id": 297094,
+    "eps": 45,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "åå",
+      "å­ä¾å"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

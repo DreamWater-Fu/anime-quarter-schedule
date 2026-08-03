@@ -1,16 +1,18 @@
 {
   "schemaVersion": 1,
-  "status": "failed",
-  "lastSuccessAt": "2026-08-03T11:12:41.251Z",
-  "lastAttemptAt": "2026-08-03T11:13:07.202Z",
-  "lastError": {
-    "code": "STALE_UPDATE_LOCK",
-    "message": "previous update job exceeded the lock TTL and was released",
-    "at": "2026-08-03T11:28:31.277Z"
+  "status": "running",
+  "lastSuccessAt": "2026-08-03T13:04:24.662Z",
+  "lastAttemptAt": "2026-08-03T13:07:05.509Z",
+  "lastError": null,
+  "currentJob": {
+    "jobId": "upd_20260803130705_82ffd331",
+    "year": 2019,
+    "season": 10,
+    "quarter": "fall",
+    "startedAt": "2026-08-03T13:07:05.509Z"
   },
-  "currentJob": null,
   "cache": {
-    "animeUpdatedAt": "2026-08-03T11:12:41.070Z",
-    "itemCount": 1277
+    "animeUpdatedAt": "2026-08-03T13:04:24.422Z",
+    "itemCount": 1365
   }
 }

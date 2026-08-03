@@ -6,6 +6,7 @@ import {
   inferUpdateWeekday
 } from "../src/server/anime/calculateSeason.ts";
 import {
+  hasExplicitExcludedBangumiSubjectId,
   hasExplicitNonJapaneseMetadataSignal,
   hasExplicitNonJapaneseSignal,
   hasForeignPrimaryTitleSignal,
@@ -61,6 +62,7 @@ async function main() {
   for (const item of cache.items) {
     if (
       item.format !== "tv" ||
+      isExplicitExcludedBangumiSubject(item) ||
       isExplicitNonJapanese(item, bangumiSubjects) ||
       isExplicitAdult(item) ||
       isTheatricalMovie(item) ||
@@ -231,6 +233,10 @@ async function readBangumiSubjectSnapshots(): Promise<Map<number, BangumiSubject
     }
   }
   return result;
+}
+
+function isExplicitExcludedBangumiSubject(item: AnimeItem): boolean {
+  return hasExplicitExcludedBangumiSubjectId(item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId);
 }
 
 function isExplicitNonJapanese(item: AnimeItem, bangumiSubjects: Map<number, BangumiSubject>): boolean {

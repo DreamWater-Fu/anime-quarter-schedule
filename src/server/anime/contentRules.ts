@@ -1,5 +1,31 @@
 export const MAX_INCLUDED_SEASON_NUMBER = 10;
 
+const EXPLICIT_NON_JAPANESE_BANGUMI_SUBJECT_IDS = new Set<number>([
+  219760,
+  419219,
+  499548,
+  529532,
+  538958,
+  547751,
+  556595,
+  561911,
+  564419,
+  580662,
+  587898,
+  608842,
+  609708,
+  624845,
+  625477,
+  640936,
+  662513
+]);
+
+const EXPLICIT_NON_TV_BANGUMI_SUBJECT_IDS = new Set<number>([
+  292940,
+  293556,
+  316817
+]);
+
 const FOREIGN_TITLE_PATTERNS = [
   /中国之旅|国产|国创|大陆|台湾|香港/iu,
   /皮皮鲁|鲁西西|天才小鲁班|新西游|千秋诗颂|敦煌的故事|山海(?:精奇|传奇)/iu,
@@ -49,13 +75,24 @@ const FOREIGN_METADATA_PATTERNS = [
 const THEATRICAL_MOVIE_PATTERN = /剧场版|劇場版|映画|movie|the\s+movie|film|电影|電影/iu;
 const KNOWN_NON_TV_SPECIAL_PATTERN = /テラパゴスのキラキラ探検記|太乐巴戈斯的闪闪发亮探险记|太樂巴戈斯的閃閃發亮探險記|terapagos/iu;
 const KNOWN_NON_TV_TITLE_PATTERN =
-  /ライジングインパクト|一击冲天|高尔夫物语|ばなにゃ\s*あらうんど\s*ざ\s*わーるど|香蕉喵\s*(?:第3期|游世界)|Shenmue the Animation|莎木|地球外少年少女|バイオハザード[:：]\s*インフィニット\s*ダークネス|BIOHAZARD[:：]\s*Infinite Darkness|Resident Evil[:：]?\s*Infinite Darkness|生化危机[:： ]\s*无尽黑暗/iu;
+  /ライジングインパクト|一击冲天|高尔夫物语|ばなにゃ\s*あらうんど\s*ざ\s*わーるど|香蕉喵\s*(?:第3期|游世界)|Shenmue the Animation|莎木|地球外少年少女|バイオハザード[:：]\s*インフィニット\s*ダークネス|BIOHAZARD[:：]\s*Infinite Darkness|Resident Evil[:：]?\s*Infinite Darkness|生化危机[:： ]\s*无尽黑暗|斉木楠雄のψ難\s*Ψ始動編|齐木楠雄的灾难\s*灾始动篇|ポケモン\s*ソード・シールド\s*薄明の翼|精灵宝可梦\s*剑&盾\s*薄明之翼|ベイブレードバースト\s*スパーキング|霸旋陀螺\s*爆刃对决\s*第5期|四月一日さん家と\s*第2期|四月一日三姐妹\s*第2期|おーばーふろぉ|overflow\.cf-anime\.com/iu;
 const SEASON_NUMBER_PATTERN =
   /(?:第\s*([0-9０-９一二三四五六七八九十百]+)\s*(?:[季期部]|シリーズ))|(?:season|series|s)\s*([0-9０-９]+)/giu;
 
 export function hasExplicitNonJapaneseSignal(values: Array<string | null | undefined>): boolean {
   const normalizedValues = toNormalizedValues(values);
   return FOREIGN_TITLE_PATTERNS.some((pattern) => normalizedValues.some((value) => pattern.test(value)));
+}
+
+export function hasExplicitNonJapaneseBangumiSubjectId(value: number | null | undefined): boolean {
+  return typeof value === "number" && EXPLICIT_NON_JAPANESE_BANGUMI_SUBJECT_IDS.has(value);
+}
+
+export function hasExplicitExcludedBangumiSubjectId(value: number | null | undefined): boolean {
+  return (
+    hasExplicitNonJapaneseBangumiSubjectId(value) ||
+    (typeof value === "number" && EXPLICIT_NON_TV_BANGUMI_SUBJECT_IDS.has(value))
+  );
 }
 
 export function hasExplicitNonJapaneseMetadataSignal(values: Array<string | null | undefined>): boolean {
