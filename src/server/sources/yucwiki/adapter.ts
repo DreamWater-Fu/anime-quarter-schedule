@@ -228,12 +228,10 @@ export class YucWikiSourceAdapter implements AnimeSourceAdapter {
 }
 
 export function parseYucWikiHtml(html: string, options: YucWikiParseOptions): YucWikiEntry[] {
-  const blocks = html.matchAll(/<!--#([A-Z]\d{2})-->([\s\S]*?)(?=<!--#[A-Z]\d{2}-->|<p class="future_intro_|<div style="clear:both"><\/div>\s*<br>\s*<br>|<\/body>)/gu);
+  const blocks = collectYucWikiBlocks(html);
   const entries: YucWikiEntry[] = [];
 
-  for (const match of blocks) {
-    const id = match[1] ?? "";
-    const block = match[2] ?? "";
+  for (const { id, anchor, block } of blocks) {
     const titleChinese = extractFirstParagraphText(block, "title_cn");
     const titleJapanese = extractFirstParagraphText(block, "title_jp");
     const title = titleJapanese ?? titleChinese;
@@ -250,12 +248,53 @@ export function parseYucWikiHtml(html: string, options: YucWikiParseOptions): Yu
       broadcastExtraText: extractFirstParagraphText(block, "broadcast_ex"),
       officialUrl: extractOfficialUrl(block),
       coverImageUrl: extractCoverImageUrl(block),
-      url: `${options.url}#${id}`,
+      url: `${options.url}#${anchor}`,
       retrievedAt: options.retrievedAt
     });
   }
 
   return dedupeYucWikiEntries(entries);
+}
+
+function collectYucWikiBlocks(html: string): Array<{ id: string; anchor: string; block: string }> {
+  const markers = [...html.matchAll(/<!--#([A-Z](?:\d{2})?)-->/gu)];
+  const blocks: Array<{ id: string; anchor: string; block: string }> = [];
+  const idCounts = new Map<string, number>();
+
+  for (let index = 0; index < markers.length; index += 1) {
+    const marker = markers[index];
+    const anchor = marker[1] ?? "";
+    const start = (marker.index ?? 0) + marker[0].length;
+    const nextStart = markers[index + 1]?.index ?? html.length;
+    const end = findYucWikiBlockEnd(html, start, nextStart);
+    const id = normalizeYucWikiEntryId(anchor, idCounts);
+    if (!id) continue;
+    blocks.push({ id, anchor, block: html.slice(start, end) });
+  }
+
+  return blocks;
+}
+
+function normalizeYucWikiEntryId(anchor: string, idCounts: Map<string, number>): string | null {
+  const numbered = /^([A-Z])(\d{2})$/u.exec(anchor);
+  if (numbered?.[1] && numbered[2]) {
+    idCounts.set(numbered[1], Math.max(idCounts.get(numbered[1]) ?? 0, Number(numbered[2])));
+    return anchor;
+  }
+
+  const prefix = /^[A-Z]$/u.exec(anchor)?.[0];
+  if (!prefix) return null;
+  const next = (idCounts.get(prefix) ?? 0) + 1;
+  idCounts.set(prefix, next);
+  return `${prefix}${String(next).padStart(2, "0")}`;
+}
+
+function findYucWikiBlockEnd(html: string, start: number, fallbackEnd: number): number {
+  const sectionEnd = /<p class="future_intro_|<div style="clear:both"><\/div>\s*<br>\s*<br>|<\/body>/gu;
+  sectionEnd.lastIndex = start;
+  const match = sectionEnd.exec(html);
+  if (!match || match.index > fallbackEnd) return fallbackEnd;
+  return match.index;
 }
 
 export function mapYucWikiEntryToAnimeItem(

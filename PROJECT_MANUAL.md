@@ -6,7 +6,7 @@
 
 ## 1. 当前状态
 
-- 版本: `0.2.5`
+- 版本: `0.2.9`
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
 - 当前缓存: 953 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2022 年 7 月、2022 年 10 月以及 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
@@ -120,6 +120,7 @@ tests/fixtures/               测试夹具
 - `POST /api/update` body: `{ year, season, force? }`
 
 API 永远过滤非日本动画、excluded、非 TV 和成人内容。
+`GET /api/status` 会自愈过期更新锁: 若 `data/status.json` 仍为 `running` 且 `currentJob.startedAt` 超过 `UPDATE_LOCK_TTL_SECONDS` 默认 900 秒, 读取状态时会把状态写回为 `failed`、清空 `currentJob`, 并记录 `STALE_UPDATE_LOCK`, 避免网页端长期轮询一个已经中断的更新任务。
 
 Vercel 默认只读: `process.env.VERCEL === "1"` 且 `ENABLE_VERCEL_UPDATE !== "true"` 时 `/api/update` 返回 403。设置 `UPDATE_API_TOKEN` 后, 更新请求必须带 Bearer Token 或 `x-update-token`。
 

@@ -1,0 +1,709 @@
+[
+  {
+    "date": "2022-03-25",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/f4/30/659696_Yjm25.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/f4/30/659696_Yjm25.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/f4/30/659696_Yjm25.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/f4/30/659696_Yjm25.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/f4/30/659696_Yjm25.jpg"
+    },
+    "summary": "PAW Patrol is a Canadian CGIâanimated television series created by Keith Chapman. It is produced by Spin Master Entertainment, with animation provided by Guru Studio. In Canada, the series is primarily broadcast on TVOntario, which first ran previews of the show in August 2013. The series premiered on Nickelodeon in the United States on August 12, 2013.\r\n\r\nThe series focuses on a young boy named Ryder who leads a crew of search and rescue dogs that call themselves the PAW Patrol. They work together on missions to protect the shoreside community of Adventure Bay. Each dog has a specific set of skills based on emergency services professions, such as a firefighter, a police officer, and an aviation pilot. They all reside in doghouses that transform into customized vehicles for their missions. They are also equipped with backpacks called \"pup packs\" that contain tools that relate to the pups' jobs.",
+    "name": "PAW Patrol Season 9",
+    "name_cn": "æ±ªæ±ªéç«å¤§å ç¬¬ä¹å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 1,
+        "total_count": 85654
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1375683
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æ±ªæ±ªéç«å¤§å ç¬¬ä¹å­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "ççå·¡é»é ç¬¬ä¹å­£"
+          },
+          {
+            "v": "ãã¦ã»ããã­ã¼ã« ã·ã¼ãºã³9"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2022å¹´3æ25æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "TVOKids"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "Nickelodeon"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´7æ31æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 1,
+      "wish": 1,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 659696,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2022-03-11",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/41/0a/465904_ZH1W9.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/41/0a/465904_ZH1W9.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/41/0a/465904_ZH1W9.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/41/0a/465904_ZH1W9.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/41/0a/465904_ZH1W9.jpg"
+    },
+    "summary": "",
+    "name": "The Loud House Season 6",
+    "name_cn": "å§é¹ä¸å®¶äº² ç¬¬å­å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 65803
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 952374
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å§é¹ä¸å®¶äº² ç¬¬å­å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2022å¹´3æ11æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææäº"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2023å¹´5æ16æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 3,
+      "wish": 0,
+      "collect": 1,
+      "doing": 1
+    },
+    "id": 465904,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2022-03-10",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/65/d5/373931_THJSj.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/65/d5/373931_THJSj.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/65/d5/373931_THJSj.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/65/d5/373931_THJSj.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/65/d5/373931_THJSj.jpg"
+    },
+    "summary": "CiRCLEãããä¸è©±ã«ãªã£ãäººãã¡ã¸ã®æè¬ã¤ãã³ã\r\nãCiRCLE THANKS PARTYï¼ãã®éå¬ãæ±ºå®ï¼\r\nåºåºãã©ã¤ãã¨çãã ãããã®ã¤ãã³ãã«ã\r\n35äººã®ã¡ã³ãã¼ãããããæºåã«å¥èµ°ããï¼",
+    "name": "ãã³ããªï¼ã¬ã¼ã«ãºãã³ããã¼ãã£ï¼5th Anniversary Animation -CiRCLE THANKS PARTYï¼-",
+    "name_cn": "BanG Dream! å°å¥³ä¹å¢æ´¾å¯¹ï¼5å¨å¹´çºªå¿µå¨ç» -CiRCLE THANKS PARTY!-",
+    "tags": [
+      {
+        "name": "BanGDream",
+        "count": 141,
+        "total_count": 19992
+      },
+      {
+        "name": "2022",
+        "count": 128,
+        "total_count": 80212
+      },
+      {
+        "name": "åå",
+        "count": 125,
+        "total_count": 615218
+      },
+      {
+        "name": "WEB",
+        "count": 110,
+        "total_count": 71130
+      },
+      {
+        "name": "ä¹é",
+        "count": 109,
+        "total_count": 22508
+      },
+      {
+        "name": "é³ä¹",
+        "count": 93,
+        "total_count": 101801
+      },
+      {
+        "name": "ç¾å",
+        "count": 87,
+        "total_count": 399144
+      },
+      {
+        "name": "å¶å",
+        "count": 71,
+        "total_count": 71091
+      },
+      {
+        "name": "é¦é¦",
+        "count": 44,
+        "total_count": 983
+      },
+      {
+        "name": "OVA",
+        "count": 40,
+        "total_count": 363022
+      },
+      {
+        "name": "SANZIGEN",
+        "count": 32,
+        "total_count": 3833
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 30,
+        "total_count": 396365
+      },
+      {
+        "name": "ä¸æ¬¡å",
+        "count": 30,
+        "total_count": 1582
+      },
+      {
+        "name": "3D",
+        "count": 21,
+        "total_count": 50830
+      },
+      {
+        "name": "2022å¹´",
+        "count": 11,
+        "total_count": 3437
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 8,
+        "total_count": 291351
+      },
+      {
+        "name": "ãµã³ã¸ã²ã³",
+        "count": 8,
+        "total_count": 651
+      },
+      {
+        "name": "ææ¸¸æ¹",
+        "count": 7,
+        "total_count": 2638
+      },
+      {
+        "name": "æ£®ç°çº®å",
+        "count": 7,
+        "total_count": 9
+      },
+      {
+        "name": "æ£®ç°ç´å",
+        "count": 6,
+        "total_count": 7
+      },
+      {
+        "name": "æ¸¸ææ¹",
+        "count": 6,
+        "total_count": 161669
+      },
+      {
+        "name": "ç­ç",
+        "count": 5,
+        "total_count": 101691
+      },
+      {
+        "name": "è½»ç¾å",
+        "count": 5,
+        "total_count": 37877
+      },
+      {
+        "name": "2022å¹´3æ",
+        "count": 4,
+        "total_count": 185
+      },
+      {
+        "name": "æ¿æ¬å¹¿å¤§",
+        "count": 4,
+        "total_count": 647
+      },
+      {
+        "name": "TV",
+        "count": 4,
+        "total_count": 1392756
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 3,
+        "total_count": 34809
+      },
+      {
+        "name": "ç»­ä½",
+        "count": 3,
+        "total_count": 45619
+      },
+      {
+        "name": "éæ¥",
+        "count": 3,
+        "total_count": 106424
+      },
+      {
+        "name": "6å",
+        "count": 2,
+        "total_count": 2686
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "BanG Dream! å°å¥³ä¹å¢æ´¾å¯¹ï¼5å¨å¹´çºªå¿µå¨ç» -CiRCLE THANKS PARTY!-"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "ã¬ã«ã5å¨å¹´è¨å¿µã¢ãã¡"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "2"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2022å¹´3æ10æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://anniv-bang-dream.bushimo.jp/5th/anime/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Youtube"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "TOKYO MX / BSæ¥ãã¬"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2022å¹´3æ17æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "æ£®ç°ç´å"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "Elements Garden"
+      },
+      {
+        "key": "åä½",
+        "value": "ãã·ã­ã¼ã"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "æ¨è°·é«æ(è£½ä½ç·ææ¥)ãé½ç°åå¿"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "åºç¬åå½¦ãæ£®å·ä¿®ä¸ãæ¾æµ¦è£æ"
+      },
+      {
+        "key": "æ»å¯¼æ¼",
+        "value": "æ¿æ¬åºå¤§"
+      },
+      {
+        "key": "äººç©åæ¡",
+        "value": "ã²ã¨åÃCraft Egg"
+      },
+      {
+        "key": "åæ¡",
+        "value": "æäºåæ¡ï¼ä¸­æèªÃCraft Egg"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "æ¤ç°åå¹¸"
+      },
+      {
+        "key": "å¯äººç©è®¾å®",
+        "value": "å«æ£®åªé¦"
+      },
+      {
+        "key": "ç¾æ¯çç£",
+        "value": "ç§éè£æ¨¹ (KUSANAGI)"
+      },
+      {
+        "key": "ç¾æ¯è®¾è®¡",
+        "value": "æç°åä¿ (KUSANAGI)"
+      },
+      {
+        "key": "è²å½©è®¾è®¡",
+        "value": "åå·é å­"
+      },
+      {
+        "key": "æå½±çç£",
+        "value": "å¥¥æå¤§è¼"
+      },
+      {
+        "key": "åªè¾",
+        "value": "æ¢æ´¥æç¾ (ã¨ãã£ãã)"
+      },
+      {
+        "key": "é³åçç£",
+        "value": "é£¯ç°éæ¨¹"
+      },
+      {
+        "key": "é³æ",
+        "value": "çªä¿£æ³°å²"
+      },
+      {
+        "key": "é³å",
+        "value": "Cloud22"
+      },
+      {
+        "key": "é³ä¹å¶ä½äºº",
+        "value": "ä¸æ¾ç¯åº·ãè¤ç°æ·³å¹³"
+      },
+      {
+        "key": "é³ä¹å¶ä½",
+        "value": "ãã·ã­ã¼ããã¥ã¼ã¸ãã¯"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "æ ¹æ¬éè²´ãæ²¢æè±ä½"
+      },
+      {
+        "key": "å¨ç»å¶çäºº",
+        "value": "ä¸­æçå¤ªé(ãã¹ã¯ãã­ãã¥ã¼ãµã¼)"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "ãµã³ã¸ã²ã³"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "ãã³ããªï¼ã¬ã¼ã«ãºãã³ããã¼ãã£ï¼ï¼ãã·ã­ã¼ããCraft Eggï¼"
+      },
+      {
+        "key": "èæ¬",
+        "value": "å¾è¤ã¿ã©ããå°å·ã²ã¨ã¿"
+      },
+      {
+        "key": "åé",
+        "value": "æ£®ç°ç´å"
+      },
+      {
+        "key": "Live åéæ¼åº",
+        "value": "Liveåéï¼æ¢æ´¥æç¾"
+      },
+      {
+        "key": "æ¼åº",
+        "value": "å¤è³å¬ä¸éãé è¤æ±ãå¤§æ£®å¤§å°ãå¤§å³°èª ä¹"
+      },
+      {
+        "key": "OPã»ED åé",
+        "value": "æ£®ç°ç´å"
+      },
+      {
+        "key": "æå¾",
+        "value": "æ£®ç°ç´å(ED)"
+      },
+      {
+        "key": "OPã»ED æ¼åº",
+        "value": "å¤§å³°èª ä¹"
+      },
+      {
+        "key": "CG å¯¼æ¼",
+        "value": "å¤è³å¬ä¸éãé è¤æ±ï¼Liveé¨åï¼å¤§æ£®å¤§å°"
+      },
+      {
+        "key": "ä½ç»çç£",
+        "value": "å¤§å³°èª ä¹ãå«æ£®åªé¦ãShin Josephãä¸­è°·è®"
+      }
+    ],
+    "rating": {
+      "rank": 2315,
+      "total": 525,
+      "count": {
+        "1": 2,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 34,
+        "6": 115,
+        "7": 208,
+        "8": 115,
+        "9": 16,
+        "10": 32
+      },
+      "score": 7.1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 24,
+      "dropped": 25,
+      "wish": 229,
+      "collect": 1021,
+      "doing": 51
+    },
+    "id": 373931,
+    "eps": 2,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "åå"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2022-03-04",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/1c/48/661933_GrGJ1.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/1c/48/661933_GrGJ1.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/1c/48/661933_GrGJ1.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/1c/48/661933_GrGJ1.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/1c/48/661933_GrGJ1.jpg"
+    },
+    "summary": "New friends visit to Brooms Town! Who is the drone losing his memory in the storm and landing on the beach? Tintin, a heavy vehicle who wears glasses and has large pincer fingers. Wonder, a storyteller who pulls a nice cart and performs. Grandma Daisy, a kind and skillful gardener who moved to Wind Hill. Daisy's adorable twin granddaughters, Rose and Mary! Desert Car Rescue Team, Sandy, Keaton, and Droney! With Brooms Town's villagers and new friends, various commotions come to you. Robocar POLI season 5 is back with more fun stories!",
+    "name": "ë¡ë³´ì¹´í´ë¦¬ ìì¦ 5",
+    "name_cn": "åå½¢è­¦è½¦çå© ç¬¬äºå­£",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "åå½¢è­¦è½¦çå© ç¬¬äºå­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "Robocar POLI Season 5"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "16"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2022å¹´3æ4æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "EBS"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2022å¹´12æ13æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 661933,
+    "eps": 16,
+    "meta_tags": [
+      "TV",
+      "é©å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2022-03-02",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/4b/be/547526_ZF07N.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/4b/be/547526_ZF07N.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/4b/be/547526_ZF07N.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/4b/be/547526_ZF07N.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/4b/be/547526_ZF07N.jpg"
+    },
+    "summary": "",
+    "name": "ííì ì¿ ë§",
+    "name_cn": "å¡å¡ååºç",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¡å¡ååºç"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "Tata & Kuma"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2022-03-02"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 547526,
+    "eps": 26,
+    "meta_tags": [],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import { getDefaultStorage } from "../cache/jsonFileStorage.ts";
+import { normalizeStaleUpdateStatus } from "../cache/statusCache.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { toSourceIssue, type AnimeSourceAdapter, type SourceIssue } from "../sources/types.ts";
 import { BangumiSourceAdapter } from "../sources/bangumi/adapter.ts";
@@ -62,7 +63,7 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
   const job = { jobId, year: input.year, season: input.season, quarter, startedAt };
 
   const currentStatus = await storage.readUpdateStatus();
-  const lockStatus = normalizeStaleRunningStatus(currentStatus, now);
+  const lockStatus = normalizeStaleUpdateStatus(currentStatus, now);
   if (lockStatus.status === "running" && !input.force) {
     throw new ApiErrorException("UPDATE_RUNNING", "another update job is already running", { status: 409 });
   }
@@ -358,31 +359,6 @@ async function fetchSeasonCandidates(
   }
 
   return { items, warnings };
-}
-
-function normalizeStaleRunningStatus(
-  status: Awaited<ReturnType<AnimeStorage["readUpdateStatus"]>>,
-  now: () => Date
-): Awaited<ReturnType<AnimeStorage["readUpdateStatus"]>> {
-  if (status.status !== "running" || !status.currentJob) return status;
-
-  const ttlSeconds = parsePositiveInteger(process.env.UPDATE_LOCK_TTL_SECONDS, 900);
-  const startedAt = Date.parse(status.currentJob.startedAt);
-  if (!Number.isFinite(startedAt)) return status;
-
-  const ageMs = now().getTime() - startedAt;
-  if (ageMs <= ttlSeconds * 1000) return status;
-
-  return {
-    ...status,
-    status: "failed",
-    currentJob: null,
-    lastError: {
-      code: "STALE_UPDATE_LOCK",
-      message: "previous update job exceeded the lock TTL and was released",
-      at: now().toISOString()
-    }
-  };
 }
 
 function parsePositiveInteger(value: string | undefined, fallback: number): number {
@@ -780,8 +756,8 @@ function shouldFailWeakHistoricalCatalogRefresh(
 ): boolean {
   const minimumHistoricalCatalogItems = parsePositiveInteger(process.env.MIN_HISTORICAL_CATALOG_ITEMS, 20);
   if (targetItems.length >= minimumHistoricalCatalogItems) return false;
-  if (targetItems.some(isPrimaryCatalogItem)) return false;
   if (!isPastSeason(targetSeason, now)) return false;
+  if (targetItems.some(isPrimaryCatalogItem)) return true;
   return warnings.some((warning) => warning.source === "YucWiki" && warning.code !== "SOURCE_DISABLED");
 }
 
