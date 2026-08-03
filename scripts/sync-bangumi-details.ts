@@ -7,6 +7,7 @@ import {
   inferUpdateWeekday,
   isValidDateString
 } from "../src/server/anime/calculateSeason.ts";
+import { clearFinalStatusBroadcastSlot } from "../src/server/anime/normalizeAnime.ts";
 import { getDefaultStorage } from "../src/server/cache/jsonFileStorage.ts";
 import { scoreBangumiCandidate } from "../src/server/sources/bangumi/matcher.ts";
 import type { AnimeCache, AnimeItem, AnimeSource } from "../src/server/types/anime.ts";
@@ -14,6 +15,7 @@ import type { AnimeCache, AnimeItem, AnimeSource } from "../src/server/types/ani
 const execFileAsync = promisify(execFile);
 const now = new Date();
 const today = now.toISOString().slice(0, 10);
+const localOnly = process.argv.includes("--local-only");
 
 interface BangumiDetail {
   id: number;
@@ -53,7 +55,7 @@ async function main() {
     )
   ];
   const fetchedAt = now.toISOString();
-  const details = await fetchBangumiDetails(ids);
+  const details = localOnly ? new Map<number, BangumiDetail>() : await fetchBangumiDetails(ids);
   const snapshotSubjects = await readBangumiSubjectSnapshots();
   let ratingUpdated = 0;
   let matchedMissingBangumi = 0;
@@ -99,8 +101,9 @@ async function main() {
   });
 
   console.log(JSON.stringify({
-    requested: ids.length,
+    requested: localOnly ? 0 : ids.length,
     found: details.size,
+    localOnly,
     matchedMissingBangumi,
     ratingUpdated,
     coverUpdated,
@@ -288,9 +291,19 @@ function findBangumiSnapshotMatch(
   const scored = [...subjectsById.values()]
     .map((subject) => scoreBangumiCandidate(input, subject, { fromSearch: false, fromSeasonMonth: true }))
     .sort((left, right) => right.score - left.score);
-  const best = scored[0];
-  if (!best || !isAcceptedSnapshotMatch(best, scored[1])) return undefined;
-  return best.subject;
+  const localBest = scored[0];
+  if (localBest && isAcceptedSnapshotMatch(localBest, scored[1])) return localBest.subject;
+
+  const globalSubjectsById = new Map<number, BangumiSubject>();
+  for (const subjects of snapshots.values()) {
+    for (const subject of subjects) globalSubjectsById.set(subject.id, subject);
+  }
+  const globalScored = [...globalSubjectsById.values()]
+    .map((subject) => scoreBangumiCandidate(input, subject, { fromSearch: false, fromSeasonMonth: false }))
+    .sort((left, right) => right.score - left.score);
+  const globalBest = globalScored[0];
+  if (!globalBest || !isAcceptedSnapshotMatch(globalBest, globalScored[1])) return undefined;
+  return globalBest.subject;
 }
 
 function isAcceptedSnapshotMatch(
@@ -298,20 +311,35 @@ function isAcceptedSnapshotMatch(
   second: ReturnType<typeof scoreBangumiCandidate> | undefined
 ): boolean {
   const disallowedRisks = new Set([
-    "year_mismatch",
-    "date_conflict",
-    "season_token_mismatch",
     "format_conflict",
-    "multiple_close_candidates",
-    "chinese_title_only",
-    "alias_only"
+    "multiple_close_candidates"
   ]);
   if (best.risks.some((risk) => disallowedRisks.has(risk))) return false;
   const hasTitleEvidence = best.matchedFields.some((field) => field === "name" || field === "name_cn" || field === "alias" || field === "english");
   const hasAuxEvidence = best.matchedFields.some((field) => field === "date" || field === "quarter" || field === "officialUrl" || field === "episodeCount" || field === "seasonToken");
+  const hasOfficialUrl = best.matchedFields.includes("officialUrl");
+  const hasSeasonOrEpisodeEvidence = best.matchedFields.includes("seasonToken") || best.matchedFields.includes("episodeCount");
+  const hasDateEvidence = best.matchedFields.includes("date") || best.matchedFields.includes("quarter");
+  const lead = second ? best.score - second.score : 100;
+  const hasCourMergeEvidence = hasOfficialUrl && hasTitleEvidence && hasSeasonOrEpisodeEvidence && best.score >= 52;
+  const hasTranslationVariantEvidence = hasOfficialUrl && hasTitleEvidence && (hasDateEvidence || hasSeasonOrEpisodeEvidence) && best.score >= 56;
+
   if (!hasTitleEvidence || !hasAuxEvidence) return false;
-  if (best.score < 80) return false;
-  if (second && best.score - second.score < 15) return false;
+  if (best.risks.includes("chinese_title_only") && !hasTranslationVariantEvidence) return false;
+  if (best.risks.includes("alias_only") && !hasTranslationVariantEvidence) return false;
+  if (
+    (best.risks.includes("year_mismatch") ||
+      best.risks.includes("date_conflict") ||
+      best.risks.includes("season_token_mismatch")) &&
+    !hasCourMergeEvidence &&
+    !hasTranslationVariantEvidence
+  ) {
+    return false;
+  }
+  if (lead < 12 && !hasOfficialUrl) return false;
+  if (hasCourMergeEvidence || hasTranslationVariantEvidence) return true;
+  if (best.score < 74) return false;
+  if (lead < 15) return false;
   return true;
 }
 
@@ -344,11 +372,11 @@ function quarterToSeasonMonth(quarter: AnimeItem["primarySeason"] extends infer 
 
 function normalizeBroadcastState(item: AnimeItem, updatedAt: string): AnimeItem {
   const status = inferStatusFromDates(item.startDate, item.endDate);
-  return {
+  return clearFinalStatusBroadcastSlot({
     ...item,
     status,
     updatedAt
-  };
+  });
 }
 
 function shouldClearSingleEpisodeEndDate(item: AnimeItem, episodeCount: number | null): boolean {

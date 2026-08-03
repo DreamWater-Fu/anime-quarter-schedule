@@ -1,5 +1,6 @@
 import type { AnimeFormat, AnimeItem, AnimeQuarter, AnimeSource, CoverImage } from "../../types/anime.ts";
 import { isValidDateString } from "../../anime/calculateSeason.ts";
+import { repairMojibakeText } from "../../anime/contentRules.ts";
 import { mapBangumiPlatformToFormat } from "./mapper.ts";
 import type {
   BangumiMatchResult,
@@ -83,7 +84,8 @@ const TRADITIONAL_TO_SIMPLIFIED = Object.fromEntries(
 ) as Record<string, string>;
 
 export function normalizeTitle(raw: string): NormalizedTitle {
-  const nfkc = normalizeWhitespace(raw.normalize("NFKC")).replace(/[A-Za-z]+/g, (value) => value.toLowerCase());
+  const repaired = repairMojibakeText(raw);
+  const nfkc = normalizeWhitespace(repaired.normalize("NFKC")).replace(/[A-Za-z]+/g, (value) => value.toLowerCase());
   const withoutNoise = removeNoiseWords(nfkc);
   const punctuationless = normalizeWhitespace(withoutNoise.replace(PUNCTUATION_PATTERN, " "));
   const compact = punctuationless.replace(/\s+/g, "");
@@ -195,20 +197,21 @@ export function scoreBangumiCandidate(
   subject: BangumiSubject,
   sourceFlags: CandidateSourceFlags = { fromSearch: true, fromSeasonMonth: false }
 ): ScoredCandidate {
+  const normalizedSubject = repairBangumiSubject(subject);
   const matchedFields = new Set<CandidateMatchedField>();
   const risks = new Set<CandidateRisk>();
   let score = 0;
 
-  score += scoreTitle(input, subject, matchedFields);
-  score += scoreSeasonToken(input, subject, matchedFields, risks);
-  score += scoreDate(input, subject, matchedFields, risks);
-  score += scoreFormat(input.format ?? null, subject, matchedFields, risks);
-  score += scoreEpisodeCount(input.episodeCount ?? null, subject, matchedFields);
-  score += scoreOfficialAndStudio(input, subject, matchedFields);
+  score += scoreTitle(input, normalizedSubject, matchedFields);
+  score += scoreSeasonToken(input, normalizedSubject, matchedFields, risks);
+  score += scoreDate(input, normalizedSubject, matchedFields, risks);
+  score += scoreFormat(input.format ?? null, normalizedSubject, matchedFields, risks);
+  score += scoreEpisodeCount(input.episodeCount ?? null, normalizedSubject, matchedFields);
+  score += scoreOfficialAndStudio(input, normalizedSubject, matchedFields);
   score += sourceFlags.fromSeasonMonth ? 6 : 0;
   score += scoreSourceReliability(input.sources ?? [], risks);
 
-  if (subject.type !== 2) {
+  if (normalizedSubject.type !== 2) {
     score -= 30;
     risks.add("format_conflict");
   }
@@ -224,19 +227,19 @@ export function scoreBangumiCandidate(
 
   const clampedScore = Math.max(0, Math.min(100, Math.round(score)));
   const candidate: ScoredCandidate = {
-    subjectId: subject.id,
-    url: `https://bgm.tv/subject/${subject.id}`,
-    name: subject.name,
-    nameCn: nonEmptyStringOrNull(subject.name_cn),
-    date: isValidDateString(subject.date) ? subject.date! : null,
-    type: subject.type,
-    platform: nonEmptyStringOrNull(subject.platform),
+    subjectId: normalizedSubject.id,
+    url: `https://bgm.tv/subject/${normalizedSubject.id}`,
+    name: normalizedSubject.name,
+    nameCn: nonEmptyStringOrNull(normalizedSubject.name_cn),
+    date: isValidDateString(normalizedSubject.date) ? normalizedSubject.date! : null,
+    type: normalizedSubject.type,
+    platform: nonEmptyStringOrNull(normalizedSubject.platform),
     score: clampedScore,
     confidence: confidenceFromScore(clampedScore, DEFAULT_OPTIONS),
     matchedFields: [...matchedFields],
     risks: [...risks],
     reason: "",
-    subject,
+    subject: normalizedSubject,
     _sourceFlags: sourceFlags
   };
 
@@ -435,6 +438,9 @@ function compareTitleEntries(
     return { score: 42, field };
   }
 
+  const containmentScore = scoreTitleContainment(input, candidate, field);
+  if (containmentScore > 0) return { score: containmentScore, field };
+
   const similarity = titleSimilarity(input.normalized.punctuationless, candidate.normalized.punctuationless);
   if (similarity >= 0.82) {
     const maxFuzzy = input.normalized.tokens.length <= 2 || candidate.normalized.tokens.length <= 2 ? 24 : 32;
@@ -442,6 +448,52 @@ function compareTitleEntries(
   }
 
   return { score: 0, field };
+}
+
+function scoreTitleContainment(input: TitleEntry, candidate: TitleEntry, field: CandidateMatchedField): number {
+  const leftKeys = comparableCoreTitleKeys(input.normalized);
+  const rightKeys = comparableCoreTitleKeys(candidate.normalized);
+  const isJapaneseTitleMatch =
+    (input.field === "original" || input.field === "japanese") &&
+    (candidate.field === "original" || candidate.field === "japanese");
+
+  for (const left of leftKeys) {
+    for (const right of rightKeys) {
+      if (!isUsefulContainmentPair(left, right)) continue;
+      if (!left.includes(right) && !right.includes(left)) continue;
+
+      if (isJapaneseTitleMatch) {
+        const coverage = Math.min(left.length, right.length) / Math.max(left.length, right.length);
+        return Math.round(34 + 8 * coverage);
+      }
+      if (field === "alias") return 28;
+      if (field === "name_cn") return 26;
+    }
+  }
+
+  return 0;
+}
+
+function comparableCoreTitleKeys(title: NormalizedTitle): string[] {
+  return uniqueStrings([
+    title.compact,
+    title.punctuationless.replace(/\s+/g, ""),
+    stripSeasonPhrase(title.punctuationless).replace(/\s+/g, ""),
+    stripParenthetical(title.punctuationless).replace(/\s+/g, "")
+  ]).filter((key) => key.length > 0);
+}
+
+function isUsefulContainmentPair(left: string, right: string): boolean {
+  const minLength = Math.min([...left].length, [...right].length);
+  const maxLength = Math.max([...left].length, [...right].length);
+  if (minLength >= 2 && (left.startsWith(right) || right.startsWith(left)) && hasCjkOrKana(left) && hasCjkOrKana(right)) {
+    return true;
+  }
+  return minLength >= 3 && maxLength >= 4;
+}
+
+function hasCjkOrKana(value: string): boolean {
+  return /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(value);
 }
 
 function scoreSeasonToken(
@@ -459,9 +511,14 @@ function scoreSeasonToken(
       matchedFields.add("seasonToken");
       return inputToken.kind === "final" || inputToken.kind === "sequel" ? 4 : 12;
     }
+    if (isCompatibleCourOrSeasonToken(inputToken, candidateToken)) {
+      matchedFields.add("seasonToken");
+      return 3;
+    }
     risks.add("season_token_mismatch");
     return -20;
   }
+  if (inputToken && !candidateToken && inputToken.kind === "part") return 0;
   if (inputToken && !candidateToken && inputToken.kind !== "unknown") {
     risks.add("season_token_mismatch");
     return -12;
@@ -483,13 +540,12 @@ function scoreDate(
     return 2;
   }
 
-  const subjectYear = Number(subjectDate.slice(0, 4));
-  if (input.year !== null && input.year !== undefined && subjectYear !== input.year) {
-    risks.add("year_mismatch");
-    return -25;
-  }
-
   if (!inputDate) {
+    const subjectYear = Number(subjectDate.slice(0, 4));
+    if (input.year !== null && input.year !== undefined && subjectYear !== input.year) {
+      risks.add("year_mismatch");
+      return -25;
+    }
     if (input.year !== null && input.year !== undefined && input.quarter !== null && input.quarter !== undefined) {
       const quarter = quarterFromMonth(Number(subjectDate.slice(5, 7)));
       if (quarter === input.quarter) {
@@ -512,6 +568,11 @@ function scoreDate(
   if (inputDate.slice(0, 7) === subjectDate.slice(0, 7)) {
     matchedFields.add("date");
     return 12;
+  }
+  const subjectYear = Number(subjectDate.slice(0, 4));
+  if (input.year !== null && input.year !== undefined && subjectYear !== input.year) {
+    risks.add("year_mismatch");
+    return -25;
   }
   if (quarterFromMonth(Number(inputDate.slice(5, 7))) === quarterFromMonth(Number(subjectDate.slice(5, 7)))) {
     matchedFields.add("quarter");
@@ -568,7 +629,7 @@ function scoreOfficialAndStudio(
   const officialUrls = extractOfficialUrls(subject).map(normalizeUrl);
   if (input.officialUrl && officialUrls.includes(normalizeUrl(input.officialUrl))) {
     matchedFields.add("officialUrl");
-    score += 10;
+    score += 22;
   }
 
   const studios = extractStringListFromInfobox(subject, ["动画制作", "アニメーション制作", "制作公司", "studio"]);
@@ -644,6 +705,18 @@ function titleKeys(title: NormalizedTitle): string[] {
 
 function bestSeasonToken(entries: TitleEntry[]): NormalizedTitle["seasonToken"] | undefined {
   return entries.find((entry) => entry.normalized.seasonToken)?.normalized.seasonToken;
+}
+
+function isCompatibleCourOrSeasonToken(
+  inputToken: NonNullable<NormalizedTitle["seasonToken"]>,
+  candidateToken: NonNullable<NormalizedTitle["seasonToken"]>
+): boolean {
+  if (inputToken.kind === "unknown" || candidateToken.kind === "unknown") return true;
+  if (inputToken.kind === "part" || candidateToken.kind === "part") return true;
+  if (inputToken.kind === "sequel" || candidateToken.kind === "sequel") return true;
+  return inputToken.number !== undefined &&
+    candidateToken.number !== undefined &&
+    inputToken.number === candidateToken.number;
 }
 
 function extractSeasonToken(raw: string): NormalizedTitle["seasonToken"] | undefined {
@@ -853,6 +926,23 @@ function normalizeUrl(value: string): string {
 
 function uniqueStrings(values: Array<string | null | undefined>): string[] {
   return [...new Set(values.filter((value): value is string => typeof value === "string").map((value) => value.trim()))];
+}
+
+function repairBangumiSubject(subject: BangumiSubject): BangumiSubject {
+  return repairMojibakeValue(subject) as BangumiSubject;
+}
+
+function repairMojibakeValue(value: unknown): unknown {
+  if (typeof value === "string") return repairMojibakeText(value);
+  if (Array.isArray(value)) return value.map(repairMojibakeValue);
+  if (value && typeof value === "object") {
+    const result: Record<string, unknown> = {};
+    for (const [key, nested] of Object.entries(value)) {
+      result[key] = repairMojibakeValue(nested);
+    }
+    return result;
+  }
+  return value;
 }
 
 function dedupeSources(sources: AnimeSource[]): AnimeSource[] {

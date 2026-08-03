@@ -9,10 +9,10 @@
 - 版本: `0.2.5`
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
-- 当前缓存: 855 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
-- 测试: 109 个单元测试; 最近 `npm run check` 通过
+- 当前缓存: 853 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
+- 测试: 110 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
-- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 当前 855 条中 837 条带长门有C / YucWiki 主源, 696 条带 YourAnimes 参考源; 修复 Bangumi 补强算法后封面缺失为 0, 825 条使用 Bangumi 封面, 30 条仍使用长门有C封面兜底, 36 条缺 Bangumi 评分, 30 条缺可靠 Bangumi subjectId, 另有 6 条未来 Bangumi subject 当前无有效评分。根因是 Bangumi 月度列表不是完整目录、季度窗口未覆盖前置月、在线搜索响应 mojibake 未在评分前修复, 以及 Part/cour 与别名匹配过严。2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。更新前后确认同一作品 id 改变 3 条: `anime:325767` -> `anime:yucwiki:202607:b29` (`感谢对战 大小姐才不玩格斗游戏`), `anime:528828` -> `anime:yucwiki:202607:c05` (`骸骨骑士大人异世界冒险中 第2期`), `anime:614594` -> `anime:yucwiki:202607:b20` (`令和的斑小姐`); 另有旧目录 242 条不再被新主目录保留, 新主目录加入 157 条。2026-08-01 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
+- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 当前 853 条中 836 条带长门有C / YucWiki 主源, 708 条带 YourAnimes 参考源; 修复 Bangumi 补强算法后封面缺失为 0, 847 条带 Bangumi 源, 7 条缺可靠 Bangumi subjectId, 13 条缺 Bangumi 评分, 其中 6 条是未来 Bangumi subject 当前无有效评分。Bangumi 匹配已先修复 subject 快照和在线搜索响应中的 mojibake, 再按日文名、官网、日期、集数、季数/Part/cour 证据打分; 中文译名只作为辅助, 不要求完全一致。若 Bangumi 将同一季或上下半 cour 合并为一个 subject, 长门有C 上的 Part 条目可共用同一 Bangumi subjectId 与评分。2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。更新前后确认同一作品 id 改变 3 条: `anime:325767` -> `anime:yucwiki:202607:b29` (`感谢对战 大小姐才不玩格斗游戏`), `anime:528828` -> `anime:yucwiki:202607:c05` (`骸骨骑士大人异世界冒险中 第2期`), `anime:614594` -> `anime:yucwiki:202607:b20` (`令和的斑小姐`); 另有旧目录 242 条不再被新主目录保留, 新主目录加入 157 条。2026-08-03 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 同季同 Bangumi subject 的参考源残留已删除, 仅跨季 Part/cour 可按强证据共用同一 Bangumi subjectId 与评分; 已完结/取消条目顶层 `updateTime` / `updateWeekday` 全部置空, 但 `startDate` 与 `schedule[]` 首播记录保留
 
 ## 2. 产品边界
 
@@ -103,10 +103,11 @@ tests/fixtures/               测试夹具
 
 - 非日本动画必须写 `isJapaneseAnime=false`, `inclusionStatus="excluded"`, `exclusionReason`
 - 可展示条目至少保留一个 `sources[]`
-- 已完结或取消条目不再继承 `updateTime` / `updateWeekday`
+- 已完结或取消条目不再继承顶层 `updateTime` / `updateWeekday`; 但必须保留 `startDate` 与 `schedule[]` 中的首播日期/时间记录, 用于搜索、回查、在看记录和观看记录展示
 - `episodeCount` 与 `airedEpisodeCount` 不得矛盾
 - 长门有C、YourAnimes、人工覆盖写入的展示时间按北京时间 `Asia/Shanghai` 处理; 巴哈姆特仅作为遗留适配器保留
 - Bangumi 标题映射会修复 UTF-8 被误读为 Latin-1 的 mojibake, 不要移除
+- Bangumi 标题匹配以日文名、原名、官网、日期、集数和季数/Part/cour 为主; 中文译名不要求完全一致。日文核心名可接受候选标题的长短差异, 例如长门短名 `凍牌` 可匹配 Bangumi 长名 `凍牌～裏レート麻雀闘牌録～`
 - Bangumi 非日漫过滤包含明确排除 subjectId、标题/IP 规则、tags/产地强元数据规则、韩文主标题规则、已知 SP 标题规则和第 11 季以上规则, 不要把已确认的国产/海外/韩产动画、SP、剧场版或超十季条目重新放回可展示缓存
 
 ## 6. API 与静态模式
@@ -159,6 +160,7 @@ npm run data:refresh-bangumi
 npm run data:sync-bangumi
 npm run data:match-bangumi
 npm run data:validate
+npm run data:audit
 ```
 
 源配置:
@@ -187,11 +189,12 @@ npm run data:validate
 - 外部源失败: 记录 warning, 尽量保留可用旧缓存
 - 目标季度无旧缓存且外部源无可写入条目但有 warning: 返回 `SOURCE_UNAVAILABLE`, 不写入空成功
 - 长门有C季度页面快照和 Bangumi 月度快照存在时优先读取本地文件; 页面更新在网络不可用时仍可刷新已缓存月份
-- `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存
+- `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存; 它也会清空已完结/取消条目的顶层更新时间, 并删除同季同 Bangumi subject 的次级重复项, 但允许上下半 cour / Part 跨季共用 subject
+- `npm run data:audit` 是只读全缓存审查脚本, 会检查 schema、非 TV、非日漫、excluded、剧场版/电影、已知 SP、第 11 季以上、成人内容、已完结顶层更新时间、缺来源、缺封面、重复 id、同季重复 subject 和同季重复标题; 缺 Bangumi 评分/subjectId 只作为可接受告警统计
 - 旧季度导入优先使用长门有C; Bangumi 只作为评分和 subjectId 补强。长门有C与 Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用长门有C重建目录并用 Bangumi 同步补齐评分、封面和 subjectId
 - `npm run data:refresh-bangumi` 会按当前缓存中涉及的季度窗口分页刷新 `data/bangumi-YYYYMM-subjects.json`; 该命令只刷新 Bangumi 候选快照, 不直接修改番剧主缓存
-- `npm run data:sync-bangumi` 会优先使用本地 `data/bangumi-YYYYMM-subjects.json` 快照, 对已匹配 Bangumi subjectId 的条目刷新评分、封面、集数和状态, 并对缺 subjectId 的长门条目尝试本地高置信匹配; 不足阈值的条目保持缺评分状态, 不做冒险写入
-- `npm run data:match-bangumi` 是在线 Bangumi 搜索补强脚本, 需要修复搜索响应中的 mojibake 后再评分; 自动接受标题/别名强匹配并具备日期、官网、集数、季数或制作信息辅助证据的候选, 对上下半 cour 共用同一 Bangumi subject 导致的日期冲突可在官网与季数/制作证据足够时接受; 年份冲突、格式冲突、多候选接近或弱标题候选仍保持拒绝
+- `npm run data:sync-bangumi` 会优先使用本地 `data/bangumi-YYYYMM-subjects.json` 快照, 对已匹配 Bangumi subjectId 的条目刷新评分、封面、集数和状态, 并对缺 subjectId 的长门条目尝试本地高置信匹配; 不足阈值的条目保持缺评分状态, 不做冒险写入。可加 `-- --local-only` 只使用本地 Bangumi 快照补强缺 subjectId, 不执行在线详情刷新
+- `npm run data:match-bangumi` 是在线 Bangumi 搜索补强脚本, 需要修复搜索响应中的 mojibake 后再评分; 自动接受标题/别名强匹配并具备日期、官网、集数、季数或制作信息辅助证据的候选。中文标题不要求完全一致, 因为日文译名可能存在长短译名或不同译名; 当官网、日期、集数、季数或制作信息形成强证据时, 可接受中文译名弱匹配。对上下半 cour / Part 共用同一 Bangumi subject 的情况, 允许多个长门条目共用同一个 Bangumi subjectId 和评分; 格式冲突、多候选接近或缺少官网/日期/季数等辅助证据的弱标题候选仍保持拒绝
 - 参考源冷启动的历史季度条目会按导入时刻推断为 `finished`, 顶层 `updateTime` / `updateWeekday` 置空, 但 `schedule[]` 仍保留首播日期和时间用于搜索与回查
 
 ## 8. 部署

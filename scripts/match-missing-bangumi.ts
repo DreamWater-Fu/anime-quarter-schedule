@@ -257,7 +257,6 @@ function repairMojibakeValue(value: unknown): unknown {
 
 function isAcceptedOnlineMatch(best: Candidate, second: Candidate | undefined): boolean {
   const blockingRisks = new Set([
-    "year_mismatch",
     "format_conflict",
     "multiple_close_candidates"
   ]);
@@ -274,23 +273,29 @@ function isAcceptedOnlineMatch(best: Candidate, second: Candidate | undefined): 
     best.matchedFields.includes("seasonToken") ||
     best.matchedFields.includes("episodeCount") ||
     best.matchedFields.includes("studio");
-  const hasStrongOfficialEvidence = hasOfficialUrl && hasSeasonOrProductionEvidence && best.score >= 50;
-  if ((!hasStrongTitle || !hasAuxEvidence) && !(hasStrongOfficialEvidence && hasDate)) {
+  const hasCourMergeEvidence = hasOfficialUrl && hasSeasonOrProductionEvidence && best.score >= 50;
+  const hasStrongOfficialEvidence = hasOfficialUrl && (hasDate || hasSeasonOrProductionEvidence) && best.score >= 55;
+  if ((!hasStrongTitle || !hasAuxEvidence) && !hasStrongOfficialEvidence) {
     return false;
   }
-  if (lead < 15 && !hasStrongOfficialEvidence) return false;
+  if (lead < 15 && !hasStrongOfficialEvidence && !hasCourMergeEvidence) return false;
 
-  if (best.risks.includes("date_conflict") && !(hasOfficialUrl && hasSeasonOrProductionEvidence && best.score >= 50)) {
+  if (best.risks.includes("year_mismatch") && !hasCourMergeEvidence) {
     return false;
   }
-  if (best.risks.includes("season_token_mismatch") && !(hasOfficialUrl && hasDate && best.score >= 60)) {
+
+  if (best.risks.includes("date_conflict") && !hasCourMergeEvidence) {
+    return false;
+  }
+  if (best.risks.includes("season_token_mismatch") && !(hasOfficialUrl && (hasDate || hasSeasonOrProductionEvidence) && best.score >= 55)) {
     return false;
   }
   if (best.risks.includes("alias_only") && !(hasAuxEvidence && best.score >= 80)) {
     return false;
   }
 
-  if (hasStrongOfficialEvidence && (hasStrongTitle || hasDate)) return true;
+  if (hasStrongOfficialEvidence && (hasStrongTitle || hasDate || hasSeasonOrProductionEvidence)) return true;
+  if (hasCourMergeEvidence && (hasStrongTitle || hasDate)) return true;
   if (hasOfficialUrl && hasDate && best.score >= 60) return true;
   if (best.score >= 74) return true;
   return best.score >= 66 && best.matchedFields.includes("date") && lead >= 25;

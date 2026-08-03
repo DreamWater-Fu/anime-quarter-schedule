@@ -14,6 +14,7 @@ import {
   hasTheatricalMovieSignal,
   repairMojibakeText
 } from "../src/server/anime/contentRules.ts";
+import { clearFinalStatusBroadcastSlot } from "../src/server/anime/normalizeAnime.ts";
 import { getDefaultStorage } from "../src/server/cache/jsonFileStorage.ts";
 import {
   mapYourAnimesReferenceToAnimeItem,
@@ -54,6 +55,7 @@ async function main() {
   let retagged = 0;
   let filledTimes = 0;
   let manualFilled = 0;
+  let clearedFinalSlots = 0;
   const nextItems: AnimeItem[] = [];
 
   for (const item of cache.items) {
@@ -77,16 +79,24 @@ async function main() {
     const merged = reference ? mergeReferenceTime(retaggedItem, reference) : retaggedItem;
     const override = manualOverrides.get(merged.id);
     const finalized = override ? applyManualBroadcastOverride(merged, override, now) : merged;
+    const normalizedFinal = clearFinalStatusBroadcastSlot(finalized);
     if (item.updateTime === null && merged.updateTime !== null) filledTimes += 1;
     if (override && merged.updateTime !== finalized.updateTime) manualFilled += 1;
-    nextItems.push(finalized);
+    if (
+      (finalized.updateTime !== normalizedFinal.updateTime) ||
+      (finalized.updateWeekday !== normalizedFinal.updateWeekday)
+    ) {
+      clearedFinalSlots += 1;
+    }
+    nextItems.push(normalizedFinal);
   }
 
+  const dedupedItems = removeSameSeasonSecondarySubjectDuplicates(nextItems);
   const nextCache: AnimeCache = {
     ...cache,
     updatedAt: now,
     generatedBy: "manual-update",
-    items: nextItems
+    items: dedupedItems
   };
 
   await storage.writeAnimeCache(nextCache);
@@ -99,11 +109,60 @@ async function main() {
     currentJob: null,
     cache: {
       animeUpdatedAt: now,
-      itemCount: nextItems.length
+      itemCount: dedupedItems.length
     }
   });
 
-  console.log(JSON.stringify({ removed, retagged, filledTimes, manualFilled, written: nextItems.length }, null, 2));
+  console.log(JSON.stringify({
+    removed,
+    retagged,
+    filledTimes,
+    manualFilled,
+    clearedFinalSlots,
+    removedDuplicateSubjects: nextItems.length - dedupedItems.length,
+    written: dedupedItems.length
+  }, null, 2));
+}
+
+function removeSameSeasonSecondarySubjectDuplicates(items: AnimeItem[]): AnimeItem[] {
+  const groups = new Map<string, AnimeItem[]>();
+  for (const item of items) {
+    const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
+    if (subjectId === null || item.primarySeason === null) continue;
+    const key = `${subjectId}:${item.primarySeason.year}:${item.primarySeason.quarter}`;
+    const group = groups.get(key) ?? [];
+    group.push(item);
+    groups.set(key, group);
+  }
+
+  const removeIds = new Set<string>();
+  for (const group of groups.values()) {
+    if (group.length <= 1) continue;
+    const keeper = group.toSorted(compareDuplicateSubjectCandidate)[0];
+    for (const item of group) {
+      if (item !== keeper) removeIds.add(item.id);
+    }
+  }
+
+  return items.filter((item) => !removeIds.has(item.id));
+}
+
+function compareDuplicateSubjectCandidate(left: AnimeItem, right: AnimeItem): number {
+  return (
+    scoreDuplicateSubjectCandidate(right) - scoreDuplicateSubjectCandidate(left) ||
+    left.id.localeCompare(right.id)
+  );
+}
+
+function scoreDuplicateSubjectCandidate(item: AnimeItem): number {
+  let score = 0;
+  if (item.sources.some((source) => source.name === "YucWiki")) score += 100;
+  if (item.sources.some((source) => source.name === "Bangumi")) score += 20;
+  if (item.sources.some((source) => source.name === "YourAnimes")) score += 10;
+  if (item.id.startsWith("anime:yucwiki:")) score += 5;
+  if (item.coverImage !== null) score += 2;
+  if (item.bangumi.rating !== null) score += 2;
+  return score;
 }
 
 function isExplicitAdult(item: AnimeItem): boolean {
@@ -293,6 +352,7 @@ function normalizeSeasonTags(item: AnimeItem): AnimeItem {
 }
 
 function mergeReferenceTime(item: AnimeItem, reference: AnimeItem): AnimeItem {
+  if (item.status === "finished" || item.status === "cancelled") return item;
   if (reference.updateTime === null || reference.schedule[0] === undefined) return item;
   const source = reference.sources[0];
   const schedule = item.schedule.map((scheduleItem) => ({

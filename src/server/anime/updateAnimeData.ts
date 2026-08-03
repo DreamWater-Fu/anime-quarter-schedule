@@ -12,6 +12,7 @@ import type { AnimeCache, AnimeItem, SeasonKey, SeasonMonth } from "../types/ani
 import type { PublicApiError, UpdateInput, UpdateResult, UpdateStatusPayload, UpdateSummary } from "../types/api.ts";
 import { ApiErrorException, toPublicApiError } from "../utils/errors.ts";
 import { hasBlockingValidationIssues, validateAnimeCache } from "./validateAnime.ts";
+import { clearFinalStatusBroadcastSlot } from "./normalizeAnime.ts";
 import {
   calculateActiveSeasons,
   calculatePrimarySeason,
@@ -354,7 +355,7 @@ function normalizeFetchedItem(item: AnimeItem, now: string): AnimeItem {
     ? "partial"
     : item.dataStatus;
 
-  return {
+  return clearFinalStatusBroadcastSlot({
     ...item,
     title: {
       original: item.title.original,
@@ -373,7 +374,7 @@ function normalizeFetchedItem(item: AnimeItem, now: string): AnimeItem {
     dataStatus,
     updatedAt: item.updatedAt || now,
     createdAt: item.createdAt || now
-  };
+  });
 }
 
 function mergeDuplicateItems(items: AnimeItem[]): AnimeItem[] {
@@ -486,7 +487,7 @@ function mergeBangumiMetadataIntoPrimaryCatalog(primary: AnimeItem, bangumiItem:
     bahamutSn: primary.externalIds.bahamutSn ?? bangumiItem.externalIds.bahamutSn
   };
 
-  return {
+  return clearFinalStatusBroadcastSlot({
     ...primary,
     id: bangumi.subjectId !== null ? `anime:${bangumi.subjectId}` : primary.id,
     title: {
@@ -498,7 +499,7 @@ function mergeBangumiMetadataIntoPrimaryCatalog(primary: AnimeItem, bangumiItem:
     bangumi,
     sources: dedupeSources([...primary.sources, ...bangumiItem.sources]),
     updatedAt: bangumiItem.updatedAt
-  };
+  });
 }
 
 function resolveMergedStatus(left: AnimeItem["status"], right: AnimeItem["status"]): AnimeItem["status"] {
@@ -708,7 +709,7 @@ function mergeSeasonIntoCache(
     schemaVersion: 1,
     updatedAt,
     generatedBy: "manual-update",
-    items: [...unrelatedOldItems, ...seasonItems]
+    items: [...unrelatedOldItems, ...seasonItems].map(clearFinalStatusBroadcastSlot)
   };
 }
 
