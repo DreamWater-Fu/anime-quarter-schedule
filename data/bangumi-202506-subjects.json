@@ -1,0 +1,638 @@
+[
+  {
+    "date": "2025-06-27",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/4a/f7/567346_xAXrp.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/4a/f7/567346_xAXrp.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/4a/f7/567346_xAXrp.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/4a/f7/567346_xAXrp.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/4a/f7/567346_xAXrp.jpg"
+    },
+    "summary": "",
+    "name": "SpongeBob SquarePants (Season 16)",
+    "name_cn": "æµ·ç»µå®å® ç¬¬åå­å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 86056
+      },
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1389266
+      },
+      {
+        "name": "2025",
+        "count": 2,
+        "total_count": 71883
+      },
+      {
+        "name": "ç¾å½",
+        "count": 1,
+        "total_count": 26952
+      },
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 612353
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æµ·ç»µå®å® ç¬¬åå­å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "13"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´6æ27æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Nickelodeon"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2026å¹´6æ5æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 4,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 2,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 2
+      },
+      "score": 8
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 3,
+      "dropped": 4,
+      "wish": 6,
+      "collect": 11,
+      "doing": 7
+    },
+    "id": 567346,
+    "eps": 13,
+    "meta_tags": [
+      "TV",
+      "åå",
+      "ç¾å½",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-06-16",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/e2/1d/561911_e4iZd.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/e2/1d/561911_e4iZd.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/e2/1d/561911_e4iZd.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/e2/1d/561911_e4iZd.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/e2/1d/561911_e4iZd.jpg"
+    },
+    "summary": "",
+    "name": "Marvel's Spidey and His Amazing Friends Season 4",
+    "name_cn": "èèä¾ ä¸ä»çç¥å¥æåä»¬ ç¬¬åå­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 83028
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1312737
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "èèä¾ ä¸ä»çç¥å¥æåä»¬ ç¬¬åå­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "19"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´6æ16æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Mitch Stookey"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "Patrick Stump"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½æ²",
+        "value": "Patrick Stump"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½è¯",
+        "value": "Patrick StumpãHarrison Willcox"
+      },
+      {
+        "key": "ä¸»é¢æ­æ¼åº",
+        "value": "Patrick Stump"
+      },
+      {
+        "key": "èæ¬",
+        "value": "Greg JohnsonãClaudia SilverãAlexa HarzanãBart JennettãDanielle KregerãDaka HermonãBecca TopolãSib Ventress"
+      },
+      {
+        "key": "åé",
+        "value": "Roxy BeiklikãNicole WangãCarrie MombourquetteãAnna BohacãHideki YumitaniãJohn YoungãZiqing Sophia Li (Sophia Ziqing Li)ãDavid NguyenãMehmet Kenan SinavãSarah PiironenãAiken ChauãCheuk Kei Po (Cheuk Po)ãMincheul ParkãTim WuãAbigail DomstadãIrene HuangãDaniela Smith-FischerãToren AtkinsonãW. Travis JohnsonãAbigal DomstadãBecky WedelãIrene HaungãJohn YounãAiken ChauãHideki YumitaniãJohn YoungãMincheul ParkãTim WuãDavid NguyenãAiken Chau,ãToren AtkinsonãDavid Nguyen"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "Harrison Wilcox"
+      },
+      {
+        "key": "åªè¾",
+        "value": "Bec Cranswick"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "Atomic Cartoons"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "Marvel Animation"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 6,
+      "wish": 1,
+      "collect": 0,
+      "doing": 1
+    },
+    "id": 561911,
+    "eps": 19,
+    "meta_tags": [
+      "TV",
+      "æ¼«ç»æ¹",
+      "å­ä¾å",
+      "ç¾å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-06-15",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/02/82/564900_GO0lA.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/02/82/564900_GO0lA.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/02/82/564900_GO0lA.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/02/82/564900_GO0lA.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/02/82/564900_GO0lA.jpg"
+    },
+    "summary": "Tune in to the new NINJAGO Legends: Monstrosity official trailer and get a sneak peek at the epic adventure ahead! ?In search of his friends, Kai ventures into the mysterious Land of Monsters, where terrifying creatures lurk at every turn. Heâs not the only one fighting for survival in this brutal environment... What horrors will Kai face on his journey? ?",
+    "name": "Ninjago Legends: Monstrosity",
+    "name_cn": "ä¹é«å¹»å½±å¿è ä¼ å¥ï¼é­å½ä¹å°",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 4,
+        "total_count": 86080
+      },
+      {
+        "name": "åå",
+        "count": 3,
+        "total_count": 612928
+      },
+      {
+        "name": "ç­ç",
+        "count": 2,
+        "total_count": 101442
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1389626
+      },
+      {
+        "name": "å¯",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "å¿è",
+        "count": 1,
+        "total_count": 2081
+      },
+      {
+        "name": "ä¹é«",
+        "count": 1,
+        "total_count": 259
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ä¹é«å¹»å½±å¿è ä¼ å¥ï¼é­å½ä¹å°"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "3"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´6æ15æ¥"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "YouTube"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Ben Marsaud"
+      },
+      {
+        "key": "ç¼å§",
+        "value": "Kevin BurkeãChris \"Doc\" Wyatt"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 5,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 3,
+        "9": 0,
+        "10": 1
+      },
+      "score": 7.8
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 4,
+      "wish": 3,
+      "collect": 8,
+      "doing": 2
+    },
+    "id": 564900,
+    "eps": 3,
+    "meta_tags": [
+      "TV",
+      "åå",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-06-13",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/b3/1a/497640_V7V7O.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/b3/1a/497640_V7V7O.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/b3/1a/497640_V7V7O.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/b3/1a/497640_V7V7O.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/b3/1a/497640_V7V7O.jpg"
+    },
+    "summary": "çªçªä¾ ãæèªãè¸è¸åå«åå¤§éï¼å¸¦é¢è¶æè½¦éå¨åæ¥å°è¥¿å¤§éãè¿éé»æ²æ¼«å¤©ãçé£èèï¼èµè½¦æ¡ä»¶æå¶è°é¾ï¼ç¶èæ´è®©äººå°æçæ¯ï¼è¥¿å¤§éç«ç¶å¤äºåèµç¶åµï¼ä¸ºäºæ­é²äºæççç¸ï¼éå¯è¶ç«éå¤§å¥èµï¼è¶æè½¦éå¿é¡»ç¯æ¸¸è¥¿å¤§éï¼å°ååäºè£çè¥¿å¤§éè½¦æä»¬èéèµ·æ¥ãé¢å¯¹åææªæçééå°å¢åè¿·é¾ï¼è¶æè½¦éåæå°é¾ï¼å±ç°åé§çå®åï¼è¥¿å¤§éå³å°ä¸æ¼ç²¾å½©çæéä¹æï¼",
+    "name": "çªçªä¾ ä¹ç«éå°è±é 9",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 1,
+        "total_count": 29166
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 1,
+        "total_count": 11628
+      },
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 593364
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 155846
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1336473
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´6æ13æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "çé¾æ³¢"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 5,
+      "wish": 2,
+      "collect": 2,
+      "doing": 0
+    },
+    "id": 497640,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "åå",
+      "å­ä¾å",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-06-06",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/26/b4/621369_LSg7d.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/26/b4/621369_LSg7d.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/26/b4/621369_LSg7d.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/26/b4/621369_LSg7d.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/26/b4/621369_LSg7d.jpg"
+    },
+    "summary": "",
+    "name": "Wylde Pak",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 81621
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 1,
+        "total_count": 11021
+      },
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 580394
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1292358
+      },
+      {
+        "name": "åå§",
+        "count": 1,
+        "total_count": 28386
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æ²å¾·æ´ä¸å®¶ ç¬¬ä¸å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "14"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´6æ6æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Kyle Marshall"
+      },
+      {
+        "key": "ç±»å",
+        "value": "åå§ / å¨ç» / å®¶åº­ / å¿ç«¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Nickelodeon"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 1,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 7
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 4,
+      "wish": 3,
+      "collect": 2,
+      "doing": 0
+    },
+    "id": 561920,
+    "eps": 0,
+    "meta_tags": [],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-06-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/96/28/561191_de44E.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/96/28/561191_de44E.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/96/28/561191_de44E.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/96/28/561191_de44E.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/96/28/561191_de44E.jpg"
+    },
+    "summary": "",
+    "name": "ëí ë¦¬ ë¬¸íì¼í°",
+    "name_cn": "æ©¡ææåä¸­å¿",
+    "tags": [
+      {
+        "name": "é©å½",
+        "count": 2,
+        "total_count": 3446
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 1,
+        "total_count": 377612
+      },
+      {
+        "name": "æ¼«ç»æ¹",
+        "count": 1,
+        "total_count": 815788
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1342190
+      },
+      {
+        "name": "åå§",
+        "count": 1,
+        "total_count": 30527
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æ©¡ææåä¸­å¿"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "*"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´6æ1æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "EBS"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "5Bricks Studio"
+      },
+      {
+        "key": "åä½",
+        "value": "ëë¤ <ëí ë¦¬ ë¬¸íì¼í°>"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 4,
+      "wish": 2,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 561191,
+    "eps": 0,
+    "meta_tags": [
+      "åå§",
+      "TV",
+      "æ¼«ç»æ¹",
+      "æ¥å¸¸",
+      "é©å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

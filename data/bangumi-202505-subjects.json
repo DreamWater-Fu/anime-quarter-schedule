@@ -1,0 +1,686 @@
+[
+  {
+    "date": "2025-05-29",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/36/8f/640943_gLgFN.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/36/8f/640943_gLgFN.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/36/8f/640943_gLgFN.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/36/8f/640943_gLgFN.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/36/8f/640943_gLgFN.jpg"
+    },
+    "summary": "",
+    "name": "The Octonauts Season10",
+    "name_cn": "æµ·åºå°çºµé ç¬¬åå­£",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æµ·åºå°çºµé ç¬¬åå­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "*26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "*2025-05-29"
+      },
+      {
+        "key": "Copyright",
+        "value": "æ­å·å®è´çå¨æ¼«ç§æç­"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 640943,
+    "eps": 26,
+    "meta_tags": [],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-05-28",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/5f/6d/563367_7KiKM.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/5f/6d/563367_7KiKM.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/5f/6d/563367_7KiKM.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/5f/6d/563367_7KiKM.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/5f/6d/563367_7KiKM.jpg"
+    },
+    "summary": "The dream world has finally returned to a place of peace and beautyâ¦but maybe itâs a little too quiet without any troublemakers causing mischief. Suddenly a few rogue nightmare creatures emerge, threatening the tranquility. It's time to get ready for a new adventure and restore the dream world back in order! Who knows what will await us on the journey this time... ?",
+    "name": "LEGOÂ®DREAMZzz Season 3ï¼Enter The Cyber Game",
+    "name_cn": "ä¹é«æ¢¦å¢åçäºº ç¬¬ä¸å­£ï¼è¿å¥äºæ¬¡åæ¸¸æ",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 80637
+      },
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 573270
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1277207
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ä¹é«æ¢¦å¢åçäºº ç¬¬ä¸å­£ï¼è¿å¥äºæ¬¡åæ¸¸æ"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "20"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´5æ28æ¥"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "YoutubeãNetflix"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Cartoon Network"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2025å¹´8æ1æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "TBA"
+      },
+      {
+        "key": "ç¼å§",
+        "value": "Melissa G. ShepherdãJeremy AdamsãAnnie NishidaãErnie AltbackerãHaley ManciniãGhia Godfree"
+      },
+      {
+        "key": "å¶çæ¹",
+        "value": "ææªå¬å¸"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 4,
+      "wish": 2,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 563367,
+    "eps": 20,
+    "meta_tags": [
+      "TV",
+      "åå",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-05-25",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/90/ef/451756_GIMIR.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/90/ef/451756_GIMIR.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/90/ef/451756_GIMIR.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/90/ef/451756_GIMIR.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/90/ef/451756_GIMIR.jpg"
+    },
+    "summary": "",
+    "name": "Rick and Morty Season 8",
+    "name_cn": "çååè«è ç¬¬å«å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 157,
+        "total_count": 86251
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 100,
+        "total_count": 250495
+      },
+      {
+        "name": "åå",
+        "count": 79,
+        "total_count": 615235
+      },
+      {
+        "name": "2025",
+        "count": 79,
+        "total_count": 72365
+      },
+      {
+        "name": "TV",
+        "count": 76,
+        "total_count": 1392779
+      },
+      {
+        "name": "èæ´",
+        "count": 53,
+        "total_count": 4766
+      },
+      {
+        "name": "2025å¹´4æ",
+        "count": 51,
+        "total_count": 33507
+      },
+      {
+        "name": "åé©",
+        "count": 50,
+        "total_count": 53052
+      },
+      {
+        "name": "æç¬",
+        "count": 47,
+        "total_count": 633629
+      },
+      {
+        "name": "çå¥",
+        "count": 45,
+        "total_count": 36915
+      },
+      {
+        "name": "çååè«è",
+        "count": 33,
+        "total_count": 1039
+      },
+      {
+        "name": "çåè«è",
+        "count": 20,
+        "total_count": 38
+      },
+      {
+        "name": "ç¾å½",
+        "count": 19,
+        "total_count": 27003
+      },
+      {
+        "name": "çªå§",
+        "count": 8,
+        "total_count": 2171
+      },
+      {
+        "name": "ç¾å§",
+        "count": 6,
+        "total_count": 121
+      },
+      {
+        "name": "ç¾æ¼«",
+        "count": 4,
+        "total_count": 1994
+      },
+      {
+        "name": "Adult-Swim",
+        "count": 4,
+        "total_count": 252
+      },
+      {
+        "name": "æ¶æ",
+        "count": 3,
+        "total_count": 9450
+      },
+      {
+        "name": "æªç¡®å®",
+        "count": 2,
+        "total_count": 2024
+      },
+      {
+        "name": "adult_swim",
+        "count": 2,
+        "total_count": 97
+      },
+      {
+        "name": "Rick_and_Morty",
+        "count": 2,
+        "total_count": 797
+      },
+      {
+        "name": "2025å¹´",
+        "count": 2,
+        "total_count": 3444
+      },
+      {
+        "name": "AdultSwim",
+        "count": 2,
+        "total_count": 172
+      },
+      {
+        "name": "ææ",
+        "count": 2,
+        "total_count": 466082
+      },
+      {
+        "name": ".",
+        "count": 1,
+        "total_count": 683
+      },
+      {
+        "name": "å§é",
+        "count": 1,
+        "total_count": 4324
+      },
+      {
+        "name": "ç»­é",
+        "count": 1,
+        "total_count": 5137
+      },
+      {
+        "name": "R-15",
+        "count": 1,
+        "total_count": 461
+      },
+      {
+        "name": "Animation",
+        "count": 1,
+        "total_count": 490
+      },
+      {
+        "name": "S8",
+        "count": 1,
+        "total_count": 2
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "çååè«è ç¬¬å«å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "10"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´5æ25æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æææ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Adult Swim"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2025å¹´7æ27æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 2368,
+      "total": 660,
+      "count": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 6,
+        "5": 26,
+        "6": 139,
+        "7": 282,
+        "8": 162,
+        "9": 26,
+        "10": 16
+      },
+      "score": 7.1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 44,
+      "dropped": 30,
+      "wish": 333,
+      "collect": 1308,
+      "doing": 467
+    },
+    "id": 451756,
+    "eps": 10,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-05-21",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/97/47/613379_rcdnJ.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/97/47/613379_rcdnJ.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/97/47/613379_rcdnJ.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/97/47/613379_rcdnJ.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/97/47/613379_rcdnJ.jpg"
+    },
+    "summary": "YouTubeã®å¤§äººæ°ã¢ãã¡ãããè°·ã®ã¢ãã¡ã£ã¡ãã®ã¯ãªã¨ã¤ã¿ã¼ã»ããè°·ã¨JRAã®ã³ã©ãç¬¬ï¼å¼¾ãå®ç¾ï¼\r\n\r\nGâ ã¬ã¼ã¹ã®çå£åè² ã®è£å´ã§ç¹°ãåºãããããé¨æãé¦¬ãè¦³å®¢ãèª¿æå¸«ãã¡ã«ããã¡ãã£ã¨å¤ã§ãç¬ããé§ãå¼ãããã¯ã¼ã¢ããï¼è¤éãªäºæããã©ã¤ããè¸ã«ãGâ å¶è¦ã«å·å¿µãçããäººãã¨é¦¬ãã¡ã®å¿æ¨¡æ§ã¯å¿è¦ï¼\r\næ°ããªç«¶é¦¬ã®æ¥½ãã¿ãçºè¦ã§ãããæ°æè¦ç«¶é¦¬ã¢ãã¡ããæ¥½ãã¿ãã ããï¼",
+    "name": "ããè°·ã®ããã°ã£ã¡ ã·ã¼ãºã³2",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ç­ç",
+        "count": 2,
+        "total_count": 100156
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 1,
+        "total_count": 271925
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "4"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´5æ21æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææä¸"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 5,
+      "wish": 0,
+      "collect": 1,
+      "doing": 0
+    },
+    "id": 613379,
+    "eps": 4,
+    "meta_tags": [
+      "ç­ç",
+      "æ¥æ¬"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-05-19",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/90/7d/631050_Qyc11.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/90/7d/631050_Qyc11.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/90/7d/631050_Qyc11.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/90/7d/631050_Qyc11.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/90/7d/631050_Qyc11.jpg"
+    },
+    "summary": "Minnie and Daisy embark on new adventures as they open their latest enterprise, a Pet Hotel! This paws-itively fabulous getaway is the perfect place for pets to be pampered, play, and have fun while their owners are away. From spa days to agility courses, themed parties to treat tastings, thereâs always something exciting happening. With Clarabelle and Cuckoo-Loca lending a hand, and playful pets keeping things lively, hijinks abound. Along the way, theyâre joined by old friends and new â because the more, the merrier.",
+    "name": "Minnie's Bow-Toons: Pet Hotel",
+    "name_cn": "",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "*"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´5æ19æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Disney Jr."
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 631050,
+    "eps": 0,
+    "meta_tags": [
+      "TV"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-05-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/1e/88/566104_9Oz1f.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/1e/88/566104_9Oz1f.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/1e/88/566104_9Oz1f.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/1e/88/566104_9Oz1f.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/1e/88/566104_9Oz1f.jpg"
+    },
+    "summary": "ä¸ºä»ä¹ä¸­ç§èè¦åæé¥¼ï¼å®èç³åæä»ä¹æ ·çå¯æï¼è·ä¸æ£è±ç³ä½ ä¸ä»å¯ä»¥å¶ä½æµ·éä¸­åç¾é£ï¼è¿è½å¨âåæ¶å«èâççé¶ä¸­è§£éâä¼ ç»é¥®é£æåä¼ æ¿äººâçèº«ä»½å¦ï¼åæ£è±ç³ä¸èµ·å¼å¯ç¹å¿å¤§åé©ï¼",
+    "name": "æ£è±ç³åäºæµå¦å¦ ç±çç¹å¿çå­",
+    "name_cn": "æ£è±ç³åäºæµå¦å¦ ç±çç¹å¿çå­",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 29166
+      },
+      {
+        "name": "ï¼å¤®ï¼å¨å®¡å­[2024]ç¬¬008å·",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "vbyu",
+        "count": 1,
+        "total_count": 7
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 155819
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1336469
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 1444
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æ£è±ç³åäºæµå¦å¦ ç±çç¹å¿çå­"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "æ£è±ç³åäºæµå¦å¦âç±çç¹å¿çå­"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "40"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´5æ1æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "å¤®è§å°å¿é¢é"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "è¾¹è£é¬ãçç"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "å¤®è§å¨æ¼«éå¢ï¼æ»åºåäººï¼èç»§åï¼åºåäººï¼è®¸å¼º"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "æ»ç­åï¼å§æµ·æ¸ï¼ç­åï¼æå²³ãå¾å½¬ï¼æ§è¡ç­åï¼éæ¼ ãé©¬ç¥æ¸ãè®¸èèãæ½å®"
+      },
+      {
+        "key": "çä¿®",
+        "value": "èºæ¯é¡¾é®ï¼è¡å¿å"
+      },
+      {
+        "key": "çå¶",
+        "value": "ççãèæ¬£æ¬£ãä½å®ãå¯æ¬¢ãå­ä¸½è¾ï¼æ¹åï¼æ»çå¶ï¼"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "çå"
+      },
+      {
+        "key": "æ»å¯¼æ¼",
+        "value": "å¼ å¸"
+      },
+      {
+        "key": "ç¾æ¯è®¾è®¡",
+        "value": "ä»»èãéç¾å³°"
+      },
+      {
+        "key": "ä¸»é¢æ²æ¼åº",
+        "value": "çæï¼æäº®å§å§ï¼"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 4,
+      "wish": 1,
+      "collect": 0,
+      "doing": 1
+    },
+    "id": 566104,
+    "eps": 40,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

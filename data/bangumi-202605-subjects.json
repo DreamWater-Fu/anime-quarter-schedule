@@ -1,0 +1,697 @@
+[
+  {
+    "date": "2026-05-25",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/09/93/662033_RG5i2.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/09/93/662033_RG5i2.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/09/93/662033_RG5i2.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/09/93/662033_RG5i2.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/09/93/662033_RG5i2.jpg"
+    },
+    "summary": "Princess Sofia goes on fun adventures at the Charmswell School for Royal Magic. With new friends and animal pals, she's ready to prove she's the most magical princess of all!",
+    "name": "Sofia the First: Royal Magic",
+    "name_cn": "å°å¬ä¸»èè²äºï¼çå®¶é­æ³",
+    "tags": [
+      {
+        "name": "ç¾å½",
+        "count": 1,
+        "total_count": 26837
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1370267
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å°å¬ä¸»èè²äºï¼çå®¶é­æ³"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "*"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2026å¹´5æ25æ¥"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "Disney+"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Disney Jr."
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Kris Wimberly"
+      },
+      {
+        "key": "ç¾æ¯çç£",
+        "value": "Francis Giglio"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 1,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 662033,
+    "eps": 0,
+    "meta_tags": [
+      "TV",
+      "ç¾å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2026-05-24",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/87/a0/451757_qpMMi.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/87/a0/451757_qpMMi.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/87/a0/451757_qpMMi.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/87/a0/451757_qpMMi.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/87/a0/451757_qpMMi.jpg"
+    },
+    "summary": "",
+    "name": "Rick and Morty Season 9",
+    "name_cn": "çååè«è ç¬¬ä¹å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 77,
+        "total_count": 86252
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 55,
+        "total_count": 250495
+      },
+      {
+        "name": "åå",
+        "count": 48,
+        "total_count": 615241
+      },
+      {
+        "name": "2026",
+        "count": 43,
+        "total_count": 39833
+      },
+      {
+        "name": "TV",
+        "count": 43,
+        "total_count": 1392788
+      },
+      {
+        "name": "çååè«è",
+        "count": 38,
+        "total_count": 1039
+      },
+      {
+        "name": "æç¬",
+        "count": 31,
+        "total_count": 633630
+      },
+      {
+        "name": "2026å¹´4æ",
+        "count": 27,
+        "total_count": 24709
+      },
+      {
+        "name": "èæ´",
+        "count": 26,
+        "total_count": 4766
+      },
+      {
+        "name": "çå¥",
+        "count": 20,
+        "total_count": 36915
+      },
+      {
+        "name": "ç¾æ¼«",
+        "count": 19,
+        "total_count": 1994
+      },
+      {
+        "name": "ç»­é",
+        "count": 9,
+        "total_count": 5137
+      },
+      {
+        "name": "åé©",
+        "count": 8,
+        "total_count": 53052
+      },
+      {
+        "name": "äº²æ",
+        "count": 7,
+        "total_count": 5428
+      },
+      {
+        "name": "ç¾å½",
+        "count": 5,
+        "total_count": 27003
+      },
+      {
+        "name": "Adult-Swim",
+        "count": 3,
+        "total_count": 252
+      },
+      {
+        "name": "ææ",
+        "count": 3,
+        "total_count": 466087
+      },
+      {
+        "name": "WilliamsStreet",
+        "count": 2,
+        "total_count": 16
+      },
+      {
+        "name": "ç¾å½å¨ç»",
+        "count": 1,
+        "total_count": 2270
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35511
+      },
+      {
+        "name": "ç¥ä½",
+        "count": 1,
+        "total_count": 47575
+      },
+      {
+        "name": "ååå§",
+        "count": 1,
+        "total_count": 2114
+      },
+      {
+        "name": "S9",
+        "count": 1,
+        "total_count": 2
+      },
+      {
+        "name": "26.07.27",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "åæ§½",
+        "count": 1,
+        "total_count": 39603
+      },
+      {
+        "name": "å§é",
+        "count": 1,
+        "total_count": 4324
+      },
+      {
+        "name": "ç­ç¯",
+        "count": 1,
+        "total_count": 2754
+      },
+      {
+        "name": "å½±è¯è§£è¯´éç",
+        "count": 1,
+        "total_count": 61
+      },
+      {
+        "name": "16R",
+        "count": 1,
+        "total_count": 35
+      },
+      {
+        "name": "2026å¹´07æ27æ¥",
+        "count": 1,
+        "total_count": 1
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "çååè«è ç¬¬ä¹å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "10"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2026å¹´5æ24æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Adult Swim"
+      }
+    ],
+    "rating": {
+      "rank": 588,
+      "total": 329,
+      "count": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 3,
+        "6": 13,
+        "7": 83,
+        "8": 178,
+        "9": 41,
+        "10": 8
+      },
+      "score": 7.8
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 13,
+      "dropped": 12,
+      "wish": 160,
+      "collect": 484,
+      "doing": 355
+    },
+    "id": 451757,
+    "eps": 10,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2026-05-11",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/07/b0/637559_uoEn2.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/07/b0/637559_uoEn2.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/07/b0/637559_uoEn2.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/07/b0/637559_uoEn2.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/07/b0/637559_uoEn2.jpg"
+    },
+    "summary": "",
+    "name": "Regular Show: The Lost Tapes",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 84578
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "*"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2026å¹´5æ11æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "JG Quintel"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 1,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 7
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 2,
+      "wish": 0,
+      "collect": 1,
+      "doing": 1
+    },
+    "id": 637559,
+    "eps": 0,
+    "meta_tags": [
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2026-05-02",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/68/55/644516_Nq35f.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/68/55/644516_Nq35f.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/68/55/644516_Nq35f.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/68/55/644516_Nq35f.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/68/55/644516_Nq35f.jpg"
+    },
+    "summary": "ã¢ãã¡ãåã®ãã¼ã­ã¼ã¢ã«ããã¢ãã§ã¯ã10å¨å¹´ãè¨å¿µãããã­ã¸ã§ã¯ããåã®ãã¼ã­ã¼ã¢ã«ããã¢ The Animation 10th Anniversaryããå±éä¸­ããã®ä¸ç°ã¨ãã¦å¶ä½ãããããåã®ãã¼ã­ã¼ã¢ã«ããã¢ãNo.170ï¼1ãMoreããã¯ãåè¡æ¬ã®æçµ42å·»ã«åé²ãããå è¶æãä¸ããã¨ãã½ã¼ããMoreããã¢ãã¡åããæ°ä½æ åã ããã­ãã¼ã­ã¼ã¨ãªã£ã1å¹´Açµã®ä»²éã¨ãéè±é«æ ¡ã§æå¸«ããããã¯ã®æçµåå¾ã®å§¿ãæãããã",
+    "name": "ãåã®ãã¼ã­ã¼ã¢ã«ããã¢ãNo.170ï¼1ãMoreã",
+    "name_cn": "ãæçè±éå­¦é¢ãNo.170ï¼1ãMoreã",
+    "tags": [
+      {
+        "name": "æ¼«ç»æ¹",
+        "count": 16,
+        "total_count": 854276
+      },
+      {
+        "name": "2026",
+        "count": 16,
+        "total_count": 39810
+      },
+      {
+        "name": "TV",
+        "count": 14,
+        "total_count": 1392746
+      },
+      {
+        "name": "ç­è¡",
+        "count": 11,
+        "total_count": 211352
+      },
+      {
+        "name": "BONES",
+        "count": 10,
+        "total_count": 79790
+      },
+      {
+        "name": "2026å¹´4æ",
+        "count": 8,
+        "total_count": 24706
+      },
+      {
+        "name": "æçè±éå­¦é¢",
+        "count": 5,
+        "total_count": 2364
+      },
+      {
+        "name": "BONESFILM",
+        "count": 5,
+        "total_count": 445
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 5,
+        "total_count": 291340
+      },
+      {
+        "name": "å°å¹´å",
+        "count": 3,
+        "total_count": 7251
+      },
+      {
+        "name": "OVA",
+        "count": 2,
+        "total_count": 363018
+      },
+      {
+        "name": "2026å¹´5æ",
+        "count": 2,
+        "total_count": 14
+      },
+      {
+        "name": "TVSP",
+        "count": 2,
+        "total_count": 1962
+      },
+      {
+        "name": "SP",
+        "count": 2,
+        "total_count": 5902
+      },
+      {
+        "name": "è¶è½å",
+        "count": 1,
+        "total_count": 25599
+      },
+      {
+        "name": "æçè±éå­¸é¢",
+        "count": 1,
+        "total_count": 62
+      },
+      {
+        "name": "è½»GL",
+        "count": 1,
+        "total_count": 13
+      },
+      {
+        "name": "ææ",
+        "count": 1,
+        "total_count": 466068
+      },
+      {
+        "name": "BG",
+        "count": 1,
+        "total_count": 1561
+      },
+      {
+        "name": "2026æ¥",
+        "count": 1,
+        "total_count": 216
+      },
+      {
+        "name": "2020-2029",
+        "count": 1,
+        "total_count": 1828
+      },
+      {
+        "name": "æ ¡å­",
+        "count": 1,
+        "total_count": 448387
+      },
+      {
+        "name": "è½»BL",
+        "count": 1,
+        "total_count": 88
+      },
+      {
+        "name": "ç¹å«ç¯",
+        "count": 1,
+        "total_count": 645
+      },
+      {
+        "name": "5å",
+        "count": 1,
+        "total_count": 1804
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35511
+      },
+      {
+        "name": "è¡¥æ ",
+        "count": 1,
+        "total_count": 2863
+      },
+      {
+        "name": "OVA.OAD",
+        "count": 1,
+        "total_count": 269
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ãæçè±éå­¦é¢ãNo.170ï¼1ãMoreã"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "1"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2026-05-02"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææå­"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "èª­å£²ãã¬ãã»æ¥æ¬ãã¬ãç³»å¨å½29å±ããã"
+      },
+      {
+        "key": "Copyright",
+        "value": "(c)å è¶èå¹³ï¼éè±ç¤¾ã»åã®ãã¼ã­ã¼ã¢ã«ããã¢è£½ä½å§å¡ä¼"
+      },
+      {
+        "key": "åä½",
+        "value": "å è¶èå¹³ï¼éè±ç¤¾ ã¸ã£ã³ãã³ããã¯ã¹åï¼"
+      },
+      {
+        "key": "ç³»åææ",
+        "value": "é»ç°æ´ä»ï¼ã¹ã¿ã¸ãªãªã«ãã§ï¼"
+      }
+    ],
+    "rating": {
+      "rank": 2740,
+      "total": 96,
+      "count": {
+        "1": 5,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 5,
+        "6": 13,
+        "7": 45,
+        "8": 13,
+        "9": 6,
+        "10": 8
+      },
+      "score": 6.9
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 4,
+      "dropped": 12,
+      "wish": 24,
+      "collect": 163,
+      "doing": 8
+    },
+    "id": 644516,
+    "eps": 1,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "æ¼«ç»æ¹",
+      "å°å¹´å"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2026-05-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/20/f2/576057_RUhJh.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/20/f2/576057_RUhJh.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/20/f2/576057_RUhJh.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/20/f2/576057_RUhJh.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/20/f2/576057_RUhJh.jpg"
+    },
+    "summary": "",
+    "name": "æ°å¤§å¤´å¿å­åå°å¤´ç¸ç¸ââè¿å¨ä¸­å½è¡",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 29878
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 1455
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1352890
+      }
+    ],
+    "infobox": [
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "æ°å¤§å¤´å¿å­åå°å¤´ç¸ç¸è¿å¨ä¸­å½è¡"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "40"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2026å¹´5æ1æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 1,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 576057,
+    "eps": 40,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

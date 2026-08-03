@@ -1,0 +1,459 @@
+[
+  {
+    "date": "2025-11-27",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/e4/1b/619648_xHiO9.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/e4/1b/619648_xHiO9.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/e4/1b/619648_xHiO9.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/e4/1b/619648_xHiO9.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/e4/1b/619648_xHiO9.jpg"
+    },
+    "summary": "",
+    "name": "Prep & Landing: The Snowball Protocol",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 1,
+        "total_count": 84283
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "1"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´11æ27æ¥"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "Disney+"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Disney Channel"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "ABCãFreeform"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Shane Zalvin"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "Christopher Willis"
+      },
+      {
+        "key": "èæ¬",
+        "value": "Hilary Helding"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "Disney Television Animation"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "Icon Creative Studio"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "Melissa KurtzãCarson LovedayãShea Wageman"
+      },
+      {
+        "key": "æ§è¡å¶çäºº",
+        "value": "Kevin DetersãStevie Wermers-Skelton"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 3,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 619648,
+    "eps": 1,
+    "meta_tags": [],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-11-09",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/84/3d/601743_PbmF4.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/84/3d/601743_PbmF4.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/84/3d/601743_PbmF4.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/84/3d/601743_PbmF4.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/84/3d/601743_PbmF4.jpg"
+    },
+    "summary": "",
+    "name": "ìë§¥ê±°í: ì°°ì¹µ! ì¸ê³ì¬í",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "é©å½",
+        "count": 2,
+        "total_count": 3488
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1349760
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "13"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´11æ9æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æææ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "EBS"
+      },
+      {
+        "key": "å¶ä½",
+        "value": "ìëë°ì¤ã EBS"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 3,
+      "wish": 0,
+      "collect": 0,
+      "doing": 1
+    },
+    "id": 601743,
+    "eps": 13,
+    "meta_tags": [
+      "TV",
+      "é©å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-11-08",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/f2/23/414861_D5tJW.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/f2/23/414861_D5tJW.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/f2/23/414861_D5tJW.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/f2/23/414861_D5tJW.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/f2/23/414861_D5tJW.jpg"
+    },
+    "summary": "ãFuture Kid Takaraï¼ä»®ç§°ï¼ãã¯å°çæ¸©æåããã¼ãã«ããSFåéºãã¡ã³ã¿ã¸ã¼ã§ããã£ã¹ããã¢ã®æªæ¥ãèå°ã«ãç¾ä»£ã®å°å¥³ã»ãµã©ã2100å¹´ã«ã¿ã¤ã ã¯ã¼ãããä¸»äººå¬ã®ã¿ã«ã©ã¨ä¸ç·ã«å°çæ¸©æåã®å½±é¿ã§èå»ããä¸çãçãæãå§¿ãæãããã",
+    "name": "Future Kid Takara",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "Studio4â",
+        "count": 7,
+        "total_count": 6440
+      },
+      {
+        "name": "2025",
+        "count": 5,
+        "total_count": 71409
+      },
+      {
+        "name": "åå",
+        "count": 3,
+        "total_count": 608881
+      },
+      {
+        "name": "ä½ééå¤ª",
+        "count": 3,
+        "total_count": 35
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 2,
+        "total_count": 282974
+      },
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1379343
+      },
+      {
+        "name": "æ³¡é¢çª",
+        "count": 2,
+        "total_count": 152456
+      },
+      {
+        "name": "2025å¹´10æ",
+        "count": 1,
+        "total_count": 20336
+      },
+      {
+        "name": "å§åºç",
+        "count": 1,
+        "total_count": 714214
+      },
+      {
+        "name": "Animation",
+        "count": 1,
+        "total_count": 491
+      },
+      {
+        "name": "ç­ç",
+        "count": 1,
+        "total_count": 100996
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 1,
+        "total_count": 34639
+      },
+      {
+        "name": "ç©º",
+        "count": 1,
+        "total_count": 1462
+      },
+      {
+        "name": "ç¯ä¿",
+        "count": 1,
+        "total_count": 1089
+      },
+      {
+        "name": "ç­çé",
+        "count": 1,
+        "total_count": 2318
+      },
+      {
+        "name": "å°åä¿¡æ²»",
+        "count": 1,
+        "total_count": 19
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 1,
+        "total_count": 247893
+      },
+      {
+        "name": "2025å¹´",
+        "count": 1,
+        "total_count": 3421
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "11"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´11æ8æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://sdgs.nhk-ep.co.jp/futurekidtakara/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "NHK Eãã¬"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2025å¹´11æ9æ¥"
+      },
+      {
+        "key": "å¶ä»",
+        "value": "2025å¹´9æ25æ¥ï¼å¤§éªï½¥å³è¥¿ä¸åä¼åè¡ä¸æ ï¼"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â© Beyond C. / Future Kid Takaraè£½ä½å§å¡ä¼"
+      },
+      {
+        "key": "æè²çä¿®",
+        "value": "é¿é¨æ²»"
+      },
+      {
+        "key": "ç§å­¦çä¿®",
+        "value": "æ±å®æ­£å¤"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "é·è°·å·è"
+      },
+      {
+        "key": "ä¼åå¶ä½äºº",
+        "value": "ç°ä¸­æ å­(Beyond C.ï¼STUDIO4Â°C)ãå éäº¬å­ï¼NHKã¨ã³ã¿ã¼ãã©ã¤ãºï¼"
+      },
+      {
+        "key": "logoè®¾è®¡",
+        "value": "å¤ªåå·è±è¼"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "Future Kid Takaraè£½ä½å§å¡ä¼ï¼NHKã¨ã³ã¿ã¼ãã©ã¤ãºï¼Beyond C.ï¼ãã¨ã³ãï½¥ã«ã«ã¿ï¼ï¼"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 3,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 3,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 8,
+      "wish": 24,
+      "collect": 6,
+      "doing": 1
+    },
+    "id": 414861,
+    "eps": 11,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "åå"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2025-11-05",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/b4/25/613380_8Su2M.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/b4/25/613380_8Su2M.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/b4/25/613380_8Su2M.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/b4/25/613380_8Su2M.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/b4/25/613380_8Su2M.jpg"
+    },
+    "summary": "YouTubeã®å¤§äººæ°ã¢ãã¡ãããè°·ã®ã¢ãã¡ã£ã¡ãã®ã¯ãªã¨ã¤ã¿ã¼ã»ããè°·ã¨JRAã®ã³ã©ãç¬¬3å¼¾ãå®ç¾ï¼\r\nGâ ã¬ã¼ã¹ã®çå£åè² ã®è£å´ã§ç¹°ãåºãããããé¨æãé¦¬ãè¦³å®¢ãã¡ã«ããã¡ãã£ã¨å¤ã§å§æ¯ãªãããè°·ç¯ã®ç¬ããé§ãå¼ããããã«ãã¯ã¼ã¢ããï¼è¤éãªäºæãç§æãè¸ã«ãGâ å¶è¦ã«å·å¿µãçããäººãã¨é¦¬ãã¡ãç¹°ãåºãããã¿ãã¿åã¯ã¯ã»ã«ãªãé¢ç½ãã§å¿è¦ï¼\r\næ°ããªç«¶é¦¬ã®æ¥½ãã¿ãçºè¦ã§ãããã²ã¨å³éãæ°æè¦ç«¶é¦¬ã¢ãã¡ããæ¥½ãã¿ãã ããï¼",
+    "name": "ããè°·ã®ããã°ã£ã¡ ã·ã¼ãºã³3",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ç­ç",
+        "count": 3,
+        "total_count": 100997
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 1,
+        "total_count": 282974
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "4"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2025å¹´11æ5æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 7,
+      "wish": 1,
+      "collect": 1,
+      "doing": 1
+    },
+    "id": 613380,
+    "eps": 4,
+    "meta_tags": [
+      "ç­ç",
+      "æ¥æ¬"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

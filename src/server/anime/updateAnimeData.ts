@@ -115,8 +115,10 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
       : mergeDuplicateItems([...fallbackSeasonItems, ...eligibleTargetItems]);
     const skippedNonJapanese = targetItems.length - eligibleTargetItems.length;
     const manualOverrides = await readManualBroadcastOverrides();
-    const mergedItems = nextSeasonItems.map((item) =>
-      applyManualBroadcastOverride(mergeWithOldItem(item, oldCache.items), manualOverrides, now().toISOString())
+    const mergedItems = mergeDuplicateItems(
+      nextSeasonItems.map((item) =>
+        applyManualBroadcastOverride(mergeWithOldItem(item, oldCache.items), manualOverrides, now().toISOString())
+      )
     );
     const nextCache = mergeSeasonIntoCache(oldCache, mergedItems, targetSeason, now().toISOString());
     const validationIssues = validateAnimeCache(nextCache);
@@ -390,10 +392,10 @@ function mergeDuplicateItems(items: AnimeItem[]): AnimeItem[] {
 
 function findExistingMergeKey(item: AnimeItem, existingItems: Map<string, AnimeItem>): string | null {
   if (item.bangumi.subjectId !== null || item.externalIds.bangumiSubjectId !== null) {
-    const itemTitles = getNormalizedTitleSet(item);
+    const itemTitles = getNormalizedCoreTitleSet(item);
     for (const [key, existing] of existingItems) {
       if (!isPrimaryCatalogItem(existing)) continue;
-      const existingTitles = getNormalizedTitleSet(existing);
+      const existingTitles = getNormalizedCoreTitleSet(existing);
       if ([...itemTitles].some((title) => existingTitles.has(title))) return key;
     }
     return null;
@@ -548,6 +550,20 @@ function getNormalizedTitleSet(item: AnimeItem): Set<string> {
       item.title.chinese,
       item.title.english,
       ...item.title.aliases
+    ]
+      .filter((value): value is string => typeof value === "string" && value.trim().length > 0)
+      .map(normalizeTitleForMerge)
+      .filter((value) => value.length > 0)
+  );
+}
+
+function getNormalizedCoreTitleSet(item: AnimeItem): Set<string> {
+  return new Set(
+    [
+      item.title.original,
+      item.title.japanese,
+      item.title.chinese,
+      item.title.english
     ]
       .filter((value): value is string => typeof value === "string" && value.trim().length > 0)
       .map(normalizeTitleForMerge)
