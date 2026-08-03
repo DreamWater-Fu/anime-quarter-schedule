@@ -754,7 +754,7 @@ function shouldFailWeakHistoricalCatalogRefresh(
   targetSeason: SeasonKey,
   now: Date
 ): boolean {
-  const minimumHistoricalCatalogItems = parsePositiveInteger(process.env.MIN_HISTORICAL_CATALOG_ITEMS, 20);
+  const minimumHistoricalCatalogItems = parsePositiveInteger(process.env.MIN_HISTORICAL_CATALOG_ITEMS, 13);
   if (targetItems.length >= minimumHistoricalCatalogItems) return false;
   if (!isPastSeason(targetSeason, now)) return false;
   if (targetItems.some(isPrimaryCatalogItem)) return true;
@@ -783,7 +783,7 @@ function shouldFailUnenrichedHistoricalPrimaryCatalog(
   targetSeason: SeasonKey,
   now: Date
 ): boolean {
-  const minimumHistoricalCatalogItems = parsePositiveInteger(process.env.MIN_HISTORICAL_CATALOG_ITEMS, 20);
+  const minimumHistoricalCatalogItems = parsePositiveInteger(process.env.MIN_HISTORICAL_CATALOG_ITEMS, 13);
   if (targetItems.length < minimumHistoricalCatalogItems) return false;
   if (!targetItems.some(isPrimaryCatalogItem)) return false;
   if (!isPastSeason(targetSeason, now)) return false;

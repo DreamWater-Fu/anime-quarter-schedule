@@ -189,6 +189,20 @@ function getExplicitBangumiSubjectId(item: AnimeItem): number | null {
     return 308558;
   }
 
+  if (
+    item.startDate === "2021-10-08" &&
+    titles.some((title) => /終末のハーレム|终末的后宫|World'?s End Harem/iu.test(title))
+  ) {
+    return 306559;
+  }
+
+  if (
+    item.startDate === "2021-04-04" &&
+    titles.some((title) => /キングダム\s*第3シリーズ|王者天下\s*第3期|Kingdom\s*(?:3rd|Third)/iu.test(title))
+  ) {
+    return 294288;
+  }
+
   return null;
 }
 

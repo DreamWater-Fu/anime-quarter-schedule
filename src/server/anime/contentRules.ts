@@ -48,6 +48,8 @@ const FOREIGN_METADATA_PATTERNS = [
 
 const THEATRICAL_MOVIE_PATTERN = /剧场版|劇場版|映画|movie|the\s+movie|film|电影|電影/iu;
 const KNOWN_NON_TV_SPECIAL_PATTERN = /テラパゴスのキラキラ探検記|太乐巴戈斯的闪闪发亮探险记|太樂巴戈斯的閃閃發亮探險記|terapagos/iu;
+const KNOWN_NON_TV_TITLE_PATTERN =
+  /ライジングインパクト|一击冲天|高尔夫物语|ばなにゃ\s*あらうんど\s*ざ\s*わーるど|香蕉喵\s*(?:第3期|游世界)|Shenmue the Animation|莎木|地球外少年少女|バイオハザード[:：]\s*インフィニット\s*ダークネス|BIOHAZARD[:：]\s*Infinite Darkness|Resident Evil[:：]?\s*Infinite Darkness|生化危机[:： ]\s*无尽黑暗/iu;
 const SEASON_NUMBER_PATTERN =
   /(?:第\s*([0-9０-９一二三四五六七八九十百]+)\s*(?:[季期部]|シリーズ))|(?:season|series|s)\s*([0-9０-９]+)/giu;
 
@@ -74,7 +76,8 @@ export function hasTheatricalMovieSignal(values: Array<string | null | undefined
 }
 
 export function hasKnownNonTvSpecialSignal(values: Array<string | null | undefined>): boolean {
-  return KNOWN_NON_TV_SPECIAL_PATTERN.test(toNormalizedHaystack(values));
+  const haystack = toNormalizedHaystack(values);
+  return KNOWN_NON_TV_SPECIAL_PATTERN.test(haystack) || KNOWN_NON_TV_TITLE_PATTERN.test(haystack);
 }
 
 export function hasOverSeasonLimitSignal(values: Array<string | null | undefined>): boolean {

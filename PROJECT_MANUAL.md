@@ -12,7 +12,7 @@
 - 当前缓存: 953 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2022 年 7 月、2022 年 10 月以及 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
 - 测试: 114 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
-- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 并修复 2022 年 7 月与 2022 年 10 月季度; 当前 953 条中 936 条带长门有C / YucWiki 主源, 744 条带 YourAnimes 参考源, 950 条带 Bangumi 源; 封面缺失为 0, 3 条缺可靠 Bangumi subjectId, 9 条缺 Bangumi 评分, 其中 6 条是未来 Bangumi subject 当前无有效评分。2022 年 7 月网页/API 更新已实测重跑为 48 条长门主目录条目, 48 条均补齐 Bangumi subject、评分和 Bangumi 封面; `BASTARD!! -暗黒の破壊神-` 这类日文原题搜索不稳定但中文别名可命中的条目, 现在由在线搜索补全继续检索别名并高置信绑定。2022 年 10 月曾因长门主源抓取失败而错误写入 5 条 fallback 结果并混入非日漫《螺丝钉 第五季》; 已改为读取 `data/yucwiki-202210.html` 重建为 52 条长门主目录条目, 52 条均已补齐 Bangumi subject。网页端/API 更新现在会保护历史季度: 若长门有C 不可用且候选数量低于 `MIN_HISTORICAL_CATALOG_ITEMS` 默认 20 条, 或历史主目录会在 Bangumi 补全失败时写入整季裸标题, 不再覆盖旧缓存, 而是返回 `SOURCE_UNAVAILABLE`。Bangumi PowerShell fallback 的临时脚本目录已改到项目内 `.tmp/`, 月度快照读取会剥离 UTF-8 BOM, 避免网页端本地更新因 Windows 用户 Temp 权限或 BOM JSON 解析失败。2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。2026-08-03 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
+- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 并修复 2022 年 7 月与 2022 年 10 月季度; 当前 953 条中 936 条带长门有C / YucWiki 主源, 744 条带 YourAnimes 参考源, 950 条带 Bangumi 源; 封面缺失为 0, 3 条缺可靠 Bangumi subjectId, 9 条缺 Bangumi 评分, 其中 6 条是未来 Bangumi subject 当前无有效评分。2022 年 7 月网页/API 更新已实测重跑为 48 条长门主目录条目, 48 条均补齐 Bangumi subject、评分和 Bangumi 封面; `BASTARD!! -暗黒の破壊神-` 这类日文原题搜索不稳定但中文别名可命中的条目, 现在由在线搜索补全继续检索别名并高置信绑定。2022 年 10 月曾因长门主源抓取失败而错误写入 5 条 fallback 结果并混入非日漫《螺丝钉 第五季》; 已改为读取 `data/yucwiki-202210.html` 重建为 52 条长门主目录条目, 52 条均已补齐 Bangumi subject。网页端/API 更新现在会保护历史季度: 若长门有C 不可用且候选数量低于 `MIN_HISTORICAL_CATALOG_ITEMS` 默认 13 条, 或历史主目录会在 Bangumi 补全失败时写入整季裸标题, 不再覆盖旧缓存, 而是返回 `SOURCE_UNAVAILABLE`。Bangumi PowerShell fallback 的临时脚本目录已改到项目内 `.tmp/`, 月度快照读取会剥离 UTF-8 BOM, 避免网页端本地更新因 Windows 用户 Temp 权限或 BOM JSON 解析失败。2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。2026-08-03 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
 
 ## 2. 产品边界
 
@@ -190,7 +190,7 @@ npm run data:audit
 - 写入前校验失败: 不覆盖旧缓存
 - 外部源失败: 记录 warning, 尽量保留可用旧缓存
 - 目标季度无旧缓存且外部源无可写入条目但有 warning: 返回 `SOURCE_UNAVAILABLE`, 不写入空成功
-- 历史季度导入时, 若长门有C / YucWiki 主目录不可用且有效候选数量低于 `MIN_HISTORICAL_CATALOG_ITEMS` 默认 20 条, 必须返回 `SOURCE_UNAVAILABLE` 并保留旧缓存; 不允许像 2022 年 10 月旧错误那样用 5 条 Bangumi/YourAnimes fallback 覆盖成“成功更新”
+- 历史季度导入时, 若长门有C / YucWiki 主目录不可用且有效候选数量低于 `MIN_HISTORICAL_CATALOG_ITEMS` 默认 13 条, 必须返回 `SOURCE_UNAVAILABLE` 并保留旧缓存; 不允许像 2022 年 10 月旧错误那样用 5 条 Bangumi/YourAnimes fallback 覆盖成“成功更新”。2020 年 7 月受疫情延期影响, 本地长门快照解析后只有 19 条可展示 TV 条目, 应允许导入
 - 历史季度导入时, 若长门有C 主目录可用但 Bangumi 搜索/详情补全失败到会写入整季裸标题, 必须返回 `SOURCE_UNAVAILABLE` 并保留旧缓存; 不允许把只有名称、没有 subjectId/评分/封面的历史季度当作成功更新
 - 长门有C季度页面快照和 Bangumi 月度快照存在时优先读取本地文件; 页面更新在网络不可用时仍可刷新已缓存月份
 - `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存
@@ -198,6 +198,12 @@ npm run data:audit
 - `npm run data:sync-bangumi` 会优先使用本地 `data/bangumi-YYYYMM-subjects.json` 快照, 对已匹配 Bangumi subjectId 的条目刷新评分、封面、集数和状态, 并对缺 subjectId 的长门条目尝试本地高置信匹配; 不足阈值的条目保持缺评分状态, 不做冒险写入。可加 `-- --local-only` 只使用本地 Bangumi 快照, 不执行在线详情刷新
 - `npm run data:match-bangumi` 是在线 Bangumi 搜索补强脚本, 需要修复搜索响应中的 mojibake 后再评分; 自动接受标题/别名强匹配并具备日期、官网、集数、季数或制作信息辅助证据的候选。中文标题不要求完全一致; 对上下半 cour / Part 共用同一 Bangumi subject 的情况, 允许多个长门条目共用同一个 Bangumi subjectId 和评分; 对长门合并多个篇名、Bangumi 拆分篇名的情况, 可用日文标题包含关系 + 日期/格式等辅助证据接受拆篇候选; 格式冲突、多候选接近或缺少辅助证据的弱标题候选仍保持拒绝
 - `終末のワルキューレ` / `终末的女武神` 已确认可保留并绑定 Bangumi subject `322900`, 不要仅因 Netflix / WEB 配信信号移除该条目
+- `東京卍リベンジャーズ` / `东京卍复仇者` 已确认绑定 Bangumi subject `308936`; 带 `卍` 的 Bangumi 搜索不稳定, 后续应优先使用 `東京リベンジャーズ` / `Tokyo Revengers` / `东京复仇者` 的显式规则
+- `ひぐらしのなく頃に` / `新 寒蝉鸣泣之时` 的 2020-10-01 TV 条目已确认对应 `ひぐらしのなく頃に 業`, 绑定 Bangumi subject `297969`
+- `シャーマンキング` / `新 通灵王` 的 2021-04-01 TV 条目已确认对应 2021 年版 `SHAMAN KING`, 绑定 Bangumi subject `308558`
+- `終末のハーレム` / `终末的后宫` 已确认绑定 Bangumi TV subject `306559`; 长门有C记录 2021-10-08 先行/延期节点, Bangumi 正式日期为 2022-01-07, 可按同一 TV subject 补元数据
+- `キングダム 第3シリーズ` / `王者天下 第3期` 已确认绑定 Bangumi TV subject `294288`; 该作因 2020 年停播后于 2021-04-04 重新开播, 长门有C 2021 年 4 月条目可沿用该 TV subject
+- `ライジングインパクト`, `ばなにゃ あらうんど ざ わーるど`, `Shenmue the Animation`, `バイオハザード: インフィニット ダークネス` 在线 Bangumi 均为 `WEB`; `地球外少年少女` 在线 Bangumi 为前/后篇剧场版。已按“只展示日本 TV 动画”边界从可展示缓存删除, 后续不得重新导入或为了补 subjectId 强行当作 TV 绑定
 - 参考源冷启动的历史季度条目会按导入时刻推断为 `finished`, 顶层 `updateTime` / `updateWeekday` 置空, 但 `schedule[]` 仍保留首播日期和时间用于搜索与回查
 
 ## 8. 部署
