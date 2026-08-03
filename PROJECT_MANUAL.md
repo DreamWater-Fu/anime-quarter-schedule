@@ -130,6 +130,7 @@ GitHub Pages 静态模式:
 - 静态搜索不调用 `/api/search`, 直接读取 `/static-data/anime.json` 并复用 `src/shared/animeSearch.ts` 的过滤和匹配规则
 - 静态在看记录和观看记录不调用 `/api/items`, 直接读取 `/static-data/anime.json` 后按本地 `watchingIds` / `completedIds` 匹配
 - 更新按钮在静态模式下禁用
+- 静态 JSON 读取在前端有同标签页短时内存缓存: `src/app/lib/apiClient.ts` 会把 `/static-data/anime.json` 和 `/static-data/status.json` 的并发请求合并, 并在 30 秒内复用已成功读取的结果, 用于减少搜索、记录回查和切换视图时重复拉取全量 JSON; 首次读取仍使用 `cache: "no-store"` 触发 Service Worker 的 network-first 策略, 请求失败不会缓存错误结果
 
 PWA 与缓存:
 

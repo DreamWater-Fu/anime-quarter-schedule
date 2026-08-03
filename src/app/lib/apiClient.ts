@@ -9,6 +9,15 @@ import { DEFAULT_ANIME_SEARCH_LIMIT, searchAnimeItems } from "@/src/shared/anime
 import type { AnimeCache, AnimeItem, AnimeItemsPayload, AnimeSearchPayload, AnimeSeasonPayload, DataStatus, SeasonKey, SeasonMonth } from "@/src/server/types/anime";
 import type { ApiResponse, PublicApiError, UpdateResult, UpdateStatusPayload } from "@/src/server/types/api";
 
+const STATIC_JSON_MEMORY_TTL_MS = 30_000;
+
+type StaticJsonCacheEntry = {
+  expiresAt: number;
+  promise: Promise<unknown>;
+};
+
+const staticJsonMemoryCache = new Map<string, StaticJsonCacheEntry>();
+
 export class FrontendApiError extends Error {
   readonly code: string;
   readonly details?: unknown;
@@ -170,6 +179,27 @@ async function loadStaticAnimeItemsByIds(ids: string[]): Promise<AnimeItemsPaylo
 }
 
 async function fetchStaticJson<T>(fileName: string): Promise<T> {
+  const cached = staticJsonMemoryCache.get(fileName);
+  const now = Date.now();
+  if (cached && cached.expiresAt > now) return cached.promise as Promise<T>;
+
+  const promise = fetchStaticJsonFromNetwork<T>(fileName);
+  staticJsonMemoryCache.set(fileName, {
+    expiresAt: now + STATIC_JSON_MEMORY_TTL_MS,
+    promise
+  });
+
+  try {
+    return await promise;
+  } catch (error) {
+    if (staticJsonMemoryCache.get(fileName)?.promise === promise) {
+      staticJsonMemoryCache.delete(fileName);
+    }
+    throw error;
+  }
+}
+
+async function fetchStaticJsonFromNetwork<T>(fileName: string): Promise<T> {
   const response = await fetch(`${getStaticBasePath()}/static-data/${fileName}`, { cache: "no-store" });
   if (!response.ok) {
     throw new FrontendApiError(
