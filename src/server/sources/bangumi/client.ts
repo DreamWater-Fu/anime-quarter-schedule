@@ -1,6 +1,5 @@
 import { execFile } from "node:child_process";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { promisify } from "node:util";
@@ -233,7 +232,7 @@ function createPowerShellFetch(timeoutMs: number): typeof fetch {
     const headers = new Headers(init?.headers);
     const method = init?.method?.toUpperCase() ?? (init?.body ? "POST" : "GET");
     const bodyText = await bodyToText(init?.body);
-    const tempDir = join(tmpdir(), `bangumi-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+    const tempDir = join(process.cwd(), process.env.BANGUMI_TMP_DIR ?? ".tmp", `bangumi-${Date.now()}-${Math.random().toString(16).slice(2)}`);
     const outputFile = join(tempDir, "response.json");
     const scriptFile = join(tempDir, "fetch-bangumi.ps1");
     const bodyFile = join(tempDir, "request-body.txt");

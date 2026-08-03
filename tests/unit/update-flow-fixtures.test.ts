@@ -838,6 +838,69 @@ describe("update data merge and rollback", () => {
     assert.equal(storage.logs.some((entry) => entry.event === "update_failed"), true);
   });
 
+  it("does not replace a historical season with a tiny fallback set when YucWiki is unavailable", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const fallbackItem = {
+      ...toSummerFixtureItem(cache),
+      id: "anime:historical-fallback",
+      startDate: "2022-10-09",
+      primarySeason: { year: 2022, quarter: "fall" as const },
+      activeSeasons: [{ year: 2022, quarter: "fall" as const }],
+      sources: [{ name: "Bangumi", type: "bangumi" as const, retrievedAt: runAt }]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [] });
+
+    await assert.rejects(
+      () =>
+        updateAnimeData(
+          { year: 2022, season: 10 },
+          {
+            storage,
+            adapters: [
+              new StaticAdapter("YucWiki", "third_party", [], [
+                {
+                  source: "YucWiki",
+                  code: "NETWORK_FAILED",
+                  message: "YucWiki page unavailable",
+                  retryable: true
+                }
+              ]),
+              new StaticAdapter(
+                "Bangumi",
+                "bangumi",
+                Array.from({ length: 5 }, (_, index) => ({
+                  ...fallbackItem,
+                  id: `anime:historical-fallback-${index}`,
+                  bangumi: {
+                    ...fallbackItem.bangumi,
+                    subjectId: 9000 + index,
+                    url: `https://bgm.tv/subject/${9000 + index}`
+                  },
+                  externalIds: {
+                    ...fallbackItem.externalIds,
+                    bangumiSubjectId: 9000 + index
+                  }
+                }))
+              )
+            ],
+            now: () => new Date(runAt)
+          }
+        ),
+      (error: unknown) =>
+        error instanceof Error &&
+        "code" in error &&
+        (error as { code: unknown }).code === "SOURCE_UNAVAILABLE"
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    const status = await storage.readUpdateStatus();
+
+    assert.deepEqual(nextCache.items, []);
+    assert.equal(storage.writeCount, 0);
+    assert.equal(status.status, "failed");
+    assert.equal(status.lastError?.code, "SOURCE_UNAVAILABLE");
+  });
+
   it("treats an empty requested season as a successful empty refresh", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const storage = new MemoryStorage(cache);

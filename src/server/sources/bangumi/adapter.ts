@@ -1,6 +1,5 @@
 import { execFile } from "node:child_process";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { promisify } from "node:util";
 
@@ -295,7 +294,7 @@ async function fetchMonthSubjectsWithPowerShell(input: { year: number; month: nu
     sort: "date",
     limit: String(BANGUMI_MONTH_PAGE_LIMIT)
   });
-  const tempDir = join(tmpdir(), `bangumi-month-${Date.now()}-${Math.random().toString(16).slice(2)}`);
+  const tempDir = join(resolve(process.cwd(), process.env.BANGUMI_TMP_DIR ?? ".tmp"), `bangumi-month-${Date.now()}-${Math.random().toString(16).slice(2)}`);
   const scriptFile = join(tempDir, "fetch-bangumi-month.ps1");
   const outputFile = join(tempDir, "subjects.json");
   await mkdir(tempDir, { recursive: true });

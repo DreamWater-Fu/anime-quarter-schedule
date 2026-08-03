@@ -101,6 +101,16 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
       .map(markReferenceColdStartItem);
     const eligibleTargetItems = targetItems.filter(isCacheEligibleAnime);
     const fallbackSeasonItems = getOldSeasonItems(oldCache.items, targetSeason);
+    if (shouldFailWeakHistoricalCatalogRefresh(fetched.warnings, eligibleTargetItems, targetSeason, now())) {
+      throw new ApiErrorException("SOURCE_UNAVAILABLE", "historical season primary catalog was unavailable and fallback candidates were incomplete", {
+        status: 503,
+        details: {
+          targetSeason,
+          candidateCount: eligibleTargetItems.length,
+          warnings: fetched.warnings
+        }
+      });
+    }
     if (shouldFailEmptyUpdate(fetched.warnings, eligibleTargetItems, fallbackSeasonItems)) {
       throw new ApiErrorException("SOURCE_UNAVAILABLE", "target season has no cached items and external sources did not return usable data", {
         status: 503,
@@ -725,6 +735,42 @@ function shouldFailEmptyUpdate(
   fallbackSeasonItems: AnimeItem[]
 ): boolean {
   return warnings.length > 0 && targetItems.length === 0 && fallbackSeasonItems.length === 0;
+}
+
+function shouldFailWeakHistoricalCatalogRefresh(
+  warnings: SourceIssue[],
+  targetItems: AnimeItem[],
+  targetSeason: SeasonKey,
+  now: Date
+): boolean {
+  const minimumHistoricalCatalogItems = parsePositiveInteger(process.env.MIN_HISTORICAL_CATALOG_ITEMS, 20);
+  if (targetItems.length >= minimumHistoricalCatalogItems) return false;
+  if (targetItems.some(isPrimaryCatalogItem)) return false;
+  if (!isPastSeason(targetSeason, now)) return false;
+  return warnings.some((warning) => warning.source === "YucWiki" && warning.code !== "SOURCE_DISABLED");
+}
+
+function isPastSeason(targetSeason: SeasonKey, now: Date): boolean {
+  const currentSeason = calculatePrimarySeason(now.toISOString().slice(0, 10));
+  if (currentSeason === null) return false;
+  return seasonOrder(targetSeason) < seasonOrder(currentSeason);
+}
+
+function seasonOrder(season: SeasonKey): number {
+  return season.year * 4 + quarterOrder(season.quarter);
+}
+
+function quarterOrder(quarter: SeasonKey["quarter"]): number {
+  switch (quarter) {
+    case "winter":
+      return 0;
+    case "spring":
+      return 1;
+    case "summer":
+      return 2;
+    case "fall":
+      return 3;
+  }
 }
 
 function isPrimaryInSeason(item: Pick<AnimeItem, "primarySeason">, targetSeason: SeasonKey): boolean {
