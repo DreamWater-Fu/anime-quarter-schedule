@@ -436,6 +436,105 @@ describe("update data merge and rollback", () => {
     assert.equal(nextCache.items.some((item) => item.id === "anime:100001"), true);
   });
 
+  it("uses YucWiki as the primary catalog and Bangumi only to enrich matched ratings", async () => {
+    const baseCache = readFixture<AnimeCache>("anime-cache.base.json");
+    const yucItem: AnimeItem = {
+      ...toSummerFixtureItem(baseCache),
+      id: "anime:yucwiki:202607:a01",
+      title: {
+        original: "ユック主源",
+        japanese: "ユック主源",
+        chinese: "长门主源",
+        english: null,
+        aliases: ["长门主源"]
+      },
+      bangumi: {
+        subjectId: null,
+        url: null,
+        rating: null,
+        ratingCount: null,
+        rank: null,
+        lastSyncedAt: null
+      },
+      externalIds: { bangumiSubjectId: null, bahamutSn: null },
+      officialUrl: "https://yuc.example/",
+      episodeCount: 12,
+      staff: { studio: ["Yuc Studio"], productionCommittee: [], originalWorkType: null },
+      sources: [{ name: "YucWiki", type: "third_party", retrievedAt: runAt, scope: "japan_broadcast" }]
+    };
+    const matchedBangumiItem: AnimeItem = {
+      ...toSummerFixtureItem(baseCache),
+      id: "anime:998001",
+      title: {
+        original: "ユック主源",
+        japanese: "ユック主源",
+        chinese: "长门主源",
+        english: null,
+        aliases: []
+      },
+      bangumi: {
+        subjectId: 998001,
+        url: "https://bgm.tv/subject/998001",
+        rating: 7.6,
+        ratingCount: 120,
+        rank: 1000,
+        lastSyncedAt: runAt
+      },
+      externalIds: { bangumiSubjectId: 998001, bahamutSn: null },
+      startDate: "2026-07-12",
+      officialUrl: "https://bangumi.example/",
+      episodeCount: 24,
+      staff: { studio: ["Bangumi Studio"], productionCommittee: [], originalWorkType: null },
+      schedule: toSummerFixtureItem(baseCache).schedule.map((scheduleItem) => ({
+        ...scheduleItem,
+        airDate: "2026-07-12"
+      })),
+      sources: [{ name: "Bangumi", type: "bangumi", retrievedAt: runAt }]
+    };
+    const unmatchedBangumiItem: AnimeItem = {
+      ...matchedBangumiItem,
+      id: "anime:998002",
+      title: {
+        original: "バングミだけ",
+        japanese: "バングミだけ",
+        chinese: "只有 Bangumi",
+        english: null,
+        aliases: []
+      },
+      bangumi: {
+        ...matchedBangumiItem.bangumi,
+        subjectId: 998002,
+        url: "https://bgm.tv/subject/998002"
+      },
+      externalIds: { bangumiSubjectId: 998002, bahamutSn: null }
+    };
+    const storage = new MemoryStorage({ ...baseCache, items: [] });
+
+    await updateAnimeData(
+      { year: 2026, season: 7, force: true },
+      {
+        storage,
+        now: () => new Date(runAt),
+        adapters: [
+          new StaticAdapter("YucWiki", "third_party", [yucItem]),
+          new StaticAdapter("Bangumi", "bangumi", [matchedBangumiItem, unmatchedBangumiItem])
+        ]
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    assert.equal(nextCache.items.length, 1);
+    assert.equal(nextCache.items[0]?.id, "anime:998001");
+    assert.equal(nextCache.items[0]?.title.original, "ユック主源");
+    assert.equal(nextCache.items[0]?.startDate, "2026-07-04");
+    assert.equal(nextCache.items[0]?.officialUrl, "https://yuc.example/");
+    assert.equal(nextCache.items[0]?.episodeCount, 12);
+    assert.deepEqual(nextCache.items[0]?.staff?.studio, ["Yuc Studio"]);
+    assert.equal(nextCache.items[0]?.bangumi.rating, 7.6);
+    assert.equal(nextCache.items[0]?.sources.some((source) => source.name === "YucWiki"), true);
+    assert.equal(nextCache.items[0]?.sources.some((source) => source.name === "Bangumi"), true);
+  });
+
   it("can cold-start a season from trusted reference sources when Bangumi is unavailable", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const referenceItem = {

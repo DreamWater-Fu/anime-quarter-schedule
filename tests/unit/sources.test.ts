@@ -13,8 +13,10 @@ import {
   mapBangumiSubjectToAnimeItem,
   mapBahamutReferenceToAnimeItem,
   mapYourAnimesReferenceToAnimeItem,
+  mapYucWikiEntryToAnimeItem,
   parseBahamutTimetableText,
   parseYourAnimesHtml,
+  parseYucWikiHtml,
   YourAnimesSourceAdapter
 } from "../../src/server/sources/index.ts";
 import type { BangumiClient, BangumiSubject } from "../../src/server/sources/index.ts";
@@ -446,7 +448,48 @@ describe("Bangumi API client", () => {
 });
 
 describe("source adapters", () => {
+  it("parses YucWiki season pages into primary catalog rows", () => {
+    const html = `
+      <!--#A01-->
+      <div style="float:left"><img width="180px" data-src="https://example.test/cover.jpg"></div>
+      <div><table><tr><td class="title_main_r" colspan="2" rowspan="2">
+      <p class="title_cn_r">示例长门标题</p>
+      <p class="title_jp_r">サンプルユック</p></td>
+      <td class="type_a_r">原创动画</td></tr>
+      <tr><td class="type_tag_r">青春/恋爱</td></tr><tr>
+      <td rowspan="2" class="staff_r">动画制作：Sample Studio</td>
+      <td rowspan="2" class="cast_r">样例声优</td>
+      <td class="link_a_r">
+      <a href="https://sample.example/" target="_blank">动画官网</a>
+      <p class="broadcast_r">7/5周日深夜</p>
+      <p class="broadcast_ex_r">(全12话)</p></td></tr>
+      <tr><td class="link_b_r"></td></tr></table></div>
+      <p class="future_intro_"><b>*动态漫不再详细介绍</b></p>
+    `;
+    const entries = parseYucWikiHtml(html, {
+      year: 2026,
+      season: 7,
+      url: "https://yuc.wiki/202607/",
+      retrievedAt
+    });
+    const item = mapYucWikiEntryToAnimeItem(entries[0]!, 2026, 7, retrievedAt);
+
+    assert.equal(entries.length, 1);
+    assert.equal(item?.title.original, "サンプルユック");
+    assert.equal(item?.title.chinese, "示例长门标题");
+    assert.equal(item?.format, "tv");
+    assert.equal(item?.startDate, "2026-07-05");
+    assert.equal(item?.episodeCount, 12);
+    assert.equal(item?.officialUrl, "https://sample.example/");
+    assert.equal(item?.staff?.studio[0], "Sample Studio");
+    assert.equal(item?.sources[0]?.name, "YucWiki");
+    assert.equal(item?.sources[0]?.scope, "japan_broadcast");
+  });
+
   it("uses Bangumi fallback data when configured and the source fails", async () => {
+    const previousDataDir = process.env.DATA_DIR;
+    const dataDir = await mkdtemp(join(tmpdir(), "bangumi-fallback-"));
+    process.env.DATA_DIR = dataDir;
     const failingClient: BangumiClient = {
       listSubjectsByMonth: async () => {
         throw new DataSourceError({
@@ -463,19 +506,28 @@ describe("source adapters", () => {
       getEpisodes: async () => []
     };
 
-    const adapter = new BangumiSourceAdapter({
-      client: failingClient,
-      useFallbackOnFailure: true,
-      usePowerShellSubjectListFallback: false,
-      now: () => new Date(retrievedAt)
-    });
-    const result = await adapter.fetchSeason({ year: 2026, season: 7, quarter: "summer" });
+    try {
+      const adapter = new BangumiSourceAdapter({
+        client: failingClient,
+        useFallbackOnFailure: true,
+        usePowerShellSubjectListFallback: false,
+        now: () => new Date(retrievedAt)
+      });
+      const result = await adapter.fetchSeason({ year: 2026, season: 7, quarter: "summer" });
 
-    assert.equal(result.fallbackUsed, true);
-    assert.equal(result.items.length, 1);
-    assert.equal(result.items[0]?.bangumi.subjectId, null);
-    assert.equal(result.items[0]?.dataStatus, "unverified");
-    assert.equal(result.warnings[0]?.code, "NETWORK_FAILED");
+      assert.equal(result.fallbackUsed, true);
+      assert.equal(result.items.length, 1);
+      assert.equal(result.items[0]?.bangumi.subjectId, null);
+      assert.equal(result.items[0]?.dataStatus, "unverified");
+      assert.equal(result.warnings[0]?.code, "NETWORK_FAILED");
+    } finally {
+      await rm(dataDir, { recursive: true, force: true });
+      if (previousDataDir === undefined) {
+        delete process.env.DATA_DIR;
+      } else {
+        process.env.DATA_DIR = previousDataDir;
+      }
+    }
   });
 
   it("uses Bangumi month subject fallback before reporting quarter list failure", async () => {

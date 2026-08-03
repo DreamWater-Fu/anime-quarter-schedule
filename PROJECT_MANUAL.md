@@ -1,6 +1,6 @@
 # Project Manual: 日本季度新番时间表
 
-最后更新: 2026-08-02
+最后更新: 2026-08-03
 
 本文件是后续 AI 的项目入口。先读本文件，再读相关代码。修改项目边界、季度规则、数据源、部署方式、缓存状态或数据口径时，必须同步更新本文件。
 
@@ -9,8 +9,8 @@
 - 版本: `0.2.5`
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
-- 当前缓存: 930 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2023-2026 多个季度均可被全库搜索与全库个人记录回查, Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
-- 测试: 107 个单元测试; 最近 `npm run check` 通过
+- 当前缓存: 940 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
+- 测试: 109 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
 - 最近数据自检: 2026-08-01 全库审查并清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
 
@@ -68,8 +68,9 @@ src/app/lib/                  前端查询、格式化、筛选辅助
 src/server/anime/             查询、季度计算、更新编排、校验
 src/server/api/               API 适配层
 src/server/cache/             本地 JSON 存储和状态缓存
+src/server/sources/yucwiki/   长门有C / YucWiki 主目录源
 src/server/sources/bangumi/   Bangumi 客户端、映射、匹配
-src/server/sources/bahamut/   巴哈姆特参考源
+src/server/sources/bahamut/   巴哈姆特遗留参考源, 默认更新流程不再注册
 src/server/sources/youranimes/ YourAnimes 参考源
 src/server/types/             核心类型
 data/                         本地缓存、参考源快照、人工覆盖
@@ -104,7 +105,7 @@ tests/fixtures/               测试夹具
 - 可展示条目至少保留一个 `sources[]`
 - 已完结或取消条目不再继承 `updateTime` / `updateWeekday`
 - `episodeCount` 与 `airedEpisodeCount` 不得矛盾
-- 巴哈姆特、YourAnimes、人工覆盖写入的展示时间按北京时间 `Asia/Shanghai` 处理
+- 长门有C、YourAnimes、人工覆盖写入的展示时间按北京时间 `Asia/Shanghai` 处理; 巴哈姆特仅作为遗留适配器保留
 - Bangumi 标题映射会修复 UTF-8 被误读为 Latin-1 的 mojibake, 不要移除
 - Bangumi 非日漫过滤包含明确排除 subjectId、标题/IP 规则、tags/产地强元数据规则、韩文主标题规则、已知 SP 标题规则和第 11 季以上规则, 不要把已确认的国产/海外/韩产动画、SP、剧场版或超十季条目重新放回可展示缓存
 
@@ -143,9 +144,10 @@ PWA 与缓存:
 
 数据源:
 
-- Bangumi: 主源, 提供标题、subjectId、评分、封面、日期、集数、官网、制作信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照
-- 巴哈姆特: 参考源, 补充 UTC+8 / 北京时间更新时刻
-- YourAnimes: 低优先级参考源, 补充日本首播时间和 Bangumi subjectId; 当 Bangumi 不可用且目标季度无旧缓存时, 可信参考源可冷启动导入 `partial` / `needs_review` 条目
+- 长门有C / YucWiki: 主目录源, 提供季度番剧列表、标题、播放日期/时间标签、放送形态、官网、制作信息、集数和封面链接; 优先决定目标季度可写入目录。默认读取 `https://yuc.wiki/YYYYMM/`, 成功获取后写入 `data/yucwiki-YYYYMM.html` 作为本地快照
+- Bangumi: 次源, 主要补齐已匹配条目的 subjectId、评分、排名、封面和条目信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照。长门有C主目录存在时, 未能匹配到长门条目的 Bangumi-only 条目不得单独写入缓存
+- YourAnimes: 低优先级参考源, 保持原用途, 补充日本首播时间和 Bangumi subjectId; 当主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 可信参考源可冷启动导入 `partial` / `needs_review` 条目
+- 巴哈姆特: 遗留参考源适配器仍保留给旧测试和手动调试, 但默认更新流程已经由长门有C替代, 不再作为默认数据源注册
 - `data/manual-broadcast-overrides.json`: 最终人工覆盖, 只对未完结、未取消条目生效
 
 常用数据命令:
@@ -157,14 +159,20 @@ npm run data:sync-bangumi
 npm run data:validate
 ```
 
+源配置:
+
+- `YUCWIKI_ENABLED=false` 可禁用长门有C主源; `YUCWIKI_PAGE_URL` 可覆盖季度页面地址; `YUCWIKI_USER_AGENT`、`YUCWIKI_TIMEOUT_MS`、`YUCWIKI_RATE_LIMIT_PER_MINUTE` 控制抓取请求
+- 本地存在 `data/yucwiki-YYYYMM.html` 时优先读取本地快照, 网络不可用时仍可更新已缓存季度
+- `BANGUMI_*` 配置继续只影响 Bangumi 次源; `YOURANIMES_*` 配置继续只影响 YourAnimes 参考源
+
 更新流程要点:
 
 1. 校验 `year` 和 `season`
 2. 检查更新锁
-3. 读取 Bangumi、巴哈姆特、YourAnimes
+3. 按优先级读取长门有C、Bangumi、YourAnimes
 4. 归一化、去重、按 `primarySeason` 过滤目标季度
-5. 若 Bangumi 主目录有可写入条目, 丢弃所有未合并成功且无 Bangumi ID 的 YourAnimes / 巴哈姆特参考条目, 防止备用源重复项残留
-6. Bangumi 不可用且目标季度无旧缓存时, 对无 Bangumi ID 且无旧缓存匹配的 YourAnimes / 巴哈姆特参考条目, 仅在来源可信、格式为 TV、具备开播日期与排期时允许冷启动, 并标记为 `needs_review`
+5. 若长门有C主目录有可写入条目, 以长门条目为目录主体; Bangumi 只合并到同标题/高置信匹配条目上补齐评分、排名、subjectId、封面等信息, 未匹配的 Bangumi-only 条目会被丢弃
+6. 主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 对无 Bangumi ID 且无旧缓存匹配的 YourAnimes 参考条目, 仅在来源可信、格式为 TV、具备开播日期与排期时允许冷启动, 并标记为 `needs_review`
 7. 过滤 TV、日本动画、非成人内容、剧场版/电影标题、已知 SP 标题和第 11 季及以上条目; 非日漫过滤必须同时读取标题/别名/官网、Bangumi tags、产地字段和韩文主标题信号, 并用强日方制作信号保护 `明日方舟` 这类特殊条目
 8. 与旧缓存合并, 保留可靠旧信息
 9. 应用人工广播覆盖
@@ -175,9 +183,9 @@ npm run data:validate
 - 写入前校验失败: 不覆盖旧缓存
 - 外部源失败: 记录 warning, 尽量保留可用旧缓存
 - 目标季度无旧缓存且外部源无可写入条目但有 warning: 返回 `SOURCE_UNAVAILABLE`, 不写入空成功
-- Bangumi 月度快照存在时优先读取本地文件; 页面更新在网络不可用时仍可刷新已缓存月份
+- 长门有C季度页面快照和 Bangumi 月度快照存在时优先读取本地文件; 页面更新在网络不可用时仍可刷新已缓存月份
 - `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存
-- 旧季度导入优先使用 Bangumi; Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用 Bangumi 同步补齐评分、封面和 subjectId
+- 旧季度导入优先使用长门有C; Bangumi 只作为评分和 subjectId 补强。长门有C与 Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用长门有C重建目录并用 Bangumi 同步补齐评分、封面和 subjectId
 - 参考源冷启动的历史季度条目会按导入时刻推断为 `finished`, 顶层 `updateTime` / `updateWeekday` 置空, 但 `schedule[]` 仍保留首播日期和时间用于搜索与回查
 
 ## 8. 部署
@@ -242,7 +250,7 @@ npm run build:static
 - `search`: 全库搜索入口, 不受当前季度筛选影响; 只搜索可展示 TV 日本动画, 排除 `isJapaneseAnime=false`、`inclusionStatus="excluded"` 和非 TV 条目
 - `stats`: 统计列表, 展示当前筛选后的季度条目
 - `following`: 追番列表, 点击进入时切换到北京时间当前年份与当前季度; 按周几展示当前筛选后的连载/延期条目, 仍受范围、状态和排序筛选影响
-- `personalFollowing`: 个人追番, 与追番列表形式一致, 在追番列表的周几、连载状态判断上额外要求 `followedIds` 包含条目 `id`
+- `personalFollowing`: 个人追番, 点击进入时与追番列表一样切换到北京时间当前年份与当前季度; 与追番列表形式一致, 在追番列表的周几、连载状态判断上额外要求 `followedIds` 包含条目 `id`
 - `watching`: 在看记录, 不受当前年份、季度、范围和状态筛选影响; 按 `watchingIds` 从全库回查可展示条目并显示全部未看完的已完结作品, 表格额外显示作品所属 `primarySeason` 季度
 - `watchHistory`: 观看记录, 不受当前年份、季度、范围和状态筛选影响; 按 `completedIds` 从全库回查可展示条目并显示全部已观毕作品, 表格额外显示作品所属 `primarySeason` 季度
 

@@ -6,7 +6,7 @@ import { getDefaultStorage } from "../cache/jsonFileStorage.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { toSourceIssue, type AnimeSourceAdapter, type SourceIssue } from "../sources/types.ts";
 import { BangumiSourceAdapter } from "../sources/bangumi/adapter.ts";
-import { BahamutSourceAdapter } from "../sources/bahamut/adapter.ts";
+import { YucWikiSourceAdapter } from "../sources/yucwiki/adapter.ts";
 import { YourAnimesSourceAdapter } from "../sources/youranimes/adapter.ts";
 import type { AnimeCache, AnimeItem, SeasonKey, SeasonMonth } from "../types/anime.ts";
 import type { PublicApiError, UpdateInput, UpdateResult, UpdateStatusPayload, UpdateSummary } from "../types/api.ts";
@@ -92,8 +92,10 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
     const targetSeason: SeasonKey = { year: input.year, quarter };
     const normalizedItems = fetched.items.map((item) => normalizeFetchedItem(item, now().toISOString()));
     const seasonCandidates = mergeDuplicateItems(normalizedItems).filter((item) => isPrimaryInSeason(item, targetSeason));
+    const hasPrimaryCatalogCandidates = seasonCandidates.some((item) => isPrimaryCatalogItem(item) && isCacheEligibleAnime(item));
     const hasCatalogCandidates = seasonCandidates.some((item) => isCatalogItem(item) && isCacheEligibleAnime(item));
     const targetItems = seasonCandidates
+      .filter((item) => !shouldDropSecondaryCatalogItem(item, hasPrimaryCatalogCandidates))
       .filter((item) => !shouldDropReferenceOnlyItem(item, oldCache.items, !hasCatalogCandidates))
       .map(markReferenceColdStartItem);
     const eligibleTargetItems = targetItems.filter(isCacheEligibleAnime);
@@ -183,7 +185,7 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
 }
 
 function createDefaultAdapters(): AnimeSourceAdapter[] {
-  return [new BangumiSourceAdapter(), new BahamutSourceAdapter(), new YourAnimesSourceAdapter()];
+  return [new YucWikiSourceAdapter(), new BangumiSourceAdapter(), new YourAnimesSourceAdapter()];
 }
 
 async function readManualBroadcastOverrides(): Promise<Map<string, ManualBroadcastOverride>> {
@@ -387,7 +389,15 @@ function mergeDuplicateItems(items: AnimeItem[]): AnimeItem[] {
 }
 
 function findExistingMergeKey(item: AnimeItem, existingItems: Map<string, AnimeItem>): string | null {
-  if (item.bangumi.subjectId !== null || item.externalIds.bangumiSubjectId !== null) return null;
+  if (item.bangumi.subjectId !== null || item.externalIds.bangumiSubjectId !== null) {
+    const itemTitles = getNormalizedTitleSet(item);
+    for (const [key, existing] of existingItems) {
+      if (!isPrimaryCatalogItem(existing)) continue;
+      const existingTitles = getNormalizedTitleSet(existing);
+      if ([...itemTitles].some((title) => existingTitles.has(title))) return key;
+    }
+    return null;
+  }
   if (!isScheduleReviewItem(item)) return null;
 
   const itemTitles = getNormalizedTitleSet(item);
@@ -405,6 +415,10 @@ function findExistingMergeKey(item: AnimeItem, existingItems: Map<string, AnimeI
 }
 
 function mergeTwoItems(left: AnimeItem, right: AnimeItem): AnimeItem {
+  if (isPrimaryCatalogItem(left) && isBangumiCatalogItem(right)) {
+    return mergeBangumiMetadataIntoPrimaryCatalog(left, right);
+  }
+
   const mergedStatus = resolveMergedStatus(left.status, right.status);
   const suppressBroadcastTime = isFinalStatus(mergedStatus);
   const rightUsesJapanBroadcastTime = !suppressBroadcastTime && isJapanBroadcastReviewItem(right) && right.startDate !== null;
@@ -460,6 +474,28 @@ function mergeTwoItems(left: AnimeItem, right: AnimeItem): AnimeItem {
     sources: dedupeSources([...left.sources, ...right.sources]),
     createdAt: left.createdAt,
     updatedAt: right.updatedAt
+  };
+}
+
+function mergeBangumiMetadataIntoPrimaryCatalog(primary: AnimeItem, bangumiItem: AnimeItem): AnimeItem {
+  const bangumi = primary.bangumi.subjectId !== null ? primary.bangumi : bangumiItem.bangumi;
+  const externalIds = {
+    bangumiSubjectId: primary.externalIds.bangumiSubjectId ?? bangumiItem.externalIds.bangumiSubjectId,
+    bahamutSn: primary.externalIds.bahamutSn ?? bangumiItem.externalIds.bahamutSn
+  };
+
+  return {
+    ...primary,
+    id: bangumi.subjectId !== null ? `anime:${bangumi.subjectId}` : primary.id,
+    title: {
+      ...primary.title,
+      aliases: [...new Set([...primary.title.aliases, ...bangumiItem.title.aliases])]
+    },
+    coverImage: primary.coverImage ?? bangumiItem.coverImage,
+    externalIds,
+    bangumi,
+    sources: dedupeSources([...primary.sources, ...bangumiItem.sources]),
+    updatedAt: bangumiItem.updatedAt
   };
 }
 
@@ -560,6 +596,20 @@ function isScheduleReviewItem(item: AnimeItem): boolean {
 }
 
 function isCatalogItem(item: AnimeItem): boolean {
+  return item.sources.some((source) => source.name === "YucWiki" || source.name === "Bangumi");
+}
+
+function isPrimaryCatalogItem(item: AnimeItem): boolean {
+  return item.sources.some((source) => source.name === "YucWiki");
+}
+
+function isBangumiCatalogItem(item: AnimeItem): boolean {
+  return item.sources.some((source) => source.name === "Bangumi");
+}
+
+function shouldDropSecondaryCatalogItem(item: AnimeItem, hasPrimaryCatalogCandidates: boolean): boolean {
+  if (!hasPrimaryCatalogCandidates) return false;
+  if (isPrimaryCatalogItem(item)) return false;
   return item.sources.some((source) => source.name === "Bangumi");
 }
 
@@ -592,8 +642,7 @@ function shouldDropReferenceOnlyItem(item: AnimeItem, oldItems: AnimeItem[], all
 function isTrustedReferenceColdStartItem(item: AnimeItem): boolean {
   const hasTrustedSource = item.sources.some(
     (source) =>
-      (source.name === "YourAnimes" && source.scope === "japan_broadcast") ||
-      (source.name === "Bahamut Anime Crazy" && source.scope === "taiwan_streaming")
+      source.name === "YourAnimes" && source.scope === "japan_broadcast"
   );
   return hasTrustedSource && item.format === "tv" && item.startDate !== null && item.schedule.length > 0;
 }

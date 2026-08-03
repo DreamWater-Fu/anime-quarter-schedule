@@ -590,7 +590,7 @@ function scoreSourceReliability(sources: AnimeSource[], risks: Set<CandidateRisk
   if (
     sources.length > 0 &&
     sources.every((source) => source.type === "third_party" || source.type === "streaming_platform") &&
-    sources.some((source) => /bahamut|巴哈|gamer/i.test(source.name))
+    sources.some((source) => /bahamut|巴哈|gamer|yucwiki|yuc|長門|长门/i.test(source.name))
   ) {
     risks.add("weak_source");
     return -6;

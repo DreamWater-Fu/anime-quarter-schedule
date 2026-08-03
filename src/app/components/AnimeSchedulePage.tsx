@@ -271,7 +271,7 @@ export function AnimeSchedulePage() {
   }
 
   function handleViewModeChange(nextViewMode: ViewMode) {
-    if (nextViewMode === "following") {
+    if (nextViewMode === "following" || nextViewMode === "personalFollowing") {
       const currentSeasonSelection = getDefaultSeasonSelection();
       setYear(currentSeasonSelection.year);
       setSeason(currentSeasonSelection.season);
