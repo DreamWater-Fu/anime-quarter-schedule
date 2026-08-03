@@ -6,6 +6,7 @@ import { getDefaultStorage } from "../cache/jsonFileStorage.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { toSourceIssue, type AnimeSourceAdapter, type SourceIssue } from "../sources/types.ts";
 import { BangumiSourceAdapter } from "../sources/bangumi/adapter.ts";
+import { enrichMissingBangumiBySearch, refreshBangumiDetailsForItems } from "../sources/bangumi/searchEnrichment.ts";
 import { YucWikiSourceAdapter } from "../sources/yucwiki/adapter.ts";
 import { YourAnimesSourceAdapter } from "../sources/youranimes/adapter.ts";
 import type { AnimeCache, AnimeItem, SeasonKey, SeasonMonth } from "../types/anime.ts";
@@ -99,10 +100,32 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
       .filter((item) => !shouldDropSecondaryCatalogItem(item, hasPrimaryCatalogCandidates))
       .filter((item) => !shouldDropReferenceOnlyItem(item, oldCache.items, !hasCatalogCandidates))
       .map(markReferenceColdStartItem);
-    const eligibleTargetItems = targetItems.filter(isCacheEligibleAnime);
+    let eligibleTargetItems = targetItems.filter(isCacheEligibleAnime);
+    if (shouldRunBangumiSearchEnrichment(options, eligibleTargetItems)) {
+      const enrichment = await enrichMissingBangumiBySearch(eligibleTargetItems, { now });
+      eligibleTargetItems = enrichment.items;
+      if (enrichment.failed > 0) {
+        fetched.warnings.push({
+          source: "Bangumi",
+          code: "NETWORK_FAILED",
+          message: `Bangumi search enrichment failed for ${enrichment.failed} items`,
+          retryable: true
+        });
+      }
+    }
     const fallbackSeasonItems = getOldSeasonItems(oldCache.items, targetSeason);
     if (shouldFailWeakHistoricalCatalogRefresh(fetched.warnings, eligibleTargetItems, targetSeason, now())) {
       throw new ApiErrorException("SOURCE_UNAVAILABLE", "historical season primary catalog was unavailable and fallback candidates were incomplete", {
+        status: 503,
+        details: {
+          targetSeason,
+          candidateCount: eligibleTargetItems.length,
+          warnings: fetched.warnings
+        }
+      });
+    }
+    if (shouldFailUnenrichedHistoricalPrimaryCatalog(fetched.warnings, eligibleTargetItems, targetSeason, now())) {
+      throw new ApiErrorException("SOURCE_UNAVAILABLE", "historical season Bangumi enrichment was unavailable and would write bare catalog items", {
         status: 503,
         details: {
           targetSeason,
@@ -126,11 +149,23 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
       : mergeDuplicateItems([...fallbackSeasonItems, ...eligibleTargetItems]);
     const skippedNonJapanese = targetItems.length - eligibleTargetItems.length;
     const manualOverrides = await readManualBroadcastOverrides();
-    const mergedItems = mergeDuplicateItems(
+    let mergedItems = mergeDuplicateItems(
       nextSeasonItems.map((item) =>
         applyManualBroadcastOverride(mergeWithOldItem(item, oldCache.items), manualOverrides, now().toISOString())
       )
     );
+    if (shouldRunBangumiDetailRefresh(options, mergedItems)) {
+      const detailRefresh = await refreshBangumiDetailsForItems(mergedItems, { now });
+      mergedItems = detailRefresh.items;
+      if (detailRefresh.failed > 0) {
+        fetched.warnings.push({
+          source: "Bangumi",
+          code: "NETWORK_FAILED",
+          message: `Bangumi detail refresh failed for ${detailRefresh.failed} items`,
+          retryable: true
+        });
+      }
+    }
     const nextCache = mergeSeasonIntoCache(oldCache, mergedItems, targetSeason, now().toISOString());
     const validationIssues = validateAnimeCache(nextCache);
     if (hasBlockingValidationIssues(validationIssues)) {
@@ -748,6 +783,36 @@ function shouldFailWeakHistoricalCatalogRefresh(
   if (targetItems.some(isPrimaryCatalogItem)) return false;
   if (!isPastSeason(targetSeason, now)) return false;
   return warnings.some((warning) => warning.source === "YucWiki" && warning.code !== "SOURCE_DISABLED");
+}
+
+function shouldRunBangumiSearchEnrichment(options: UpdateAnimeDataOptions, targetItems: AnimeItem[]): boolean {
+  if (options.adapters !== undefined) return false;
+  return targetItems.some((item) =>
+    item.sources.some((source) => source.name === "YucWiki") &&
+    (item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId) === null
+  );
+}
+
+function shouldRunBangumiDetailRefresh(options: UpdateAnimeDataOptions, items: AnimeItem[]): boolean {
+  if (options.adapters !== undefined) return false;
+  return items.some((item) =>
+    (item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId) !== null &&
+    (item.bangumi.rating === null || item.coverImage?.source !== "bangumi")
+  );
+}
+
+function shouldFailUnenrichedHistoricalPrimaryCatalog(
+  warnings: SourceIssue[],
+  targetItems: AnimeItem[],
+  targetSeason: SeasonKey,
+  now: Date
+): boolean {
+  const minimumHistoricalCatalogItems = parsePositiveInteger(process.env.MIN_HISTORICAL_CATALOG_ITEMS, 20);
+  if (targetItems.length < minimumHistoricalCatalogItems) return false;
+  if (!targetItems.some(isPrimaryCatalogItem)) return false;
+  if (!isPastSeason(targetSeason, now)) return false;
+  if (targetItems.some((item) => (item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId) !== null)) return false;
+  return warnings.some((warning) => warning.source === "Bangumi");
 }
 
 function isPastSeason(targetSeason: SeasonKey, now: Date): boolean {

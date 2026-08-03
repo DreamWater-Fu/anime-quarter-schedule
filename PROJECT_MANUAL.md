@@ -9,10 +9,10 @@
 - 版本: `0.2.5`
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
 - 核心缓存: `data/anime.json`
-- 当前缓存: 905 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2022 年 10 月以及 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
-- 测试: 112 个单元测试; 最近 `npm run check` 通过
+- 当前缓存: 953 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2022 年 7 月、2022 年 10 月以及 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
+- 测试: 114 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
-- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 并修复 2022 年 10 月季度; 当前 905 条中 888 条带长门有C / YucWiki 主源, 705 条带 YourAnimes 参考源; 封面缺失为 0, 902 条带 Bangumi 源, 3 条缺可靠 Bangumi subjectId, 9 条缺 Bangumi 评分, 其中 6 条是未来 Bangumi subject 当前无有效评分。2022 年 10 月曾因长门主源抓取失败而错误写入 5 条 fallback 结果并混入非日漫《螺丝钉 第五季》; 已改为读取 `data/yucwiki-202210.html` 重建为 52 条长门主目录条目, 52 条均已补齐 Bangumi subject。网页端/API 更新现在会保护历史季度: 若长门有C 不可用且候选数量低于 `MIN_HISTORICAL_CATALOG_ITEMS` 默认 20 条, 不再写入残缺 fallback, 而是返回 `SOURCE_UNAVAILABLE` 并保留旧缓存。Bangumi PowerShell fallback 的临时脚本目录已改到项目内 `.tmp/`, 避免网页端本地更新时因 Windows 用户 Temp 权限失败。2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。更新前后确认同一作品 id 改变 3 条: `anime:325767` -> `anime:yucwiki:202607:b29` (`感谢对战 大小姐才不玩格斗游戏`), `anime:528828` -> `anime:yucwiki:202607:c05` (`骸骨骑士大人异世界冒险中 第2期`), `anime:614594` -> `anime:yucwiki:202607:b20` (`令和的斑小姐`); 另有旧目录 242 条不再被新主目录保留, 新主目录加入 157 条。2026-08-03 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
+- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 并修复 2022 年 7 月与 2022 年 10 月季度; 当前 953 条中 936 条带长门有C / YucWiki 主源, 744 条带 YourAnimes 参考源, 950 条带 Bangumi 源; 封面缺失为 0, 3 条缺可靠 Bangumi subjectId, 9 条缺 Bangumi 评分, 其中 6 条是未来 Bangumi subject 当前无有效评分。2022 年 7 月网页/API 更新已实测重跑为 48 条长门主目录条目, 48 条均补齐 Bangumi subject、评分和 Bangumi 封面; `BASTARD!! -暗黒の破壊神-` 这类日文原题搜索不稳定但中文别名可命中的条目, 现在由在线搜索补全继续检索别名并高置信绑定。2022 年 10 月曾因长门主源抓取失败而错误写入 5 条 fallback 结果并混入非日漫《螺丝钉 第五季》; 已改为读取 `data/yucwiki-202210.html` 重建为 52 条长门主目录条目, 52 条均已补齐 Bangumi subject。网页端/API 更新现在会保护历史季度: 若长门有C 不可用且候选数量低于 `MIN_HISTORICAL_CATALOG_ITEMS` 默认 20 条, 或历史主目录会在 Bangumi 补全失败时写入整季裸标题, 不再覆盖旧缓存, 而是返回 `SOURCE_UNAVAILABLE`。Bangumi PowerShell fallback 的临时脚本目录已改到项目内 `.tmp/`, 月度快照读取会剥离 UTF-8 BOM, 避免网页端本地更新因 Windows 用户 Temp 权限或 BOM JSON 解析失败。2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。2026-08-03 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
 
 ## 2. 产品边界
 
@@ -145,7 +145,7 @@ PWA 与缓存:
 数据源:
 
 - 长门有C / YucWiki: 主目录源, 提供季度番剧列表、标题、播放日期/时间标签、放送形态、官网、制作信息、集数和封面链接; 优先决定目标季度可写入目录。默认读取 `https://yuc.wiki/YYYYMM/`, 成功获取后写入 `data/yucwiki-YYYYMM.html` 作为本地快照
-- Bangumi: 次源, 主要补齐已匹配条目的 subjectId、评分、排名、封面和条目信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照。月度 subject 列表不是完整季度目录, 只能作为候选池和评分补强源。长门有C主目录存在时, 未能匹配到长门条目的 Bangumi-only 条目不得单独写入缓存。Windows PowerShell fallback 的临时脚本必须写入项目内 `.tmp/` 或 `BANGUMI_TMP_DIR`, 不要写入用户 Temp, 以免网页端本地更新遇到权限错误
+- Bangumi: 次源, 主要补齐已匹配条目的 subjectId、评分、排名、封面和条目信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照。月度 subject 列表不是完整季度目录, 只能作为候选池和评分补强源。长门有C主目录存在时, 未能匹配到长门条目的 Bangumi-only 条目不得单独写入缓存。网页端/API 更新会对缺 subjectId 的长门条目执行在线 Bangumi 搜索补全, 搜索词覆盖原题、日文名、中文名、英文名和别名, 一旦出现带标题与日期/官网/集数/季数/制作信息辅助证据的高置信候选就绑定; 对已绑定但缺评分或非 Bangumi 封面的条目会继续拉取 subject 详情刷新评分与封面。Windows PowerShell fallback 的临时脚本必须写入项目内 `.tmp/` 或 `BANGUMI_TMP_DIR`, 不要写入用户 Temp, 以免网页端本地更新遇到权限错误; 本地 Bangumi 月度快照读取前必须剥离 UTF-8 BOM。
 - YourAnimes: 低优先级参考源, 保持原用途, 补充日本首播时间和 Bangumi subjectId; 当主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 可信参考源可冷启动导入 `partial` / `needs_review` 条目
 - 巴哈姆特: 遗留参考源适配器仍保留给旧测试和手动调试, 但默认更新流程已经由长门有C替代, 不再作为默认数据源注册
 - `data/manual-broadcast-overrides.json`: 最终人工覆盖, 只对未完结、未取消条目生效
@@ -175,11 +175,12 @@ npm run data:audit
 3. 按优先级读取长门有C、Bangumi、YourAnimes
 4. 归一化、去重、按 `primarySeason` 过滤目标季度
 5. 若长门有C主目录有可写入条目, 以长门条目为目录主体; Bangumi 只合并到同标题/高置信匹配条目上补齐评分、排名、subjectId、封面等信息, 未匹配的 Bangumi-only 条目会被丢弃
-6. 主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 对无 Bangumi ID 且无旧缓存匹配的 YourAnimes 参考条目, 仅在来源可信、格式为 TV、具备开播日期与排期时允许冷启动, 并标记为 `needs_review`
-7. 过滤 TV、日本动画、非成人内容、剧场版/电影标题、已知 SP 标题和第 11 季及以上条目; 非日漫过滤必须同时读取标题/别名/官网、Bangumi tags、产地字段和韩文主标题信号, 并用强日方制作信号保护 `明日方舟` 这类特殊条目
-8. 与旧缓存合并, 保留可靠旧信息
-9. 应用人工广播覆盖
-10. 校验并写入 `data/anime.json`, `data/status.json`, `data/update-log.jsonl`
+6. 对缺 subjectId 的长门条目执行内联 Bangumi 搜索补全; 搜索不要只取前两个标题变体, 必须覆盖中文名和别名, 并在找到高置信候选后提前停止以减少请求量。对已绑定但缺评分或缺 Bangumi 封面的条目再拉取 subject 详情补齐
+7. 主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 对无 Bangumi ID 且无旧缓存匹配的 YourAnimes 参考条目, 仅在来源可信、格式为 TV、具备开播日期与排期时允许冷启动, 并标记为 `needs_review`
+8. 过滤 TV、日本动画、非成人内容、剧场版/电影标题、已知 SP 标题和第 11 季及以上条目; 非日漫过滤必须同时读取标题/别名/官网、Bangumi tags、产地字段和韩文主标题信号, 并用强日方制作信号保护 `明日方舟` 这类特殊条目
+9. 与旧缓存合并, 保留可靠旧信息
+10. 应用人工广播覆盖
+11. 校验并写入 `data/anime.json`, `data/status.json`, `data/update-log.jsonl`
 
 失败策略:
 
@@ -187,6 +188,7 @@ npm run data:audit
 - 外部源失败: 记录 warning, 尽量保留可用旧缓存
 - 目标季度无旧缓存且外部源无可写入条目但有 warning: 返回 `SOURCE_UNAVAILABLE`, 不写入空成功
 - 历史季度导入时, 若长门有C / YucWiki 主目录不可用且有效候选数量低于 `MIN_HISTORICAL_CATALOG_ITEMS` 默认 20 条, 必须返回 `SOURCE_UNAVAILABLE` 并保留旧缓存; 不允许像 2022 年 10 月旧错误那样用 5 条 Bangumi/YourAnimes fallback 覆盖成“成功更新”
+- 历史季度导入时, 若长门有C 主目录可用但 Bangumi 搜索/详情补全失败到会写入整季裸标题, 必须返回 `SOURCE_UNAVAILABLE` 并保留旧缓存; 不允许把只有名称、没有 subjectId/评分/封面的历史季度当作成功更新
 - 长门有C季度页面快照和 Bangumi 月度快照存在时优先读取本地文件; 页面更新在网络不可用时仍可刷新已缓存月份
 - `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存
 - 旧季度导入优先使用长门有C; Bangumi 只作为评分和 subjectId 补强。长门有C与 Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用长门有C重建目录并用 Bangumi 同步补齐评分、封面和 subjectId

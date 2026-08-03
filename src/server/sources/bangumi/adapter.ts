@@ -208,7 +208,7 @@ export class BangumiSourceAdapter implements AnimeSourceAdapter {
   ): Promise<BangumiSubject[] | null> {
     const file = `${process.env.DATA_DIR ?? "data"}/bangumi-${year}${String(month).padStart(2, "0")}-subjects.json`;
     try {
-      const payload = JSON.parse(await readFile(resolve(/* turbopackIgnore: true */ process.cwd(), file), "utf8")) as unknown;
+      const payload = JSON.parse(stripJsonBom(await readFile(resolve(/* turbopackIgnore: true */ process.cwd(), file), "utf8"))) as unknown;
       return extractCachedSubjectList(payload);
     } catch (error) {
       if (error && typeof error === "object" && "code" in error && (error as { code?: unknown }).code === "ENOENT") {
@@ -345,11 +345,15 @@ async function fetchMonthSubjectsWithPowerShell(input: { year: number; month: nu
         maxBuffer: 1024 * 1024
       }
     );
-    const payload = JSON.parse(await readFile(outputFile, "utf8")) as unknown;
+    const payload = JSON.parse(stripJsonBom(await readFile(outputFile, "utf8"))) as unknown;
     return extractCachedSubjectList(payload);
   } finally {
     await rm(tempDir, { recursive: true, force: true });
   }
+}
+
+function stripJsonBom(value: string): string {
+  return value.replace(/^\uFEFF/u, "");
 }
 
 function extractCachedSubjectList(payload: unknown): BangumiSubject[] {

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, it } from "node:test";
@@ -624,6 +624,47 @@ describe("source adapters", () => {
       assert.equal(result.items.length, 1);
       assert.equal(cached.length, 1);
       assert.equal((cached[0] as { id?: unknown }).id, subject.id);
+    } finally {
+      await rm(dataDir, { recursive: true, force: true });
+      if (previousDataDir === undefined) {
+        delete process.env.DATA_DIR;
+      } else {
+        process.env.DATA_DIR = previousDataDir;
+      }
+    }
+  });
+
+  it("reads Bangumi month snapshot files that include a UTF-8 BOM", async () => {
+    const previousDataDir = process.env.DATA_DIR;
+    const dataDir = await mkdtemp(join(tmpdir(), "bangumi-bom-cache-"));
+    process.env.DATA_DIR = dataDir;
+    const client: BangumiClient = {
+      listSubjectsByMonth: async () => {
+        throw new Error("cached month files should be used");
+      },
+      searchSubjects: async () => [],
+      getSubject: async () => {
+        throw new Error("unused");
+      },
+      getEpisodes: async () => []
+    };
+    const adapter = new BangumiSourceAdapter({
+      client,
+      monthSubjectFallback: async () => null,
+      now: () => new Date(retrievedAt)
+    });
+
+    try {
+      await writeFile(join(dataDir, "bangumi-202506-subjects.json"), "\uFEFF[]\n", "utf8");
+      await writeFile(join(dataDir, "bangumi-202507-subjects.json"), `\uFEFF${JSON.stringify([subject], null, 2)}\n`, "utf8");
+      await writeFile(join(dataDir, "bangumi-202508-subjects.json"), "\uFEFF[]\n", "utf8");
+      await writeFile(join(dataDir, "bangumi-202509-subjects.json"), "\uFEFF[]\n", "utf8");
+
+      const result = await adapter.fetchSeason({ year: 2025, season: 7, quarter: "summer" });
+
+      assert.equal(result.items.length, 1);
+      assert.equal(result.items[0]?.bangumi.subjectId, subject.id);
+      assert.equal(result.warnings.length, 0);
     } finally {
       await rm(dataDir, { recursive: true, force: true });
       if (previousDataDir === undefined) {
