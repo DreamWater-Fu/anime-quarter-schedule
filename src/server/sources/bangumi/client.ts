@@ -187,10 +187,14 @@ export class BangumiApiClient implements BangumiClient {
     headers: Headers,
     originalError: unknown
   ): Promise<Response | null> {
-    if (!this.fallbackFetchImpl || !isGetRequest(init)) return null;
+    if (!this.fallbackFetchImpl) return null;
 
     try {
-      return await this.fallbackFetchImpl(url, { headers });
+      return await this.fallbackFetchImpl(url, {
+        method: init.method,
+        body: init.body,
+        headers
+      });
     } catch (error) {
       throw new DataSourceError({
         source: "Bangumi",
@@ -223,21 +227,23 @@ export class BangumiApiClient implements BangumiClient {
   }
 }
 
-function isGetRequest(init: RequestInit): boolean {
-  return !init.body && (!init.method || init.method.toUpperCase() === "GET");
-}
-
 function createPowerShellFetch(timeoutMs: number): typeof fetch {
   return async (input, init) => {
     const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
     const headers = new Headers(init?.headers);
+    const method = init?.method?.toUpperCase() ?? (init?.body ? "POST" : "GET");
+    const bodyText = await bodyToText(init?.body);
     const tempDir = join(tmpdir(), `bangumi-${Date.now()}-${Math.random().toString(16).slice(2)}`);
     const outputFile = join(tempDir, "response.json");
     const scriptFile = join(tempDir, "fetch-bangumi.ps1");
+    const bodyFile = join(tempDir, "request-body.txt");
     await mkdir(tempDir, { recursive: true });
     try {
+      if (bodyText !== null) {
+        await writeFile(bodyFile, bodyText, "utf8");
+      }
       const script = [
-        "param($uri, $out, $userAgent, $accept, $token, $timeoutSec)",
+        "param($uri, $out, $userAgent, $accept, $token, $timeoutSec, $method, $contentType, $bodyPath)",
         "$ErrorActionPreference = 'Stop'",
         "[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)",
         "$timeoutSec = [int]$timeoutSec",
@@ -245,7 +251,12 @@ function createPowerShellFetch(timeoutMs: number): typeof fetch {
         "if ($userAgent) { $headers['User-Agent'] = $userAgent }",
         "if ($accept) { $headers['Accept'] = $accept }",
         "if ($token) { $headers['Authorization'] = $token }",
-        "$response = Invoke-WebRequest -Uri $uri -Headers $headers -UseBasicParsing -TimeoutSec $timeoutSec",
+        "$request = @{ Uri = $uri; Method = $method; Headers = $headers; UseBasicParsing = $true; TimeoutSec = $timeoutSec }",
+        "if ($bodyPath -and (Test-Path -LiteralPath $bodyPath)) {",
+        "  $request['Body'] = [System.IO.File]::ReadAllBytes($bodyPath)",
+        "  if ($contentType) { $request['ContentType'] = $contentType }",
+        "}",
+        "$response = Invoke-WebRequest @request",
         "[System.IO.File]::WriteAllText($out, $response.Content, [System.Text.UTF8Encoding]::new($false))",
         "[Console]::Write([string]$response.StatusCode)"
       ].join("\n");
@@ -264,7 +275,10 @@ function createPowerShellFetch(timeoutMs: number): typeof fetch {
           headers.get("User-Agent") ?? "",
           headers.get("Accept") ?? "application/json",
           headers.get("Authorization") ?? "",
-          String(Math.max(1, Math.ceil(timeoutMs / 1000)))
+          String(Math.max(1, Math.ceil(timeoutMs / 1000))),
+          method,
+          headers.get("Content-Type") ?? "",
+          bodyText === null ? "" : bodyFile
         ],
         {
           timeout: timeoutMs + 5_000,
@@ -282,6 +296,18 @@ function createPowerShellFetch(timeoutMs: number): typeof fetch {
       await rm(tempDir, { recursive: true, force: true });
     }
   };
+}
+
+async function bodyToText(body: BodyInit | null | undefined): Promise<string | null> {
+  if (body === null || body === undefined) return null;
+  if (typeof body === "string") return body;
+  if (body instanceof URLSearchParams) return body.toString();
+  if (body instanceof Blob) return body.text();
+  if (body instanceof ArrayBuffer) return new TextDecoder().decode(body);
+  if (ArrayBuffer.isView(body)) {
+    return new TextDecoder().decode(body.buffer.slice(body.byteOffset, body.byteOffset + body.byteLength));
+  }
+  throw new TypeError("Bangumi PowerShell fallback only supports text-like request bodies");
 }
 
 function extractSubjectList(payload: unknown): BangumiSubject[] {

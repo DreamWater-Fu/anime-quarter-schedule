@@ -445,6 +445,33 @@ describe("Bangumi API client", () => {
     assert.match(fallbackUrl, /year=2025/);
     assert.match(fallbackUrl, /month=7/);
   });
+
+  it("falls back to a configured POST fetch for Bangumi search requests", async () => {
+    let fallbackMethod = "";
+    let fallbackBody = "";
+    let contentType = "";
+    const client = new BangumiApiClient({
+      fetchImpl: async () => {
+        throw new TypeError("connect timeout");
+      },
+      fallbackFetchImpl: async (_url, init) => {
+        fallbackMethod = init?.method ?? "";
+        fallbackBody = String(init?.body ?? "");
+        contentType = new Headers(init?.headers).get("Content-Type") ?? "";
+        return Response.json({ data: [subject] });
+      },
+      usePowerShellFallback: false,
+      rateLimitPerMinute: 0
+    });
+
+    const result = await client.searchSubjects({ keyword: "葬送のフリーレン", type: [2], limit: 1 });
+
+    assert.equal(result.length, 1);
+    assert.equal(result[0]?.id, subject.id);
+    assert.equal(fallbackMethod, "POST");
+    assert.match(contentType, /application\/json/);
+    assert.match(fallbackBody, /葬送のフリーレン/);
+  });
 });
 
 describe("source adapters", () => {

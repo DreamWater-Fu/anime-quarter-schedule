@@ -12,7 +12,7 @@
 - 当前缓存: 855 条, 只保留 TV、日本动画、非 excluded 条目; 当前已导入的 2023-2026 多个季度均可被全库搜索与全库个人记录回查, 长门有C / YucWiki 季度页面快照、Bangumi 月度本地快照和 YourAnimes 本地快照保留为旧季度更新备用
 - 测试: 109 个单元测试; 最近 `npm run check` 通过
 - 当前部署: GitHub Pages 静态公开页已成功; Vercel 仍可作为只读动态部署备选
-- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 当前 855 条中 837 条带长门有C / YucWiki 主源, 730 条带 Bangumi 次源, 696 条带 YourAnimes 参考源; 2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。更新前后确认同一作品 id 改变 3 条: `anime:325767` -> `anime:yucwiki:202607:b29` (`感谢对战 大小姐才不玩格斗游戏`), `anime:528828` -> `anime:yucwiki:202607:c05` (`骸骨骑士大人异世界冒险中 第2期`), `anime:614594` -> `anime:yucwiki:202607:b20` (`令和的斑小姐`); 另有旧目录 242 条不再被新主目录保留, 新主目录加入 157 条。2026-08-01 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
+- 最近数据自检: 2026-08-03 已逐季强制重建 2023-2026 已缓存季度, 当前 855 条中 837 条带长门有C / YucWiki 主源, 696 条带 YourAnimes 参考源; 修复 Bangumi 补强算法后封面缺失为 0, 825 条使用 Bangumi 封面, 30 条仍使用长门有C封面兜底, 36 条缺 Bangumi 评分, 30 条缺可靠 Bangumi subjectId, 另有 6 条未来 Bangumi subject 当前无有效评分。根因是 Bangumi 月度列表不是完整目录、季度窗口未覆盖前置月、在线搜索响应 mojibake 未在评分前修复, 以及 Part/cour 与别名匹配过严。2026 年 10 月长门页当前返回 404, 因而该未来季度 14 条暂按 Bangumi / YourAnimes fallback 保留。更新前后确认同一作品 id 改变 3 条: `anime:325767` -> `anime:yucwiki:202607:b29` (`感谢对战 大小姐才不玩格斗游戏`), `anime:528828` -> `anime:yucwiki:202607:c05` (`骸骨骑士大人异世界冒险中 第2期`), `anime:614594` -> `anime:yucwiki:202607:b20` (`令和的斑小姐`); 另有旧目录 242 条不再被新主目录保留, 新主目录加入 157 条。2026-08-01 全库审查已清理 2023 年 4 月等季度残留的国产/欧美/海外儿童 IP 条目; `Nyaaaanvy`、`太乐巴戈斯的闪闪发亮探险记` 等非日漫或 SP 已排除; `おじゃる丸 第26シリーズ`、`おじゃる丸 第27シリーズ` 等第 11 季以上条目已排除; 重新刷新 2023 年 10 月季度后保留 `明日方舟：冬隐归路` 这类带日方制作信号的特殊 TV 动画
 
 ## 2. 产品边界
 
@@ -145,7 +145,7 @@ PWA 与缓存:
 数据源:
 
 - 长门有C / YucWiki: 主目录源, 提供季度番剧列表、标题、播放日期/时间标签、放送形态、官网、制作信息、集数和封面链接; 优先决定目标季度可写入目录。默认读取 `https://yuc.wiki/YYYYMM/`, 成功获取后写入 `data/yucwiki-YYYYMM.html` 作为本地快照
-- Bangumi: 次源, 主要补齐已匹配条目的 subjectId、评分、排名、封面和条目信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照。长门有C主目录存在时, 未能匹配到长门条目的 Bangumi-only 条目不得单独写入缓存
+- Bangumi: 次源, 主要补齐已匹配条目的 subjectId、评分、排名、封面和条目信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照。月度列表不是完整番剧目录, 只能作为批量候选快照; 长门条目缺 subjectId 时必须通过 `data:match-bangumi` 的在线搜索补强继续匹配。长门有C主目录存在时, 未能匹配到长门条目的 Bangumi-only 条目不得单独写入缓存
 - YourAnimes: 低优先级参考源, 保持原用途, 补充日本首播时间和 Bangumi subjectId; 当主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 可信参考源可冷启动导入 `partial` / `needs_review` 条目
 - 巴哈姆特: 遗留参考源适配器仍保留给旧测试和手动调试, 但默认更新流程已经由长门有C替代, 不再作为默认数据源注册
 - `data/manual-broadcast-overrides.json`: 最终人工覆盖, 只对未完结、未取消条目生效
@@ -155,7 +155,9 @@ PWA 与缓存:
 ```powershell
 npm run data:update -- --year 2026 --season 7
 npm run data:reconcile
+npm run data:refresh-bangumi
 npm run data:sync-bangumi
+npm run data:match-bangumi
 npm run data:validate
 ```
 
@@ -164,6 +166,7 @@ npm run data:validate
 - `YUCWIKI_ENABLED=false` 可禁用长门有C主源; `YUCWIKI_PAGE_URL` 可覆盖季度页面地址; `YUCWIKI_USER_AGENT`、`YUCWIKI_TIMEOUT_MS`、`YUCWIKI_RATE_LIMIT_PER_MINUTE` 控制抓取请求
 - 本地存在 `data/yucwiki-YYYYMM.html` 时优先读取本地快照, 网络不可用时仍可更新已缓存季度
 - `BANGUMI_*` 配置继续只影响 Bangumi 次源; `YOURANIMES_*` 配置继续只影响 YourAnimes 参考源
+- Bangumi 季度候选月份必须覆盖本项目宽限窗口: 一月季查上一年 12 月到当年 3 月, 四月季查 3-6 月, 七月季查 6-9 月, 十月季查 9-12 月; 月度列表需要按 `limit/offset` 分页抓取, 不得只读取第一页
 
 更新流程要点:
 
@@ -186,6 +189,9 @@ npm run data:validate
 - 长门有C季度页面快照和 Bangumi 月度快照存在时优先读取本地文件; 页面更新在网络不可用时仍可刷新已缓存月份
 - `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存
 - 旧季度导入优先使用长门有C; Bangumi 只作为评分和 subjectId 补强。长门有C与 Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用长门有C重建目录并用 Bangumi 同步补齐评分、封面和 subjectId
+- `npm run data:refresh-bangumi` 会按当前缓存中涉及的季度窗口分页刷新 `data/bangumi-YYYYMM-subjects.json`; 该命令只刷新 Bangumi 候选快照, 不直接修改番剧主缓存
+- `npm run data:sync-bangumi` 会优先使用本地 `data/bangumi-YYYYMM-subjects.json` 快照, 对已匹配 Bangumi subjectId 的条目刷新评分、封面、集数和状态, 并对缺 subjectId 的长门条目尝试本地高置信匹配; 不足阈值的条目保持缺评分状态, 不做冒险写入
+- `npm run data:match-bangumi` 是在线 Bangumi 搜索补强脚本, 需要修复搜索响应中的 mojibake 后再评分; 自动接受标题/别名强匹配并具备日期、官网、集数、季数或制作信息辅助证据的候选, 对上下半 cour 共用同一 Bangumi subject 导致的日期冲突可在官网与季数/制作证据足够时接受; 年份冲突、格式冲突、多候选接近或弱标题候选仍保持拒绝
 - 参考源冷启动的历史季度条目会按导入时刻推断为 `finished`, 顶层 `updateTime` / `updateWeekday` 置空, 但 `schedule[]` 仍保留首播日期和时间用于搜索与回查
 
 ## 8. 部署

@@ -462,68 +462,68 @@
     "tags": [
       {
         "name": "è½»å°è¯´æ¹",
-        "count": 275,
-        "total_count": 492338
+        "count": 276,
+        "total_count": 492539
       },
       {
         "name": "2023å¹´7æ",
         "count": 274,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "å¥å¹»",
-        "count": 200,
-        "total_count": 464448
+        "count": 201,
+        "total_count": 464897
       },
       {
         "name": "æç¬",
-        "count": 175,
-        "total_count": 633131
+        "count": 177,
+        "total_count": 633577
       },
       {
         "name": "Studio3Hz",
         "count": 159,
-        "total_count": 3973
+        "total_count": 3975
       },
       {
         "name": "ç©¿è¶",
-        "count": 157,
-        "total_count": 62298
+        "count": 158,
+        "total_count": 62350
       },
       {
         "name": "TV",
         "count": 155,
-        "total_count": 1391782
+        "total_count": 1392739
       },
       {
         "name": "2023",
         "count": 109,
-        "total_count": 81142
+        "total_count": 81179
       },
       {
         "name": "ææ",
         "count": 105,
-        "total_count": 465698
+        "total_count": 466065
       },
       {
         "name": "å¼ä¸ç",
         "count": 102,
-        "total_count": 259107
+        "total_count": 259260
       },
       {
         "name": "ç»­ä½",
         "count": 88,
-        "total_count": 45593
+        "total_count": 45620
       },
       {
         "name": "è½»æ¹",
         "count": 85,
-        "total_count": 151656
+        "total_count": 151817
       },
       {
         "name": "æç±",
         "count": 60,
-        "total_count": 557745
+        "total_count": 558186
       },
       {
         "name": "ã¯ãããé­çãã¾!",
@@ -533,17 +533,17 @@
       {
         "name": "æ¥å¸¸",
         "count": 43,
-        "total_count": 396029
+        "total_count": 396362
       },
       {
         "name": "å°è¯´æ¹",
         "count": 24,
-        "total_count": 156887
+        "total_count": 157065
       },
       {
         "name": "æ¥æ¬",
         "count": 17,
-        "total_count": 290881
+        "total_count": 291335
       },
       {
         "name": "ç­ç´«å¤§ä»",
@@ -558,7 +558,7 @@
       {
         "name": "åå®«",
         "count": 5,
-        "total_count": 300324
+        "total_count": 300500
       },
       {
         "name": "é¢åè¯å¤ª",
@@ -571,14 +571,9 @@
         "total_count": 3587
       },
       {
-        "name": "èåº",
+        "name": "æ±å±±å¥å¤®",
         "count": 3,
-        "total_count": 22558
-      },
-      {
-        "name": "æå·¥é­ç",
-        "count": 3,
-        "total_count": 3
+        "total_count": 2200
       },
       {
         "name": "2023å¹´å¤",
@@ -591,24 +586,29 @@
         "total_count": 326
       },
       {
-        "name": "æ±å±±å¥å¤®",
+        "name": "èåº",
         "count": 3,
-        "total_count": 2200
+        "total_count": 22583
       },
       {
-        "name": "2023å¤",
-        "count": 2,
-        "total_count": 207
+        "name": "æå·¥é­ç",
+        "count": 3,
+        "total_count": 3
       },
       {
-        "name": "æ¥æ¬å¨ç»",
+        "name": "æå·¥å§ï¼ï¼é­çå¤§äºº",
         "count": 2,
-        "total_count": 34770
+        "total_count": 2
       },
       {
-        "name": "é­ç",
+        "name": "ç¬¬äºå­£",
         "count": 2,
-        "total_count": 248
+        "total_count": 6986
+      },
+      {
+        "name": "å°éåæ ",
+        "count": 2,
+        "total_count": 225
       }
     ],
     "infobox": [
@@ -714,16 +714,16 @@
       }
     ],
     "rating": {
-      "rank": 9970,
-      "total": 1371,
+      "rank": 9973,
+      "total": 1373,
       "count": {
         "1": 29,
         "2": 46,
         "3": 127,
         "4": 359,
         "5": 458,
-        "6": 254,
-        "7": 67,
+        "6": 255,
+        "7": 68,
         "8": 18,
         "9": 4,
         "10": 9
@@ -732,11 +732,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 260,
-      "dropped": 360,
-      "wish": 582,
-      "collect": 2583,
-      "doing": 268
+      "on_hold": 261,
+      "dropped": 359,
+      "wish": 585,
+      "collect": 2589,
+      "doing": 267
     },
     "id": 403225,
     "eps": 12,
@@ -1027,7 +1027,7 @@
       }
     ],
     "rating": {
-      "rank": 10057,
+      "rank": 10061,
       "total": 601,
       "count": {
         "1": 27,
@@ -1048,7 +1048,7 @@
       "on_hold": 37,
       "dropped": 222,
       "wish": 127,
-      "collect": 936,
+      "collect": 937,
       "doing": 120
     },
     "id": 403741,
@@ -1083,42 +1083,42 @@
       {
         "name": "2023å¹´7æ",
         "count": 288,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 248,
-        "total_count": 492187
+        "total_count": 492539
       },
       {
         "name": "ææ",
         "count": 208,
-        "total_count": 465443
+        "total_count": 466065
       },
       {
         "name": "Feel.",
         "count": 207,
-        "total_count": 20128
+        "total_count": 20132
       },
       {
         "name": "TV",
         "count": 172,
-        "total_count": 1391504
+        "total_count": 1392739
       },
       {
         "name": "2023",
         "count": 122,
-        "total_count": 81126
+        "total_count": 81179
       },
       {
         "name": "æç±",
         "count": 117,
-        "total_count": 557543
+        "total_count": 558186
       },
       {
         "name": "è½»æ¹",
         "count": 102,
-        "total_count": 151644
+        "total_count": 151817
       },
       {
         "name": "é´è°",
@@ -1133,17 +1133,17 @@
       {
         "name": "ç»­ä½",
         "count": 75,
-        "total_count": 45582
+        "total_count": 45620
       },
       {
         "name": "é¨å®®å¤©",
         "count": 59,
-        "total_count": 2201
+        "total_count": 2202
       },
       {
         "name": "å°è¯´æ¹",
         "count": 32,
-        "total_count": 156831
+        "total_count": 157065
       },
       {
         "name": "æ¢åè£ä¸é",
@@ -1153,37 +1153,37 @@
       {
         "name": "å·å£æ¬ä¸é",
         "count": 28,
-        "total_count": 1318
+        "total_count": 1320
       },
       {
         "name": "åå®«",
         "count": 18,
-        "total_count": 300240
+        "total_count": 300500
       },
       {
         "name": "æ¥æ¬",
         "count": 16,
-        "total_count": 290694
+        "total_count": 291335
       },
       {
         "name": "æç¬",
         "count": 15,
-        "total_count": 632938
+        "total_count": 633577
       },
       {
         "name": "ç¾å",
         "count": 11,
-        "total_count": 398652
+        "total_count": 399137
       },
       {
         "name": "æ¥å¸¸",
         "count": 10,
-        "total_count": 395882
+        "total_count": 396362
       },
       {
         "name": "æºæ",
         "count": 6,
-        "total_count": 22648
+        "total_count": 22686
       },
       {
         "name": "çªçªæä¸",
@@ -1198,7 +1198,7 @@
       {
         "name": "æ æ¨ç¢§",
         "count": 5,
-        "total_count": 12132
+        "total_count": 12140
       },
       {
         "name": "è°æ",
@@ -1208,27 +1208,27 @@
       {
         "name": "ä¼è¤ç¾æ¥",
         "count": 4,
-        "total_count": 1063
-      },
-      {
-        "name": "æ¨ç",
-        "count": 3,
-        "total_count": 72950
+        "total_count": 1077
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 3,
-        "total_count": 34755
+        "total_count": 34808
       },
       {
         "name": "æ¬ç",
         "count": 3,
-        "total_count": 112520
+        "total_count": 112646
       },
       {
-        "name": "2023å¹´å¤",
+        "name": "æ¨ç",
+        "count": 3,
+        "total_count": 73022
+      },
+      {
+        "name": "ã¹ãã¤æå®¤",
         "count": 2,
-        "total_count": 110
+        "total_count": 4
       }
     ],
     "infobox": [
@@ -1360,7 +1360,7 @@
       }
     ],
     "rating": {
-      "rank": 7447,
+      "rank": 7449,
       "total": 1153,
       "count": {
         "1": 7,
@@ -1379,9 +1379,9 @@
     "total_episodes": 0,
     "collection": {
       "on_hold": 160,
-      "dropped": 147,
-      "wish": 532,
-      "collect": 1843,
+      "dropped": 146,
+      "wish": 533,
+      "collect": 1844,
       "doing": 213
     },
     "id": 428418,
@@ -1416,63 +1416,63 @@
     "tags": [
       {
         "name": "æç±",
-        "count": 1755,
-        "total_count": 557681
+        "count": 1758,
+        "total_count": 558165
       },
       {
         "name": "å¨ç»å·¥æ¿",
-        "count": 1462,
-        "total_count": 63095
+        "count": 1464,
+        "total_count": 63113
       },
       {
         "name": "æ¥å¸¸",
-        "count": 1184,
-        "total_count": 396000
+        "count": 1186,
+        "total_count": 396369
       },
       {
         "name": "2023å¹´7æ",
-        "count": 1065,
-        "total_count": 27960
+        "count": 1066,
+        "total_count": 27969
       },
       {
         "name": "æ¼«ç»æ¹",
-        "count": 951,
-        "total_count": 853613
+        "count": 953,
+        "total_count": 854304
       },
       {
         "name": "æ²»æ",
-        "count": 895,
-        "total_count": 299783
+        "count": 897,
+        "total_count": 299925
       },
       {
         "name": "TV",
-        "count": 636,
-        "total_count": 1391659
+        "count": 637,
+        "total_count": 1392786
       },
       {
         "name": "æ¼«æ¹",
-        "count": 448,
-        "total_count": 358985
+        "count": 449,
+        "total_count": 359359
       },
       {
         "name": "2023",
         "count": 433,
-        "total_count": 81136
+        "total_count": 81181
       },
       {
         "name": "å¥å¹»",
-        "count": 344,
-        "total_count": 464398
+        "count": 345,
+        "total_count": 464907
       },
       {
         "name": "è",
-        "count": 325,
-        "total_count": 71104
+        "count": 327,
+        "total_count": 71134
       },
       {
         "name": "åç»å·¥æ¿",
-        "count": 124,
-        "total_count": 5477
+        "count": 125,
+        "total_count": 5479
       },
       {
         "name": "åæ­¦ã¯ãã®",
@@ -1481,8 +1481,8 @@
       },
       {
         "name": "æ¥æ¬",
-        "count": 84,
-        "total_count": 290795
+        "count": 85,
+        "total_count": 291371
       },
       {
         "name": "éåç´æµ",
@@ -1492,22 +1492,22 @@
       {
         "name": "2023å¹´4æ",
         "count": 44,
-        "total_count": 35413
+        "total_count": 35422
       },
       {
         "name": "çº¯ç±",
-        "count": 24,
-        "total_count": 38653
+        "count": 25,
+        "total_count": 38681
       },
       {
         "name": "æç¬",
         "count": 23,
-        "total_count": 633093
+        "total_count": 633629
       },
       {
         "name": "å¼ä¸ç",
         "count": 21,
-        "total_count": 259085
+        "total_count": 259277
       },
       {
         "name": "éåçº¯æ ",
@@ -1517,7 +1517,7 @@
       {
         "name": "åºè",
         "count": 15,
-        "total_count": 7314
+        "total_count": 7319
       },
       {
         "name": "2023å¹´",
@@ -1527,7 +1527,7 @@
       {
         "name": "çç²®",
         "count": 12,
-        "total_count": 18653
+        "total_count": 18661
       },
       {
         "name": "å¯ç±",
@@ -1540,14 +1540,9 @@
         "total_count": 11
       },
       {
-        "name": "èç³»",
+        "name": "å±±ç°ç±é¦",
         "count": 9,
-        "total_count": 9371
-      },
-      {
-        "name": "èè±",
-        "count": 9,
-        "total_count": 7931
+        "total_count": 230
       },
       {
         "name": "è¡¨æå",
@@ -1555,9 +1550,14 @@
         "total_count": 74
       },
       {
-        "name": "å±±ç°ç±é¦",
+        "name": "èè±",
         "count": 9,
-        "total_count": 230
+        "total_count": 7931
+      },
+      {
+        "name": "èç³»",
+        "count": 9,
+        "total_count": 9375
       },
       {
         "name": "2023å¤",
@@ -1682,16 +1682,16 @@
       }
     ],
     "rating": {
-      "rank": 4211,
-      "total": 5154,
+      "rank": 4209,
+      "total": 5157,
       "count": {
         "1": 7,
         "2": 11,
         "3": 36,
-        "4": 103,
-        "5": 386,
+        "4": 102,
+        "5": 387,
         "6": 1487,
-        "7": 2238,
+        "7": 2241,
         "8": 704,
         "9": 95,
         "10": 87
@@ -1700,11 +1700,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 1033,
-      "dropped": 763,
-      "wish": 2251,
-      "collect": 7958,
-      "doing": 1479
+      "on_hold": 1036,
+      "dropped": 765,
+      "wish": 2255,
+      "collect": 7964,
+      "doing": 1477
     },
     "id": 387822,
     "eps": 12,
@@ -1738,62 +1738,62 @@
       {
         "name": "ææ",
         "count": 316,
-        "total_count": 465687
+        "total_count": 466085
       },
       {
         "name": "BONES",
         "count": 306,
-        "total_count": 79766
+        "total_count": 79793
       },
       {
         "name": "å¥å¹»",
         "count": 271,
-        "total_count": 464442
+        "total_count": 464905
       },
       {
         "name": "2023å¹´7æ",
-        "count": 268,
-        "total_count": 27963
+        "count": 267,
+        "total_count": 27969
       },
       {
         "name": "è¶è½å",
         "count": 217,
-        "total_count": 25593
+        "total_count": 25598
       },
       {
         "name": "æè±ªéç¬",
-        "count": 203,
-        "total_count": 2386
+        "count": 204,
+        "total_count": 2389
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 169,
-        "total_count": 853672
+        "total_count": 854304
       },
       {
         "name": "TV",
         "count": 152,
-        "total_count": 1391756
+        "total_count": 1392784
       },
       {
         "name": "2023",
         "count": 136,
-        "total_count": 81140
+        "total_count": 81180
       },
       {
         "name": "æ¼«æ¹",
         "count": 103,
-        "total_count": 359023
+        "total_count": 359359
       },
       {
         "name": "ç»­ä½",
         "count": 65,
-        "total_count": 45593
+        "total_count": 45621
       },
       {
         "name": "ç­è¡",
         "count": 50,
-        "total_count": 211235
+        "total_count": 211362
       },
       {
         "name": "å®®éçå®",
@@ -1808,7 +1808,7 @@
       {
         "name": "æ¥æ¬",
         "count": 24,
-        "total_count": 290874
+        "total_count": 291369
       },
       {
         "name": "äºåå²åå",
@@ -1818,17 +1818,17 @@
       {
         "name": "ç³ç°å½°",
         "count": 8,
-        "total_count": 7294
+        "total_count": 7295
       },
       {
         "name": "ç¥è°·æµ©å²",
         "count": 7,
-        "total_count": 29840
+        "total_count": 29844
       },
       {
         "name": "TVA",
         "count": 7,
-        "total_count": 15424
+        "total_count": 15435
       },
       {
         "name": "å¼è½",
@@ -1838,7 +1838,7 @@
       {
         "name": "ç¾¤å",
         "count": 5,
-        "total_count": 12562
+        "total_count": 12574
       },
       {
         "name": "å²©å´ç¢",
@@ -1846,9 +1846,19 @@
         "total_count": 1846
       },
       {
+        "name": "æºæ",
+        "count": 4,
+        "total_count": 22686
+      },
+      {
         "name": "æ¥æ¬å¨ç»",
         "count": 4,
-        "total_count": 34770
+        "total_count": 34809
+      },
+      {
+        "name": "éª¨å¤´ç¤¾",
+        "count": 4,
+        "total_count": 15391
       },
       {
         "name": "æ¦æ¸æ´å¸",
@@ -1856,14 +1866,14 @@
         "total_count": 666
       },
       {
-        "name": "æºæ",
-        "count": 4,
-        "total_count": 22670
+        "name": "å®«éçå®",
+        "count": 3,
+        "total_count": 9253
       },
       {
-        "name": "éª¨å¤´ç¤¾",
-        "count": 4,
-        "total_count": 15388
+        "name": "ä¸æç¥ç¿",
+        "count": 3,
+        "total_count": 166
       },
       {
         "name": "2023å¹´",
@@ -1873,17 +1883,7 @@
       {
         "name": "æç¬",
         "count": 3,
-        "total_count": 633123
-      },
-      {
-        "name": "æ¥æ¼«",
-        "count": 3,
-        "total_count": 7189
-      },
-      {
-        "name": "å®«éçå®",
-        "count": 3,
-        "total_count": 9252
+        "total_count": 633630
       }
     ],
     "infobox": [
@@ -1987,8 +1987,8 @@
       }
     ],
     "rating": {
-      "rank": 7602,
-      "total": 1503,
+      "rank": 7610,
+      "total": 1502,
       "count": {
         "1": 12,
         "2": 17,
@@ -1998,17 +1998,17 @@
         "6": 554,
         "7": 356,
         "8": 117,
-        "9": 26,
+        "9": 25,
         "10": 23
       },
       "score": 6
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 129,
+      "on_hold": 130,
       "dropped": 125,
       "wish": 598,
-      "collect": 2756,
+      "collect": 2757,
       "doing": 325
     },
     "id": 426815,
@@ -2042,53 +2042,53 @@
     "tags": [
       {
         "name": "2023å¹´7æ",
-        "count": 819,
-        "total_count": 27959
+        "count": 820,
+        "total_count": 27969
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 734,
-        "total_count": 853569
+        "total_count": 854306
       },
       {
         "name": "å¥å¹»",
-        "count": 653,
-        "total_count": 464378
+        "count": 654,
+        "total_count": 464907
       },
       {
         "name": "å¼ä¸ç",
-        "count": 489,
-        "total_count": 259067
+        "count": 490,
+        "total_count": 259277
       },
       {
         "name": "TV",
         "count": 432,
-        "total_count": 1391617
+        "total_count": 1392786
       },
       {
         "name": "æç¬",
-        "count": 420,
-        "total_count": 633070
+        "count": 421,
+        "total_count": 633630
       },
       {
         "name": "Satelight",
         "count": 388,
-        "total_count": 10008
+        "total_count": 10016
       },
       {
         "name": "æ¼«æ¹",
         "count": 317,
-        "total_count": 358975
+        "total_count": 359359
       },
       {
         "name": "2023",
-        "count": 275,
-        "total_count": 81134
+        "count": 276,
+        "total_count": 81181
       },
       {
         "name": "ææ",
-        "count": 241,
-        "total_count": 465635
+        "count": 242,
+        "total_count": 466086
       },
       {
         "name": "åèèµ«é²åº",
@@ -2098,7 +2098,7 @@
       {
         "name": "æ¬¢ä¹å",
         "count": 170,
-        "total_count": 589
+        "total_count": 596
       },
       {
         "name": "ä½è¤é¾é",
@@ -2107,8 +2107,8 @@
       },
       {
         "name": "åé©",
-        "count": 83,
-        "total_count": 52982
+        "count": 84,
+        "total_count": 53051
       },
       {
         "name": "ä¸å°¾ããã­",
@@ -2118,7 +2118,7 @@
       {
         "name": "æ¥æ¬",
         "count": 38,
-        "total_count": 290781
+        "total_count": 291371
       },
       {
         "name": "ä½è¤ç«é",
@@ -2133,17 +2133,17 @@
       {
         "name": "æ²»æ",
         "count": 11,
-        "total_count": 299777
+        "total_count": 299925
       },
       {
         "name": "å°è¥¿åå¹¸",
         "count": 11,
-        "total_count": 2110
+        "total_count": 2112
       },
       {
         "name": "ç­è¡",
         "count": 10,
-        "total_count": 211219
+        "total_count": 211362
       },
       {
         "name": "2023å¹´",
@@ -2158,7 +2158,7 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 9,
-        "total_count": 34759
+        "total_count": 34809
       },
       {
         "name": "ãµãã©ã¤ã",
@@ -2168,7 +2168,7 @@
       {
         "name": "å°æ¾æªå¯å­",
         "count": 6,
-        "total_count": 1262
+        "total_count": 1263
       },
       {
         "name": "2023å¤",
@@ -2178,17 +2178,17 @@
       {
         "name": "2023å¹´10æ",
         "count": 4,
-        "total_count": 37416
+        "total_count": 37437
       },
       {
         "name": "å§æ",
         "count": 4,
-        "total_count": 15882
+        "total_count": 15892
       },
       {
         "name": "è´é",
         "count": 4,
-        "total_count": 23291
+        "total_count": 23301
       }
     ],
     "infobox": [
@@ -2302,15 +2302,15 @@
       }
     ],
     "rating": {
-      "rank": 7512,
-      "total": 3266,
+      "rank": 7514,
+      "total": 3267,
       "count": {
         "1": 13,
         "2": 10,
         "3": 50,
         "4": 220,
         "5": 520,
-        "6": 1325,
+        "6": 1326,
         "7": 856,
         "8": 220,
         "9": 26,
@@ -2322,8 +2322,8 @@
     "collection": {
       "on_hold": 712,
       "dropped": 966,
-      "wish": 876,
-      "collect": 4316,
+      "wish": 875,
+      "collect": 4324,
       "doing": 1089
     },
     "id": 369784,
@@ -2669,7 +2669,7 @@
       }
     ],
     "rating": {
-      "rank": 7954,
+      "rank": 7953,
       "total": 1270,
       "count": {
         "1": 1,
@@ -3070,7 +3070,7 @@
       }
     ],
     "rating": {
-      "rank": 3787,
+      "rank": 3794,
       "total": 1209,
       "count": {
         "1": 2,
@@ -3090,7 +3090,7 @@
     "collection": {
       "on_hold": 201,
       "dropped": 110,
-      "wish": 856,
+      "wish": 858,
       "collect": 2151,
       "doing": 358
     },
@@ -3126,62 +3126,62 @@
       {
         "name": "2023å¹´7æ",
         "count": 241,
-        "total_count": 27960
+        "total_count": 27969
       },
       {
         "name": "åå®«",
         "count": 214,
-        "total_count": 300315
+        "total_count": 300500
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 202,
-        "total_count": 492312
+        "total_count": 492539
       },
       {
         "name": "TV",
         "count": 186,
-        "total_count": 1391672
+        "total_count": 1392739
       },
       {
         "name": "å¥å¹»",
         "count": 177,
-        "total_count": 464405
+        "total_count": 464897
       },
       {
         "name": "æ ¡å­",
         "count": 129,
-        "total_count": 447967
+        "total_count": 448382
       },
       {
         "name": "2023",
         "count": 126,
-        "total_count": 81136
+        "total_count": 81179
       },
       {
         "name": "Actas",
         "count": 121,
-        "total_count": 4707
+        "total_count": 4708
       },
       {
         "name": "å¼ä¸ç",
         "count": 106,
-        "total_count": 259087
+        "total_count": 259260
       },
       {
         "name": "è½»æ¹",
         "count": 86,
-        "total_count": 151650
+        "total_count": 151817
       },
       {
         "name": "å·å£æ¬ä¸é",
         "count": 61,
-        "total_count": 1318
+        "total_count": 1320
       },
       {
         "name": "åè",
         "count": 56,
-        "total_count": 68606
+        "total_count": 68661
       },
       {
         "name": "ä¹å¼¥ç´æ¨¹",
@@ -3191,12 +3191,12 @@
       {
         "name": "æç¬",
         "count": 35,
-        "total_count": 633099
+        "total_count": 633577
       },
       {
         "name": "å°è¯´æ¹",
         "count": 31,
-        "total_count": 156864
+        "total_count": 157065
       },
       {
         "name": "æ±å±±å¥å¤®",
@@ -3206,17 +3206,17 @@
       {
         "name": "æ¥æ¬",
         "count": 19,
-        "total_count": 290798
+        "total_count": 291335
       },
       {
         "name": "ææ",
         "count": 18,
-        "total_count": 465654
+        "total_count": 466065
       },
       {
         "name": "åçº¸",
         "count": 16,
-        "total_count": 11853
+        "total_count": 11867
       },
       {
         "name": "2023å¹´",
@@ -3226,17 +3226,22 @@
       {
         "name": "æ¥å¸¸",
         "count": 9,
-        "total_count": 396000
-      },
-      {
-        "name": "è",
-        "count": 5,
-        "total_count": 29343
+        "total_count": 396362
       },
       {
         "name": "è±éæå®¤",
         "count": 5,
         "total_count": 5
+      },
+      {
+        "name": "è",
+        "count": 5,
+        "total_count": 29357
+      },
+      {
+        "name": "TVA",
+        "count": 4,
+        "total_count": 15433
       },
       {
         "name": "2023å¤",
@@ -3251,27 +3256,22 @@
       {
         "name": "å·å³¶é¶å£«",
         "count": 4,
-        "total_count": 43
+        "total_count": 44
       },
       {
-        "name": "TVA",
-        "count": 4,
-        "total_count": 15422
+        "name": "èçª",
+        "count": 3,
+        "total_count": 32667
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 3,
+        "total_count": 34808
       },
       {
         "name": "å±±ç°ç¾é´",
         "count": 3,
         "total_count": 17
-      },
-      {
-        "name": "ä¹å¼¥ç´æ ",
-        "count": 3,
-        "total_count": 1163
-      },
-      {
-        "name": "æ¥æ¬å¨ç»",
-        "count": 3,
-        "total_count": 34759
       }
     ],
     "infobox": [
@@ -3416,8 +3416,8 @@
       }
     ],
     "rating": {
-      "rank": 9456,
-      "total": 992,
+      "rank": 9459,
+      "total": 993,
       "count": {
         "1": 13,
         "2": 20,
@@ -3425,7 +3425,7 @@
         "4": 145,
         "5": 294,
         "6": 307,
-        "7": 103,
+        "7": 104,
         "8": 35,
         "9": 7,
         "10": 9
@@ -3434,11 +3434,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 146,
+      "on_hold": 147,
       "dropped": 316,
-      "wish": 433,
-      "collect": 1459,
-      "doing": 253
+      "wish": 434,
+      "collect": 1461,
+      "doing": 254
     },
     "id": 350523,
     "eps": 12,
@@ -3472,52 +3472,57 @@
       {
         "name": "ææ",
         "count": 807,
-        "total_count": 9122
+        "total_count": 9127
       },
       {
         "name": "2023å¹´7æ",
         "count": 758,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 647,
-        "total_count": 853586
+        "total_count": 854310
       },
       {
         "name": "çå¥",
         "count": 555,
-        "total_count": 36889
+        "total_count": 36915
       },
       {
         "name": "ææ",
         "count": 503,
-        "total_count": 465641
+        "total_count": 466087
       },
       {
         "name": "TV",
         "count": 377,
-        "total_count": 1391628
+        "total_count": 1392791
       },
       {
         "name": "æªè°",
         "count": 376,
-        "total_count": 3554
+        "total_count": 3557
       },
       {
         "name": "OLM",
         "count": 335,
-        "total_count": 12624
+        "total_count": 12633
       },
       {
         "name": "2023",
         "count": 280,
-        "total_count": 81134
+        "total_count": 81181
       },
       {
         "name": "æ¼«æ¹",
         "count": 255,
-        "total_count": 358978
+        "total_count": 359359
+      },
+      {
+        "name": "çµå¼",
+        "count": 250,
+        "total_count": 4182
       },
       {
         "name": "å®å¯æ¢¦",
@@ -3525,19 +3530,14 @@
         "total_count": 3208
       },
       {
-        "name": "çµå¼",
-        "count": 249,
-        "total_count": 4173
-      },
-      {
         "name": "å¥å¹»",
-        "count": 190,
-        "total_count": 464388
+        "count": 189,
+        "total_count": 464910
       },
       {
         "name": "åå²æ± ç ",
         "count": 98,
-        "total_count": 1032
+        "total_count": 1033
       },
       {
         "name": "OLMTEAMOTA",
@@ -3547,17 +3547,17 @@
       {
         "name": "æ¥æ¬",
         "count": 46,
-        "total_count": 290785
-      },
-      {
-        "name": "èè",
-        "count": 15,
-        "total_count": 45691
+        "total_count": 291371
       },
       {
         "name": "æ¬ç",
         "count": 15,
-        "total_count": 112572
+        "total_count": 112645
+      },
+      {
+        "name": "èè",
+        "count": 15,
+        "total_count": 45730
       },
       {
         "name": "é»æéä¼",
@@ -3567,12 +3567,7 @@
       {
         "name": "è±æ³½é¦è",
         "count": 11,
-        "total_count": 43200
-      },
-      {
-        "name": "æç±",
-        "count": 8,
-        "total_count": 557674
+        "total_count": 43214
       },
       {
         "name": "2023å¹´",
@@ -3580,34 +3575,39 @@
         "total_count": 3587
       },
       {
+        "name": "æç±",
+        "count": 8,
+        "total_count": 558166
+      },
+      {
         "name": "åå¹´çª",
         "count": 7,
-        "total_count": 4316
+        "total_count": 4318
       },
       {
         "name": "2023å¹´10æ",
         "count": 7,
-        "total_count": 37416
+        "total_count": 37437
       },
       {
         "name": "æè¶ç¹",
         "count": 6,
-        "total_count": 643
+        "total_count": 644
       },
       {
         "name": "å¨ç»",
         "count": 5,
-        "total_count": 35478
+        "total_count": 35511
       },
       {
         "name": "æªç¡®å®",
         "count": 4,
-        "total_count": 2026
+        "total_count": 2024
       },
       {
         "name": "è±æ¾¤é¦è",
         "count": 4,
-        "total_count": 6930
+        "total_count": 6934
       },
       {
         "name": "å¦æª",
@@ -3794,8 +3794,8 @@
       }
     ],
     "rating": {
-      "rank": 3714,
-      "total": 2855,
+      "rank": 3720,
+      "total": 2856,
       "count": {
         "1": 3,
         "2": 5,
@@ -3803,7 +3803,7 @@
         "4": 62,
         "5": 210,
         "6": 700,
-        "7": 1263,
+        "7": 1264,
         "8": 499,
         "9": 59,
         "10": 38
@@ -3815,8 +3815,8 @@
       "on_hold": 549,
       "dropped": 580,
       "wish": 1419,
-      "collect": 4015,
-      "doing": 1039
+      "collect": 4019,
+      "doing": 1040
     },
     "id": 390794,
     "eps": 25,
@@ -3850,47 +3850,47 @@
       {
         "name": "2023å¹´7æ",
         "count": 1447,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 1252,
-        "total_count": 853434
+        "total_count": 854296
       },
       {
         "name": "æç¬",
         "count": 1138,
-        "total_count": 632973
+        "total_count": 633629
       },
       {
         "name": "åµå°¸",
         "count": 940,
-        "total_count": 7423
+        "total_count": 7424
       },
       {
         "name": "å¬è·¯ç",
         "count": 836,
-        "total_count": 22255
+        "total_count": 22282
       },
       {
         "name": "BUGFILMS",
         "count": 829,
-        "total_count": 1603
+        "total_count": 1608
       },
       {
         "name": "TV",
         "count": 758,
-        "total_count": 1391534
+        "total_count": 1392774
       },
       {
         "name": "2023",
         "count": 527,
-        "total_count": 81132
+        "total_count": 81180
       },
       {
         "name": "æ¼«æ¹",
         "count": 485,
-        "total_count": 358963
+        "total_count": 359359
       },
       {
         "name": "å·è¶ä¸ç",
@@ -3900,47 +3900,47 @@
       {
         "name": "ä¸§å°¸",
         "count": 339,
-        "total_count": 4242
+        "total_count": 4244
       },
       {
         "name": "å¥å¹»",
         "count": 305,
-        "total_count": 464249
+        "total_count": 464900
       },
       {
         "name": "æ¿å¤æµ©å¸",
         "count": 178,
-        "total_count": 1640
+        "total_count": 1641
       },
       {
         "name": "åé©",
         "count": 173,
-        "total_count": 52969
+        "total_count": 53052
       },
       {
         "name": "æ¥æ¬",
         "count": 74,
-        "total_count": 290720
+        "total_count": 291364
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 63,
-        "total_count": 34755
+        "total_count": 34809
       },
       {
         "name": "æ«ä¸",
         "count": 28,
-        "total_count": 11888
+        "total_count": 11899
       },
       {
         "name": "ææ",
         "count": 27,
-        "total_count": 465477
+        "total_count": 466078
       },
       {
         "name": "å¬è·¯",
         "count": 20,
-        "total_count": 1497
+        "total_count": 1499
       },
       {
         "name": "2023å¹´",
@@ -3950,17 +3950,17 @@
       {
         "name": "æ¥å¸¸",
         "count": 16,
-        "total_count": 395909
+        "total_count": 396367
       },
       {
         "name": "TVA",
         "count": 16,
-        "total_count": 15421
+        "total_count": 15435
       },
       {
         "name": "ç­è¡",
         "count": 11,
-        "total_count": 211187
+        "total_count": 211362
       },
       {
         "name": "ç¬å¤æµ©å¸",
@@ -3968,14 +3968,14 @@
         "total_count": 1043
       },
       {
+        "name": "æç±",
+        "count": 10,
+        "total_count": 558160
+      },
+      {
         "name": "ä¸­ç¯å¨ç»",
         "count": 10,
         "total_count": 781
-      },
-      {
-        "name": "æç±",
-        "count": 10,
-        "total_count": 557574
       },
       {
         "name": "åµå°¸ç¾åç¾",
@@ -3985,12 +3985,12 @@
       {
         "name": "å­£çª",
         "count": 9,
-        "total_count": 8383
+        "total_count": 8386
       },
       {
         "name": "åå§",
         "count": 8,
-        "total_count": 34187
+        "total_count": 34296
       },
       {
         "name": "æ¥ æ¨ç¯",
@@ -4154,11 +4154,11 @@
       }
     ],
     "rating": {
-      "rank": 8890,
-      "total": 5949,
+      "rank": 8893,
+      "total": 5950,
       "count": {
         "1": 89,
-        "2": 123,
+        "2": 124,
         "3": 258,
         "4": 603,
         "5": 1251,
@@ -4172,11 +4172,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 1204,
+      "on_hold": 1206,
       "dropped": 3098,
-      "wish": 1327,
-      "collect": 6479,
-      "doing": 1718
+      "wish": 1329,
+      "collect": 6484,
+      "doing": 1717
     },
     "id": 414461,
     "eps": 12,
@@ -4210,32 +4210,32 @@
       {
         "name": "æ³¡é¢çª",
         "count": 34,
-        "total_count": 153171
+        "total_count": 153380
       },
       {
         "name": "2023å¹´7æ",
         "count": 26,
-        "total_count": 27885
+        "total_count": 27965
       },
       {
         "name": "2023",
         "count": 21,
-        "total_count": 81135
+        "total_count": 81166
       },
       {
         "name": "åå",
         "count": 19,
-        "total_count": 613058
+        "total_count": 614943
       },
       {
         "name": "TV",
         "count": 19,
-        "total_count": 1389693
+        "total_count": 1392225
       },
       {
         "name": "ææ",
         "count": 14,
-        "total_count": 9108
+        "total_count": 9123
       },
       {
         "name": "æèå±",
@@ -4245,17 +4245,17 @@
       {
         "name": "ILCA",
         "count": 13,
-        "total_count": 696
+        "total_count": 697
       },
       {
         "name": "ææ",
         "count": 10,
-        "total_count": 8504
+        "total_count": 8516
       },
       {
         "name": "æ¥æ¬",
         "count": 6,
-        "total_count": 289498
+        "total_count": 291123
       },
       {
         "name": "7ææ°çª",
@@ -4265,7 +4265,7 @@
       {
         "name": "çå¥",
         "count": 4,
-        "total_count": 36810
+        "total_count": 36904
       },
       {
         "name": "å±±å·å¸å¤«",
@@ -4275,7 +4275,7 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 4,
-        "total_count": 34754
+        "total_count": 34806
       },
       {
         "name": "çæ¬æµ©æ­¦",
@@ -4290,17 +4290,17 @@
       {
         "name": "æ¬ç",
         "count": 3,
-        "total_count": 112248
+        "total_count": 112615
       },
       {
         "name": "å¨ç»",
         "count": 2,
-        "total_count": 35437
+        "total_count": 35501
       },
       {
         "name": "æ³¡é¢",
         "count": 2,
-        "total_count": 10447
+        "total_count": 10456
       },
       {
         "name": "è°è¯­äºº",
@@ -4308,9 +4308,19 @@
         "total_count": 51
       },
       {
+        "name": "4å",
+        "count": 1,
+        "total_count": 1029
+      },
+      {
         "name": "å§åºç",
         "count": 1,
-        "total_count": 717710
+        "total_count": 719504
+      },
+      {
+        "name": "æ èçç",
+        "count": 1,
+        "total_count": 48
       },
       {
         "name": "æç¬ç",
@@ -4323,14 +4333,14 @@
         "total_count": 1462
       },
       {
-        "name": "2023å¤",
+        "name": "è¹ç°æ",
         "count": 1,
-        "total_count": 204
+        "total_count": 22
       },
       {
-        "name": "4å",
+        "name": "ç»­ä½",
         "count": 1,
-        "total_count": 1027
+        "total_count": 45608
       },
       {
         "name": "ç¥é­",
@@ -4338,24 +4348,14 @@
         "total_count": 777
       },
       {
-        "name": "æ´¥ç°å¯æ²»",
-        "count": 1,
-        "total_count": 21
-      },
-      {
-        "name": "ç»­ä½",
-        "count": 1,
-        "total_count": 45594
-      },
-      {
-        "name": "è¹ç°æ",
-        "count": 1,
-        "total_count": 22
-      },
-      {
         "name": "ä½ä½æ¨åé­",
         "count": 1,
         "total_count": 11
+      },
+      {
+        "name": "2023å¤",
+        "count": 1,
+        "total_count": 207
       }
     ],
     "infobox": [
@@ -4433,7 +4433,7 @@
       }
     ],
     "rating": {
-      "rank": 9551,
+      "rank": 9554,
       "total": 114,
       "count": {
         "1": 5,
@@ -4452,7 +4452,7 @@
     "total_episodes": 0,
     "collection": {
       "on_hold": 15,
-      "dropped": 28,
+      "dropped": 27,
       "wish": 47,
       "collect": 208,
       "doing": 14
@@ -4487,27 +4487,27 @@
       {
         "name": "2023å¹´7æ",
         "count": 414,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 372,
-        "total_count": 492345
+        "total_count": 492539
       },
       {
         "name": "æ ¡å­",
         "count": 329,
-        "total_count": 448033
+        "total_count": 448382
       },
       {
         "name": "TV",
         "count": 255,
-        "total_count": 1391835
+        "total_count": 1392741
       },
       {
         "name": "æºæ",
         "count": 247,
-        "total_count": 22671
+        "total_count": 22686
       },
       {
         "name": "GeekToys",
@@ -4517,27 +4517,27 @@
       {
         "name": "åå®«",
         "count": 198,
-        "total_count": 300333
+        "total_count": 300501
       },
       {
         "name": "2023",
         "count": 176,
-        "total_count": 81142
+        "total_count": 81179
       },
       {
         "name": "è½»æ¹",
         "count": 144,
-        "total_count": 151658
+        "total_count": 151817
       },
       {
         "name": "ææ",
         "count": 109,
-        "total_count": 465720
+        "total_count": 466065
       },
       {
         "name": "å°è¯´æ¹",
         "count": 67,
-        "total_count": 156900
+        "total_count": 157065
       },
       {
         "name": "å¤§éæ",
@@ -4547,7 +4547,7 @@
       {
         "name": "åçº¸",
         "count": 42,
-        "total_count": 11853
+        "total_count": 11867
       },
       {
         "name": "æ¾æµ¦ç´ç´",
@@ -4562,7 +4562,7 @@
       {
         "name": "æ¥æ¬",
         "count": 20,
-        "total_count": 290918
+        "total_count": 291336
       },
       {
         "name": "åæè¥è",
@@ -4572,22 +4572,12 @@
       {
         "name": "å¥å¹»",
         "count": 14,
-        "total_count": 464488
+        "total_count": 464898
       },
       {
         "name": "æç¬",
         "count": 7,
-        "total_count": 633176
-      },
-      {
-        "name": "ç½æ¯",
-        "count": 6,
-        "total_count": 2111
-      },
-      {
-        "name": "å¼ä¸ç",
-        "count": 6,
-        "total_count": 259114
+        "total_count": 633579
       },
       {
         "name": "ä¸­ææºå¤ª",
@@ -4595,19 +4585,29 @@
         "total_count": 17
       },
       {
+        "name": "ç½æ¯",
+        "count": 6,
+        "total_count": 2111
+      },
+      {
         "name": "è½¬ç",
         "count": 6,
-        "total_count": 5353
+        "total_count": 5359
+      },
+      {
+        "name": "å¼ä¸ç",
+        "count": 6,
+        "total_count": 259260
       },
       {
         "name": "è£é¼",
         "count": 5,
-        "total_count": 9191
+        "total_count": 9200
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 5,
-        "total_count": 34786
+        "total_count": 34808
       },
       {
         "name": "è°è¨æ¸¸æ",
@@ -4769,7 +4769,7 @@
       }
     ],
     "rating": {
-      "rank": 9929,
+      "rank": 9931,
       "total": 1571,
       "count": {
         "1": 21,
@@ -4787,11 +4787,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 201,
+      "on_hold": 202,
       "dropped": 600,
-      "wish": 628,
-      "collect": 2232,
-      "doing": 376
+      "wish": 627,
+      "collect": 2234,
+      "doing": 378
     },
     "id": 333979,
     "eps": 12,
@@ -4825,47 +4825,47 @@
       {
         "name": "å¼ä¸ç",
         "count": 338,
-        "total_count": 259085
+        "total_count": 259260
       },
       {
         "name": "2023å¹´7æ",
         "count": 250,
-        "total_count": 27960
+        "total_count": 27969
       },
       {
         "name": "åå®«",
         "count": 213,
-        "total_count": 300314
+        "total_count": 300501
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 182,
-        "total_count": 492310
+        "total_count": 492539
       },
       {
         "name": "TV",
         "count": 166,
-        "total_count": 1391659
+        "total_count": 1392741
       },
       {
         "name": "åçº¸",
         "count": 154,
-        "total_count": 11851
+        "total_count": 11867
       },
       {
         "name": "ç©¿è¶",
         "count": 153,
-        "total_count": 62291
+        "total_count": 62350
       },
       {
         "name": "2023",
         "count": 123,
-        "total_count": 81136
+        "total_count": 81179
       },
       {
         "name": "å¥å¹»",
         "count": 110,
-        "total_count": 464398
+        "total_count": 464898
       },
       {
         "name": "MAHOFILM",
@@ -4875,17 +4875,17 @@
       {
         "name": "è½»æ¹",
         "count": 53,
-        "total_count": 151650
+        "total_count": 151817
       },
       {
         "name": "ææ",
         "count": 30,
-        "total_count": 465650
+        "total_count": 466065
       },
       {
         "name": "å°è¯´æ¹",
         "count": 27,
-        "total_count": 156863
+        "total_count": 157065
       },
       {
         "name": "ç³å·çäºº",
@@ -4895,12 +4895,12 @@
       {
         "name": "æ¥æ¬",
         "count": 18,
-        "total_count": 290795
+        "total_count": 291336
       },
       {
         "name": "é¾å²å¤©",
         "count": 15,
-        "total_count": 39244
+        "total_count": 39268
       },
       {
         "name": "æ³ç¬éä¹",
@@ -4913,19 +4913,19 @@
         "total_count": 230
       },
       {
+        "name": "æ¥å¸¸",
+        "count": 6,
+        "total_count": 396363
+      },
+      {
         "name": "2023å¹´",
         "count": 6,
         "total_count": 3587
       },
       {
-        "name": "æ¥å¸¸",
-        "count": 6,
-        "total_count": 396000
-      },
-      {
         "name": "æç¬",
         "count": 5,
-        "total_count": 633093
+        "total_count": 633579
       },
       {
         "name": "2023å¤",
@@ -4935,27 +4935,27 @@
       {
         "name": "èè",
         "count": 3,
-        "total_count": 45691
+        "total_count": 45727
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 3,
-        "total_count": 34759
+        "total_count": 34808
       },
       {
         "name": "é»ä¸",
         "count": 2,
-        "total_count": 4821
+        "total_count": 4825
       },
       {
         "name": "è½¬ç",
         "count": 2,
-        "total_count": 5351
+        "total_count": 5359
       },
       {
         "name": "æ¥æ¼«",
         "count": 2,
-        "total_count": 7188
+        "total_count": 7202
       },
       {
         "name": "ä¹ä½ç³",
@@ -4970,7 +4970,7 @@
       {
         "name": "åé©",
         "count": 2,
-        "total_count": 52986
+        "total_count": 53055
       }
     ],
     "infobox": [
@@ -5086,14 +5086,14 @@
       }
     ],
     "rating": {
-      "rank": 10048,
+      "rank": 10051,
       "total": 1081,
       "count": {
         "1": 31,
         "2": 64,
         "3": 133,
-        "4": 265,
-        "5": 357,
+        "4": 264,
+        "5": 358,
         "6": 165,
         "7": 43,
         "8": 10,
@@ -5104,10 +5104,10 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 98,
+      "on_hold": 99,
       "dropped": 331,
       "wish": 228,
-      "collect": 1724,
+      "collect": 1725,
       "doing": 226
     },
     "id": 380582,
@@ -5486,57 +5486,57 @@
       {
         "name": "æ­»ç¥",
         "count": 639,
-        "total_count": 4089
+        "total_count": 4096
       },
       {
         "name": "ç­è¡",
         "count": 548,
-        "total_count": 211247
+        "total_count": 211362
       },
       {
         "name": "2023å¹´7æ",
         "count": 534,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "ææ",
         "count": 524,
-        "total_count": 465712
+        "total_count": 466087
       },
       {
         "name": "TV",
         "count": 393,
-        "total_count": 1391814
+        "total_count": 1392785
       },
       {
         "name": "StudioPierrot",
         "count": 371,
-        "total_count": 12021
+        "total_count": 12023
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 355,
-        "total_count": 853714
+        "total_count": 854306
       },
       {
         "name": "æ¼«æ¹",
         "count": 299,
-        "total_count": 359037
+        "total_count": 359359
       },
       {
         "name": "2023",
         "count": 287,
-        "total_count": 81142
+        "total_count": 81180
       },
       {
         "name": "JUMP",
         "count": 216,
-        "total_count": 33266
+        "total_count": 33274
       },
       {
         "name": "å¥å¹»",
         "count": 175,
-        "total_count": 464474
+        "total_count": 464907
       },
       {
         "name": "BLEACH",
@@ -5551,7 +5551,7 @@
       {
         "name": "æ¥æ¬",
         "count": 58,
-        "total_count": 290904
+        "total_count": 291371
       },
       {
         "name": "æ¢åè£ä¸é",
@@ -5561,22 +5561,22 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 20,
-        "total_count": 34782
+        "total_count": 34809
       },
       {
         "name": "ç»­ä½",
         "count": 15,
-        "total_count": 45595
+        "total_count": 45623
       },
       {
         "name": "ä¹ä¿å¸¦äºº",
         "count": 14,
-        "total_count": 1403
+        "total_count": 1405
       },
       {
         "name": "å¨ç»",
         "count": 9,
-        "total_count": 35485
+        "total_count": 35511
       },
       {
         "name": "2023å¹´",
@@ -5596,12 +5596,12 @@
       {
         "name": "TVA",
         "count": 6,
-        "total_count": 15424
+        "total_count": 15435
       },
       {
         "name": "æç¬",
         "count": 5,
-        "total_count": 633168
+        "total_count": 633630
       },
       {
         "name": "7æ",
@@ -5611,27 +5611,27 @@
       {
         "name": "æ°å·¥",
         "count": 4,
-        "total_count": 4395
-      },
-      {
-        "name": "ä¹ä¿å¸¯äºº",
-        "count": 3,
-        "total_count": 481
-      },
-      {
-        "name": "å°ä¸ç¤¾",
-        "count": 3,
-        "total_count": 1454
+        "total_count": 4396
       },
       {
         "name": "ç»­é",
         "count": 3,
-        "total_count": 5136
+        "total_count": 5137
       },
       {
         "name": "é·ºå·£è©©é",
         "count": 3,
         "total_count": 676
+      },
+      {
+        "name": "å­£çª",
+        "count": 3,
+        "total_count": 8386
+      },
+      {
+        "name": "StudioPierrotï¼å°ä¸ç¤¾ï¼",
+        "count": 3,
+        "total_count": 20
       }
     ],
     "infobox": [
@@ -5723,7 +5723,7 @@
     ],
     "rating": {
       "rank": 835,
-      "total": 3177,
+      "total": 3183,
       "count": {
         "1": 9,
         "2": 7,
@@ -5731,20 +5731,20 @@
         "4": 13,
         "5": 63,
         "6": 280,
-        "7": 1082,
-        "8": 1326,
-        "9": 247,
-        "10": 145
+        "7": 1084,
+        "8": 1328,
+        "9": 248,
+        "10": 146
       },
       "score": 7.5
     },
     "total_episodes": 0,
     "collection": {
       "on_hold": 170,
-      "dropped": 81,
+      "dropped": 82,
       "wish": 1081,
-      "collect": 5191,
-      "doing": 670
+      "collect": 5198,
+      "doing": 672
     },
     "id": 412916,
     "eps": 13,
@@ -5778,62 +5778,62 @@
       {
         "name": "åå®«",
         "count": 631,
-        "total_count": 300302
+        "total_count": 300509
       },
       {
         "name": "æç¬",
         "count": 504,
-        "total_count": 633070
+        "total_count": 633621
       },
       {
         "name": "2023å¹´7æ",
         "count": 486,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 380,
-        "total_count": 853569
+        "total_count": 854286
       },
       {
         "name": "åè",
         "count": 356,
-        "total_count": 68605
+        "total_count": 68662
       },
       {
         "name": "æç±",
         "count": 355,
-        "total_count": 557668
+        "total_count": 558162
       },
       {
         "name": "TV",
         "count": 255,
-        "total_count": 1391618
+        "total_count": 1392757
       },
       {
         "name": "2023",
         "count": 176,
-        "total_count": 81134
+        "total_count": 81180
       },
       {
         "name": "æ¼«æ¹",
         "count": 161,
-        "total_count": 358975
+        "total_count": 359354
       },
       {
         "name": "æè¹",
         "count": 136,
-        "total_count": 1222
+        "total_count": 1239
       },
       {
         "name": "ç¦å©",
         "count": 87,
-        "total_count": 5176
+        "total_count": 5183
       },
       {
         "name": "å¤è³ä¸è£",
         "count": 62,
-        "total_count": 437
+        "total_count": 438
       },
       {
         "name": "åºä¸å¯è¨",
@@ -5843,27 +5843,27 @@
       {
         "name": "æ¥å¸¸",
         "count": 56,
-        "total_count": 395975
+        "total_count": 396365
       },
       {
         "name": "æ¥æ¬",
         "count": 31,
-        "total_count": 290781
+        "total_count": 291352
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 22,
-        "total_count": 34759
+        "total_count": 34809
       },
       {
         "name": "è",
         "count": 19,
-        "total_count": 29343
+        "total_count": 29357
       },
       {
         "name": "èçª",
         "count": 17,
-        "total_count": 32642
+        "total_count": 32667
       },
       {
         "name": "é¦æ¤èå¹³",
@@ -5896,34 +5896,34 @@
         "total_count": 207
       },
       {
-        "name": "æç±åå§",
-        "count": 4,
-        "total_count": 2088
-      },
-      {
         "name": "åäº",
         "count": 4,
-        "total_count": 15108
+        "total_count": 15121
       },
       {
-        "name": "æ¥æ¼«",
-        "count": 3,
-        "total_count": 7188
-      },
-      {
-        "name": "éå¹´å",
-        "count": 3,
-        "total_count": 3861
-      },
-      {
-        "name": "å¨ç»",
-        "count": 3,
-        "total_count": 35478
+        "name": "æç±åå§",
+        "count": 4,
+        "total_count": 2089
       },
       {
         "name": "èµ¤åæ¾ä¹",
         "count": 3,
         "total_count": 4
+      },
+      {
+        "name": "æ¥æ¼«",
+        "count": 3,
+        "total_count": 7202
+      },
+      {
+        "name": "éå¹´å",
+        "count": 3,
+        "total_count": 3889
+      },
+      {
+        "name": "å¨ç»",
+        "count": 3,
+        "total_count": 35511
       }
     ],
     "infobox": [
@@ -6047,13 +6047,13 @@
       }
     ],
     "rating": {
-      "rank": 8787,
-      "total": 2057,
+      "rank": 8792,
+      "total": 2058,
       "count": {
         "1": 5,
         "2": 22,
         "3": 53,
-        "4": 178,
+        "4": 179,
         "5": 548,
         "6": 837,
         "7": 303,
@@ -6067,8 +6067,8 @@
     "collection": {
       "on_hold": 261,
       "dropped": 498,
-      "wish": 907,
-      "collect": 3167,
+      "wish": 908,
+      "collect": 3171,
       "doing": 535
     },
     "id": 416019,
@@ -6363,7 +6363,7 @@
       }
     ],
     "rating": {
-      "rank": 6771,
+      "rank": 6772,
       "total": 209,
       "count": {
         "1": 0,
@@ -6383,7 +6383,7 @@
     "collection": {
       "on_hold": 42,
       "dropped": 57,
-      "wish": 88,
+      "wish": 89,
       "collect": 298,
       "doing": 79
     },
@@ -6453,24 +6453,20 @@
         "value": "å¼ å¸"
       },
       {
-        "key": "æ»åºåäºº",
-        "value": "èç»§å"
+        "key": "è£½ä½",
+        "value": "å¤®è§å¨æ¼«éå¢ï¼æ»åºåäººï¼èç»§åï¼åºåäººï¼æ¹æ¯"
       },
       {
-        "key": "æ»ç­å",
-        "value": "åä¸é¼ãå¾å½¬"
-      },
-      {
-        "key": "ç­å",
-        "value": "éæ¼ ãé©¬ç¥æ¸"
+        "key": "ä¼ç»",
+        "value": "æ»ç­åï¼åä¸é¼ãå¾å½¬ï¼ç­åï¼éæ¼ ãé©¬ç¥æ¸"
       },
       {
         "key": "çå¶",
         "value": "è¡å¯åãè©¹ä¿é£ãæ¾ä¼äº¬ãæ¹åãçåãè¡é¦å¸ï¼æ»çå¶ï¼è¡å¿åï¼"
       },
       {
-        "key": "èºæ¯é¡¾é®",
-        "value": "å´ä¸æ±"
+        "key": "çä¿®",
+        "value": "èºæ¯é¡¾é®ï¼å´ä¸æ±"
       },
       {
         "key": "å¶çäºº",
@@ -6483,10 +6479,6 @@
       {
         "key": "ç¾æ¯è®¾è®¡",
         "value": "é­æãéµå»ºæãä»»èãæå¬ãåé¸¿è¯"
-      },
-      {
-        "key": "åºåäºº",
-        "value": "æ¹æ¯"
       }
     ],
     "rating": {
@@ -6624,62 +6616,62 @@
       {
         "name": "2023å¹´7æ",
         "count": 482,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "J.C.STAFF",
         "count": 449,
-        "total_count": 136234
+        "total_count": 136281
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 424,
-        "total_count": 492262
+        "total_count": 492539
       },
       {
         "name": "å¥å¹»",
         "count": 408,
-        "total_count": 464307
+        "total_count": 464898
       },
       {
         "name": "ææ",
         "count": 367,
-        "total_count": 465568
+        "total_count": 466065
       },
       {
         "name": "TV",
         "count": 270,
-        "total_count": 1391551
+        "total_count": 1392742
       },
       {
         "name": "æ ¡å­",
         "count": 251,
-        "total_count": 447912
+        "total_count": 448383
       },
       {
         "name": "è½»æ¹",
         "count": 178,
-        "total_count": 151647
+        "total_count": 151817
       },
       {
         "name": "2023",
         "count": 171,
-        "total_count": 81132
+        "total_count": 81179
       },
       {
         "name": "é­æ³",
         "count": 151,
-        "total_count": 19873
+        "total_count": 19886
       },
       {
         "name": "å°è¯´æ¹",
         "count": 120,
-        "total_count": 156841
+        "total_count": 157065
       },
       {
         "name": "å¼ä¸ç",
         "count": 62,
-        "total_count": 259031
+        "total_count": 259260
       },
       {
         "name": "æ¾æ ¹ããµã",
@@ -6689,7 +6681,7 @@
       {
         "name": "æ¥æ¬",
         "count": 33,
-        "total_count": 290735
+        "total_count": 291336
       },
       {
         "name": "2023å¹´ä¸æ",
@@ -6699,12 +6691,12 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 18,
-        "total_count": 34755
+        "total_count": 34808
       },
       {
         "name": "åå®«",
         "count": 14,
-        "total_count": 300275
+        "total_count": 300502
       },
       {
         "name": "2023å¹´",
@@ -6714,7 +6706,7 @@
       {
         "name": "åçº¸",
         "count": 10,
-        "total_count": 11847
+        "total_count": 11867
       },
       {
         "name": "æ¾æ ¹æäºº",
@@ -6729,7 +6721,7 @@
       {
         "name": "æ§è½¬",
         "count": 5,
-        "total_count": 14389
+        "total_count": 14399
       },
       {
         "name": "ã¤ã¹ã«ã¯ã·ã§ã¦ã´",
@@ -6739,37 +6731,37 @@
       {
         "name": "å¨ç»",
         "count": 4,
-        "total_count": 35478
+        "total_count": 35511
+      },
+      {
+        "name": "é¾å²å¤©",
+        "count": 3,
+        "total_count": 39268
+      },
+      {
+        "name": "æç±",
+        "count": 3,
+        "total_count": 558188
+      },
+      {
+        "name": "å­£çª",
+        "count": 3,
+        "total_count": 8386
+      },
+      {
+        "name": "ç°ä¸¸ç¯¤å¿",
+        "count": 3,
+        "total_count": 43
+      },
+      {
+        "name": "TVA",
+        "count": 3,
+        "total_count": 15433
       },
       {
         "name": "2023å¤",
         "count": 3,
         "total_count": 207
-      },
-      {
-        "name": "TVA",
-        "count": 3,
-        "total_count": 15421
-      },
-      {
-        "name": "5å",
-        "count": 3,
-        "total_count": 1804
-      },
-      {
-        "name": "æç±",
-        "count": 3,
-        "total_count": 557616
-      },
-      {
-        "name": "é¾å²å¤©",
-        "count": 3,
-        "total_count": 39241
-      },
-      {
-        "name": "å­£çª",
-        "count": 3,
-        "total_count": 8384
       }
     ],
     "infobox": [
@@ -6911,7 +6903,7 @@
       }
     ],
     "rating": {
-      "rank": 9547,
+      "rank": 9550,
       "total": 2005,
       "count": {
         "1": 16,
@@ -6930,10 +6922,10 @@
     "total_episodes": 0,
     "collection": {
       "on_hold": 265,
-      "dropped": 690,
-      "wish": 520,
+      "dropped": 689,
+      "wish": 521,
       "collect": 2686,
-      "doing": 459
+      "doing": 460
     },
     "id": 362006,
     "eps": 15,
@@ -6967,52 +6959,52 @@
       {
         "name": "æ²»æ",
         "count": 693,
-        "total_count": 299801
+        "total_count": 299927
       },
       {
         "name": "æ¥å¸¸",
         "count": 652,
-        "total_count": 396043
+        "total_count": 396365
       },
       {
         "name": "2023å¹´7æ",
         "count": 647,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "GoHands",
         "count": 538,
-        "total_count": 8586
+        "total_count": 8591
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 438,
-        "total_count": 853718
+        "total_count": 854286
       },
       {
         "name": "TV",
         "count": 347,
-        "total_count": 1391817
+        "total_count": 1392757
       },
       {
         "name": "2023",
         "count": 269,
-        "total_count": 81142
+        "total_count": 81180
       },
       {
         "name": "æç¬",
         "count": 257,
-        "total_count": 633170
+        "total_count": 633620
       },
       {
         "name": "èåº",
         "count": 219,
-        "total_count": 22558
+        "total_count": 22583
       },
       {
         "name": "æ¼«æ¹",
         "count": 213,
-        "total_count": 359037
+        "total_count": 359354
       },
       {
         "name": "ç³å·ç±ä¾",
@@ -7022,12 +7014,12 @@
       {
         "name": "å¥å¹»",
         "count": 118,
-        "total_count": 464476
+        "total_count": 464891
       },
       {
         "name": "ç«",
         "count": 78,
-        "total_count": 1631
+        "total_count": 1632
       },
       {
         "name": "æ¨ªå³¯åæ",
@@ -7037,12 +7029,12 @@
       {
         "name": "æ¥æ¬",
         "count": 39,
-        "total_count": 290907
+        "total_count": 291352
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 27,
-        "total_count": 34784
+        "total_count": 34809
       },
       {
         "name": "2023å¹´",
@@ -7057,17 +7049,12 @@
       {
         "name": "æªç¡®å®",
         "count": 9,
-        "total_count": 2026
+        "total_count": 2024
       },
       {
         "name": "è½å¹²çç«ä»å¤©ä¹å¿§é",
         "count": 7,
         "total_count": 7
-      },
-      {
-        "name": "å·¥è¤è¿",
-        "count": 5,
-        "total_count": 284
       },
       {
         "name": "2023å¤",
@@ -7077,7 +7064,12 @@
       {
         "name": "å°è¥¿åå¹¸",
         "count": 5,
-        "total_count": 2110
+        "total_count": 2112
+      },
+      {
+        "name": "å·¥è¤è¿",
+        "count": 5,
+        "total_count": 284
       },
       {
         "name": "ç«ç«",
@@ -7087,12 +7079,22 @@
       {
         "name": "æ¥æ¼«",
         "count": 4,
-        "total_count": 7189
+        "total_count": 7202
       },
       {
-        "name": "å«èçé ",
+        "name": "å®åæ´è´µ",
         "count": 3,
-        "total_count": 20
+        "total_count": 385
+      },
+      {
+        "name": "å¨ç»",
+        "count": 3,
+        "total_count": 35511
+      },
+      {
+        "name": "åå§",
+        "count": 3,
+        "total_count": 34293
       },
       {
         "name": "èå® ",
@@ -7100,19 +7102,9 @@
         "total_count": 59
       },
       {
-        "name": "å®åæ´è²´",
+        "name": "å«èçé ",
         "count": 3,
-        "total_count": 221
-      },
-      {
-        "name": "7å",
-        "count": 3,
-        "total_count": 3793
-      },
-      {
-        "name": "åå§",
-        "count": 3,
-        "total_count": 34211
+        "total_count": 20
       }
     ],
     "infobox": [
@@ -7221,7 +7213,7 @@
       }
     ],
     "rating": {
-      "rank": 3964,
+      "rank": 3967,
       "total": 2580,
       "count": {
         "1": 4,
@@ -7241,8 +7233,8 @@
     "collection": {
       "on_hold": 444,
       "dropped": 523,
-      "wish": 937,
-      "collect": 3800,
+      "wish": 939,
+      "collect": 3803,
       "doing": 709
     },
     "id": 384672,
@@ -7276,43 +7268,43 @@
     "tags": [
       {
         "name": "æç±",
-        "count": 517,
-        "total_count": 557682
+        "count": 518,
+        "total_count": 558128
       },
       {
         "name": "2023å¹´7æ",
         "count": 354,
-        "total_count": 27960
+        "total_count": 27968
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 321,
-        "total_count": 853614
+        "total_count": 854164
       },
       {
         "name": "åå®«",
         "count": 316,
-        "total_count": 300314
+        "total_count": 300483
       },
       {
         "name": "TV",
         "count": 253,
-        "total_count": 1391662
+        "total_count": 1392615
       },
       {
         "name": "2023",
         "count": 176,
-        "total_count": 81136
+        "total_count": 81176
       },
       {
         "name": "æ ¡å­",
-        "count": 166,
-        "total_count": 447966
+        "count": 167,
+        "total_count": 448331
       },
       {
         "name": "TMS",
         "count": 161,
-        "total_count": 18247
+        "total_count": 18258
       },
       {
         "name": "ç§åå¥³å",
@@ -7322,27 +7314,27 @@
       {
         "name": "æ¼«æ¹",
         "count": 138,
-        "total_count": 358985
+        "total_count": 359313
       },
       {
         "name": "åäº",
         "count": 120,
-        "total_count": 15108
+        "total_count": 15124
       },
       {
         "name": "é¨å®®å¤©",
         "count": 78,
-        "total_count": 2201
+        "total_count": 2202
       },
       {
         "name": "ç»­ä½",
         "count": 73,
-        "total_count": 45590
+        "total_count": 45614
       },
       {
         "name": "æ¥æ¬",
-        "count": 38,
-        "total_count": 290796
+        "count": 39,
+        "total_count": 291281
       },
       {
         "name": "æ±å±±å¥å¤®",
@@ -7357,17 +7349,17 @@
       {
         "name": "æ¥å¸¸",
         "count": 14,
-        "total_count": 396000
+        "total_count": 396306
       },
       {
         "name": "æç¬",
         "count": 11,
-        "total_count": 633094
+        "total_count": 633512
       },
       {
         "name": "éæ¥",
         "count": 10,
-        "total_count": 106371
+        "total_count": 106418
       },
       {
         "name": "TMS_Entertainment",
@@ -7377,17 +7369,17 @@
       {
         "name": "å¤è³ä¸è£",
         "count": 9,
-        "total_count": 437
+        "total_count": 438
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 4,
-        "total_count": 34759
+        "total_count": 34808
       },
       {
         "name": "å¨ç»",
         "count": 4,
-        "total_count": 35483
+        "total_count": 35511
       },
       {
         "name": "ãã ã¹ã»ã¨ã³ã¿ãã¤ã³ã¡ã³ã",
@@ -7395,9 +7387,14 @@
         "total_count": 928
       },
       {
-        "name": "å­£çª",
+        "name": "æªå®æ¡£",
         "count": 3,
-        "total_count": 8386
+        "total_count": 4109
+      },
+      {
+        "name": "2023å¤",
+        "count": 3,
+        "total_count": 207
       },
       {
         "name": "å æ±ç¬",
@@ -7405,24 +7402,19 @@
         "total_count": 170
       },
       {
-        "name": "åå§",
+        "name": "å­£çª",
         "count": 3,
-        "total_count": 34200
+        "total_count": 8386
       },
       {
         "name": "TVA",
         "count": 3,
-        "total_count": 15422
+        "total_count": 15433
       },
       {
-        "name": "æªå®æ¡£",
+        "name": "åå§",
         "count": 3,
-        "total_count": 4102
-      },
-      {
-        "name": "2023å¤",
-        "count": 3,
-        "total_count": 207
+        "total_count": 34266
       }
     ],
     "infobox": [
@@ -7557,16 +7549,16 @@
       }
     ],
     "rating": {
-      "rank": 9399,
-      "total": 1935,
+      "rank": 9402,
+      "total": 1938,
       "count": {
         "1": 58,
         "2": 50,
         "3": 105,
         "4": 243,
-        "5": 453,
+        "5": 455,
         "6": 641,
-        "7": 260,
+        "7": 261,
         "8": 76,
         "9": 23,
         "10": 26
@@ -7576,10 +7568,10 @@
     "total_episodes": 0,
     "collection": {
       "on_hold": 223,
-      "dropped": 340,
-      "wish": 723,
-      "collect": 3163,
-      "doing": 349
+      "dropped": 339,
+      "wish": 724,
+      "collect": 3168,
+      "doing": 350
     },
     "id": 401783,
     "eps": 12,
@@ -7872,7 +7864,7 @@
       }
     ],
     "rating": {
-      "rank": 5558,
+      "rank": 5557,
       "total": 257,
       "count": {
         "1": 3,
@@ -7926,52 +7918,52 @@
       {
         "name": "MADHouse",
         "count": 373,
-        "total_count": 110166
+        "total_count": 110229
       },
       {
         "name": "2023å¹´7æ",
         "count": 351,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "ç§å¹»",
         "count": 349,
-        "total_count": 250241
+        "total_count": 250492
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 282,
-        "total_count": 853433
+        "total_count": 854268
       },
       {
         "name": "TV",
         "count": 191,
-        "total_count": 1391532
+        "total_count": 1392743
       },
       {
         "name": "2023",
         "count": 169,
-        "total_count": 81132
+        "total_count": 81179
       },
       {
         "name": "æ¼«æ¹",
         "count": 131,
-        "total_count": 358963
+        "total_count": 359350
       },
       {
         "name": "AI",
         "count": 105,
-        "total_count": 1094
+        "total_count": 1095
       },
       {
         "name": "ä½è¤éä¸",
         "count": 71,
-        "total_count": 506
+        "total_count": 507
       },
       {
         "name": "åå",
         "count": 43,
-        "total_count": 614496
+        "total_count": 615191
       },
       {
         "name": "å®®æ¬ä¾è½",
@@ -7986,7 +7978,7 @@
       {
         "name": "ç¦å£«è£ä¸é",
         "count": 18,
-        "total_count": 137
+        "total_count": 136
       },
       {
         "name": "ååå§",
@@ -7996,7 +7988,7 @@
       {
         "name": "æ¥æ¬",
         "count": 16,
-        "total_count": 290720
+        "total_count": 291336
       },
       {
         "name": "2023å¹´",
@@ -8006,22 +7998,12 @@
       {
         "name": "SF",
         "count": 10,
-        "total_count": 7145
+        "total_count": 7146
       },
       {
         "name": "æ¥å¸¸",
         "count": 6,
-        "total_count": 395909
-      },
-      {
-        "name": "å¥å¹»",
-        "count": 5,
-        "total_count": 464248
-      },
-      {
-        "name": "æ¥æ¬å¨ç»",
-        "count": 5,
-        "total_count": 34755
+        "total_count": 396363
       },
       {
         "name": "ç¬¬ä¸å­£",
@@ -8029,9 +8011,19 @@
         "total_count": 1363
       },
       {
+        "name": "å¥å¹»",
+        "count": 5,
+        "total_count": 464898
+      },
+      {
         "name": "å¨ç»",
         "count": 5,
-        "total_count": 35478
+        "total_count": 35511
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 5,
+        "total_count": 34808
       },
       {
         "name": "2023å¤",
@@ -8039,19 +8031,29 @@
         "total_count": 207
       },
       {
+        "name": "éæé¾ä¹ä»",
+        "count": 3,
+        "total_count": 93
+      },
+      {
         "name": "ä¼¦ç",
         "count": 3,
-        "total_count": 2229
+        "total_count": 2230
       },
       {
         "name": "TVA",
         "count": 3,
-        "total_count": 15421
+        "total_count": 15433
       },
       {
-        "name": "éæé¾ä¹ä»",
-        "count": 3,
-        "total_count": 93
+        "name": "å­£çª",
+        "count": 2,
+        "total_count": 8386
+      },
+      {
+        "name": "AIçµå­åºå ",
+        "count": 2,
+        "total_count": 3
       },
       {
         "name": "5å",
@@ -8059,19 +8061,9 @@
         "total_count": 1804
       },
       {
-        "name": "2020-2029",
+        "name": "2023å¹´å¤",
         "count": 2,
-        "total_count": 1827
-      },
-      {
-        "name": "è¿æªæ¥",
-        "count": 2,
-        "total_count": 174
-      },
-      {
-        "name": "æ¥æ¼«",
-        "count": 2,
-        "total_count": 7188
+        "total_count": 110
       }
     ],
     "infobox": [
@@ -8194,7 +8186,7 @@
       }
     ],
     "rating": {
-      "rank": 8478,
+      "rank": 8480,
       "total": 1134,
       "count": {
         "1": 6,
@@ -8215,7 +8207,7 @@
       "on_hold": 233,
       "dropped": 490,
       "wish": 436,
-      "collect": 1434,
+      "collect": 1435,
       "doing": 295
     },
     "id": 410203,
@@ -8786,7 +8778,7 @@
       }
     ],
     "rating": {
-      "rank": 8696,
+      "rank": 8698,
       "total": 356,
       "count": {
         "1": 3,
@@ -8840,57 +8832,57 @@
       {
         "name": "2023å¹´7æ",
         "count": 331,
-        "total_count": 27959
+        "total_count": 27964
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 301,
-        "total_count": 853595
+        "total_count": 853967
       },
       {
         "name": "æµªå®¢åå¿",
         "count": 249,
-        "total_count": 2160
+        "total_count": 2162
       },
       {
         "name": "TV",
         "count": 236,
-        "total_count": 1391637
+        "total_count": 1392134
       },
       {
         "name": "LIDENFILMS",
         "count": 227,
-        "total_count": 14051
+        "total_count": 14066
       },
       {
         "name": "ææ",
         "count": 202,
-        "total_count": 465644
+        "total_count": 465860
       },
       {
         "name": "2023",
         "count": 192,
-        "total_count": 81134
+        "total_count": 81154
       },
       {
         "name": "ç­è¡",
         "count": 169,
-        "total_count": 211224
+        "total_count": 211293
       },
       {
         "name": "æ¼«æ¹",
         "count": 137,
-        "total_count": 358981
+        "total_count": 359119
       },
       {
         "name": "åå²",
         "count": 89,
-        "total_count": 18371
+        "total_count": 18389
       },
       {
         "name": "éå¶",
         "count": 69,
-        "total_count": 2358
+        "total_count": 2359
       },
       {
         "name": "å±±æ¬ç§ä¸",
@@ -8900,27 +8892,27 @@
       {
         "name": "é«æ©æä¾",
         "count": 52,
-        "total_count": 2074
+        "total_count": 2075
       },
       {
         "name": "æè¤å£®é¦¬",
         "count": 30,
-        "total_count": 569
+        "total_count": 570
       },
       {
         "name": "æ¥æ¬",
         "count": 21,
-        "total_count": 290787
+        "total_count": 291109
+      },
+      {
+        "name": "æ­¦ä¾ ",
+        "count": 12,
+        "total_count": 6325
       },
       {
         "name": "æªç¡®å®",
         "count": 12,
         "total_count": 2026
-      },
-      {
-        "name": "æ­¦ä¾ ",
-        "count": 12,
-        "total_count": 6324
       },
       {
         "name": "ã©ã¤ãã³ãã£ã«ã ",
@@ -8930,7 +8922,7 @@
       {
         "name": "æ­¦å£«",
         "count": 5,
-        "total_count": 1441
+        "total_count": 1442
       },
       {
         "name": "2023å¹´",
@@ -8940,22 +8932,22 @@
       {
         "name": "æç±",
         "count": 5,
-        "total_count": 557676
+        "total_count": 557980
       },
       {
         "name": "æ¶ä»£å§",
         "count": 5,
-        "total_count": 783
+        "total_count": 784
       },
       {
         "name": "å§åºç",
         "count": 4,
-        "total_count": 719221
+        "total_count": 719391
       },
       {
         "name": "åæä¼¸å®",
         "count": 3,
-        "total_count": 411
+        "total_count": 412
       },
       {
         "name": "éå¶ç",
@@ -8980,12 +8972,12 @@
       {
         "name": "ä»ç°è±ä¹",
         "count": 3,
-        "total_count": 955
+        "total_count": 956
       },
       {
-        "name": "åé©",
+        "name": "å¨ç»",
         "count": 2,
-        "total_count": 52986
+        "total_count": 35501
       }
     ],
     "infobox": [
@@ -9128,7 +9120,7 @@
       }
     ],
     "rating": {
-      "rank": 4949,
+      "rank": 4939,
       "total": 1343,
       "count": {
         "1": 3,
@@ -9138,18 +9130,18 @@
         "5": 117,
         "6": 395,
         "7": 589,
-        "8": 156,
+        "8": 155,
         "9": 18,
-        "10": 12
+        "10": 13
       },
       "score": 6.6
     },
     "total_episodes": 0,
     "collection": {
       "on_hold": 352,
-      "dropped": 260,
+      "dropped": 261,
       "wish": 685,
-      "collect": 1748,
+      "collect": 1750,
       "doing": 534
     },
     "id": 363102,
@@ -9183,68 +9175,68 @@
     "tags": [
       {
         "name": "MAPPA",
-        "count": 2420,
-        "total_count": 67193
+        "count": 2421,
+        "total_count": 67228
       },
       {
         "name": "ææ",
-        "count": 2314,
-        "total_count": 465720
+        "count": 2318,
+        "total_count": 466087
       },
       {
         "name": "ç­è¡",
-        "count": 1632,
-        "total_count": 211249
+        "count": 1635,
+        "total_count": 211362
       },
       {
         "name": "2023å¹´7æ",
-        "count": 1555,
-        "total_count": 27963
+        "count": 1556,
+        "total_count": 27969
       },
       {
         "name": "æ¼«ç»æ¹",
-        "count": 1516,
-        "total_count": 853728
+        "count": 1518,
+        "total_count": 854306
       },
       {
         "name": "å¥å¹»",
-        "count": 1128,
-        "total_count": 464485
+        "count": 1130,
+        "total_count": 464907
       },
       {
         "name": "TV",
-        "count": 1120,
-        "total_count": 1391837
+        "count": 1122,
+        "total_count": 1392786
       },
       {
         "name": "åæ¯åæ",
-        "count": 1028,
-        "total_count": 2821
+        "count": 1029,
+        "total_count": 2826
       },
       {
         "name": "2023",
         "count": 771,
-        "total_count": 81142
+        "total_count": 81181
       },
       {
         "name": "æ¼«æ¹",
         "count": 710,
-        "total_count": 359044
+        "total_count": 359359
       },
       {
         "name": "JUMP",
         "count": 428,
-        "total_count": 33266
+        "total_count": 33274
       },
       {
         "name": "ç»­ä½",
         "count": 304,
-        "total_count": 45595
+        "total_count": 45623
       },
       {
         "name": "æ¥æ¬",
-        "count": 234,
-        "total_count": 290917
+        "count": 235,
+        "total_count": 291371
       },
       {
         "name": "å¾¡æåç¿å¤ª",
@@ -9254,7 +9246,7 @@
       {
         "name": "ä¸­ææ ä¸",
         "count": 108,
-        "total_count": 11852
+        "total_count": 11853
       },
       {
         "name": "å¾¡æå­ç¿å¤ª",
@@ -9263,8 +9255,8 @@
       },
       {
         "name": "å°å¹´å",
-        "count": 49,
-        "total_count": 7230
+        "count": 50,
+        "total_count": 7254
       },
       {
         "name": "2023å¹´",
@@ -9279,12 +9271,12 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 18,
-        "total_count": 34784
+        "total_count": 34809
       },
       {
         "name": "æç¬",
         "count": 17,
-        "total_count": 633175
+        "total_count": 633630
       },
       {
         "name": "æ¿å¤æµ©å¸",
@@ -9294,7 +9286,7 @@
       {
         "name": "ä½ç»",
         "count": 15,
-        "total_count": 2153
+        "total_count": 2155
       },
       {
         "name": "ç¬å¤æµ©å¸",
@@ -9309,27 +9301,27 @@
       {
         "name": "æ¥æ¼«",
         "count": 12,
-        "total_count": 7189
+        "total_count": 7202
       },
       {
         "name": "æ ¡å­",
         "count": 10,
-        "total_count": 448033
+        "total_count": 448413
       },
       {
         "name": "2023å¹´10æ",
         "count": 10,
-        "total_count": 37420
+        "total_count": 37437
       },
       {
         "name": "TVA",
         "count": 9,
-        "total_count": 15424
+        "total_count": 15435
       },
       {
-        "name": "è¶è½å",
+        "name": "å¾¡æåç¿å¤ª",
         "count": 8,
-        "total_count": 25593
+        "total_count": 9
       }
     ],
     "infobox": [
@@ -9607,7 +9599,7 @@
     ],
     "rating": {
       "rank": 1804,
-      "total": 10444,
+      "total": 10456,
       "count": {
         "1": 35,
         "2": 16,
@@ -9615,8 +9607,8 @@
         "4": 91,
         "5": 308,
         "6": 1436,
-        "7": 4628,
-        "8": 3288,
+        "7": 4636,
+        "8": 3292,
         "9": 405,
         "10": 216
       },
@@ -9625,10 +9617,10 @@
     "total_episodes": 0,
     "collection": {
       "on_hold": 708,
-      "dropped": 557,
-      "wish": 1757,
-      "collect": 17319,
-      "doing": 2463
+      "dropped": 558,
+      "wish": 1759,
+      "collect": 17352,
+      "doing": 2467
     },
     "id": 369304,
     "eps": 23,
@@ -9662,33 +9654,33 @@
     "tags": [
       {
         "name": "å¼ä¸ç",
-        "count": 258,
-        "total_count": 259051
+        "count": 259,
+        "total_count": 259277
       },
       {
         "name": "2023å¹´7æ",
         "count": 245,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 185,
-        "total_count": 492286
+        "total_count": 492550
       },
       {
         "name": "æ¶å½¹å¤§å°å§",
-        "count": 158,
-        "total_count": 1855
+        "count": 159,
+        "total_count": 1862
       },
       {
         "name": "æ¶å½¹",
-        "count": 143,
-        "total_count": 1381
+        "count": 144,
+        "total_count": 1386
       },
       {
         "name": "TV",
-        "count": 140,
-        "total_count": 1391583
+        "count": 142,
+        "total_count": 1392791
       },
       {
         "name": "ä¹å¥³å",
@@ -9697,23 +9689,23 @@
       },
       {
         "name": "2023",
-        "count": 97,
-        "total_count": 81134
+        "count": 98,
+        "total_count": 81181
       },
       {
         "name": "OLM",
         "count": 96,
-        "total_count": 12624
+        "total_count": 12633
       },
       {
         "name": "è½»æ¹",
-        "count": 89,
-        "total_count": 151651
+        "count": 90,
+        "total_count": 151817
       },
       {
         "name": "å¥å¹»",
         "count": 82,
-        "total_count": 464347
+        "total_count": 464910
       },
       {
         "name": "åç°çç¤¼",
@@ -9722,28 +9714,28 @@
       },
       {
         "name": "å¥³æ§å",
-        "count": 36,
-        "total_count": 6852
+        "count": 37,
+        "total_count": 6864
       },
       {
         "name": "å°è¯´æ¹",
         "count": 34,
-        "total_count": 156844
+        "total_count": 157087
       },
       {
         "name": "è½¬ç",
         "count": 32,
-        "total_count": 5351
+        "total_count": 5359
       },
       {
         "name": "ä¹å¥³",
-        "count": 31,
-        "total_count": 3509
+        "count": 32,
+        "total_count": 3514
       },
       {
         "name": "æ¥æ¬",
-        "count": 27,
-        "total_count": 290757
+        "count": 28,
+        "total_count": 291372
       },
       {
         "name": "æ°ç°å¸ç",
@@ -9753,17 +9745,17 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 17,
-        "total_count": 34759
+        "total_count": 34809
       },
       {
         "name": "å¤å²å¤©",
         "count": 16,
-        "total_count": 10512
+        "total_count": 10514
       },
       {
         "name": "ç©¿è¶",
         "count": 12,
-        "total_count": 62290
+        "total_count": 62348
       },
       {
         "name": "éåå®«",
@@ -9778,17 +9770,17 @@
       {
         "name": "æç±",
         "count": 7,
-        "total_count": 557640
+        "total_count": 558167
       },
       {
         "name": "åçº¸",
         "count": 7,
-        "total_count": 11847
+        "total_count": 11869
       },
       {
         "name": "TVA",
         "count": 7,
-        "total_count": 15422
+        "total_count": 15435
       },
       {
         "name": "2023å¤",
@@ -9798,12 +9790,12 @@
       {
         "name": "æç¬",
         "count": 4,
-        "total_count": 633053
+        "total_count": 633633
       },
       {
         "name": "ææ",
         "count": 3,
-        "total_count": 465608
+        "total_count": 466087
       },
       {
         "name": "èº«ä¸ºæ²å§å§ä½ä¿èçæå¼ºéªæ¶BOSSå¥³çä¸ºæ°ç«­å¿å°½å",
@@ -9950,14 +9942,14 @@
       }
     ],
     "rating": {
-      "rank": 9300,
-      "total": 1195,
+      "rank": 9304,
+      "total": 1197,
       "count": {
         "1": 4,
         "2": 14,
-        "3": 53,
+        "3": 54,
         "4": 148,
-        "5": 396,
+        "5": 397,
         "6": 406,
         "7": 115,
         "8": 41,
@@ -9970,9 +9962,9 @@
     "collection": {
       "on_hold": 94,
       "dropped": 243,
-      "wish": 352,
-      "collect": 1945,
-      "doing": 245
+      "wish": 353,
+      "collect": 1950,
+      "doing": 246
     },
     "id": 406307,
     "eps": 12,
@@ -10006,42 +9998,42 @@
       {
         "name": "æ¬§ç¾",
         "count": 26,
-        "total_count": 86156
+        "total_count": 86252
       },
       {
         "name": "ææ",
         "count": 18,
-        "total_count": 464861
+        "total_count": 466089
       },
       {
         "name": "æç±",
         "count": 13,
-        "total_count": 556784
+        "total_count": 558169
       },
       {
         "name": "TV",
         "count": 12,
-        "total_count": 1390427
+        "total_count": 1392795
       },
       {
         "name": "dc",
         "count": 11,
-        "total_count": 2273
+        "total_count": 2274
       },
       {
         "name": "æç¬",
         "count": 10,
-        "total_count": 632247
-      },
-      {
-        "name": "è¶è±",
-        "count": 5,
-        "total_count": 323
+        "total_count": 633635
       },
       {
         "name": "æ¥å¸¸",
         "count": 5,
-        "total_count": 395398
+        "total_count": 396371
+      },
+      {
+        "name": "è¶è±",
+        "count": 5,
+        "total_count": 329
       },
       {
         "name": "è¶äººç³»å",
@@ -10051,12 +10043,7 @@
       {
         "name": "2023",
         "count": 4,
-        "total_count": 81083
-      },
-      {
-        "name": "ç¾å½",
-        "count": 3,
-        "total_count": 26972
+        "total_count": 81181
       },
       {
         "name": "è¶çº§è±é",
@@ -10064,9 +10051,19 @@
         "total_count": 948
       },
       {
+        "name": "ç¾å½",
+        "count": 3,
+        "total_count": 27003
+      },
+      {
         "name": "å®è¯å®è¯´ï¼æºä¸éç",
         "count": 2,
         "total_count": 2
+      },
+      {
+        "name": "éæ¥",
+        "count": 1,
+        "total_count": 106420
       },
       {
         "name": "7.31",
@@ -10076,22 +10073,22 @@
       {
         "name": "è¶è½å",
         "count": 1,
-        "total_count": 25583
+        "total_count": 25598
+      },
+      {
+        "name": "TV-02",
+        "count": 1,
+        "total_count": 19
+      },
+      {
+        "name": "2020-2029",
+        "count": 1,
+        "total_count": 1828
       },
       {
         "name": "åå",
         "count": 1,
-        "total_count": 613747
-      },
-      {
-        "name": "éæ¥",
-        "count": 1,
-        "total_count": 106250
-      },
-      {
-        "name": "æ¶©æ¶©",
-        "count": 1,
-        "total_count": 828
+        "total_count": 615249
       },
       {
         "name": "StudioMIR",
@@ -10101,17 +10098,12 @@
       {
         "name": "ç§å¹»",
         "count": 1,
-        "total_count": 249987
+        "total_count": 250496
       },
       {
-        "name": "2020-2029",
+        "name": "æ¶©æ¶©",
         "count": 1,
-        "total_count": 1827
-      },
-      {
-        "name": "TV-02",
-        "count": 1,
-        "total_count": 19
+        "total_count": 832
       }
     ],
     "infobox": [
@@ -10177,9 +10169,9 @@
     "collection": {
       "on_hold": 11,
       "dropped": 8,
-      "wish": 63,
-      "collect": 67,
-      "doing": 17
+      "wish": 64,
+      "collect": 68,
+      "doing": 16
     },
     "id": 432779,
     "eps": 10,
@@ -10538,68 +10530,68 @@
     "tags": [
       {
         "name": "æç±",
-        "count": 726,
-        "total_count": 557668
+        "count": 727,
+        "total_count": 558153
       },
       {
         "name": "2023å¹´7æ",
-        "count": 575,
-        "total_count": 27959
+        "count": 576,
+        "total_count": 27969
       },
       {
         "name": "è½»å°è¯´æ¹",
-        "count": 431,
-        "total_count": 492300
+        "count": 432,
+        "total_count": 492515
       },
       {
         "name": "çº¯ç±",
-        "count": 341,
-        "total_count": 38652
+        "count": 342,
+        "total_count": 38678
       },
       {
         "name": "KINEMACITRUS",
         "count": 340,
-        "total_count": 9791
+        "total_count": 9804
       },
       {
         "name": "TV",
         "count": 339,
-        "total_count": 1391617
+        "total_count": 1392670
       },
       {
         "name": "ä¹å¥³å",
-        "count": 312,
+        "count": 313,
         "total_count": 17814
       },
       {
         "name": "2023",
         "count": 236,
-        "total_count": 81134
+        "total_count": 81176
       },
       {
         "name": "å°å¥³æ¼«",
-        "count": 173,
-        "total_count": 2241
+        "count": 174,
+        "total_count": 2242
       },
       {
         "name": "å¥å¹»",
-        "count": 161,
-        "total_count": 464378
+        "count": 162,
+        "total_count": 464867
       },
       {
         "name": "è½»æ¹",
         "count": 118,
-        "total_count": 151650
+        "total_count": 151811
       },
       {
         "name": "ä¸ç°éºå¥",
         "count": 116,
-        "total_count": 841
+        "total_count": 842
       },
       {
         "name": "å°è¯´æ¹",
         "count": 83,
-        "total_count": 156855
+        "total_count": 157054
       },
       {
         "name": "ä¹ä¿ç°éå¤§",
@@ -10609,32 +10601,32 @@
       {
         "name": "æ¥æ¬",
         "count": 51,
-        "total_count": 290781
+        "total_count": 291308
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 18,
-        "total_count": 34759
-      },
-      {
-        "name": "æ¥å¸¸",
-        "count": 14,
-        "total_count": 395975
+        "total_count": 34808
       },
       {
         "name": "å¥³æ§å",
         "count": 14,
-        "total_count": 6852
+        "total_count": 6865
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 14,
+        "total_count": 396334
       },
       {
         "name": "åé£",
         "count": 12,
-        "total_count": 3310
+        "total_count": 3311
       },
       {
         "name": "æ²»æ",
         "count": 11,
-        "total_count": 299777
+        "total_count": 299923
       },
       {
         "name": "ç³å·çäºº",
@@ -10644,12 +10636,12 @@
       {
         "name": "ä¹å¥³",
         "count": 8,
-        "total_count": 3509
+        "total_count": 3512
       },
       {
         "name": "å°å¥³å",
         "count": 7,
-        "total_count": 8987
+        "total_count": 8988
       },
       {
         "name": "2023å¹´",
@@ -10657,19 +10649,9 @@
         "total_count": 3587
       },
       {
-        "name": "å¤§è¥¿éä»",
+        "name": "å°å¥³",
         "count": 5,
-        "total_count": 10
-      },
-      {
-        "name": "ä½è¤äºç¾",
-        "count": 5,
-        "total_count": 11
-      },
-      {
-        "name": "è±ç°ç¾é¦",
-        "count": 5,
-        "total_count": 24
+        "total_count": 6221
       },
       {
         "name": "å­£çª",
@@ -10677,14 +10659,24 @@
         "total_count": 8386
       },
       {
-        "name": "å°å¥³",
+        "name": "ä½è¤äºç¾",
         "count": 5,
-        "total_count": 6220
+        "total_count": 11
       },
       {
-        "name": "è¶è½å",
+        "name": "å¤§è¥¿éä»",
+        "count": 5,
+        "total_count": 10
+      },
+      {
+        "name": "è±ç°ç¾é¦",
+        "count": 5,
+        "total_count": 24
+      },
+      {
+        "name": "EvanCall",
         "count": 4,
-        "total_count": 25593
+        "total_count": 98
       }
     ],
     "infobox": [
@@ -10839,16 +10831,16 @@
       }
     ],
     "rating": {
-      "rank": 7545,
-      "total": 2297,
+      "rank": 7546,
+      "total": 2298,
       "count": {
         "1": 13,
         "2": 15,
         "3": 35,
-        "4": 131,
+        "4": 132,
         "5": 399,
-        "6": 944,
-        "7": 567,
+        "6": 943,
+        "7": 568,
         "8": 137,
         "9": 22,
         "10": 34
@@ -10857,11 +10849,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 315,
+      "on_hold": 316,
       "dropped": 442,
-      "wish": 841,
-      "collect": 3425,
-      "doing": 577
+      "wish": 842,
+      "collect": 3427,
+      "doing": 576
     },
     "id": 377125,
     "eps": 12,
@@ -10895,77 +10887,77 @@
       {
         "name": "å¼ä¸ç",
         "count": 601,
-        "total_count": 259083
+        "total_count": 259276
       },
       {
         "name": "2023å¹´7æ",
         "count": 410,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 324,
-        "total_count": 492309
+        "total_count": 492549
       },
       {
         "name": "æç¬",
         "count": 271,
-        "total_count": 633091
+        "total_count": 633629
       },
       {
         "name": "TV",
         "count": 256,
-        "total_count": 1391653
+        "total_count": 1392774
       },
       {
         "name": "Studioäºçµ",
         "count": 197,
-        "total_count": 3208
+        "total_count": 3209
       },
       {
         "name": "å¥å¹»",
         "count": 197,
-        "total_count": 464396
+        "total_count": 464900
       },
       {
         "name": "2023",
         "count": 148,
-        "total_count": 81135
+        "total_count": 81180
       },
       {
         "name": "è½»æ¹",
         "count": 143,
-        "total_count": 151650
+        "total_count": 151819
       },
       {
         "name": "åçº¸",
         "count": 112,
-        "total_count": 11851
+        "total_count": 11869
       },
       {
         "name": "AXsiZ",
         "count": 98,
-        "total_count": 1151
+        "total_count": 1154
       },
       {
         "name": "ç¦å±±æ½¤",
         "count": 78,
-        "total_count": 5214
+        "total_count": 5215
       },
       {
         "name": "Studioäºç»",
         "count": 60,
-        "total_count": 12044
+        "total_count": 12050
       },
       {
         "name": "å°è¯´æ¹",
         "count": 56,
-        "total_count": 156862
+        "total_count": 157080
       },
       {
         "name": "æ¥æ¬",
         "count": 40,
-        "total_count": 290791
+        "total_count": 291364
       },
       {
         "name": "ç§ç°è°·å¸æ­",
@@ -10975,22 +10967,22 @@
       {
         "name": "ææ",
         "count": 22,
-        "total_count": 465648
+        "total_count": 466078
       },
       {
         "name": "æ¥å¸¸",
         "count": 21,
-        "total_count": 395988
+        "total_count": 396367
       },
       {
         "name": "ç©¿è¶",
         "count": 16,
-        "total_count": 62291
+        "total_count": 62348
       },
       {
         "name": "è½¬ç",
         "count": 14,
-        "total_count": 5351
+        "total_count": 5359
       },
       {
         "name": "2023å¹´",
@@ -11000,27 +10992,32 @@
       {
         "name": "æ¬æ¸¡æ¥",
         "count": 6,
-        "total_count": 1278
+        "total_count": 1279
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 6,
-        "total_count": 34759
-      },
-      {
-        "name": "æªç¡®å®",
-        "count": 5,
-        "total_count": 2026
+        "total_count": 34809
       },
       {
         "name": "ç¦å±±æ¶¦",
         "count": 5,
-        "total_count": 15041
+        "total_count": 15042
       },
       {
         "name": "2023å¹´å¤",
         "count": 5,
         "total_count": 110
+      },
+      {
+        "name": "æªç¡®å®",
+        "count": 5,
+        "total_count": 2024
+      },
+      {
+        "name": "æç±",
+        "count": 4,
+        "total_count": 558160
       },
       {
         "name": "è½¬çæèªå¨è´©åæºçæä»å¤©ä¹å¨è¿·å®«å¾å¾",
@@ -11030,17 +11027,12 @@
       {
         "name": "æ²»æ",
         "count": 4,
-        "total_count": 299782
+        "total_count": 299925
       },
       {
-        "name": "æç±",
-        "count": 4,
-        "total_count": 557680
-      },
-      {
-        "name": "æ¬æ¸¡æ«",
+        "name": "å¨ç»",
         "count": 3,
-        "total_count": 202
+        "total_count": 35511
       }
     ],
     "infobox": [
@@ -11176,14 +11168,14 @@
       }
     ],
     "rating": {
-      "rank": 9573,
-      "total": 1934,
+      "rank": 9577,
+      "total": 1936,
       "count": {
         "1": 12,
         "2": 43,
         "3": 90,
-        "4": 270,
-        "5": 648,
+        "4": 271,
+        "5": 649,
         "6": 665,
         "7": 170,
         "8": 19,
@@ -11195,9 +11187,9 @@
     "total_episodes": 0,
     "collection": {
       "on_hold": 235,
-      "dropped": 662,
+      "dropped": 663,
       "wish": 469,
-      "collect": 2861,
+      "collect": 2865,
       "doing": 420
     },
     "id": 392973,
@@ -11230,48 +11222,48 @@
     "tags": [
       {
         "name": "æ¨ç",
-        "count": 1776,
-        "total_count": 72981
+        "count": 1777,
+        "total_count": 73042
       },
       {
         "name": "æ¬ç",
-        "count": 1458,
-        "total_count": 112577
+        "count": 1459,
+        "total_count": 112645
       },
       {
         "name": "2023å¹´7æ",
-        "count": 1300,
-        "total_count": 27961
+        "count": 1301,
+        "total_count": 27969
       },
       {
         "name": "TV",
         "count": 883,
-        "total_count": 1391676
+        "total_count": 1392786
       },
       {
         "name": "å¥å¹»",
-        "count": 860,
-        "total_count": 464407
+        "count": 861,
+        "total_count": 464907
       },
       {
         "name": "LapinTrack",
         "count": 700,
-        "total_count": 4218
+        "total_count": 4228
       },
       {
         "name": "å°è¯´æ¹",
         "count": 670,
-        "total_count": 156866
+        "total_count": 157083
       },
       {
         "name": "è½»å°è¯´æ¹",
-        "count": 573,
-        "total_count": 492313
+        "count": 574,
+        "total_count": 492549
       },
       {
         "name": "2023",
         "count": 540,
-        "total_count": 81137
+        "total_count": 81181
       },
       {
         "name": "ç å±±å®",
@@ -11281,7 +11273,7 @@
       {
         "name": "è½»æ¹",
         "count": 313,
-        "total_count": 151650
+        "total_count": 151817
       },
       {
         "name": "é»æ²¢ã¨ãã",
@@ -11290,8 +11282,8 @@
       },
       {
         "name": "ææ",
-        "count": 135,
-        "total_count": 465654
+        "count": 136,
+        "total_count": 466087
       },
       {
         "name": "éå´æå¾",
@@ -11306,7 +11298,7 @@
       {
         "name": "æ¥æ¬",
         "count": 76,
-        "total_count": 290800
+        "total_count": 291371
       },
       {
         "name": "é«æ¨ç»",
@@ -11316,7 +11308,7 @@
       {
         "name": "é»æ³½æä¸",
         "count": 16,
-        "total_count": 617
+        "total_count": 619
       },
       {
         "name": "2023å¹´",
@@ -11326,17 +11318,17 @@
       {
         "name": "æªå¼",
         "count": 15,
-        "total_count": 1738
+        "total_count": 1740
       },
       {
         "name": "å°ä¸­åæ­",
         "count": 14,
-        "total_count": 703
+        "total_count": 704
       },
       {
         "name": "å§æ",
         "count": 12,
-        "total_count": 15883
+        "total_count": 15892
       },
       {
         "name": "ã©ãã³ãã©ãã¯",
@@ -11346,7 +11338,7 @@
       {
         "name": "å¨ç»",
         "count": 8,
-        "total_count": 35483
+        "total_count": 35511
       },
       {
         "name": "ä¸æ­»å°å¥³",
@@ -11361,12 +11353,12 @@
       {
         "name": "ç¾å",
         "count": 7,
-        "total_count": 398765
+        "total_count": 399146
       },
       {
         "name": "TVA",
         "count": 7,
-        "total_count": 15422
+        "total_count": 15435
       },
       {
         "name": "2023å¤",
@@ -11376,7 +11368,7 @@
       {
         "name": "æ¥æ¼«",
         "count": 6,
-        "total_count": 7189
+        "total_count": 7202
       }
     ],
     "infobox": [
@@ -11537,7 +11529,7 @@
       }
     ],
     "rating": {
-      "rank": 1680,
+      "rank": 1681,
       "total": 6064,
       "count": {
         "1": 7,
@@ -11545,9 +11537,9 @@
         "3": 14,
         "4": 37,
         "5": 142,
-        "6": 803,
+        "6": 804,
         "7": 2670,
-        "8": 2115,
+        "8": 2114,
         "9": 211,
         "10": 61
       },
@@ -11555,11 +11547,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 626,
+      "on_hold": 627,
       "dropped": 424,
-      "wish": 2380,
-      "collect": 8687,
-      "doing": 1331
+      "wish": 2381,
+      "collect": 8691,
+      "doing": 1330
     },
     "id": 425591,
     "eps": 13,
@@ -11593,47 +11585,47 @@
       {
         "name": "æç±",
         "count": 913,
-        "total_count": 557180
+        "total_count": 558188
       },
       {
         "name": "2023å¹´7æ",
         "count": 731,
-        "total_count": 27950
+        "total_count": 27969
       },
       {
         "name": "GoHands",
         "count": 607,
-        "total_count": 8588
+        "total_count": 8591
       },
       {
         "name": "æ ¡å­",
         "count": 606,
-        "total_count": 447547
+        "total_count": 448383
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 524,
-        "total_count": 852705
+        "total_count": 854268
       },
       {
         "name": "æ¥å¸¸",
         "count": 405,
-        "total_count": 395648
+        "total_count": 396363
       },
       {
         "name": "TV",
         "count": 397,
-        "total_count": 1390915
+        "total_count": 1392743
       },
       {
         "name": "2023",
         "count": 241,
-        "total_count": 81108
+        "total_count": 81179
       },
       {
         "name": "æ¼«æ¹",
         "count": 221,
-        "total_count": 358783
+        "total_count": 359350
       },
       {
         "name": "åæ±¡æ",
@@ -11643,32 +11635,32 @@
       {
         "name": "è¥å±±è©©é³",
         "count": 147,
-        "total_count": 968
+        "total_count": 969
       },
       {
         "name": "çº¯ç±",
         "count": 92,
-        "total_count": 38639
+        "total_count": 38678
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 71,
-        "total_count": 491984
+        "total_count": 492540
       },
       {
         "name": "æ¨ªå³¯åæ",
         "count": 50,
-        "total_count": 135
+        "total_count": 136
       },
       {
         "name": "æ¥æ¬",
         "count": 29,
-        "total_count": 290265
+        "total_count": 291336
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 28,
-        "total_count": 34754
+        "total_count": 34808
       },
       {
         "name": "æ¨ªå³°åæ",
@@ -11678,7 +11670,7 @@
       {
         "name": "éæ¥",
         "count": 9,
-        "total_count": 106313
+        "total_count": 106427
       },
       {
         "name": "æªç¡®å®",
@@ -11688,12 +11680,12 @@
       {
         "name": "æç¬",
         "count": 9,
-        "total_count": 632603
+        "total_count": 633579
       },
       {
         "name": "2023å¹´",
         "count": 8,
-        "total_count": 3586
+        "total_count": 3587
       },
       {
         "name": "åæ¬¢çäººå¿è®°æ´ç¼éäº",
@@ -11708,12 +11700,12 @@
       {
         "name": "ç§å¹»",
         "count": 5,
-        "total_count": 250108
+        "total_count": 250492
       },
       {
         "name": "TVA",
         "count": 4,
-        "total_count": 15420
+        "total_count": 15433
       },
       {
         "name": "å«èçé ",
@@ -11728,12 +11720,12 @@
       {
         "name": "å¨ç»",
         "count": 4,
-        "total_count": 35445
+        "total_count": 35511
       },
       {
         "name": "å·¥è¤è¿",
         "count": 4,
-        "total_count": 283
+        "total_count": 284
       },
       {
         "name": "ã¸ãã¼ãµã P",
@@ -11907,11 +11899,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 495,
+      "on_hold": 496,
       "dropped": 1346,
-      "wish": 959,
-      "collect": 3354,
-      "doing": 630
+      "wish": 960,
+      "collect": 3357,
+      "doing": 631
     },
     "id": 415182,
     "eps": 13,
@@ -11945,62 +11937,62 @@
       {
         "name": "å¼ä¸ç",
         "count": 205,
-        "total_count": 259111
+        "total_count": 259194
       },
       {
         "name": "2023å¹´7æ",
         "count": 163,
-        "total_count": 27963
+        "total_count": 27965
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 129,
-        "total_count": 492348
+        "total_count": 492449
       },
       {
         "name": "TV",
         "count": 91,
-        "total_count": 1391812
+        "total_count": 1392349
       },
       {
         "name": "2023",
         "count": 72,
-        "total_count": 81142
+        "total_count": 81169
       },
       {
         "name": "SynergySP",
         "count": 71,
-        "total_count": 2398
+        "total_count": 2399
       },
       {
         "name": "ç¾é£",
         "count": 66,
-        "total_count": 28967
+        "total_count": 28977
       },
       {
         "name": "æ¥å¸¸",
         "count": 56,
-        "total_count": 396040
+        "total_count": 396228
       },
       {
         "name": "åçº¸",
         "count": 55,
-        "total_count": 11853
+        "total_count": 11865
       },
       {
         "name": "å¥å¹»",
         "count": 51,
-        "total_count": 464466
+        "total_count": 464711
       },
       {
         "name": "å°è¯´æ¹",
         "count": 39,
-        "total_count": 156897
+        "total_count": 157026
       },
       {
         "name": "è½»æ¹",
         "count": 36,
-        "total_count": 151656
+        "total_count": 151767
       },
       {
         "name": "åç°çç¤¼",
@@ -12015,22 +12007,22 @@
       {
         "name": "æ¥æ¬",
         "count": 12,
-        "total_count": 290900
+        "total_count": 291146
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 9,
-        "total_count": 34778
+        "total_count": 34806
       },
       {
         "name": "è½¬ç",
         "count": 9,
-        "total_count": 5353
+        "total_count": 5357
       },
       {
         "name": "ç©¿è¶",
         "count": 6,
-        "total_count": 62298
+        "total_count": 62331
       },
       {
         "name": "2023å¤",
@@ -12038,14 +12030,14 @@
         "total_count": 207
       },
       {
-        "name": "æ­£å¤ª",
-        "count": 4,
-        "total_count": 5256
-      },
-      {
         "name": "èè°·ç´è¡",
         "count": 4,
         "total_count": 124
+      },
+      {
+        "name": "æ­£å¤ª",
+        "count": 4,
+        "total_count": 5260
       },
       {
         "name": "2023å¹´",
@@ -12055,27 +12047,32 @@
       {
         "name": "æç¬",
         "count": 3,
-        "total_count": 633166
+        "total_count": 633392
       },
       {
         "name": "ææ",
         "count": 3,
-        "total_count": 465708
+        "total_count": 465919
       },
       {
         "name": "ææ¿æ­¥",
         "count": 3,
-        "total_count": 383
+        "total_count": 385
+      },
+      {
+        "name": "è¤åå¤æµ·",
+        "count": 2,
+        "total_count": 103
       },
       {
         "name": "æ¬æ¸¡æ¥",
         "count": 2,
-        "total_count": 1278
+        "total_count": 1279
       },
       {
-        "name": "ç°ä¸ç",
+        "name": "æç±",
         "count": 2,
-        "total_count": 430
+        "total_count": 558053
       },
       {
         "name": "æç¬æ­©",
@@ -12083,14 +12080,9 @@
         "total_count": 413
       },
       {
-        "name": "å¨ç»",
+        "name": "ç°ä¸ç",
         "count": 2,
-        "total_count": 35485
-      },
-      {
-        "name": "æç±",
-        "count": 2,
-        "total_count": 557767
+        "total_count": 430
       }
     ],
     "infobox": [
@@ -12231,15 +12223,15 @@
       }
     ],
     "rating": {
-      "rank": 9900,
-      "total": 658,
+      "rank": 9904,
+      "total": 659,
       "count": {
         "1": 15,
         "2": 27,
         "3": 53,
         "4": 147,
         "5": 225,
-        "6": 142,
+        "6": 143,
         "7": 34,
         "8": 11,
         "9": 1,
@@ -12252,7 +12244,7 @@
       "on_hold": 47,
       "dropped": 221,
       "wish": 151,
-      "collect": 1030,
+      "collect": 1032,
       "doing": 133
     },
     "id": 347942,
@@ -12285,63 +12277,63 @@
     "tags": [
       {
         "name": "æç¬",
-        "count": 602,
-        "total_count": 633052
+        "count": 603,
+        "total_count": 633635
       },
       {
         "name": "2023å¹´7æ",
         "count": 475,
-        "total_count": 27959
+        "total_count": 27969
       },
       {
         "name": "æ¼«ç»æ¹",
-        "count": 387,
-        "total_count": 853536
+        "count": 388,
+        "total_count": 854312
       },
       {
         "name": "æ¥å¸¸",
         "count": 375,
-        "total_count": 395951
+        "total_count": 396371
       },
       {
         "name": "SILVERLINK.",
         "count": 328,
-        "total_count": 35948
+        "total_count": 35953
       },
       {
         "name": "å¥å¹»",
-        "count": 303,
-        "total_count": 464329
+        "count": 304,
+        "total_count": 464913
       },
       {
         "name": "è³æç¤¾",
-        "count": 261,
-        "total_count": 76925
+        "count": 262,
+        "total_count": 76950
       },
       {
         "name": "TV",
         "count": 253,
-        "total_count": 1391571
+        "total_count": 1392795
       },
       {
         "name": "2023",
         "count": 188,
-        "total_count": 81133
+        "total_count": 81181
       },
       {
         "name": "æ¼«æ¹",
         "count": 165,
-        "total_count": 358965
+        "total_count": 359359
       },
       {
         "name": "ææ",
         "count": 127,
-        "total_count": 465605
+        "total_count": 466089
       },
       {
         "name": "åè",
         "count": 68,
-        "total_count": 68605
+        "total_count": 68668
       },
       {
         "name": "BLADE",
@@ -12351,12 +12343,12 @@
       {
         "name": "æ¥æ¬",
         "count": 39,
-        "total_count": 290749
+        "total_count": 291374
       },
       {
         "name": "ä¸­ææ ä¸",
         "count": 38,
-        "total_count": 11852
+        "total_count": 11853
       },
       {
         "name": "äºä¸å­ä»",
@@ -12366,7 +12358,7 @@
       {
         "name": "å¼ä¸ç",
         "count": 24,
-        "total_count": 259041
+        "total_count": 259278
       },
       {
         "name": "2023å¹´",
@@ -12386,7 +12378,17 @@
       {
         "name": "ç­è¡",
         "count": 6,
-        "total_count": 211218
+        "total_count": 211362
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 5,
+        "total_count": 34809
+      },
+      {
+        "name": "LV1é­çä¸ç¬å±åºåè",
+        "count": 5,
+        "total_count": 5
       },
       {
         "name": "é­çåè",
@@ -12394,14 +12396,9 @@
         "total_count": 979
       },
       {
-        "name": "æ¥æ¬å¨ç»",
-        "count": 5,
-        "total_count": 34756
-      },
-      {
-        "name": "LV1é­çä¸ç¬å±åºåè",
-        "count": 5,
-        "total_count": 5
+        "name": "è",
+        "count": 4,
+        "total_count": 29359
       },
       {
         "name": "æ¾å²¡ç¦ä¸",
@@ -12414,24 +12411,19 @@
         "total_count": 207
       },
       {
-        "name": "è",
-        "count": 4,
-        "total_count": 29342
-      },
-      {
-        "name": "èæ",
-        "count": 3,
-        "total_count": 2549
-      },
-      {
         "name": "æç±",
         "count": 3,
-        "total_count": 557638
+        "total_count": 558169
       },
       {
-        "name": "é¶é¾",
+        "name": "å¨ç»",
         "count": 3,
-        "total_count": 205
+        "total_count": 35511
+      },
+      {
+        "name": "ç¦å©",
+        "count": 3,
+        "total_count": 5183
       }
     ],
     "infobox": [
@@ -12565,8 +12557,8 @@
       }
     ],
     "rating": {
-      "rank": 5373,
-      "total": 2303,
+      "rank": 5374,
+      "total": 2304,
       "count": {
         "1": 5,
         "2": 9,
@@ -12574,7 +12566,7 @@
         "4": 46,
         "5": 210,
         "6": 791,
-        "7": 979,
+        "7": 980,
         "8": 204,
         "9": 18,
         "10": 25
@@ -12586,7 +12578,7 @@
       "on_hold": 236,
       "dropped": 319,
       "wish": 725,
-      "collect": 3595,
+      "collect": 3602,
       "doing": 527
     },
     "id": 376106,
@@ -12621,97 +12613,97 @@
       {
         "name": "æç±",
         "count": 630,
-        "total_count": 557680
+        "total_count": 558129
       },
       {
         "name": "2023å¹´7æ",
         "count": 449,
-        "total_count": 27959
+        "total_count": 27967
       },
       {
         "name": "æ ¡å­",
         "count": 413,
-        "total_count": 447965
+        "total_count": 448335
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 393,
-        "total_count": 853604
+        "total_count": 854155
       },
       {
         "name": "SILVERLINK.",
         "count": 280,
-        "total_count": 35949
+        "total_count": 35952
       },
       {
         "name": "TV",
         "count": 262,
-        "total_count": 1391653
+        "total_count": 1392610
       },
       {
         "name": "æ¿å®åçå¤ä»",
         "count": 208,
-        "total_count": 855
+        "total_count": 856
       },
       {
         "name": "2023",
         "count": 172,
-        "total_count": 81135
+        "total_count": 81176
       },
       {
         "name": "æ¼«æ¹",
         "count": 141,
-        "total_count": 358985
+        "total_count": 359309
       },
       {
         "name": "ç»­é",
         "count": 138,
-        "total_count": 5135
+        "total_count": 5137
       },
       {
         "name": "ç»­ä½",
         "count": 83,
-        "total_count": 45590
+        "total_count": 45614
       },
       {
         "name": "æ¥å¸¸",
         "count": 76,
-        "total_count": 395988
+        "total_count": 396300
       },
       {
         "name": "æç¬",
         "count": 67,
-        "total_count": 633091
+        "total_count": 633506
       },
       {
         "name": "æ¥æ¬",
         "count": 34,
-        "total_count": 290791
+        "total_count": 291280
       },
       {
         "name": "æ¹æªä¾",
         "count": 30,
-        "total_count": 488
+        "total_count": 489
       },
       {
         "name": "åå®«",
         "count": 23,
-        "total_count": 300314
+        "total_count": 300482
       },
       {
         "name": "2023å¹´4æ",
         "count": 19,
-        "total_count": 35413
+        "total_count": 35420
       },
       {
         "name": "åäº",
         "count": 17,
-        "total_count": 15108
+        "total_count": 15124
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 6,
-        "total_count": 34759
+        "total_count": 34808
       },
       {
         "name": "2023å¹´",
@@ -12721,7 +12713,7 @@
       {
         "name": "TVA",
         "count": 5,
-        "total_count": 15422
+        "total_count": 15433
       },
       {
         "name": "SILVER_LINK.",
@@ -12731,22 +12723,22 @@
       {
         "name": "éæ¥",
         "count": 4,
-        "total_count": 106371
+        "total_count": 106418
       },
       {
         "name": "å¨ç»",
         "count": 4,
-        "total_count": 35478
+        "total_count": 35511
       },
       {
         "name": "æ°´ç¬ãã®ã",
         "count": 4,
-        "total_count": 1941
+        "total_count": 1942
       },
       {
         "name": "æ¨ªæç¾æºå­",
         "count": 4,
-        "total_count": 4679
+        "total_count": 4680
       },
       {
         "name": "2023å¤",
@@ -12756,17 +12748,17 @@
       {
         "name": "å¤ä»",
         "count": 3,
-        "total_count": 2696
+        "total_count": 2701
+      },
+      {
+        "name": "Tiv",
+        "count": 2,
+        "total_count": 54
       },
       {
         "name": "è±æ±å¤æ¨¹",
         "count": 2,
         "total_count": 2257
-      },
-      {
-        "name": "2023.7",
-        "count": 2,
-        "total_count": 56
       }
     ],
     "infobox": [
@@ -12895,13 +12887,13 @@
       }
     ],
     "rating": {
-      "rank": 9500,
-      "total": 2142,
+      "rank": 9504,
+      "total": 2143,
       "count": {
         "1": 28,
         "2": 45,
         "3": 120,
-        "4": 311,
+        "4": 312,
         "5": 631,
         "6": 693,
         "7": 207,
@@ -12915,9 +12907,9 @@
     "collection": {
       "on_hold": 311,
       "dropped": 386,
-      "wish": 896,
-      "collect": 3637,
-      "doing": 414
+      "wish": 899,
+      "collect": 3643,
+      "doing": 415
     },
     "id": 376433,
     "eps": 12,
@@ -12951,72 +12943,72 @@
       {
         "name": "æç±",
         "count": 603,
-        "total_count": 557408
+        "total_count": 558162
       },
       {
         "name": "2023å¹´7æ",
         "count": 450,
-        "total_count": 27957
+        "total_count": 27969
       },
       {
         "name": "æ ¡å­",
         "count": 448,
-        "total_count": 447753
+        "total_count": 448405
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 406,
-        "total_count": 492119
+        "total_count": 492544
       },
       {
         "name": "Studioäºç»",
         "count": 255,
-        "total_count": 12037
+        "total_count": 12050
       },
       {
         "name": "TV",
         "count": 243,
-        "total_count": 1391291
+        "total_count": 1392757
       },
       {
         "name": "æ¥å¸¸",
         "count": 221,
-        "total_count": 395818
+        "total_count": 396365
       },
       {
         "name": "2023",
         "count": 185,
-        "total_count": 81119
+        "total_count": 81180
       },
       {
         "name": "è½»æ¹",
         "count": 131,
-        "total_count": 151633
+        "total_count": 151817
       },
       {
         "name": "AXsiZ",
         "count": 105,
-        "total_count": 1151
+        "total_count": 1154
       },
       {
         "name": "æç¬",
         "count": 55,
-        "total_count": 632852
+        "total_count": 633621
       },
       {
         "name": "å°è¯´æ¹",
         "count": 49,
-        "total_count": 156786
+        "total_count": 157074
       },
       {
         "name": "å¤è³ä¸è£",
         "count": 41,
-        "total_count": 437
+        "total_count": 438
       },
       {
         "name": "æ¥æ¬",
         "count": 34,
-        "total_count": 290521
+        "total_count": 291352
       },
       {
         "name": "å®®ç¬å°ä¹",
@@ -13026,27 +13018,27 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 18,
-        "total_count": 34754
+        "total_count": 34809
       },
       {
         "name": "åå®«",
         "count": 14,
-        "total_count": 300191
+        "total_count": 300509
       },
       {
         "name": "Studioäºçµ",
         "count": 13,
-        "total_count": 3208
+        "total_count": 3209
       },
       {
         "name": "æªç¡®å®",
         "count": 9,
-        "total_count": 2026
+        "total_count": 2024
       },
       {
         "name": "éæ¥",
         "count": 6,
-        "total_count": 106347
+        "total_count": 106424
       },
       {
         "name": "è±å®ãã¿ã",
@@ -13066,7 +13058,7 @@
       {
         "name": "æ¨ªæç¾æºå­",
         "count": 3,
-        "total_count": 4679
+        "total_count": 4680
       },
       {
         "name": "æ¶¼æ¬ããã»",
@@ -13076,17 +13068,17 @@
       {
         "name": "å¨ç»",
         "count": 3,
-        "total_count": 35475
+        "total_count": 35511
       },
       {
         "name": "çç²®",
         "count": 3,
-        "total_count": 18650
+        "total_count": 18661
       },
       {
         "name": "å°æ¾æªå¯å­",
         "count": 2,
-        "total_count": 1262
+        "total_count": 1263
       },
       {
         "name": "ç¬¬ä¸å­£",
@@ -13096,7 +13088,7 @@
       {
         "name": "åå§",
         "count": 2,
-        "total_count": 34171
+        "total_count": 34293
       }
     ],
     "infobox": [
@@ -13236,15 +13228,15 @@
       }
     ],
     "rating": {
-      "rank": 9711,
-      "total": 2033,
+      "rank": 9714,
+      "total": 2034,
       "count": {
         "1": 23,
         "2": 48,
         "3": 171,
         "4": 370,
         "5": 540,
-        "6": 615,
+        "6": 616,
         "7": 191,
         "8": 43,
         "9": 11,
@@ -13255,10 +13247,10 @@
     "total_episodes": 0,
     "collection": {
       "on_hold": 218,
-      "dropped": 576,
-      "wish": 588,
-      "collect": 2979,
-      "doing": 413
+      "dropped": 575,
+      "wish": 590,
+      "collect": 2985,
+      "doing": 414
     },
     "id": 408351,
     "eps": 12,
@@ -13565,7 +13557,7 @@
       }
     ],
     "rating": {
-      "rank": 8302,
+      "rank": 8303,
       "total": 386,
       "count": {
         "1": 3,
@@ -13809,82 +13801,82 @@
       {
         "name": "å¼ä¸ç",
         "count": 4380,
-        "total_count": 259107
+        "total_count": 259277
       },
       {
         "name": "è½»å°è¯´æ¹",
-        "count": 2999,
-        "total_count": 492338
+        "count": 3000,
+        "total_count": 492549
       },
       {
         "name": "æ èè½¬ç",
         "count": 2266,
-        "total_count": 4823
+        "total_count": 4842
       },
       {
         "name": "StudioBind",
         "count": 2038,
-        "total_count": 15353
+        "total_count": 15371
       },
       {
         "name": "2023å¹´7æ",
         "count": 1949,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "TV",
         "count": 1685,
-        "total_count": 1391784
+        "total_count": 1392786
       },
       {
         "name": "ææ",
         "count": 1638,
-        "total_count": 465698
+        "total_count": 466087
       },
       {
         "name": "åé©",
         "count": 1591,
-        "total_count": 52990
+        "total_count": 53052
       },
       {
         "name": "åå®«",
         "count": 1346,
-        "total_count": 300324
+        "total_count": 300522
       },
       {
         "name": "2023",
         "count": 1004,
-        "total_count": 81142
+        "total_count": 81180
       },
       {
         "name": "å¥å¹»",
         "count": 889,
-        "total_count": 464448
+        "total_count": 464907
       },
       {
         "name": "è½»æ¹",
         "count": 660,
-        "total_count": 151656
+        "total_count": 151817
       },
       {
         "name": "æç±",
         "count": 576,
-        "total_count": 557747
+        "total_count": 558165
       },
       {
         "name": "å°è¯´æ¹",
         "count": 426,
-        "total_count": 156887
+        "total_count": 157083
       },
       {
         "name": "æ¥æ¬",
         "count": 313,
-        "total_count": 290883
+        "total_count": 291371
       },
       {
         "name": "ç»­é",
         "count": 212,
-        "total_count": 5135
+        "total_count": 5137
       },
       {
         "name": "åæ¬å­¦",
@@ -13894,12 +13886,12 @@
       {
         "name": "ç©¿è¶",
         "count": 98,
-        "total_count": 62298
+        "total_count": 62348
       },
       {
         "name": "ç»­ä½",
         "count": 73,
-        "total_count": 45593
+        "total_count": 45623
       },
       {
         "name": "å¹³éå®æ ",
@@ -13909,7 +13901,7 @@
       {
         "name": "æ ¡å­",
         "count": 56,
-        "total_count": 448014
+        "total_count": 448413
       },
       {
         "name": "å¹³éå®æ¨¹",
@@ -13924,37 +13916,37 @@
       {
         "name": "è½¬ç",
         "count": 27,
-        "total_count": 5353
+        "total_count": 5359
       },
       {
         "name": "æªå®æ¡£",
         "count": 24,
-        "total_count": 4103
+        "total_count": 4110
       },
       {
         "name": "æç¬",
         "count": 21,
-        "total_count": 633132
+        "total_count": 633630
       },
       {
         "name": "ç­è¡",
         "count": 21,
-        "total_count": 211238
+        "total_count": 211362
       },
       {
         "name": "ç¥ä½",
         "count": 20,
-        "total_count": 47570
+        "total_count": 47575
       },
       {
         "name": "æ¥å¸¸",
         "count": 20,
-        "total_count": 396029
+        "total_count": 396369
       },
       {
         "name": "é­æ³",
         "count": 17,
-        "total_count": 19874
+        "total_count": 19887
       }
     ],
     "infobox": [
@@ -14146,29 +14138,29 @@
       }
     ],
     "rating": {
-      "rank": 1578,
-      "total": 16520,
+      "rank": 1582,
+      "total": 16534,
       "count": {
-        "1": 121,
-        "2": 38,
+        "1": 128,
+        "2": 36,
         "3": 69,
-        "4": 191,
-        "5": 574,
-        "6": 2402,
-        "7": 6387,
-        "8": 4785,
-        "9": 1038,
+        "4": 187,
+        "5": 576,
+        "6": 2406,
+        "7": 6391,
+        "8": 4786,
+        "9": 1040,
         "10": 915
       },
       "score": 7.3
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 569,
-      "dropped": 361,
-      "wish": 3195,
-      "collect": 27648,
-      "doing": 2674
+      "on_hold": 570,
+      "dropped": 365,
+      "wish": 3204,
+      "collect": 27695,
+      "doing": 2679
     },
     "id": 373247,
     "eps": 13,
@@ -14202,47 +14194,47 @@
       {
         "name": "SUNRISE",
         "count": 398,
-        "total_count": 91710
+        "total_count": 91745
       },
       {
         "name": "2023å¹´7æ",
         "count": 353,
-        "total_count": 27959
+        "total_count": 27968
       },
       {
         "name": "å¶å",
         "count": 351,
-        "total_count": 71059
+        "total_count": 71089
       },
       {
         "name": "å¼ä¸ç",
         "count": 335,
-        "total_count": 259059
+        "total_count": 259235
       },
       {
         "name": "åå",
         "count": 280,
-        "total_count": 614628
+        "total_count": 615144
       },
       {
         "name": "LoveLiveï¼",
-        "count": 270,
-        "total_count": 6226
+        "count": 271,
+        "total_count": 6236
       },
       {
         "name": "TV",
         "count": 240,
-        "total_count": 1391592
+        "total_count": 1392623
       },
       {
         "name": "2023",
         "count": 199,
-        "total_count": 81134
+        "total_count": 81176
       },
       {
         "name": "å¥å¹»",
         "count": 171,
-        "total_count": 464356
+        "total_count": 464844
       },
       {
         "name": "Aqours",
@@ -14252,22 +14244,22 @@
       {
         "name": "ç¾å",
         "count": 104,
-        "total_count": 398733
+        "total_count": 399106
       },
       {
         "name": "LoveLive",
         "count": 51,
-        "total_count": 3710
+        "total_count": 3711
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 42,
-        "total_count": 853554
+        "total_count": 854172
       },
       {
         "name": "é³ä¹",
         "count": 29,
-        "total_count": 101721
+        "total_count": 101792
       },
       {
         "name": "ä¸­è°·äºæ²ç¾",
@@ -14277,17 +14269,17 @@
       {
         "name": "æ¥æ¬",
         "count": 15,
-        "total_count": 290767
+        "total_count": 291290
       },
       {
         "name": "è½»ç¾å",
         "count": 10,
-        "total_count": 37857
+        "total_count": 37877
       },
       {
         "name": "æ¥å¸¸",
         "count": 9,
-        "total_count": 395960
+        "total_count": 396318
       },
       {
         "name": "ä¸­è°·äºæ²ç¾",
@@ -14297,7 +14289,7 @@
       {
         "name": "æ¼«æ¹",
         "count": 8,
-        "total_count": 358969
+        "total_count": 359317
       },
       {
         "name": "å¤§éæå",
@@ -14310,44 +14302,44 @@
         "total_count": 1552
       },
       {
+        "name": "TVA",
+        "count": 4,
+        "total_count": 15433
+      },
+      {
         "name": "å°ææé¦",
         "count": 4,
         "total_count": 5
       },
       {
-        "name": "TVA",
-        "count": 4,
-        "total_count": 15422
-      },
-      {
-        "name": "ææ",
+        "name": "2023å¹´",
         "count": 3,
-        "total_count": 465619
-      },
-      {
-        "name": "æ¥æ¬å¨ç»",
-        "count": 3,
-        "total_count": 34759
-      },
-      {
-        "name": "å¨ç»",
-        "count": 3,
-        "total_count": 35478
-      },
-      {
-        "name": "2020s",
-        "count": 3,
-        "total_count": 3608
+        "total_count": 3587
       },
       {
         "name": "æªç¡®å®",
         "count": 3,
-        "total_count": 2026
+        "total_count": 2024
       },
       {
-        "name": "2023å¹´",
+        "name": "æ¥æ¬å¨ç»",
         "count": 3,
-        "total_count": 3587
+        "total_count": 34808
+      },
+      {
+        "name": "ææ",
+        "count": 3,
+        "total_count": 466021
+      },
+      {
+        "name": "å¨ç»",
+        "count": 3,
+        "total_count": 35511
+      },
+      {
+        "name": "2020s",
+        "count": 3,
+        "total_count": 3610
       }
     ],
     "infobox": [
@@ -14524,15 +14516,15 @@
       }
     ],
     "rating": {
-      "rank": 9540,
-      "total": 1273,
+      "rank": 9541,
+      "total": 1276,
       "count": {
         "1": 8,
         "2": 34,
         "3": 75,
         "4": 209,
-        "5": 376,
-        "6": 400,
+        "5": 377,
+        "6": 402,
         "7": 114,
         "8": 33,
         "9": 11,
@@ -14545,7 +14537,7 @@
       "on_hold": 336,
       "dropped": 588,
       "wish": 515,
-      "collect": 1484,
+      "collect": 1488,
       "doing": 396
     },
     "id": 389772,
@@ -14579,47 +14571,47 @@
       {
         "name": "A-1Pictures",
         "count": 1713,
-        "total_count": 145194
+        "total_count": 145241
       },
       {
         "name": "Fate",
         "count": 1571,
-        "total_count": 46806
+        "total_count": 46820
       },
       {
         "name": "Type-Moon",
         "count": 1247,
-        "total_count": 67426
+        "total_count": 67442
       },
       {
         "name": "ææ",
         "count": 1095,
-        "total_count": 465708
+        "total_count": 466087
       },
       {
         "name": "å¥å¹»",
         "count": 1035,
-        "total_count": 464466
+        "total_count": 464907
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 1023,
-        "total_count": 492348
+        "total_count": 492549
       },
       {
         "name": "2023å¹´7æ",
         "count": 891,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "2023",
         "count": 697,
-        "total_count": 81142
+        "total_count": 81180
       },
       {
         "name": "TV",
         "count": 619,
-        "total_count": 1391809
+        "total_count": 1392786
       },
       {
         "name": "æç°è¯æ",
@@ -14629,22 +14621,22 @@
       {
         "name": "å°è¯´æ¹",
         "count": 352,
-        "total_count": 156896
+        "total_count": 157083
       },
       {
         "name": "è½»æ¹",
         "count": 320,
-        "total_count": 151656
+        "total_count": 151817
       },
       {
         "name": "OVA",
         "count": 260,
-        "total_count": 362838
+        "total_count": 363027
       },
       {
         "name": "æ¥æ¬",
         "count": 218,
-        "total_count": 290898
+        "total_count": 291371
       },
       {
         "name": "æ¦æ·éª",
@@ -14659,12 +14651,12 @@
       {
         "name": "å§åºç",
         "count": 60,
-        "total_count": 719266
+        "total_count": 719699
       },
       {
         "name": "2022",
         "count": 47,
-        "total_count": 80178
+        "total_count": 80212
       },
       {
         "name": "TVSP",
@@ -14674,12 +14666,12 @@
       {
         "name": "ç¾¤å",
         "count": 35,
-        "total_count": 12562
+        "total_count": 12574
       },
       {
         "name": "æ³½éå¼ä¹",
         "count": 27,
-        "total_count": 27007
+        "total_count": 27009
       },
       {
         "name": "åè©°åµ©ä»",
@@ -14699,7 +14691,7 @@
       {
         "name": "ç­è¡",
         "count": 20,
-        "total_count": 211242
+        "total_count": 211362
       },
       {
         "name": "æ¾¤éå¼ä¹",
@@ -14714,7 +14706,7 @@
       {
         "name": "SP",
         "count": 9,
-        "total_count": 5899
+        "total_count": 5902
       },
       {
         "name": "A-1_Pictures",
@@ -14724,7 +14716,7 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 7,
-        "total_count": 34777
+        "total_count": 34809
       }
     ],
     "infobox": [
@@ -14841,17 +14833,17 @@
       }
     ],
     "rating": {
-      "rank": 1565,
-      "total": 7220,
+      "rank": 1564,
+      "total": 7228,
       "count": {
         "1": 8,
         "2": 7,
         "3": 10,
         "4": 26,
         "5": 137,
-        "6": 754,
-        "7": 3537,
-        "8": 2440,
+        "6": 756,
+        "7": 3541,
+        "8": 2442,
         "9": 210,
         "10": 91
       },
@@ -14859,11 +14851,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 151,
+      "on_hold": 152,
       "dropped": 49,
       "wish": 1516,
-      "collect": 12653,
-      "doing": 810
+      "collect": 12664,
+      "doing": 811
     },
     "id": 402128,
     "eps": 1,
@@ -14897,47 +14889,47 @@
       {
         "name": "å¼ä¸ç",
         "count": 612,
-        "total_count": 259111
+        "total_count": 259276
       },
       {
         "name": "2023å¹´7æ",
         "count": 372,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "é¾å²å¤©",
         "count": 358,
-        "total_count": 39249
+        "total_count": 39269
       },
       {
         "name": "è½»å°è¯´æ¹",
         "count": 328,
-        "total_count": 492345
+        "total_count": 492549
       },
       {
         "name": "å¦¹æ§",
         "count": 260,
-        "total_count": 18368
+        "total_count": 18374
       },
       {
         "name": "TV",
         "count": 217,
-        "total_count": 1391800
+        "total_count": 1392774
       },
       {
         "name": "å¥å¹»",
         "count": 215,
-        "total_count": 464454
+        "total_count": 464900
       },
       {
         "name": "åçº¸",
         "count": 177,
-        "total_count": 11853
+        "total_count": 11869
       },
       {
         "name": "2023",
         "count": 144,
-        "total_count": 81142
+        "total_count": 81180
       },
       {
         "name": "StapleEntertainment",
@@ -14947,7 +14939,7 @@
       {
         "name": "è½»æ¹",
         "count": 109,
-        "total_count": 151656
+        "total_count": 151819
       },
       {
         "name": "ç¨®å´æ¦ç¾",
@@ -14957,17 +14949,17 @@
       {
         "name": "å½è³",
         "count": 55,
-        "total_count": 3464
+        "total_count": 3465
       },
       {
         "name": "æç¬",
         "count": 50,
-        "total_count": 633157
+        "total_count": 633629
       },
       {
         "name": "å°è¯´æ¹",
         "count": 48,
-        "total_count": 156891
+        "total_count": 157080
       },
       {
         "name": "å¼ææ æ",
@@ -14977,42 +14969,42 @@
       {
         "name": "æ¥æ¬",
         "count": 28,
-        "total_count": 290890
+        "total_count": 291364
       },
       {
         "name": "åå®«",
         "count": 25,
-        "total_count": 300324
+        "total_count": 300515
       },
       {
         "name": "ææ",
         "count": 20,
-        "total_count": 465702
+        "total_count": 466078
       },
       {
         "name": "èè",
         "count": 14,
-        "total_count": 45693
+        "total_count": 45729
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 13,
-        "total_count": 34777
+        "total_count": 34809
       },
       {
         "name": "ç©¿è¶",
         "count": 12,
-        "total_count": 62298
+        "total_count": 62348
       },
       {
         "name": "è½¬ç",
         "count": 11,
-        "total_count": 5353
+        "total_count": 5359
       },
       {
         "name": "æ¥å¸¸",
         "count": 9,
-        "total_count": 396034
+        "total_count": 396367
       },
       {
         "name": "2023å¹´",
@@ -15022,12 +15014,12 @@
       {
         "name": "å¦¹å¦¹",
         "count": 7,
-        "total_count": 1724
+        "total_count": 1725
       },
       {
         "name": "å¦¹",
         "count": 7,
-        "total_count": 1932
+        "total_count": 1935
       },
       {
         "name": "ç´è°·ããã",
@@ -15042,7 +15034,7 @@
       {
         "name": "æ ¡å­",
         "count": 5,
-        "total_count": 448019
+        "total_count": 448411
       }
     ],
     "infobox": [
@@ -15182,13 +15174,13 @@
       }
     ],
     "rating": {
-      "rank": 9463,
-      "total": 2018,
+      "rank": 9467,
+      "total": 2019,
       "count": {
         "1": 15,
         "2": 26,
         "3": 89,
-        "4": 269,
+        "4": 270,
         "5": 686,
         "6": 676,
         "7": 193,
@@ -15200,10 +15192,10 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 154,
+      "on_hold": 155,
       "dropped": 364,
       "wish": 464,
-      "collect": 3325,
+      "collect": 3330,
       "doing": 440
     },
     "id": 400215,
@@ -15236,58 +15228,58 @@
     "tags": [
       {
         "name": "æç±",
-        "count": 343,
-        "total_count": 557668
+        "count": 344,
+        "total_count": 558153
       },
       {
         "name": "2023å¹´7æ",
-        "count": 255,
-        "total_count": 27959
+        "count": 256,
+        "total_count": 27969
       },
       {
         "name": "èåº",
-        "count": 250,
-        "total_count": 22554
+        "count": 251,
+        "total_count": 22581
       },
       {
         "name": "æ¼«ç»æ¹",
-        "count": 200,
-        "total_count": 853569
+        "count": 201,
+        "total_count": 854218
       },
       {
         "name": "projectNo.9",
-        "count": 198,
-        "total_count": 12983
+        "count": 199,
+        "total_count": 12993
       },
       {
         "name": "TV",
         "count": 154,
-        "total_count": 1391617
+        "total_count": 1392670
       },
       {
         "name": "2023",
-        "count": 114,
-        "total_count": 81134
+        "count": 115,
+        "total_count": 81176
       },
       {
         "name": "èè",
         "count": 112,
-        "total_count": 45691
+        "total_count": 45726
       },
       {
         "name": "æ¼«æ¹",
         "count": 87,
-        "total_count": 358975
+        "total_count": 359330
       },
       {
         "name": "å·¨ä¹³",
         "count": 73,
-        "total_count": 32662
+        "total_count": 32676
       },
       {
         "name": "æ¥å¸¸",
-        "count": 53,
-        "total_count": 395975
+        "count": 54,
+        "total_count": 396334
       },
       {
         "name": "p9",
@@ -15297,12 +15289,12 @@
       {
         "name": "æ¥æ¬",
         "count": 26,
-        "total_count": 290781
+        "total_count": 291308
       },
       {
         "name": "ä½è¤åæ",
-        "count": 18,
-        "total_count": 29
+        "count": 19,
+        "total_count": 30
       },
       {
         "name": "2023å¹´å¤",
@@ -15312,22 +15304,22 @@
       {
         "name": "TVA",
         "count": 11,
-        "total_count": 15422
+        "total_count": 15433
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 7,
-        "total_count": 34759
+        "total_count": 34808
       },
       {
         "name": "çº¯ç±",
         "count": 6,
-        "total_count": 38652
+        "total_count": 38678
       },
       {
         "name": "æç¬",
         "count": 5,
-        "total_count": 633070
+        "total_count": 633543
       },
       {
         "name": "2023å¹´",
@@ -15342,27 +15334,22 @@
       {
         "name": "è",
         "count": 3,
-        "total_count": 71103
+        "total_count": 71129
       },
       {
         "name": "æ²»æ",
         "count": 3,
-        "total_count": 299777
+        "total_count": 299923
       },
       {
-        "name": "å·²ä¸è½½",
+        "name": "ç§å¹»",
         "count": 2,
-        "total_count": 6841
-      },
-      {
-        "name": "å¬å¸çå°å°åè¾",
-        "count": 2,
-        "total_count": 2
+        "total_count": 250476
       },
       {
         "name": "å¨ç»",
         "count": 2,
-        "total_count": 35478
+        "total_count": 35511
       },
       {
         "name": "æ°ç¥æ¨¹",
@@ -15375,14 +15362,19 @@
         "total_count": 34
       },
       {
-        "name": "TVå¨ç»",
+        "name": "è",
         "count": 2,
-        "total_count": 4193
+        "total_count": 29356
       },
       {
-        "name": "ç§å¹»",
+        "name": "2020s",
         "count": 2,
-        "total_count": 250281
+        "total_count": 3611
+      },
+      {
+        "name": "TVå¨ç»",
+        "count": 2,
+        "total_count": 4199
       }
     ],
     "infobox": [
@@ -15502,15 +15494,15 @@
       }
     ],
     "rating": {
-      "rank": 8901,
-      "total": 1051,
+      "rank": 8902,
+      "total": 1052,
       "count": {
         "1": 4,
         "2": 20,
         "3": 34,
-        "4": 86,
-        "5": 279,
-        "6": 430,
+        "4": 85,
+        "5": 280,
+        "6": 431,
         "7": 147,
         "8": 39,
         "9": 3,
@@ -15520,11 +15512,11 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 196,
+      "on_hold": 197,
       "dropped": 376,
-      "wish": 708,
-      "collect": 1735,
-      "doing": 386
+      "wish": 710,
+      "collect": 1737,
+      "doing": 387
     },
     "id": 405198,
     "eps": 12,
@@ -15871,7 +15863,7 @@
       }
     ],
     "rating": {
-      "rank": 9732,
+      "rank": 9736,
       "total": 190,
       "count": {
         "1": 5,
@@ -15925,27 +15917,27 @@
       {
         "name": "æ¸¸ææ¹",
         "count": 701,
-        "total_count": 161572
+        "total_count": 161668
       },
       {
         "name": "2023å¹´7æ",
         "count": 526,
-        "total_count": 27960
+        "total_count": 27969
       },
       {
         "name": "LIDENFILMS",
         "count": 337,
-        "total_count": 14051
+        "total_count": 14072
       },
       {
         "name": "TV",
         "count": 323,
-        "total_count": 1391673
+        "total_count": 1392743
       },
       {
         "name": "å¥å¹»",
         "count": 279,
-        "total_count": 464405
+        "total_count": 464898
       },
       {
         "name": "ç¼éå·¥æ¿",
@@ -15955,12 +15947,12 @@
       {
         "name": "ç¾å",
         "count": 227,
-        "total_count": 398765
+        "total_count": 399137
       },
       {
         "name": "2023",
         "count": 220,
-        "total_count": 81136
+        "total_count": 81179
       },
       {
         "name": "èè¿",
@@ -15970,12 +15962,12 @@
       {
         "name": "æ¥å¸¸",
         "count": 133,
-        "total_count": 396002
+        "total_count": 396363
       },
       {
         "name": "åè",
         "count": 122,
-        "total_count": 68606
+        "total_count": 68661
       },
       {
         "name": "è¿",
@@ -15985,7 +15977,7 @@
       {
         "name": "æ¸¸æ¹",
         "count": 36,
-        "total_count": 2479
+        "total_count": 2480
       },
       {
         "name": "æ¥ªã¨ã",
@@ -15995,7 +15987,7 @@
       {
         "name": "å¼ä¸ç",
         "count": 22,
-        "total_count": 259087
+        "total_count": 259260
       },
       {
         "name": "2023å¹´",
@@ -16005,12 +15997,12 @@
       {
         "name": "åé©",
         "count": 20,
-        "total_count": 52989
+        "total_count": 53055
       },
       {
         "name": "æ¥æ¬",
         "count": 19,
-        "total_count": 290798
+        "total_count": 291336
       },
       {
         "name": "2023å¹´å¤",
@@ -16020,7 +16012,7 @@
       {
         "name": "ææ",
         "count": 6,
-        "total_count": 465654
+        "total_count": 466066
       },
       {
         "name": "2023å¤",
@@ -16035,17 +16027,17 @@
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 5,
-        "total_count": 34759
+        "total_count": 34808
       },
       {
         "name": "å¨ç»",
         "count": 5,
-        "total_count": 35483
+        "total_count": 35511
       },
       {
         "name": "TVA",
         "count": 3,
-        "total_count": 15422
+        "total_count": 15433
       },
       {
         "name": "è¡¨çª",
@@ -16211,13 +16203,13 @@
       }
     ],
     "rating": {
-      "rank": 9176,
-      "total": 1822,
+      "rank": 9180,
+      "total": 1823,
       "count": {
         "1": 9,
         "2": 18,
         "3": 59,
-        "4": 166,
+        "4": 167,
         "5": 560,
         "6": 763,
         "7": 189,
@@ -16229,10 +16221,10 @@
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 497,
+      "on_hold": 500,
       "dropped": 857,
-      "wish": 1019,
-      "collect": 2381,
+      "wish": 1020,
+      "collect": 2384,
       "doing": 636
     },
     "id": 425236,
@@ -16267,52 +16259,52 @@
       {
         "name": "æç±",
         "count": 1427,
-        "total_count": 557747
+        "total_count": 558165
       },
       {
         "name": "æ ¡å­",
         "count": 1038,
-        "total_count": 448014
+        "total_count": 448413
       },
       {
         "name": "2023å¹´7æ",
         "count": 856,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "CloverWorks",
         "count": 773,
-        "total_count": 56163
+        "total_count": 56192
       },
       {
         "name": "æ¥å¸¸",
         "count": 613,
-        "total_count": 396029
+        "total_count": 396369
       },
       {
         "name": "TV",
         "count": 503,
-        "total_count": 1391793
+        "total_count": 1392786
       },
       {
         "name": "æ¼«æ¹",
         "count": 486,
-        "total_count": 359027
+        "total_count": 359359
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 466,
-        "total_count": 853688
+        "total_count": 854306
       },
       {
         "name": "2023",
         "count": 364,
-        "total_count": 81142
+        "total_count": 81181
       },
       {
         "name": "ç»­ä½",
         "count": 319,
-        "total_count": 45595
+        "total_count": 45623
       },
       {
         "name": "å ä¸å®«æ",
@@ -16322,17 +16314,17 @@
       {
         "name": "çç²®",
         "count": 185,
-        "total_count": 18654
+        "total_count": 18661
       },
       {
         "name": "éæ¥",
         "count": 160,
-        "total_count": 106380
+        "total_count": 106420
       },
       {
         "name": "æ¥æ¬",
         "count": 103,
-        "total_count": 290885
+        "total_count": 291371
       },
       {
         "name": "ç³æµçå²",
@@ -16347,17 +16339,17 @@
       {
         "name": "æç¬",
         "count": 41,
-        "total_count": 633132
+        "total_count": 633630
       },
       {
         "name": "åå±±æè¼",
         "count": 28,
-        "total_count": 1128
+        "total_count": 1129
       },
       {
         "name": "çº¯ç±",
         "count": 26,
-        "total_count": 38657
+        "total_count": 38681
       },
       {
         "name": "ç³æ»¨çå²",
@@ -16377,22 +16369,22 @@
       {
         "name": "æ²»æ",
         "count": 7,
-        "total_count": 299792
+        "total_count": 299925
       },
       {
         "name": "å¨ç»",
         "count": 7,
-        "total_count": 35485
+        "total_count": 35511
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 6,
+        "total_count": 34809
       },
       {
         "name": "2023å¤",
         "count": 6,
         "total_count": 207
-      },
-      {
-        "name": "æ¥æ¬å¨ç»",
-        "count": 6,
-        "total_count": 34770
       },
       {
         "name": "7æ",
@@ -16407,7 +16399,7 @@
       {
         "name": "7",
         "count": 4,
-        "total_count": 2965
+        "total_count": 2966
       },
       {
         "name": "åå²¡ããã",
@@ -16549,7 +16541,7 @@
       }
     ],
     "rating": {
-      "rank": 3357,
+      "rank": 3360,
       "total": 4560,
       "count": {
         "1": 12,
@@ -16569,9 +16561,9 @@
     "collection": {
       "on_hold": 600,
       "dropped": 388,
-      "wish": 1772,
-      "collect": 8340,
-      "doing": 974
+      "wish": 1775,
+      "collect": 8348,
+      "doing": 975
     },
     "id": 425992,
     "eps": 13,

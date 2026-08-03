@@ -740,63 +740,63 @@
     "tags": [
       {
         "name": "MAPPA",
-        "count": 2140,
-        "total_count": 67193
+        "count": 2141,
+        "total_count": 67228
       },
       {
         "name": "è¿å»çå·¨äºº",
         "count": 1998,
-        "total_count": 32726
+        "total_count": 32731
       },
       {
         "name": "ææ",
         "count": 1488,
-        "total_count": 465702
+        "total_count": 466087
       },
       {
         "name": "æ¼«ç»æ¹",
-        "count": 1415,
-        "total_count": 853692
+        "count": 1416,
+        "total_count": 854306
       },
       {
         "name": "ç­è¡",
         "count": 1086,
-        "total_count": 211239
+        "total_count": 211362
       },
       {
         "name": "TV",
         "count": 997,
-        "total_count": 1391800
+        "total_count": 1392785
       },
       {
         "name": "2023",
-        "count": 912,
-        "total_count": 81142
+        "count": 913,
+        "total_count": 81180
       },
       {
         "name": "2023å¹´10æ",
         "count": 808,
-        "total_count": 37420
+        "total_count": 37437
       },
       {
         "name": "æäº",
         "count": 601,
-        "total_count": 21314
+        "total_count": 21334
       },
       {
         "name": "å¥å¹»",
         "count": 564,
-        "total_count": 464454
+        "total_count": 464907
       },
       {
         "name": "æ¼«æ¹",
         "count": 518,
-        "total_count": 359028
+        "total_count": 359359
       },
       {
         "name": "å§åºç",
-        "count": 454,
-        "total_count": 719263
+        "count": 455,
+        "total_count": 719699
       },
       {
         "name": "æç¥ä¸é",
@@ -811,7 +811,7 @@
       {
         "name": "æ¥æ¬",
         "count": 207,
-        "total_count": 290890
+        "total_count": 291371
       },
       {
         "name": "2023å¹´",
@@ -821,17 +821,17 @@
       {
         "name": "ç»­ä½",
         "count": 49,
-        "total_count": 45595
+        "total_count": 45623
       },
       {
         "name": "ç¥ä½",
         "count": 48,
-        "total_count": 47570
+        "total_count": 47575
       },
       {
         "name": "æ³½éå¼ä¹",
         "count": 48,
-        "total_count": 27007
+        "total_count": 27009
       },
       {
         "name": "å®ç»",
@@ -846,12 +846,12 @@
       {
         "name": "å§æ",
         "count": 26,
-        "total_count": 15885
+        "total_count": 15892
       },
       {
         "name": "OVA",
         "count": 22,
-        "total_count": 362835
+        "total_count": 363027
       },
       {
         "name": "æ¿å¤æµ©å¸",
@@ -861,7 +861,17 @@
       {
         "name": "ä¸ä¸ªæ¶ä»£çè½å¹",
         "count": 21,
-        "total_count": 544
+        "total_count": 545
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 18,
+        "total_count": 34809
+      },
+      {
+        "name": "TVSP",
+        "count": 18,
+        "total_count": 1962
       },
       {
         "name": "ç¬å¤æµ©å¸",
@@ -869,19 +879,9 @@
         "total_count": 1043
       },
       {
-        "name": "æ¥æ¬å¨ç»",
-        "count": 18,
-        "total_count": 34777
-      },
-      {
         "name": "é£ç§äºæä¸è¦å",
         "count": 18,
         "total_count": 79
-      },
-      {
-        "name": "TVSP",
-        "count": 18,
-        "total_count": 1962
       },
       {
         "name": "æ¢¶è£è²´",
@@ -1052,28 +1052,28 @@
     ],
     "rating": {
       "rank": 662,
-      "total": 10818,
+      "total": 10823,
       "count": {
         "1": 162,
         "2": 58,
         "3": 81,
         "4": 169,
         "5": 364,
-        "6": 924,
-        "7": 2630,
-        "8": 3604,
-        "9": 1567,
+        "6": 923,
+        "7": 2633,
+        "8": 3605,
+        "9": 1569,
         "10": 1259
       },
       "score": 7.6
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 237,
-      "dropped": 145,
-      "wish": 1439,
-      "collect": 18937,
-      "doing": 367
+      "on_hold": 238,
+      "dropped": 146,
+      "wish": 1440,
+      "collect": 18956,
+      "doing": 368
     },
     "id": 415779,
     "eps": 1,

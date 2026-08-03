@@ -249,77 +249,77 @@
       {
         "name": "åå",
         "count": 16,
-        "total_count": 614009
+        "total_count": 614737
       },
       {
         "name": "æ¬§ç¾",
         "count": 14,
-        "total_count": 86176
+        "total_count": 86236
       },
       {
         "name": "TV",
         "count": 11,
-        "total_count": 1390878
+        "total_count": 1391926
       },
       {
         "name": "ç§å¹»",
         "count": 10,
-        "total_count": 250103
+        "total_count": 250317
       },
       {
         "name": "TelecomAnimationFilm",
         "count": 9,
-        "total_count": 2761
+        "total_count": 2767
       },
       {
         "name": "2024å¹´7æ",
         "count": 9,
-        "total_count": 36907
+        "total_count": 36919
       },
       {
         "name": "åé©",
         "count": 8,
-        "total_count": 52938
+        "total_count": 53002
       },
       {
         "name": "2024",
         "count": 8,
-        "total_count": 71202
+        "total_count": 71246
       },
       {
         "name": "çååè«è",
         "count": 7,
-        "total_count": 1034
+        "total_count": 1039
       },
       {
         "name": "å¥å¹»",
         "count": 5,
-        "total_count": 463924
+        "total_count": 464533
       },
       {
         "name": "æ¥æ¬",
         "count": 5,
-        "total_count": 290214
+        "total_count": 290957
       },
       {
         "name": "æç¬",
         "count": 4,
-        "total_count": 632583
+        "total_count": 633221
       },
       {
         "name": "WEB",
         "count": 4,
-        "total_count": 70984
+        "total_count": 71059
       },
       {
         "name": "2023",
         "count": 2,
-        "total_count": 81107
+        "total_count": 81148
       },
       {
         "name": "åå§",
         "count": 1,
-        "total_count": 34099
+        "total_count": 34222
       },
       {
         "name": "Rick_and_Morty",
@@ -334,12 +334,12 @@
       {
         "name": "å¨ç»",
         "count": 1,
-        "total_count": 35445
+        "total_count": 35501
       },
       {
         "name": "æ½è±¡",
         "count": 1,
-        "total_count": 3933
+        "total_count": 3961
       },
       {
         "name": "ç¾å½",
@@ -349,17 +349,17 @@
       {
         "name": "åäºº",
         "count": 1,
-        "total_count": 8201
+        "total_count": 8204
       },
       {
         "name": "2023å¹´",
         "count": 1,
-        "total_count": 3586
+        "total_count": 3587
       },
       {
         "name": "æ²»æ",
         "count": 1,
-        "total_count": 299617
+        "total_count": 299818
       },
       {
         "name": "é¿å§é",
@@ -369,7 +369,7 @@
       {
         "name": "ç»­ä½",
         "count": 1,
-        "total_count": 45661
+        "total_count": 45598
       }
     ],
     "infobox": [
@@ -462,7 +462,7 @@
       }
     ],
     "rating": {
-      "rank": 6291,
+      "rank": 6290,
       "total": 57,
       "count": {
         "1": 1,
@@ -483,7 +483,7 @@
       "on_hold": 21,
       "dropped": 30,
       "wish": 83,
-      "collect": 115,
+      "collect": 116,
       "doing": 25
     },
     "id": 383338,
@@ -759,7 +759,7 @@
       }
     ],
     "rating": {
-      "rank": 8951,
+      "rank": 8956,
       "total": 334,
       "count": {
         "1": 4,

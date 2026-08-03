@@ -15,73 +15,73 @@
     "tags": [
       {
         "name": "BanGDream",
-        "count": 8036,
-        "total_count": 19973
+        "count": 8039,
+        "total_count": 19995
       },
       {
         "name": "åå",
-        "count": 7426,
-        "total_count": 614709
+        "count": 7429,
+        "total_count": 615251
       },
       {
         "name": "é³ä¹",
-        "count": 6798,
-        "total_count": 101740
+        "count": 6801,
+        "total_count": 101800
       },
       {
         "name": "ç¾å",
-        "count": 5961,
-        "total_count": 398804
+        "count": 5962,
+        "total_count": 399148
       },
       {
         "name": "æ­æ²",
-        "count": 5505,
-        "total_count": 12015
+        "count": 5506,
+        "total_count": 12019
       },
       {
         "name": "2023å¹´7æ",
         "count": 3541,
-        "total_count": 27963
+        "total_count": 27969
       },
       {
         "name": "ä¹é",
-        "count": 3022,
-        "total_count": 22479
+        "count": 3024,
+        "total_count": 22509
       },
       {
         "name": "å¶å",
         "count": 2985,
-        "total_count": 71072
+        "total_count": 71090
       },
       {
         "name": "TV",
-        "count": 2867,
-        "total_count": 1391835
+        "count": 2868,
+        "total_count": 1392799
       },
       {
         "name": "3D",
         "count": 2582,
-        "total_count": 50814
+        "total_count": 50830
       },
       {
         "name": "2023",
-        "count": 1817,
-        "total_count": 81142
+        "count": 1818,
+        "total_count": 81181
       },
       {
         "name": "SANZIGEN",
-        "count": 998,
-        "total_count": 3831
+        "count": 999,
+        "total_count": 3835
       },
       {
         "name": "ç¾å®®å¦é£",
-        "count": 866,
-        "total_count": 1854
+        "count": 867,
+        "total_count": 1856
       },
       {
         "name": "æ¥æ¬",
         "count": 796,
-        "total_count": 290918
+        "total_count": 291376
       },
       {
         "name": "æ¿æ¬åºå¤§",
@@ -91,37 +91,37 @@
       {
         "name": "ä¸æ¬¡å",
         "count": 258,
-        "total_count": 1583
+        "total_count": 1582
       },
       {
         "name": "æ æ³é¢æµçå½è¿ä¹èå°",
         "count": 231,
-        "total_count": 11309
+        "total_count": 11322
       },
       {
         "name": "æ ¡å­",
         "count": 184,
-        "total_count": 448033
+        "total_count": 448421
       },
       {
         "name": "è½»ç¾å",
         "count": 143,
-        "total_count": 37864
+        "total_count": 37877
       },
       {
         "name": "éæ¥",
         "count": 117,
-        "total_count": 106383
-      },
-      {
-        "name": "ç¶¾å¥ãã«ã",
-        "count": 79,
-        "total_count": 831
+        "total_count": 106421
       },
       {
         "name": "å°å¥³ä¹é",
         "count": 79,
-        "total_count": 475
+        "total_count": 477
+      },
+      {
+        "name": "ç¶¾å¥ãã«ã",
+        "count": 79,
+        "total_count": 832
       },
       {
         "name": "æ¿æ¬å¹¿å¤§",
@@ -131,7 +131,7 @@
       {
         "name": "æ¥å¸¸",
         "count": 61,
-        "total_count": 396051
+        "total_count": 396372
       },
       {
         "name": "MYGO",
@@ -146,17 +146,17 @@
       {
         "name": "è½»ç¾",
         "count": 47,
-        "total_count": 4038
+        "total_count": 4041
       },
       {
         "name": "ä¹éé¢æ",
         "count": 47,
-        "total_count": 4742
+        "total_count": 4745
       },
       {
         "name": "ç¥ä½",
         "count": 45,
-        "total_count": 47570
+        "total_count": 47575
       },
       {
         "name": "ãµã³ã¸ã²ã³",
@@ -343,28 +343,28 @@
       }
     ],
     "rating": {
-      "rank": 272,
-      "total": 31375,
+      "rank": 271,
+      "total": 31394,
       "count": {
         "1": 525,
         "2": 167,
-        "3": 127,
+        "3": 126,
         "4": 248,
-        "5": 574,
+        "5": 576,
         "6": 1975,
-        "7": 5627,
-        "8": 10622,
-        "9": 7254,
-        "10": 4256
+        "7": 5631,
+        "8": 10628,
+        "9": 7259,
+        "10": 4259
       },
       "score": 7.9
     },
     "total_episodes": 0,
     "collection": {
-      "on_hold": 711,
-      "dropped": 639,
-      "wish": 3928,
-      "collect": 47483,
+      "on_hold": 714,
+      "dropped": 640,
+      "wish": 3933,
+      "collect": 47526,
       "doing": 3601
     },
     "id": 428735,

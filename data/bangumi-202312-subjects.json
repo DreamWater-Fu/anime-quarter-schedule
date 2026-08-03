@@ -16,32 +16,32 @@
       {
         "name": "Type-Moon",
         "count": 82,
-        "total_count": 67399
+        "total_count": 67426
       },
       {
         "name": "æç¬",
         "count": 80,
-        "total_count": 632934
+        "total_count": 633188
       },
       {
         "name": "æ³¡é¢çª",
         "count": 61,
-        "total_count": 153313
+        "total_count": 153359
       },
       {
         "name": "Fate",
         "count": 60,
-        "total_count": 46784
+        "total_count": 46807
       },
       {
         "name": "2023",
         "count": 51,
-        "total_count": 81126
+        "total_count": 81145
       },
       {
         "name": "ç­ç",
         "count": 43,
-        "total_count": 101612
+        "total_count": 101629
       },
       {
         "name": "FGO",
@@ -51,7 +51,7 @@
       {
         "name": "WEB",
         "count": 28,
-        "total_count": 71024
+        "total_count": 71053
       },
       {
         "name": "DLE",
@@ -66,12 +66,12 @@
       {
         "name": "æ¼«ç»æ¹",
         "count": 22,
-        "total_count": 853331
+        "total_count": 853737
       },
       {
         "name": "OVA",
         "count": 19,
-        "total_count": 362765
+        "total_count": 362901
       },
       {
         "name": "è¤ä¸¸ç«é¦å¥é½ä¸ç¥é",
@@ -86,17 +86,17 @@
       {
         "name": "TV",
         "count": 11,
-        "total_count": 1391493
+        "total_count": 1391877
       },
       {
         "name": "æ¥æ¬",
         "count": 8,
-        "total_count": 290689
+        "total_count": 290934
       },
       {
         "name": "æ¼«æ¹",
         "count": 7,
-        "total_count": 358953
+        "total_count": 359060
       },
       {
         "name": "æ§ç°",
@@ -104,44 +104,34 @@
         "total_count": 23
       },
       {
+        "name": "æ¥å¸¸",
+        "count": 2,
+        "total_count": 396063
+      },
+      {
         "name": "å¨ç»",
         "count": 2,
-        "total_count": 35478
+        "total_count": 35501
       },
       {
         "name": "åå§",
         "count": 2,
-        "total_count": 34187
+        "total_count": 34215
       },
       {
-        "name": "æ¥å¸¸",
-        "count": 2,
-        "total_count": 395877
-      },
-      {
-        "name": "SP",
+        "name": "è¡¨å",
         "count": 1,
-        "total_count": 5898
+        "total_count": 448
       },
       {
-        "name": "ä¸­å½æ°å ç®¡æ§ç»æå",
+        "name": "2023å¹´",
         "count": 1,
-        "total_count": 1
+        "total_count": 3587
       },
       {
-        "name": "2024å¹´1æ",
+        "name": "å¨å",
         "count": 1,
-        "total_count": 25105
-      },
-      {
-        "name": "æç¾",
-        "count": 1,
-        "total_count": 32
-      },
-      {
-        "name": "æ¸¸ææ¹",
-        "count": 1,
-        "total_count": 161518
+        "total_count": 10
       },
       {
         "name": "å¥½ç",
@@ -149,19 +139,29 @@
         "total_count": 1524
       },
       {
-        "name": "æ²é",
+        "name": "ä¸­å½æ°å ç®¡æ§ç»æå",
         "count": 1,
-        "total_count": 6081
+        "total_count": 1
       },
       {
-        "name": "2024",
+        "name": "SP",
         "count": 1,
-        "total_count": 71216
+        "total_count": 5899
       },
       {
-        "name": "çªå¤",
+        "name": "æç¾",
         "count": 1,
-        "total_count": 4283
+        "total_count": 32
+      },
+      {
+        "name": "6",
+        "count": 1,
+        "total_count": 2141
+      },
+      {
+        "name": "2013",
+        "count": 1,
+        "total_count": 68524
       }
     ],
     "infobox": [
@@ -227,8 +227,8 @@
       }
     ],
     "rating": {
-      "rank": 3797,
-      "total": 287,
+      "rank": 3770,
+      "total": 289,
       "count": {
         "1": 0,
         "2": 1,
@@ -236,8 +236,8 @@
         "4": 1,
         "5": 25,
         "6": 83,
-        "7": 135,
-        "8": 30,
+        "7": 136,
+        "8": 31,
         "9": 4,
         "10": 7
       },
@@ -248,7 +248,7 @@
       "on_hold": 19,
       "dropped": 11,
       "wish": 133,
-      "collect": 694,
+      "collect": 695,
       "doing": 23
     },
     "id": 467713,
@@ -281,37 +281,37 @@
       {
         "name": "Type-Moon",
         "count": 29,
-        "total_count": 67353
+        "total_count": 67426
       },
       {
         "name": "Fate",
         "count": 25,
-        "total_count": 46779
+        "total_count": 46807
       },
       {
         "name": "2024",
         "count": 24,
-        "total_count": 71208
+        "total_count": 71244
       },
       {
         "name": "ç­ç",
         "count": 24,
-        "total_count": 101584
+        "total_count": 101629
       },
       {
         "name": "OVA",
         "count": 14,
-        "total_count": 362742
+        "total_count": 362896
       },
       {
         "name": "æ³¡é¢çª",
         "count": 13,
-        "total_count": 153301
+        "total_count": 153359
       },
       {
         "name": "æ¸¸ææ¹",
         "count": 11,
-        "total_count": 161496
+        "total_count": 161580
       },
       {
         "name": "ç­ç¯",
@@ -321,7 +321,7 @@
       {
         "name": "æ¥æ¬",
         "count": 7,
-        "total_count": 290549
+        "total_count": 290933
       },
       {
         "name": "RouseAct",
@@ -331,22 +331,22 @@
       {
         "name": "TV",
         "count": 6,
-        "total_count": 1391344
+        "total_count": 1391862
       },
       {
         "name": "2023",
         "count": 6,
-        "total_count": 81124
+        "total_count": 81144
       },
       {
         "name": "æ¥å¸¸",
         "count": 6,
-        "total_count": 395835
+        "total_count": 396002
       },
       {
         "name": "æ¥æ¬å¨ç»",
         "count": 4,
-        "total_count": 34754
+        "total_count": 34797
       },
       {
         "name": "ã©ã¦ãºã¢ã¯ã",
@@ -366,7 +366,7 @@
       {
         "name": "åå",
         "count": 1,
-        "total_count": 614367
+        "total_count": 614718
       },
       {
         "name": "D",
@@ -376,7 +376,7 @@
       {
         "name": "SP",
         "count": 1,
-        "total_count": 5900
+        "total_count": 5899
       },
       {
         "name": "5",
@@ -386,12 +386,12 @@
       {
         "name": "ç¾é£",
         "count": 1,
-        "total_count": 28954
+        "total_count": 28969
       },
       {
         "name": "å¨ç»",
         "count": 1,
-        "total_count": 35477
+        "total_count": 35501
       },
       {
         "name": "æ¸¸æ¹",
@@ -430,15 +430,15 @@
       }
     ],
     "rating": {
-      "rank": 5439,
-      "total": 62,
+      "rank": 5475,
+      "total": 63,
       "count": {
         "1": 0,
         "2": 0,
         "3": 2,
         "4": 0,
         "5": 13,
-        "6": 35,
+        "6": 36,
         "7": 7,
         "8": 3,
         "9": 0,
@@ -485,52 +485,52 @@
       {
         "name": "OVA",
         "count": 453,
-        "total_count": 362814
+        "total_count": 363027
       },
       {
         "name": "StudioColorido",
         "count": 348,
-        "total_count": 3797
+        "total_count": 3798
       },
       {
         "name": "2023",
         "count": 341,
-        "total_count": 81134
+        "total_count": 81181
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 327,
-        "total_count": 853573
+        "total_count": 854306
       },
       {
         "name": "å¥å¹»",
         "count": 283,
-        "total_count": 464378
+        "total_count": 464907
       },
       {
         "name": "ææ",
         "count": 280,
-        "total_count": 465636
+        "total_count": 466087
       },
       {
         "name": "æ¼«æ¹",
         "count": 175,
-        "total_count": 358975
+        "total_count": 359359
       },
       {
         "name": "2024å¹´1æ",
         "count": 155,
-        "total_count": 25105
+        "total_count": 25112
       },
       {
         "name": "ä¹ä¿å¸¦äºº",
         "count": 150,
-        "total_count": 1403
+        "total_count": 1405
       },
       {
         "name": "TV",
         "count": 135,
-        "total_count": 1391619
+        "total_count": 1392786
       },
       {
         "name": "teamYamahitsuji",
@@ -540,7 +540,7 @@
       {
         "name": "ç­ç",
         "count": 65,
-        "total_count": 101620
+        "total_count": 101691
       },
       {
         "name": "å·ééæ",
@@ -550,12 +550,12 @@
       {
         "name": "æ¥æ¬",
         "count": 42,
-        "total_count": 290781
+        "total_count": 291371
       },
       {
         "name": "2024",
         "count": 18,
-        "total_count": 71222
+        "total_count": 71280
       },
       {
         "name": "å·éè¾¾æ",
@@ -565,7 +565,7 @@
       {
         "name": "é­æ³",
         "count": 14,
-        "total_count": 19873
+        "total_count": 19887
       },
       {
         "name": "å±±ç°å¯è",
@@ -593,9 +593,14 @@
         "total_count": 21
       },
       {
+        "name": "2023å¹´12æ",
+        "count": 7,
+        "total_count": 369
+      },
+      {
         "name": "2023å¹´10æ",
         "count": 7,
-        "total_count": 37416
+        "total_count": 37437
       },
       {
         "name": "é¾ä¸é­å¥³",
@@ -603,34 +608,29 @@
         "total_count": 20
       },
       {
-        "name": "2023å¹´12æ",
-        "count": 7,
-        "total_count": 368
-      },
-      {
         "name": "ã¹ã¿ã¸ãªã³ã­ãªã",
         "count": 6,
         "total_count": 141
       },
       {
-        "name": "Colorido",
-        "count": 5,
-        "total_count": 733
-      },
-      {
         "name": "ç»­ä½",
         "count": 5,
-        "total_count": 45586
+        "total_count": 45623
       },
       {
-        "name": "ç¾å",
-        "count": 4,
-        "total_count": 398744
+        "name": "Colorido",
+        "count": 5,
+        "total_count": 734
       },
       {
         "name": "å²¸æ¬å",
         "count": 4,
         "total_count": 1325
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 4,
+        "total_count": 34809
       }
     ],
     "infobox": [
@@ -740,15 +740,15 @@
       }
     ],
     "rating": {
-      "rank": 2873,
-      "total": 1792,
+      "rank": 2876,
+      "total": 1793,
       "count": {
         "1": 1,
         "2": 4,
         "3": 1,
         "4": 21,
         "5": 67,
-        "6": 374,
+        "6": 375,
         "7": 931,
         "8": 326,
         "9": 44,
@@ -760,7 +760,7 @@
     "collection": {
       "on_hold": 45,
       "dropped": 11,
-      "wish": 746,
+      "wish": 747,
       "collect": 3170,
       "doing": 123
     },
@@ -1000,62 +1000,62 @@
       {
         "name": "OVA",
         "count": 279,
-        "total_count": 362851
+        "total_count": 363022
       },
       {
         "name": "æç¬",
         "count": 237,
-        "total_count": 633170
+        "total_count": 633618
       },
       {
         "name": "æ¥å¸¸",
         "count": 184,
-        "total_count": 396043
+        "total_count": 396365
       },
       {
         "name": "2023",
         "count": 161,
-        "total_count": 81142
+        "total_count": 81180
       },
       {
         "name": "ç¾å",
         "count": 158,
-        "total_count": 398802
+        "total_count": 399144
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 132,
-        "total_count": 853720
+        "total_count": 854290
       },
       {
         "name": "Makaria",
         "count": 89,
-        "total_count": 630
+        "total_count": 632
       },
       {
         "name": "2023å¹´10æ",
         "count": 86,
-        "total_count": 37420
+        "total_count": 37436
       },
       {
         "name": "å¥å¹»",
         "count": 66,
-        "total_count": 464478
+        "total_count": 464891
       },
       {
         "name": "TV",
         "count": 63,
-        "total_count": 1391817
+        "total_count": 1392756
       },
       {
         "name": "æ¼«æ¹",
         "count": 50,
-        "total_count": 359037
+        "total_count": 359353
       },
       {
         "name": "è½»ç¾å",
         "count": 34,
-        "total_count": 37864
+        "total_count": 37877
       },
       {
         "name": "å°éªç¥é£è¸¢",
@@ -1065,12 +1065,12 @@
       {
         "name": "æ¥æ¬",
         "count": 24,
-        "total_count": 290908
+        "total_count": 291351
       },
       {
         "name": "ç»­ä½",
         "count": 24,
-        "total_count": 45595
+        "total_count": 45619
       },
       {
         "name": "éªç¥ä¸å¨äºçå°å¥³",
@@ -1083,29 +1083,24 @@
         "total_count": 13
       },
       {
-        "name": "è",
-        "count": 6,
-        "total_count": 71110
-      },
-      {
         "name": "2023å¹´",
         "count": 6,
         "total_count": 3587
       },
       {
+        "name": "è",
+        "count": 6,
+        "total_count": 71134
+      },
+      {
         "name": "è½»ç¾",
         "count": 4,
-        "total_count": 4038
+        "total_count": 4041
       },
       {
         "name": "2023å¹´12æ",
         "count": 4,
-        "total_count": 368
-      },
-      {
-        "name": "å®«åå¤§ç¿",
-        "count": 3,
-        "total_count": 3
+        "total_count": 369
       },
       {
         "name": "æä¸æ¡å­",
@@ -1113,29 +1108,9 @@
         "total_count": 27
       },
       {
-        "name": "ãã«ãªã¢",
-        "count": 2,
-        "total_count": 52
-      },
-      {
-        "name": "2023ç§",
-        "count": 2,
-        "total_count": 286
-      },
-      {
-        "name": "çªå¤",
-        "count": 2,
-        "total_count": 4284
-      },
-      {
-        "name": "åå§",
-        "count": 2,
-        "total_count": 34211
-      },
-      {
-        "name": "TVSP",
-        "count": 2,
-        "total_count": 1962
+        "name": "å®«åå¤§ç¿",
+        "count": 3,
+        "total_count": 3
       },
       {
         "name": "ææ¸¸å®£ä¼ ",
@@ -1143,9 +1118,34 @@
         "total_count": 133
       },
       {
-        "name": "èè±",
+        "name": "TVSP",
+        "count": 2,
+        "total_count": 1962
+      },
+      {
+        "name": "åå§",
+        "count": 2,
+        "total_count": 34293
+      },
+      {
+        "name": "çªå¤",
+        "count": 2,
+        "total_count": 4285
+      },
+      {
+        "name": "2023ç§",
+        "count": 2,
+        "total_count": 286
+      },
+      {
+        "name": "ãã«ãªã¢",
+        "count": 2,
+        "total_count": 52
+      },
+      {
+        "name": "æ¬¢ä¹",
         "count": 1,
-        "total_count": 7931
+        "total_count": 6471
       }
     ],
     "infobox": [
@@ -1239,7 +1239,7 @@
       }
     ],
     "rating": {
-      "rank": 8314,
+      "rank": 8313,
       "total": 852,
       "count": {
         "1": 2,
@@ -1259,9 +1259,9 @@
     "collection": {
       "on_hold": 80,
       "dropped": 25,
-      "wish": 577,
-      "collect": 1758,
-      "doing": 77
+      "wish": 579,
+      "collect": 1759,
+      "doing": 78
     },
     "id": 433729,
     "eps": 1,

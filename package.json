@@ -16,10 +16,12 @@
     "data:update": "node --experimental-strip-types scripts/update-season.ts",
     "data:reconcile": "node --experimental-strip-types scripts/reconcile-current-cache.ts",
     "data:sync-bangumi": "node --experimental-strip-types scripts/sync-bangumi-details.ts",
+    "data:match-bangumi": "node --experimental-strip-types scripts/match-missing-bangumi.ts",
     "data:validate": "node --experimental-strip-types scripts/validate-cache.ts",
     "api:smoke": "node --experimental-strip-types scripts/api-smoke.ts",
     "check": "npm run typecheck && npm run lint && npm run test && npm run data:validate && npm run api:smoke",
-    "vercel:build": "npm run check && next build"
+    "vercel:build": "npm run check && next build",
+    "data:refresh-bangumi": "node --experimental-strip-types scripts/refresh-bangumi-snapshots.ts"
   },
   "engines": {
     "node": ">=24"

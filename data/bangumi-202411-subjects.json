@@ -946,7 +946,7 @@
       }
     ],
     "rating": {
-      "rank": 9213,
+      "rank": 9216,
       "total": 392,
       "count": {
         "1": 0,
@@ -1560,77 +1560,87 @@
       {
         "name": "æµ·è´¼ç",
         "count": 34,
-        "total_count": 13492
+        "total_count": 13512
       },
       {
         "name": "æ¼«ç»æ¹",
         "count": 28,
-        "total_count": 850912
+        "total_count": 854154
       },
       {
         "name": "2024å¹´10æ",
         "count": 25,
-        "total_count": 26294
+        "total_count": 26337
       },
       {
         "name": "2024",
         "count": 25,
-        "total_count": 71227
+        "total_count": 71277
       },
       {
         "name": "TV",
         "count": 24,
-        "total_count": 1389804
+        "total_count": 1392607
       },
       {
         "name": "ææ",
         "count": 15,
-        "total_count": 464023
+        "total_count": 466014
       },
       {
         "name": "åé©",
         "count": 13,
-        "total_count": 52817
+        "total_count": 53043
       },
       {
         "name": "åå¹´çª",
         "count": 9,
-        "total_count": 4314
+        "total_count": 4318
       },
       {
         "name": "æ¥æ¬",
         "count": 9,
-        "total_count": 289423
+        "total_count": 291276
       },
       {
         "name": "ç­è¡",
         "count": 8,
-        "total_count": 210778
+        "total_count": 211324
       },
       {
         "name": "æ±æ ã¢ãã¡ã¼ã·ã§ã³",
         "count": 6,
-        "total_count": 9859
+        "total_count": 9872
       },
       {
         "name": "æ¼«æ¹",
         "count": 5,
-        "total_count": 358367
+        "total_count": 359311
       },
       {
         "name": "å°å¹´å",
         "count": 5,
-        "total_count": 7179
+        "total_count": 7245
       },
       {
         "name": "ä¸æ å¨ç»",
         "count": 5,
-        "total_count": 7193
+        "total_count": 7230
       },
       {
         "name": "ä¸æ ",
         "count": 5,
-        "total_count": 20797
+        "total_count": 20832
+      },
+      {
+        "name": "ONEPIECE",
+        "count": 2,
+        "total_count": 9205
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 2,
+        "total_count": 464837
       },
       {
         "name": "æ°å·¥æ¼«",
@@ -1638,49 +1648,19 @@
         "total_count": 216
       },
       {
-        "name": "ONEPIECE",
-        "count": 2,
-        "total_count": 9202
-      },
-      {
-        "name": "å¥å¹»",
-        "count": 2,
-        "total_count": 462475
-      },
-      {
-        "name": "2025",
+        "name": "JUMP",
         "count": 1,
-        "total_count": 72007
+        "total_count": 33274
       },
       {
-        "name": "æ»éç¯",
+        "name": "å·¨ä¹³",
         "count": 1,
-        "total_count": 18357
+        "total_count": 32675
       },
       {
-        "name": "éå¶",
+        "name": "ä¸é¥­",
         "count": 1,
-        "total_count": 2358
-      },
-      {
-        "name": "åå¹´çªçµ",
-        "count": 1,
-        "total_count": 210
-      },
-      {
-        "name": "2024å¹´",
-        "count": 1,
-        "total_count": 2627
-      },
-      {
-        "name": "ä¸­å¹´",
-        "count": 1,
-        "total_count": 803
-      },
-      {
-        "name": "é·å³¯éä¹",
-        "count": 1,
-        "total_count": 140
+        "total_count": 180
       },
       {
         "name": "éå¶ç",
@@ -1688,24 +1668,44 @@
         "total_count": 668
       },
       {
-        "name": "å·¨ä¹³",
-        "count": 1,
-        "total_count": 32627
-      },
-      {
-        "name": "JUMP",
-        "count": 1,
-        "total_count": 33231
-      },
-      {
         "name": "6å",
         "count": 1,
-        "total_count": 2679
+        "total_count": 2686
       },
       {
-        "name": "ä¸é¥­",
+        "name": "é·å³¯éä¹",
         "count": 1,
-        "total_count": 180
+        "total_count": 140
+      },
+      {
+        "name": "ã¢ãã¡",
+        "count": 1,
+        "total_count": 4459
+      },
+      {
+        "name": "éå¶",
+        "count": 1,
+        "total_count": 2359
+      },
+      {
+        "name": "2024ç§",
+        "count": 1,
+        "total_count": 272
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35511
+      },
+      {
+        "name": "2025å¬",
+        "count": 1,
+        "total_count": 303
+      },
+      {
+        "name": "2025çå®",
+        "count": 1,
+        "total_count": 95
       }
     ],
     "infobox": [
@@ -1750,14 +1750,14 @@
       }
     ],
     "rating": {
-      "rank": 5052,
-      "total": 113,
+      "rank": 5107,
+      "total": 114,
       "count": {
         "1": 1,
         "2": 0,
         "3": 2,
         "4": 5,
-        "5": 13,
+        "5": 14,
         "6": 46,
         "7": 27,
         "8": 15,
@@ -1771,7 +1771,7 @@
       "on_hold": 26,
       "dropped": 32,
       "wish": 60,
-      "collect": 223,
+      "collect": 224,
       "doing": 33
     },
     "id": 518603,

@@ -8,6 +8,7 @@ import {
   isValidDateString
 } from "../src/server/anime/calculateSeason.ts";
 import { getDefaultStorage } from "../src/server/cache/jsonFileStorage.ts";
+import { scoreBangumiCandidate } from "../src/server/sources/bangumi/matcher.ts";
 import type { AnimeCache, AnimeItem, AnimeSource } from "../src/server/types/anime.ts";
 
 const execFileAsync = promisify(execFile);
@@ -53,17 +54,24 @@ async function main() {
   ];
   const fetchedAt = now.toISOString();
   const details = await fetchBangumiDetails(ids);
+  const snapshotSubjects = await readBangumiSubjectSnapshots();
   let ratingUpdated = 0;
+  let matchedMissingBangumi = 0;
+  let coverUpdated = 0;
   let episodeUpdated = 0;
   let statusUpdated = 0;
 
   const nextItems = cache.items.map((item) => {
     const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
-    const detail = subjectId === null ? undefined : details.get(subjectId);
+    const detail = subjectId === null
+      ? findBangumiSnapshotMatch(item, snapshotSubjects)
+      : details.get(subjectId);
     if (!detail) return normalizeBroadcastState(item, fetchedAt);
 
     const next = mergeBangumiDetail(item, detail, fetchedAt);
+    if (subjectId === null && next.bangumi.subjectId !== null) matchedMissingBangumi += 1;
     if (item.bangumi.rating === null && next.bangumi.rating !== null) ratingUpdated += 1;
+    if (item.coverImage?.source !== "bangumi" && next.coverImage?.source === "bangumi") coverUpdated += 1;
     if (item.episodeCount === null && next.episodeCount !== null) episodeUpdated += 1;
     if (item.status !== next.status) statusUpdated += 1;
     return next;
@@ -90,7 +98,15 @@ async function main() {
     }
   });
 
-  console.log(JSON.stringify({ requested: ids.length, found: details.size, ratingUpdated, episodeUpdated, statusUpdated }, null, 2));
+  console.log(JSON.stringify({
+    requested: ids.length,
+    found: details.size,
+    matchedMissingBangumi,
+    ratingUpdated,
+    coverUpdated,
+    episodeUpdated,
+    statusUpdated
+  }, null, 2));
 }
 
 async function fetchBangumiDetails(ids: number[]): Promise<Map<number, BangumiDetail>> {
@@ -166,7 +182,7 @@ function mergeBangumiDetail(item: AnimeItem, detail: BangumiDetail, fetchedAt: s
       startDate,
       endDate,
       episodeCount,
-      airedEpisodeCount: countAiredEpisodes(schedule),
+      airedEpisodeCount: capAiredEpisodeCount(countAiredEpisodes(schedule), episodeCount),
       primarySeason,
       activeSeasons: calculateActiveSeasons({ schedule, fallbackPrimarySeason: primarySeason }),
       updateWeekday: inferUpdateWeekday({
@@ -194,6 +210,136 @@ function mergeBangumiDetail(item: AnimeItem, detail: BangumiDetail, fetchedAt: s
     fetchedAt
   );
   return normalized;
+}
+
+async function readBangumiSubjectSnapshots(): Promise<Map<string, BangumiSubject[]>> {
+  const { readdir, readFile } = await import("node:fs/promises");
+  const result = new Map<string, BangumiSubject[]>();
+  let files: string[] = [];
+  try {
+    files = await readdir("data");
+  } catch {
+    return result;
+  }
+
+  for (const file of files) {
+    const match = /^bangumi-(\d{4})(\d{2})-subjects\.json$/u.exec(file);
+    if (!match) continue;
+    const year = match[1]!;
+    const month = Number(match[2]);
+    try {
+      const payload = JSON.parse(await readFile(`data/${file}`, "utf8")) as unknown;
+      const subjects = extractSnapshotSubjects(payload);
+      result.set(`${year}-${month}`, subjects);
+    } catch {
+      // Ignore corrupt local snapshots; online detail sync can still proceed.
+    }
+  }
+
+  return result;
+}
+
+function extractSnapshotSubjects(payload: unknown): BangumiSubject[] {
+  const rows = Array.isArray(payload)
+    ? payload
+    : payload && typeof payload === "object" && Array.isArray((payload as { data?: unknown }).data)
+      ? (payload as { data: unknown[] }).data
+      : [];
+  return rows.filter(isBangumiSubject);
+}
+
+function isBangumiSubject(value: unknown): value is BangumiSubject {
+  return Boolean(
+    value &&
+    typeof value === "object" &&
+    Number.isInteger((value as { id?: unknown }).id) &&
+    (value as { type?: unknown }).type === 2 &&
+    typeof (value as { name?: unknown }).name === "string"
+  );
+}
+
+function findBangumiSnapshotMatch(
+  item: AnimeItem,
+  snapshots: Map<string, BangumiSubject[]>
+): BangumiSubject | undefined {
+  if (!item.sources.some((source) => source.name === "YucWiki")) return undefined;
+  if (item.primarySeason === null) return undefined;
+
+  const lookupMonths = getBangumiLookupMonths(item.primarySeason.year, item.primarySeason.quarter);
+  const subjectsById = new Map<number, BangumiSubject>();
+  for (const { year, month } of lookupMonths) {
+    for (const subject of snapshots.get(`${year}-${month}`) ?? []) {
+      subjectsById.set(subject.id, subject);
+    }
+  }
+
+  const input = {
+    title: item.title,
+    year: item.primarySeason.year,
+    quarter: item.primarySeason.quarter,
+    startDate: item.startDate,
+    format: item.format,
+    episodeCount: item.episodeCount,
+    officialUrl: item.officialUrl,
+    studios: item.staff?.studio ?? [],
+    sources: item.sources,
+    existingBangumiId: null
+  };
+  const scored = [...subjectsById.values()]
+    .map((subject) => scoreBangumiCandidate(input, subject, { fromSearch: false, fromSeasonMonth: true }))
+    .sort((left, right) => right.score - left.score);
+  const best = scored[0];
+  if (!best || !isAcceptedSnapshotMatch(best, scored[1])) return undefined;
+  return best.subject;
+}
+
+function isAcceptedSnapshotMatch(
+  best: ReturnType<typeof scoreBangumiCandidate>,
+  second: ReturnType<typeof scoreBangumiCandidate> | undefined
+): boolean {
+  const disallowedRisks = new Set([
+    "year_mismatch",
+    "date_conflict",
+    "season_token_mismatch",
+    "format_conflict",
+    "multiple_close_candidates",
+    "chinese_title_only",
+    "alias_only"
+  ]);
+  if (best.risks.some((risk) => disallowedRisks.has(risk))) return false;
+  const hasTitleEvidence = best.matchedFields.some((field) => field === "name" || field === "name_cn" || field === "alias" || field === "english");
+  const hasAuxEvidence = best.matchedFields.some((field) => field === "date" || field === "quarter" || field === "officialUrl" || field === "episodeCount" || field === "seasonToken");
+  if (!hasTitleEvidence || !hasAuxEvidence) return false;
+  if (best.score < 80) return false;
+  if (second && best.score - second.score < 15) return false;
+  return true;
+}
+
+function getBangumiLookupMonths(
+  year: number,
+  quarter: AnimeItem["primarySeason"] extends infer T ? T extends { quarter: infer Q } ? Q : never : never
+): Array<{ year: number; month: number }> {
+  const seasonMonth = quarterToSeasonMonth(quarter);
+  const months = seasonMonth === 1 ? [12, 1, 2, 3] : [seasonMonth - 1, seasonMonth, seasonMonth + 1, seasonMonth + 2];
+  return months.map((month) => ({
+    year: seasonMonth === 1 && month === 12 ? year - 1 : year,
+    month
+  }));
+}
+
+function quarterToSeasonMonth(quarter: AnimeItem["primarySeason"] extends infer T ? T extends { quarter: infer Q } ? Q : never : never): number {
+  switch (quarter) {
+    case "winter":
+      return 1;
+    case "spring":
+      return 4;
+    case "summer":
+      return 7;
+    case "fall":
+      return 10;
+    default:
+      return 1;
+  }
 }
 
 function normalizeBroadcastState(item: AnimeItem, updatedAt: string): AnimeItem {
@@ -243,6 +389,11 @@ function inferStatusFromDates(startDate: string | null, endDate: string | null):
 function countAiredEpisodes(schedule: AnimeItem["schedule"]): number | null {
   if (schedule.length === 0) return null;
   return schedule.filter((item) => item.airDate <= today).length;
+}
+
+function capAiredEpisodeCount(value: number | null, episodeCount: number | null): number | null {
+  if (value === null) return null;
+  return episodeCount === null ? value : Math.min(value, episodeCount);
 }
 
 function addDays(date: string, days: number): string {

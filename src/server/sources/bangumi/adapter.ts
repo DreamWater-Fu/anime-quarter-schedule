@@ -15,6 +15,7 @@ import type { BangumiClient, BangumiEpisode, BangumiSubject } from "./types.ts";
 const execFileAsync = promisify(execFile);
 const DEFAULT_BANGUMI_API_BASE_URL = "https://api.bgm.tv";
 const DEFAULT_BANGUMI_USER_AGENT = "anime-quarter-schedule-local/0.1.1 (contact: local-dev)";
+const BANGUMI_MONTH_PAGE_LIMIT = 100;
 
 export interface BangumiAdapterOptions {
   client?: BangumiClient;
@@ -122,11 +123,11 @@ export class BangumiSourceAdapter implements AnimeSourceAdapter {
     warnings: SourceIssue[],
     cachedSubjectIds: Set<number>
   ): Promise<BangumiSubject[]> {
-    const months = [season, season + 1, season + 2];
+    const months = getBangumiLookupMonths(year, season);
     const byId = new Map<number, BangumiSubject>();
 
-    for (const month of months) {
-      const cachedSubjects = await this.readCachedSubjects(year, month, warnings);
+    for (const { year: lookupYear, month } of months) {
+      const cachedSubjects = await this.readCachedSubjects(lookupYear, month, warnings);
       if (cachedSubjects) {
         for (const subject of cachedSubjects) {
           byId.set(subject.id, subject);
@@ -136,13 +137,13 @@ export class BangumiSourceAdapter implements AnimeSourceAdapter {
       }
 
       try {
-        const subjects = await this.client.listSubjectsByMonth({ year, month });
-        await this.writeCachedSubjects(year, month, subjects, warnings);
+        const subjects = await this.fetchAllMonthSubjects(lookupYear, month);
+        await this.writeCachedSubjects(lookupYear, month, subjects, warnings);
         for (const subject of subjects) byId.set(subject.id, subject);
       } catch (error) {
-        const fallbackSubjects = await this.tryMonthSubjectFallback(year, month, warnings);
+        const fallbackSubjects = await this.tryMonthSubjectFallback(lookupYear, month, warnings);
         if (fallbackSubjects) {
-          await this.writeCachedSubjects(year, month, fallbackSubjects, warnings);
+          await this.writeCachedSubjects(lookupYear, month, fallbackSubjects, warnings);
           for (const subject of fallbackSubjects) {
             byId.set(subject.id, subject);
             cachedSubjectIds.add(subject.id);
@@ -163,6 +164,21 @@ export class BangumiSourceAdapter implements AnimeSourceAdapter {
       });
     }
 
+    return [...byId.values()];
+  }
+
+  private async fetchAllMonthSubjects(year: number, month: number): Promise<BangumiSubject[]> {
+    const byId = new Map<number, BangumiSubject>();
+    for (let offset = 0; offset <= 1_000; offset += BANGUMI_MONTH_PAGE_LIMIT) {
+      const subjects = await this.client.listSubjectsByMonth({
+        year,
+        month,
+        limit: BANGUMI_MONTH_PAGE_LIMIT,
+        offset
+      });
+      for (const subject of subjects) byId.set(subject.id, subject);
+      if (subjects.length < BANGUMI_MONTH_PAGE_LIMIT) break;
+    }
     return [...byId.values()];
   }
 
@@ -260,6 +276,14 @@ export class BangumiSourceAdapter implements AnimeSourceAdapter {
   }
 }
 
+function getBangumiLookupMonths(year: number, season: SeasonMonth): Array<{ year: number; month: number }> {
+  const months = season === 1 ? [12, 1, 2, 3] : [season - 1, season, season + 1, season + 2];
+  return months.map((month) => ({
+    year: season === 1 && month === 12 ? year - 1 : year,
+    month
+  }));
+}
+
 async function fetchMonthSubjectsWithPowerShell(input: { year: number; month: number }): Promise<BangumiSubject[] | null> {
   const baseUrl = (process.env.BANGUMI_API_BASE_URL ?? DEFAULT_BANGUMI_API_BASE_URL).replace(/\/$/, "");
   const userAgent = process.env.BANGUMI_USER_AGENT ?? DEFAULT_BANGUMI_USER_AGENT;
@@ -269,10 +293,8 @@ async function fetchMonthSubjectsWithPowerShell(input: { year: number; month: nu
     year: String(input.year),
     month: String(input.month),
     sort: "date",
-    limit: "100",
-    offset: "0"
+    limit: String(BANGUMI_MONTH_PAGE_LIMIT)
   });
-  const url = `${baseUrl}/v0/subjects?${params.toString()}`;
   const tempDir = join(tmpdir(), `bangumi-month-${Date.now()}-${Math.random().toString(16).slice(2)}`);
   const scriptFile = join(tempDir, "fetch-bangumi-month.ps1");
   const outputFile = join(tempDir, "subjects.json");
@@ -281,19 +303,43 @@ async function fetchMonthSubjectsWithPowerShell(input: { year: number; month: nu
     await writeFile(
       scriptFile,
       [
-        "param($uri, $out, $userAgent)",
+        "param($baseUrl, $query, $out, $userAgent, $limit)",
         "$ErrorActionPreference = 'Stop'",
         "[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)",
         "$headers = @{ 'User-Agent' = $userAgent; 'Accept' = 'application/json' }",
-        "$response = Invoke-WebRequest -Uri $uri -Headers $headers -UseBasicParsing -TimeoutSec 30",
-        "[System.IO.File]::WriteAllText($out, $response.Content, [System.Text.UTF8Encoding]::new($false))",
-        "[Console]::Write([string]$response.StatusCode)"
+        "$items = New-Object System.Collections.Generic.List[object]",
+        "$offset = 0",
+        "while ($offset -le 1000) {",
+        "  $uri = \"$baseUrl/v0/subjects?$query&offset=$offset\"",
+        "  $response = Invoke-WebRequest -Uri $uri -Headers $headers -UseBasicParsing -TimeoutSec 30",
+        "  $payload = $response.Content | ConvertFrom-Json",
+        "  $rows = @()",
+        "  if ($payload -is [array]) { $rows = $payload } elseif ($payload.data) { $rows = $payload.data }",
+        "  foreach ($row in $rows) { $items.Add($row) }",
+        "  if ($rows.Count -lt [int]$limit) { break }",
+        "  $offset += [int]$limit",
+        "  Start-Sleep -Milliseconds 250",
+        "}",
+        "$items | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $out -Encoding UTF8",
+        "[Console]::Write('200')"
       ].join("\n"),
       "utf8"
     );
     await execFileAsync(
       "powershell.exe",
-      ["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", scriptFile, url, outputFile, userAgent],
+      [
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        scriptFile,
+        baseUrl,
+        params.toString(),
+        outputFile,
+        userAgent,
+        String(BANGUMI_MONTH_PAGE_LIMIT)
+      ],
       {
         timeout: 40_000,
         windowsHide: true,
