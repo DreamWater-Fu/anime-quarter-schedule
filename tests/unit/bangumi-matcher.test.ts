@@ -257,6 +257,43 @@ describe("Bangumi matcher", () => {
     assert.equal(result.candidates[0]?.risks.includes("season_token_mismatch"), true);
   });
 
+  it("accepts a merged season title when it contains a Bangumi split-arc title", async () => {
+    const subject: BangumiSubject = {
+      id: 486345,
+      type: 2,
+      name: "青の祓魔師 雪ノ果篇",
+      name_cn: "青之驱魔师 雪之尽头篇",
+      date: "2024-10-05",
+      platform: "TV",
+      eps: 12
+    };
+
+    const result = await matchBangumiAnime(
+      {
+        title: {
+          original: "青の祓魔師 雪ノ果篇&終夜篇",
+          japanese: "青の祓魔師 雪ノ果篇&終夜篇",
+          chinese: "青之驱魔师 第4期",
+          english: null,
+          aliases: []
+        },
+        year: 2024,
+        quarter: "fall",
+        startDate: "2024-10-05",
+        format: "tv",
+        episodeCount: 12,
+        sources: [{ name: "Official", type: "official", retrievedAt: matchedAt }]
+      },
+      createClient([subject]),
+      { now: () => new Date(matchedAt) }
+    );
+
+    assert.equal(result.confidence, "high");
+    assert.equal(result.subjectId, 486345);
+    assert.equal(result.candidates[0]?.risks.includes("season_token_mismatch"), false);
+    assert.equal(result.candidates[0]?.matchedFields.includes("seasonToken"), true);
+  });
+
   it("marks close multiple candidates for manual review", async () => {
     const subjects: BangumiSubject[] = [
       {

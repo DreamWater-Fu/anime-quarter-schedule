@@ -519,6 +519,10 @@ function scoreSeasonToken(
     return -20;
   }
   if (inputToken && !candidateToken && inputToken.kind === "part") return 0;
+  if (inputToken && !candidateToken && hasMergedTitleContainingCandidateTitle(input, subject)) {
+    matchedFields.add("seasonToken");
+    return 6;
+  }
   if (inputToken && !candidateToken && inputToken.kind !== "unknown") {
     risks.add("season_token_mismatch");
     return -12;
@@ -717,6 +721,21 @@ function isCompatibleCourOrSeasonToken(
   return inputToken.number !== undefined &&
     candidateToken.number !== undefined &&
     inputToken.number === candidateToken.number;
+}
+
+function hasMergedTitleContainingCandidateTitle(input: MatchBangumiAnimeInput, subject: BangumiSubject): boolean {
+  const inputTitles = collectInputTitleEntries(input).filter((entry) => entry.field === "original" || entry.field === "japanese");
+  const candidateTitles = collectCandidateTitleEntries(subject).filter((entry) => entry.field === "original" || entry.field === "japanese");
+
+  return inputTitles.some((inputTitle) =>
+    candidateTitles.some((candidateTitle) =>
+      comparableCoreTitleKeys(inputTitle.normalized).some((left) =>
+        comparableCoreTitleKeys(candidateTitle.normalized).some(
+          (right) => left !== right && isUsefulContainmentPair(left, right) && left.includes(right)
+        )
+      )
+    )
+  );
 }
 
 function extractSeasonToken(raw: string): NormalizedTitle["seasonToken"] | undefined {
