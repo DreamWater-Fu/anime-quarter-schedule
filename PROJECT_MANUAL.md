@@ -25,6 +25,7 @@
 - 标题或元数据表明为剧场版、电影、MOVIE、THE MOVIE、film 的条目, 即使平台误标为 TV 也必须排除
 - 标题明确标为第 11 季及以上的条目必须排除; 第 10 季及以下可以保留; 规则覆盖中文 `第十一季`、日文 `第26シリーズ` 和英文 `Series 32` / `Season 32` 等写法
 - R18、NSFW、成人内容
+- 已确认擦边/成人向风险条目 `インゴクダンチ` / `淫狱团地` 必须排除, 不得重新导入可展示缓存
 - `isJapaneseAnime=false` 或 `inclusionStatus="excluded"` 条目
 
 非日漫过滤必须先统一修复 UTF-8 被误读为 Latin-1 的 mojibake 文本, 再判断:
@@ -196,6 +197,7 @@ npm run data:audit
 - 旧季度导入优先使用长门有C; Bangumi 只作为评分和 subjectId 补强。长门有C与 Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用长门有C重建目录并用 Bangumi 同步补齐评分、封面和 subjectId
 - `npm run data:sync-bangumi` 会优先使用本地 `data/bangumi-YYYYMM-subjects.json` 快照, 对已匹配 Bangumi subjectId 的条目刷新评分、封面、集数和状态, 并对缺 subjectId 的长门条目尝试本地高置信匹配; 不足阈值的条目保持缺评分状态, 不做冒险写入。可加 `-- --local-only` 只使用本地 Bangumi 快照, 不执行在线详情刷新
 - `npm run data:match-bangumi` 是在线 Bangumi 搜索补强脚本, 需要修复搜索响应中的 mojibake 后再评分; 自动接受标题/别名强匹配并具备日期、官网、集数、季数或制作信息辅助证据的候选。中文标题不要求完全一致; 对上下半 cour / Part 共用同一 Bangumi subject 的情况, 允许多个长门条目共用同一个 Bangumi subjectId 和评分; 对长门合并多个篇名、Bangumi 拆分篇名的情况, 可用日文标题包含关系 + 日期/格式等辅助证据接受拆篇候选; 格式冲突、多候选接近或缺少辅助证据的弱标题候选仍保持拒绝
+- `終末のワルキューレ` / `终末的女武神` 已确认可保留并绑定 Bangumi subject `322900`, 不要仅因 Netflix / WEB 配信信号移除该条目
 - 参考源冷启动的历史季度条目会按导入时刻推断为 `finished`, 顶层 `updateTime` / `updateWeekday` 置空, 但 `schedule[]` 仍保留首播日期和时间用于搜索与回查
 
 ## 8. 部署

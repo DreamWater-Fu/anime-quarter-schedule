@@ -839,7 +839,7 @@ function isAdultAnime(item: AnimeItem): boolean {
     .join(" ")
     .normalize("NFKC")
     .toLowerCase();
-  return /(r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu.test(haystack);
+  return /(インゴクダンチ|淫狱团地|淫獄団地|r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu.test(haystack);
 }
 
 function getAnimeTextValues(item: AnimeItem): Array<string | null | undefined> {

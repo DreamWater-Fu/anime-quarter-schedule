@@ -1,0 +1,601 @@
+[
+  {
+    "date": "2020-08-21",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/29/12/537580_BPgbM.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/29/12/537580_BPgbM.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/29/12/537580_BPgbM.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/29/12/537580_BPgbM.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/29/12/537580_BPgbM.jpg"
+    },
+    "summary": "æäºä¾æ§å´ç»æé¾æå£«çåé©ãåç±ãç­è¡çæï¼éè¿å®è´é¾ææ¡£ååå§æé¾ä¹é´çç»ååç£¨ç¼ï¼ä»¥åæé¾æå£«ä¹é´çææååï¼å¤è§åº¦çå¼æ¬æé¾ç²¾ç¥ï¼è®©å­©å­ä»¬ä½ä¼æé¿ä¸­éå°çæ«æåååï¼è®©äººç±»ååå§æé¾å­¦ä¹ æ¥èªåå§æé¾ä¸ççç¾å¾·ï¼å±åä¸ºåå»ºäººç±»æ´ç¾å¥½çæªæ¥èåªåã",
+    "name": "æé¾æå£«6",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "å½æ¼«",
+        "count": 2,
+        "total_count": 15555
+      },
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1389575
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 31066
+      },
+      {
+        "name": "ç«¥å¹´",
+        "count": 2,
+        "total_count": 92513
+      },
+      {
+        "name": "åé©",
+        "count": 2,
+        "total_count": 52757
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 1,
+        "total_count": 12535
+      },
+      {
+        "name": "æºæ",
+        "count": 1,
+        "total_count": 49287
+      }
+    ],
+    "infobox": [
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "DINO WARRIOR6"
+          },
+          {
+            "v": "æé¾æå£«ç¬¬å­å­£"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "30"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´8æ21æ¥"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "åå©åå©"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "æ¢å¯æ³¢"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "æ¹æºå¨ãææ"
+      },
+      {
+        "key": "åºåäºº",
+        "value": "æ¨å¿ æº"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "ç¾é¸å¨æ¼«"
+      },
+      {
+        "key": "åè¡å¬å¸",
+        "value": "å¤©æ´¥ç¾é¸äºå¨±å¨æ¼«æéå¬å¸"
+      },
+      {
+        "key": "èæ¬",
+        "value": "æç¶ç¼ãå¼ æ¥å¤"
+      },
+      {
+        "key": "ä¸»é¢æ­æ¼åº",
+        "value": "ç½æºæï¼OPæ¼å±ï¼ãééï¼EDæ¼å±ï¼"
+      },
+      {
+        "key": "é³ä¹çå¶",
+        "value": "å¼ å°ç­"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 4,
+      "count": {
+        "1": 1,
+        "2": 0,
+        "3": 1,
+        "4": 0,
+        "5": 0,
+        "6": 1,
+        "7": 1,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 4.3
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 3,
+      "wish": 0,
+      "collect": 6,
+      "doing": 1
+    },
+    "id": 537580,
+    "eps": 30,
+    "meta_tags": [
+      "TV",
+      "åé©",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-08-13",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/20/17/326500_Xszdh.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/20/17/326500_Xszdh.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/20/17/326500_Xszdh.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/20/17/326500_Xszdh.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/20/17/326500_Xszdh.jpg"
+    },
+    "summary": "On Infinity Train, passengers must explore a series of endless cars that each contain unique worlds and puzzles to solve in order to unravel the mysteries of the train - and within themselves - to open the doorway home. In Book 3, Grace and Simon are the leaders of the Apex, an anarchic group of kids on a mysterious train. During one of their destructive missions, Grace and Simon get separated from the rest of the Apex and must find their way back. As the duo navigate through the myriad worlds of the train, they meet Hazel, an optimistic young girl, and Tuba, her gentle gorilla companion. Will Grace and Simon find new inspiration in Hazelâs innocence, or will the ways of the Apex recruit yet another aboard the train? ",
+    "name": "Infinity Train Book 3: Cult of the Conductor",
+    "name_cn": "æ å°½åè½¦ ç¬¬ä¸å­£",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 3,
+        "total_count": 996749
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 3,
+        "total_count": 67902
+      },
+      {
+        "name": "2020",
+        "count": 1,
+        "total_count": 51080
+      },
+      {
+        "name": "CARTOONNETWORK",
+        "count": 1,
+        "total_count": 341
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æ å°½åè½¦ ç¬¬ä¸å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "10"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´8æ13æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.hbomax.com/series/urn:hbo:series:GXkNXsArG_o7CZgEAABfH"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "HBO Max"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 4,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 2,
+        "6": 0,
+        "7": 1,
+        "8": 1,
+        "9": 0,
+        "10": 0
+      },
+      "score": 6.3
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 8,
+      "wish": 4,
+      "collect": 10,
+      "doing": 1
+    },
+    "id": 326500,
+    "eps": 10,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-08-12",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/2e/06/384741_MxXXP.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/2e/06/384741_MxXXP.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/2e/06/384741_MxXXP.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/2e/06/384741_MxXXP.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/2e/06/384741_MxXXP.jpg"
+    },
+    "summary": "å¨çªçªä¾ ãé¿äºãå°é¾åçå±ååªåä¸ï¼åååå£«âæ³èµ°æé¾âçè®¡åé¢é¢å¤±è´¥ãæ­£å½ä»ä»¬ä¸ºæ­¤é«å´æ¶ï¼å´åç°æå¾å¤åªæé¾åæ¶å¤±è¸ªäºãåæ¥åååå£«åæäºæ§å¶æé¾çæ°ææ®µï¼å°è¿äºæé¾å¨é¨èè¿äºä»çæé¾ç ç©¶æéãæ°ä¸è½®æºæ§ä¸ç¥è¯çå¯¹è¯å¼å§ï¼çªçªä¾ ç­äººå¿é¡»çªç ´å¨æ°çéç¢ï¼æåæææé¾ãåªæ¯ï¼è¿æ¬¡ä»»å¡ä¹æ´å è°é¾äºâ¦â¦",
+    "name": "çªçªä¾ ä¹æé¾æ¥è®° 4",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1274999
+      },
+      {
+        "name": "å½æ¼«",
+        "count": 1,
+        "total_count": 14134
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 151783
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 1,
+        "total_count": 26774
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´8æ12æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææä¸"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "éé¹°å¡é"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "å¡é·å°å¿ãåä½³å¡é"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 3,
+      "count": {
+        "1": 3,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 4,
+      "wish": 1,
+      "collect": 8,
+      "doing": 1
+    },
+    "id": 384741,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-08-09",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/ec/d0/536353_RtnSw.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/ec/d0/536353_RtnSw.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/ec/d0/536353_RtnSw.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/ec/d0/536353_RtnSw.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/ec/d0/536353_RtnSw.jpg"
+    },
+    "summary": "Two Australian party girls, Sarah and Rachel, looking for fun times, new experiences, positive vibes, and hopeful horoscopes in the bizarre town of Wollongong. Sarah's quest is to find love, whereas Rachel hungers for chaos, often bringing them into conflict as they encounter surreal Australiana, strange bush creatures, and eccentric nomads.",
+    "name": "YOLO: Crystal Fantasy",
+    "name_cn": "ä¹æ´»å§å¦¹ï¼æªè¯åé©",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1323815
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 1,
+        "total_count": 83365
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ä¹æ´»å§å¦¹ï¼æªè¯åé©"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "8"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020-08-09"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æææ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 3,
+      "wish": 1,
+      "collect": 1,
+      "doing": 0
+    },
+    "id": 536353,
+    "eps": 8,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-08-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/89/46/311850_FiIiG.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/89/46/311850_FiIiG.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/89/46/311850_FiIiG.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/89/46/311850_FiIiG.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/89/46/311850_FiIiG.jpg"
+    },
+    "summary": "å¾®è§ä¸çä¼ æ¥æ±å©ä¿¡å·ï¼åç¾ç¾åå°ä¼ä¼´ä»¬ç¨ç°å¤ªç¼çåæåèº«æè¿·ä½ å°ç¾ï¼åä¸æ¢ç¾ç¾ç»ä»ä»¬çç«é·å°è½¦ï¼å»å°å¾®è§ä¸çï¼åå±æè½å¸®å©å¤§å®¶è§£å³åç§åæ ·çé¾é¢ãç¾ç¾ä»¬å¨åé©ä¸­ä¹å­¦ä¼ä»ä¸åçè§åº¦å»çå¾ä¸çï¼åå¾æ¯ä¸ä¸ªå°ççµã",
+    "name": "åç¾ç¾ä¸ç°å¤ªç¼ä¹ç¾ç¾è¶£åé©",
+    "name_cn": "åç¾ç¾ä¸ç°å¤ªç¼ä¹ç¾ç¾è¶£åé©",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 3,
+        "total_count": 1265498
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 3,
+        "total_count": 25853
+      },
+      {
+        "name": "å½äº§",
+        "count": 2,
+        "total_count": 150882
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 32458
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "åç¾ç¾ä¸ç°å¤ªç¼ä¹ç¾ç¾è¶£åé©"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´8æ1æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "éé¹°å¡é"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "æ¢åçª"
+      },
+      {
+        "key": "ç¼å®¡",
+        "value": "ç³å»ºå¨ãåç»´"
+      },
+      {
+        "key": "èæ¬",
+        "value": "æè¿ªæãé»æ³½æ¼©"
+      },
+      {
+        "key": "çå¶",
+        "value": "é»æéª"
+      },
+      {
+        "key": "ç¾æ¯æå¯¼",
+        "value": "æ¢æ·å©·ãä½ååãéåªåª"
+      },
+      {
+        "key": "ç¾æ¯è®¾è®¡",
+        "value": "çç®ãæ±åãéèãè®¸åå©ãæè¯é¨ãä½æ°é¶ãæ±ªå¥è±ªãéº¦å©éãæé¾åãé»å®¶ä¿ãå²æ¡ç³ãæ¹å½¬æ¶ãéæ¥å¹ãç½å®¶äº«ãè®¸ä¹¦è´¤"
+      },
+      {
+        "key": "åé",
+        "value": "ååä¿ãè¦æéãæé£é¾ãå¼ å½©æ±ãé»é«è¹ãæ¢ææ°ãä½è±å¼ºãæ¢é¡ä¼¦ãä½æ¢åãèæ³½åãéæ¼è¹ãæä¹æ¹"
+      },
+      {
+        "key": "ä¸ç»´å¶ä½",
+        "value": "å¼ ç¨ãå°¹æ¶¦éãèå¯è¶ãåæ­¦å¼ºãæ±ªæãæé¢ç¦ãçåé²ãè´¡å­ãå³éµçãæ¬§æ¸ä¼ ãé±è·æ"
+      },
+      {
+        "key": "åæå¶ä½",
+        "value": "å­å½©éãå¼éæãä½å®æ´ãé»ä»å®ãå´éªä¸½ãä¸ç§é¾ãçå®¶è±ª"
+      },
+      {
+        "key": "é³æå¶ä½",
+        "value": "å»åå¹³ãå¼ æµ·æ¶ãéé¢éºãé©¬æ¬£å¥ãå¼ çæºãå¾æ¶æ¶"
+      },
+      {
+        "key": "é³é¢æ»ç",
+        "value": "ä»»å¼ºãéé¢éºãè´ä¹"
+      },
+      {
+        "key": "å½é³",
+        "value": "å»åå¹³ãæ¢éå¡"
+      },
+      {
+        "key": "é³é¢ç»ç­¹",
+        "value": "å®å¨ãä¸æ¬£"
+      },
+      {
+        "key": "å¨æ",
+        "value": "å»åå¹³ãå°é¦"
+      },
+      {
+        "key": "æ··é³",
+        "value": "å»åå¹³ãå°é¦"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½è¯",
+        "value": "é£è²æ"
+      },
+      {
+        "key": "ä¸»é¢æ­ä½æ²",
+        "value": "é£è²æ"
+      },
+      {
+        "key": "ä¸»é¢æ­æ¼åº",
+        "value": "éæµ©ä¸"
+      },
+      {
+        "key": "å¶ç",
+        "value": "è¡çç¼ãå¼ å¨´ãèå©æ¢ãé¢ä¸½å©·"
+      },
+      {
+        "key": "å¶ä½ç»ç­¹",
+        "value": "ææ¥é¢ãé©¬çå¦®ãé­ææ©ãä»»è"
+      },
+      {
+        "key": "åªä½åè¡",
+        "value": "é±æµ·çãä¸ä¸¹"
+      },
+      {
+        "key": "å®£ä¼ æ¨å¹¿",
+        "value": "æ¢è³å¦®ãå³æé¯ãå¯æèãæ¢å¿å"
+      },
+      {
+        "key": "å¸åºæ¨å¹¿",
+        "value": "èé¯åãåºéªè²"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "ååå¨å"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 8,
+      "count": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 2,
+        "5": 1,
+        "6": 1,
+        "7": 0,
+        "8": 1,
+        "9": 0,
+        "10": 0
+      },
+      "score": 4.1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 4,
+      "dropped": 13,
+      "wish": 3,
+      "collect": 19,
+      "doing": 2
+    },
+    "id": 311850,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

@@ -40,6 +40,18 @@ export async function enrichMissingBangumiBySearch(
       continue;
     }
 
+    const explicitSubjectId = getExplicitBangumiSubjectId(item);
+    if (explicitSubjectId !== null && client.getSubject) {
+      try {
+        const subject = await fetchSubjectDetailStrict(client, explicitSubjectId);
+        nextItems.push(mergeBangumiSubject(item, subject, retrievedAt));
+        matched += 1;
+        continue;
+      } catch {
+        // Fall back to normal search so a temporary detail failure does not block other matches.
+      }
+    }
+
     const subjects = await fetchSearchSubjects(client, item, maxSearchTitles);
     if (subjects === null) {
       failed += 1;
@@ -141,6 +153,43 @@ function shouldSearchBangumi(item: AnimeItem): boolean {
     item.isJapaneseAnime !== false &&
     item.inclusionStatus !== "excluded"
   );
+}
+
+function getExplicitBangumiSubjectId(item: AnimeItem): number | null {
+  const titles = [
+    item.title.original,
+    item.title.japanese,
+    item.title.chinese,
+    item.title.english,
+    ...item.title.aliases
+  ].filter((value): value is string => typeof value === "string");
+
+  if (titles.some((title) => /終末のワルキューレ|终末的女武神|Record of Ragnarok|Shuumatsu no (?:Walkure|Valkyrie)/iu.test(title))) {
+    return 322900;
+  }
+
+  if (
+    item.startDate === "2021-04-10" &&
+    titles.some((title) => /東京卍?リベンジャーズ|东京卍?复仇者|Tokyo Revengers/iu.test(title))
+  ) {
+    return 308936;
+  }
+
+  if (
+    item.startDate === "2020-10-01" &&
+    titles.some((title) => /ひぐらしのなく頃に|新\s*寒蝉鸣泣之时|寒蝉鸣泣之时\s*业/iu.test(title))
+  ) {
+    return 297969;
+  }
+
+  if (
+    item.startDate === "2021-04-01" &&
+    titles.some((title) => /シャーマンキング|新\s*通灵王|SHAMAN KING/iu.test(title))
+  ) {
+    return 308558;
+  }
+
+  return null;
 }
 
 async function fetchSearchSubjects(

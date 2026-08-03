@@ -1,0 +1,559 @@
+[
+  {
+    "date": "2020-06-30",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/93/cf/576034_ZeZCe.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/93/cf/576034_ZeZCe.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/93/cf/576034_ZeZCe.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/93/cf/576034_ZeZCe.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/93/cf/576034_ZeZCe.jpg"
+    },
+    "summary": "ä¸»è¦è®²è¿°åºçå¨å®å®é£è¹ä¸çå®è±å¯»æ¾ç¸ç¸å¦å¦çæäºãå¾å¤ç¥å¥çç©é½æ¯å®è±çæåï¼ä»ä»¬å¸®å©å®è±æ¾å¯»ç¶æ¯ï¼æ¯ä¸ªç¥å¥çç©é½æåèªçæäºã",
+    "name": "å·¨é¾å±±è°·",
+    "name_cn": "å·¨é¾å±±è°·",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 3,
+        "total_count": 1246786
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 3,
+        "total_count": 25100
+      },
+      {
+        "name": "å¨ç»",
+        "count": 2,
+        "total_count": 31963
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å·¨é¾å±±è°·"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "16"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020-06-30"
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "åå©åå©ãä¼é·ãè¾è®¯è§é¢"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "è²æè°"
+      },
+      {
+        "key": "å¨ç»å¯¼æ¼",
+        "value": "æ¿å³"
+      },
+      {
+        "key": "é¾æ¥",
+        "value": [
+          {
+            "k": "bilibili",
+            "v": "https://www.bilibili.com/bangumi/play/ss46911"
+          }
+        ]
+      },
+      {
+        "key": "èæ¬",
+        "value": "æ··æ²ãå è²"
+      },
+      {
+        "key": "åºåäºº",
+        "value": "åç¦é¦"
+      },
+      {
+        "key": "ä¸»é¢æ²æ¼å±",
+        "value": "ç«æå¥³å­©"
+      },
+      {
+        "key": "ç¹ææ»ç",
+        "value": "æ¿å³ãå°é»"
+      },
+      {
+        "key": "ç­å",
+        "value": "é­å½¬"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "é­å½¬"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "å¿èèå·¥ä½å®¤"
+      },
+      {
+        "key": "çå¶",
+        "value": "é­å½¬ãé»è¡æ¤"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "Stefan Moessle"
+      },
+      {
+        "key": "é³æ",
+        "value": "å¯é"
+      },
+      {
+        "key": "ä¸ç»´ç¹æå¶ä½",
+        "value": "åæ°å°èå·¥ä½å®¤"
+      },
+      {
+        "key": "åç»è®¾è®¡",
+        "value": "Tina"
+      },
+      {
+        "key": "è§è²è®¾è®¡",
+        "value": "è²æè°"
+      },
+      {
+        "key": "å¯¹ç½è®¾è®¡",
+        "value": "ç½ææ´ãçè¾ãåæµ·ãåèºå®ãé¿è±¹"
+      },
+      {
+        "key": "å®£å",
+        "value": "åæµ·ãå¨éæãè«æå¿ ãç½ææ´ãç½å"
+      },
+      {
+        "key": "ç¾æ¯æ»ç",
+        "value": "é»ç¶"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 2,
+      "count": {
+        "1": 1,
+        "2": 1,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 1.5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 1,
+      "wish": 0,
+      "collect": 2,
+      "doing": 0
+    },
+    "id": 576034,
+    "eps": 16,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-06-29",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/84/90/544901_8K866.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/84/90/544901_8K866.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/84/90/544901_8K866.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/84/90/544901_8K866.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/84/90/544901_8K866.jpg"
+    },
+    "summary": "",
+    "name": "íì´ë¡ ì¨í´",
+    "name_cn": "è±éåç¯",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "è±éåç¯"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "k": "è±æå",
+            "v": "HERO CIRCLE"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020-6-29"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "EBS"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "íìì°"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 544901,
+    "eps": 26,
+    "meta_tags": [
+      "TV"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-06-24",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/2e/f0/384740_czCHr.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/2e/f0/384740_czCHr.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/2e/f0/384740_czCHr.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/2e/f0/384740_czCHr.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/2e/f0/384740_czCHr.jpg"
+    },
+    "summary": "è®²è¿°çªçªä¾ å¨åç©é¦åæ¯æ´çåºä¸åé¾è¾¨å¶è§£çåç³æ¿åï¼é½ä¼å¸¦é¢åä¼´é¿äºä¸åç©¿è¶æ¶ç©ºåå°æé¾æ¶ä»£ã",
+    "name": "çªçªä¾ ä¹æé¾æ¥è®° 3",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1274999
+      },
+      {
+        "name": "å½æ¼«",
+        "count": 1,
+        "total_count": 14134
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 151783
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 1,
+        "total_count": 26774
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´6æ24æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææä¸"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "éé¹°å¡é"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "å¡é·å°å¿ãåä½³å¡é"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 3,
+      "count": {
+        "1": 3,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 4,
+      "wish": 1,
+      "collect": 8,
+      "doing": 0
+    },
+    "id": 384740,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-06-10",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/64/be/308711_Pz5V2.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/64/be/308711_Pz5V2.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/64/be/308711_Pz5V2.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/64/be/308711_Pz5V2.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/64/be/308711_Pz5V2.jpg"
+    },
+    "summary": "æ¬é¦åï¼ï¼\r\nããã©ã¤ã³ã°ãã¤ãã¼ãºãããé£ã³åºãããå®å¨ãªã¢ã¼ãã¯ã¼ã¯å¶ä½ã¢ãã¡ãæ¾éãããã¾ãï¼\r\n\r\nâ»æ¬ä½ã¯ãã·ã§ã¼ãVer.ãï¼å¨4è©±ï¼ã¨ã\r\næ¬ç·¨åå¾ã«å£°åªãã¼ã¯ãã¼ãå«ããã­ã³ã°ã¹ãã¤Ver.ãï¼å¨4è©±ï¼ããããã¾ãã\r\nï¼ã¢ãã¡ã¼ã·ã§ã³ã®åå®¹ã¯åä¸ã®ãã®ã¨ãªãã¾ãï¼\r\n\r\nï¼ã¹ãã¼ãªã¼ï¼\r\nãããã®æ¸©æ³è¡ã®ä¸­å­¦ã«éã1å¹´çã®ããã¨ã¯ã©ã¹ã¡ã¤ãã®ãµã¿ã¯æãã¤ãã§ãã©é¨ãçµæã\r\nãã£ã³ã©ã³ãããã®è»¢æ ¡çã¢ããå ãã£ããã¨ããã£ããã«ä»²éãéãã\r\nã³ã³ãã¹ãã«åºããããã©ãã³ã¹ã«éæ¥ãããã¦ãããã»ã»ã»\r\næ°åã³ã­ãã¦ã¤ã«ã¹ã®å½±é¿ã§é¨æ´»åã¯èªç²ãã©ããªããã©é¨ï¼ï¼",
+    "name": "ãã©ã¤ã³ã°ãã¤ãã¼ãºæ¹ã ã¹ãã¤ã³ã°ãã¤ãã¼ãº",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "2020",
+        "count": 2,
+        "total_count": 63099
+      },
+      {
+        "name": "ç¦å²GAINA",
+        "count": 1,
+        "total_count": 3
+      },
+      {
+        "name": "ç¦å³¶ã¬ã¤ã",
+        "count": 1,
+        "total_count": 6
+      },
+      {
+        "name": "ç©º",
+        "count": 1,
+        "total_count": 1458
+      },
+      {
+        "name": "åå",
+        "count": 1,
+        "total_count": 602144
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1358062
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 1,
+        "total_count": 271925
+      }
+    ],
+    "infobox": [
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "Hulaing Babies Aratame Staying Babies"
+          },
+          {
+            "v": "ãã©ã¤ã³ã°ãã¤ãã¼ãº æ¹ã ã¹ãã¤ã³ã°ãã¤ãã¼ãº"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "4"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020å¹´6æ10æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææä¸"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://hulaingbabies.com/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "AT-X"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´7æ15æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "æµå°¾è³å®£"
+      },
+      {
+        "key": "é³ä¹",
+        "value": "å¥è¯æ æ¨¹"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©ã¹ãã¤ã³ã°ãã¤ãã¼ãºä¿è­·èä¼"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "å¤§æ¹è¯èµ"
+      },
+      {
+        "key": "è²å½©è®¾è®¡",
+        "value": "å¤§æ¹è¯èµ"
+      },
+      {
+        "key": "æå½±çç£",
+        "value": "ä½è¤è²´é"
+      },
+      {
+        "key": "é³åçç£",
+        "value": "å°æ³ç´ä»"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 2,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 2,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 6
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 7,
+      "wish": 4,
+      "collect": 6,
+      "doing": 1
+    },
+    "id": 308711,
+    "eps": 4,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2020-06-06",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/eb/10/544902_9d5dC.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/eb/10/544902_9d5dC.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/eb/10/544902_9d5dC.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/eb/10/544902_9d5dC.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/eb/10/544902_9d5dC.jpg"
+    },
+    "summary": "",
+    "name": "ë¸ë ë ì´ë°ì:Season 2",
+    "name_cn": "é¢åçååºç¬¬äºå­£",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "é¢åçååºç¬¬äºå­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2020-6-6"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 544902,
+    "eps": 26,
+    "meta_tags": [
+      "TV"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

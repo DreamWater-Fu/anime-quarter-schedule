@@ -1,18 +1,24 @@
 {
   "schemaVersion": 1,
-  "status": "running",
-  "lastSuccessAt": "2026-08-03T10:19:48.231Z",
-  "lastAttemptAt": "2026-08-03T10:23:18.220Z",
-  "lastError": null,
-  "currentJob": {
-    "jobId": "upd_20260803102318_05746a40",
-    "year": 2020,
-    "season": 10,
-    "quarter": "fall",
-    "startedAt": "2026-08-03T10:23:18.220Z"
+  "status": "failed",
+  "lastSuccessAt": "2026-08-03T10:26:18.601Z",
+  "lastAttemptAt": "2026-08-03T10:34:51.191Z",
+  "lastError": {
+    "code": "SOURCE_UNAVAILABLE",
+    "message": "historical season primary catalog was unavailable and fallback candidates were incomplete",
+    "details": {
+      "targetSeason": {
+        "year": 2020,
+        "quarter": "summer"
+      },
+      "candidateCount": 19,
+      "warnings": []
+    },
+    "at": "2026-08-03T10:35:52.544Z"
   },
+  "currentJob": null,
   "cache": {
-    "animeUpdatedAt": "2026-08-03T10:19:48.097Z",
-    "itemCount": 1220
+    "animeUpdatedAt": "2026-08-03T10:28:07.147Z",
+    "itemCount": 1263
   }
 }
