@@ -16,6 +16,7 @@ export function isCacheEligibleAnime(item: AnimeItem): boolean {
   const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
   return (
     item.format === "tv" &&
+    hasCatalogAdmissionSignal(item) &&
     !hasExplicitExcludedBangumiSubjectId(subjectId) &&
     item.isJapaneseAnime !== false &&
     item.inclusionStatus !== "excluded" &&
@@ -26,6 +27,51 @@ export function isCacheEligibleAnime(item: AnimeItem): boolean {
     !hasKnownNonTvSpecialSignal(textValues) &&
     !hasOverSeasonLimitSignal(textValues)
   );
+}
+
+function hasCatalogAdmissionSignal(item: AnimeItem): boolean {
+  if (!isBangumiOnlyItem(item)) return true;
+  return hasStrongJapaneseTvEvidence(item);
+}
+
+function isBangumiOnlyItem(item: AnimeItem): boolean {
+  return item.sources.length > 0 && item.sources.every((source) => source.name === "Bangumi");
+}
+
+function hasStrongJapaneseTvEvidence(item: AnimeItem): boolean {
+  return (
+    hasJapaneseKanaSignal(item.title.original) ||
+    hasJapaneseKanaSignal(item.title.japanese) ||
+    hasJapaneseOfficialSignal(item.officialUrl) ||
+    hasJapaneseStaffSignal(item) ||
+    hasNonBangumiScheduleSource(item)
+  );
+}
+
+function hasNonBangumiScheduleSource(item: AnimeItem): boolean {
+  return item.schedule.some((scheduleItem) => scheduleItem.source && scheduleItem.source.name !== "Bangumi");
+}
+
+function hasJapaneseKanaSignal(value: string | null | undefined): boolean {
+  return typeof value === "string" && /[ぁ-ゖァ-ヺー]/u.test(value);
+}
+
+function hasJapaneseOfficialSignal(value: string | null | undefined): boolean {
+  if (typeof value !== "string") return false;
+  const normalized = value.normalize("NFKC").trim().toLowerCase();
+  return (
+    /\.jp(?:[/?#]|$)/iu.test(normalized) ||
+    /(?:tv-tokyo|nhk|bs11|at-x|toei|shopro|vap\.co\.jp|tokyo-mx|mbs|tbs|fujitv|ytv|ntv|tv-asahi)/iu.test(normalized)
+  );
+}
+
+function hasJapaneseStaffSignal(item: AnimeItem): boolean {
+  const values = [
+    ...(item.staff?.studio ?? []),
+    ...(item.staff?.productionCommittee ?? []),
+    item.staff?.originalWorkType
+  ];
+  return values.some((value) => hasJapaneseKanaSignal(value));
 }
 
 function isAdultAnime(item: AnimeItem): boolean {

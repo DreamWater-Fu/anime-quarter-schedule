@@ -1,0 +1,807 @@
+[
+  {
+    "date": "2019-08-26",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/17/0c/658676_665j2.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/17/0c/658676_665j2.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/17/0c/658676_665j2.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/17/0c/658676_665j2.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/17/0c/658676_665j2.jpg"
+    },
+    "summary": "The Go Jetters are back, for all new adventures! Join Xuli, Kyan, Lars, Foz and new cadet Tala as they travel the world with their disco-grooving mentor, Ubercorn and foil the plans of Grandmaster Glitch and his cheeky Grimbots.",
+    "name": "Go Jetters Series 3",
+    "name_cn": "å¨çæ¢é©å²å²å² ç¬¬ä¸å­£",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¨çæ¢é©å²å²å² ç¬¬ä¸å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "51"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´8æ26æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "CBeebies"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´11æ27æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 658676,
+    "eps": 51,
+    "meta_tags": [
+      "TV",
+      "è±å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-08-24",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/49/de/290591_RPqfs.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/49/de/290591_RPqfs.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/49/de/290591_RPqfs.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/49/de/290591_RPqfs.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/49/de/290591_RPqfs.jpg"
+    },
+    "summary": "è¿æ¯è·ç¦»åå¯¼ç±ç¥ä¸æ«ä¿æ åä¼çº¦10å¹´åï¼ä»åå°æä¸ºå¡çé¦é½åºé¿çæ°ç°çï¼æ°ç°æ°å³å«é¨ï¼çæäºãç±æ·ä»å®¶ç»è¥çå¡åºãå¡çé¦é½ãé·å¥äºåä¸ç¶æãå¨é£åºç°çæ¯ï¼æ³è¦å é¢åºé¢çè¶å¤§åå¡åºåºä¸»ãæ¥æ¯éè¾æ¯å¡ããæ°å³å«é¨ä¸ºäºå®æ¤å¡çé¦é½ï¼ä½ä¸ºãèªç§°Â·åºé¿ãç«äºåºæ¥ï¼",
+    "name": "ã«ã¼ããã¡ã¤ã!! ã´ã¡ã³ã¬ã¼ã æ°å³è¡éç·¨",
+    "name_cn": "å¡çææåå¯¼è æ°å³å«é¨ç¯",
+    "tags": [
+      {
+        "name": "2019",
+        "count": 4,
+        "total_count": 76210
+      },
+      {
+        "name": "ä½è¤æä¹",
+        "count": 3,
+        "total_count": 116
+      },
+      {
+        "name": "OLM",
+        "count": 3,
+        "total_count": 12608
+      },
+      {
+        "name": "TV",
+        "count": 3,
+        "total_count": 1390481
+      },
+      {
+        "name": "OLMTEAMOTA",
+        "count": 3,
+        "total_count": 385
+      },
+      {
+        "name": "å·å´é¸æ",
+        "count": 2,
+        "total_count": 316
+      },
+      {
+        "name": "èµ¤ææ¿å°",
+        "count": 2,
+        "total_count": 65
+      },
+      {
+        "name": "æå·æ",
+        "count": 2,
+        "total_count": 577
+      },
+      {
+        "name": "ä»£æ°¸ç¿¼",
+        "count": 2,
+        "total_count": 422
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 2,
+        "total_count": 34753
+      },
+      {
+        "name": "2019å¹´8æ",
+        "count": 2,
+        "total_count": 538
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 2,
+        "total_count": 289902
+      },
+      {
+        "name": "å¡ç",
+        "count": 1,
+        "total_count": 27
+      },
+      {
+        "name": "TVA",
+        "count": 1,
+        "total_count": 15420
+      },
+      {
+        "name": "ç­è¡",
+        "count": 1,
+        "total_count": 211009
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35436
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 1,
+        "total_count": 12561
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¡çææåå¯¼è æ°å³å«é¨ç¯"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "31"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´8æ24æ¥"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´3æ28æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "å·å´é¸æ"
+      },
+      {
+        "key": "ç³»åææ",
+        "value": "èµ¤ææ¿å°"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "ç£¯éæºï¼st.ã·ã«ãã¼ï¼"
+      },
+      {
+        "key": "ç¾æ¯çç£",
+        "value": "é£¯ç°èæï¼J.C.STAFFï¼/ä¸¹ä¼ç°è¼å½¦ï¼ç¾æ¯çç£è¾ä½ï¼J.C.STAFFï¼"
+      },
+      {
+        "key": "éå·è®¾è®¡",
+        "value": "æ¾æ°¸è¾°"
+      },
+      {
+        "key": "æå½±çç£",
+        "value": "å éå¤§è¼ï¼ã¹ã¿ã¸ãªãã¥ã¤ã³ã¯ã«ï¼"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "OLM Team ABE&GO"
+      },
+      {
+        "key": "å¨ç»å¶çäºº",
+        "value": "é¿é¨åãæ³½ç°å"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 8,
+      "count": {
+        "1": 0,
+        "2": 1,
+        "3": 0,
+        "4": 0,
+        "5": 3,
+        "6": 1,
+        "7": 3,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 5.5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 7,
+      "dropped": 13,
+      "wish": 19,
+      "collect": 15,
+      "doing": 3
+    },
+    "id": 290591,
+    "eps": 31,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-08-16",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/cf/01/384739_rrr7O.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/cf/01/384739_rrr7O.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/cf/01/384739_rrr7O.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/cf/01/384739_rrr7O.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/cf/01/384739_rrr7O.jpg"
+    },
+    "summary": "çªçªä¾ åé¿äºä¸ºäºæé å¨å®å®æåæ¬¢è¿çæé¾åç©é¦ï¼ä¸æ¬¡æ¬¡åå¾æé¾ä¸çè¿è¡è°æ¥ãè°æ¥è¿ç¨å¾å¾è°è¾èæ»ç¨½ï¼æé¾æ»ä¼å±ç°åºä¸ä¸ºäººç¥çä¸é¢ï¼ä»¤ä»ä»¬é·å¥å°å¢ãä½çªçªä¾ åé¿äºæ»è½æ¾å°åºå¯¹ä¹æ³ï¼æç»å®æä»»å¡ãæ¬çæ¨å¨éè¿å¯æäºä¹çæ¹å¼ï¼è®©å­©å­ä»¬è·å¾æé¾ç¥è¯çåæ¶ï¼æ¥æçªçªä¾ ä¸æ ·è§£å³é®é¢çåæ°åæ¯åã",
+    "name": "çªçªä¾ ä¹æé¾æ¥è®° 2",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1299789
+      },
+      {
+        "name": "å½æ¼«",
+        "count": 1,
+        "total_count": 14459
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 155235
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 1,
+        "total_count": 28026
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´8æ16æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææäº"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "éé¹°å¡é"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "å¡é·å°å¿ãåä½³å¡é"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 4,
+      "count": {
+        "1": 3,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 2
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 3,
+      "wish": 1,
+      "collect": 12,
+      "doing": 1
+    },
+    "id": 384739,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-08-16",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/c8/ed/659671_0O6C6.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/c8/ed/659671_0O6C6.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/c8/ed/659671_0O6C6.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/c8/ed/659671_0O6C6.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/c8/ed/659671_0O6C6.jpg"
+    },
+    "summary": "A monster truck and his human driver go on adventures together while learning about science, technology, engineering and math.\r\n\r\né£éæ¯ä¸çä¸æåå®³çæªå½å¡è½¦ï¼å«å²çé¿æ°æ¯ä»çé©¾é©¶ï¼ä¹æ¯ä»æå¥½çæåãä»ä»¬ä¸èµ·å¨åæ»¡æªå½å¡è½¦ä»¬çè½¦è½´å¸åé©ãé£éæåç«ç°ä¸è¬ççååï¼ç¹æ®çæ¶¡è½®æ¨å¨è®©ä»æ¯å¶ä»æªå½å¡è½¦è·å¾æ´å¿«ï¼ä»æ°´ä¸é£æºãæ»ç¿ç¿¼å°å¹é£æºï¼é£éå¯ä»¥æ¹é æä»»ä½ä¸åçè®¾è®¡ãé¿æ°èç±ç©çåçæ¢ç´¢ãé®é¢è§£å³åæºæ¢°ç»æçäºè§£æ¥å¸®å©é£éå®æåé©ã",
+    "name": "Blaze and the Monster Machines Season 5",
+    "name_cn": "æé£æè½¦é ç¬¬äºå­£",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æé£æè½¦é ç¬¬äºå­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "20"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´8æ16æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Nickelodeon"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2021å¹´7æ23æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 659671,
+    "eps": 20,
+    "meta_tags": [
+      "TV",
+      "ç¾å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-08-05",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/43/92/213989_q2Sx2.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/43/92/213989_q2Sx2.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/43/92/213989_q2Sx2.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/43/92/213989_q2Sx2.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/43/92/213989_q2Sx2.jpg"
+    },
+    "summary": "ãç®ç®é²å®å¨ç¹å·¥éãæ¯æ ¹æ®éæ¸æ´ãç®ç®é²éä½ 100æ¡å½ãæ¹ç¼èæç3Då¨ç»å­ä¾åçµè§å¨ç»ï¼è®²è¿°ä»¥ç®ç®é²ãé²è¥¿è¥¿ä¸ºé¦çå®å¨ç¹å·¥éï¼ä¸äºæãç½åãèåãè´å¡ä¸èµ·ï¼å¨å±åç»åäºç«ç¾å®å¨ãç¨çµå®å¨ãäº¤éå®å¨ãæ ¡è½¦å®å¨ãå°éãè¯éªçµè¯ç­ä¸ç³»åå¨æ¥å¸¸çæ´»ä¸­å¸¸éå°çå®å¨éæ£ä¸­ï¼å¸®å©å¤å¨å±é©ä¹ä¸­çå°æåçæäºã",
+    "name": "ç®ç®é²å®å¨ç¹å·¥é",
+    "name_cn": "ç®ç®é²å®å¨ç¹å·¥é",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 4,
+        "total_count": 12914
+      },
+      {
+        "name": "å¨ç»",
+        "count": 4,
+        "total_count": 27628
+      },
+      {
+        "name": "å½äº§",
+        "count": 3,
+        "total_count": 126308
+      },
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1005981
+      },
+      {
+        "name": "æ ",
+        "count": 1,
+        "total_count": 968
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ç®ç®é²å®å¨ç¹å·¥é"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "í¼í¼ë£¨ ìì  í¹ê³µë"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "52"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´8æ5æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "æ¯å¤©"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": [
+          {
+            "k": "é©æ",
+            "v": "https://home.ebs.co.kr/pipilurangers/"
+          }
+        ]
+      },
+      {
+        "key": "å¨çº¿æ­æ¾å¹³å°",
+        "value": "èæTVãå¤®è§ç½"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "æ¹åå¹¿æ­çµè§å°éé¹°å¡éé¢éãä¸­å¤®å¹¿æ­çµè§æ»å°"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "å®å¾½å¹¿æ­çµè§å°ãEBS"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2019å¹´8æ30æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "éäºæãéé¹"
+      },
+      {
+        "key": "å­£æ°",
+        "value": "1"
+      },
+      {
+        "key": "åä½",
+        "value": "éæ¸æ´"
+      },
+      {
+        "key": "å¨ç»å¶ä½",
+        "value": "éå²éæ¾æµ·æ°ç ç§ææéå¬å¸ãæ­å·æ¾æè¬å¨æ¼«æéå¬å¸ãSTUDIO GALEï¼ì¤íëì¤ ê²ì¼ï¼"
+      },
+      {
+        "key": "æ»å¶çäºº",
+        "value": "æè³"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "è¡è±æ¥ ãäºçª"
+      },
+      {
+        "key": "å¶ç",
+        "value": "éä¿äº¬ãæçå¦"
+      },
+      {
+        "key": "èæ¬",
+        "value": "å¼ é­"
+      },
+      {
+        "key": "æ¨¡å",
+        "value": "å¼ å¼ºãèå¯ãé»è³ãæå¿æãèå¿å®ãå¨å¿æµ©ãå¨å£®å£®"
+      },
+      {
+        "key": "æè´¨",
+        "value": "å¨æãå¨çå£®ãæ¨å³°èªãéåµãéæçãå®é·ãå­æ­ä¸ãå¼ è¶"
+      },
+      {
+        "key": "å¨ç»",
+        "value": "èµµææãèä¸½ä¸½ãåå»ºé¦ãå¾å½çãå¾åæãçå½©è¸ãå²³å¸"
+      },
+      {
+        "key": "ç¹æ",
+        "value": "çå½¦è¾°ãèµµå³°"
+      },
+      {
+        "key": "ç»å®",
+        "value": "è´¾ç±è¿ãåè³è³ãæéäº®"
+      },
+      {
+        "key": "ç¯åãåæ",
+        "value": "å¨æ¯ãæ±ç§æãå­ä¸è±ªãå¯ä¹ç³ãé«å¹³ãå¢å"
+      },
+      {
+        "key": "éé³çç£",
+        "value": "å®æåãèµµæ¥ "
+      },
+      {
+        "key": "åºå",
+        "value": "åäº¬ç®ç®é²æ»å¨åæåç§ææéå¬å¸"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 2,
+      "count": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 3
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 4,
+      "dropped": 6,
+      "wish": 3,
+      "collect": 3,
+      "doing": 0
+    },
+    "id": 213989,
+    "eps": 52,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-08-05",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/56/b5/287426_k1IeK.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/56/b5/287426_k1IeK.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/56/b5/287426_k1IeK.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/56/b5/287426_k1IeK.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/56/b5/287426_k1IeK.jpg"
+    },
+    "summary": "13-year-old Tulip finds herself on a mysterious train with an endless number of cars, each one its own universe, and must find a way to get home.",
+    "name": "Infinity Train",
+    "name_cn": "æ å°½åè½¦",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 13,
+        "total_count": 83579
+      },
+      {
+        "name": "TV",
+        "count": 6,
+        "total_count": 1339027
+      },
+      {
+        "name": "CARTOONNETWORK",
+        "count": 5,
+        "total_count": 395
+      },
+      {
+        "name": "åå",
+        "count": 4,
+        "total_count": 594181
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 4,
+        "total_count": 434649
+      },
+      {
+        "name": "2019",
+        "count": 3,
+        "total_count": 74738
+      },
+      {
+        "name": "å¨",
+        "count": 2,
+        "total_count": 101
+      },
+      {
+        "name": "10",
+        "count": 2,
+        "total_count": 1469
+      },
+      {
+        "name": "æ­ç¾",
+        "count": 1,
+        "total_count": 148
+      },
+      {
+        "name": "åé©",
+        "count": 1,
+        "total_count": 49032
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æ å°½åè½¦"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "10"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´8æ5æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææä¸"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.cartoonnetwork.com/infinity-train/"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 18,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 3,
+        "6": 5,
+        "7": 5,
+        "8": 4,
+        "9": 1,
+        "10": 0
+      },
+      "score": 6.7
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 4,
+      "dropped": 8,
+      "wish": 25,
+      "collect": 24,
+      "doing": 4
+    },
+    "id": 287426,
+    "eps": 10,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-08-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/4d/0d/422835_LDHLe.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/4d/0d/422835_LDHLe.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/4d/0d/422835_LDHLe.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/4d/0d/422835_LDHLe.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/4d/0d/422835_LDHLe.jpg"
+    },
+    "summary": "æäºä»¥å¹å¸å­¦å­çåä¸­é¨ä¸é«ä¸­é¨ä¸ºèå°ï¼æåå´ç»çååå¥é«ä¸çæ°çââéä¸ä»èº«è¾¹çåå­¦ä¹é´ï¼è½»æ¾æè¶£çæç¬åæ¥å¸¸çæ´»ãå¹å¸å­¦å­éæçå½¢å½¢è²è²æ§æ ¼åå¼ãå¤æªå´ä¹ä¸å¤±å¯ç±çå­¦çï¼éç¨å¹³è¡å¼çååå°æäºè®²è¿°ã",
+    "name": "å¹å¸å­¦å­ ç¬¬ä¸å­£",
+    "name_cn": "å¹å¸å­¦å­",
+    "tags": [],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¹å¸å­¦å­"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "*15"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "*2019.8.1"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 1,
+      "doing": 0
+    },
+    "id": 422835,
+    "eps": 15,
+    "meta_tags": [],
+    "volumes": 0,
+    "series": false,
+    "locked": true,
+    "nsfw": false,
+    "type": 2
+  }
+]

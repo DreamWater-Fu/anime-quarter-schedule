@@ -1,0 +1,787 @@
+[
+  {
+    "date": "2019-06-28",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/48/04/463611_hozgh.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/48/04/463611_hozgh.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/48/04/463611_hozgh.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/48/04/463611_hozgh.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/48/04/463611_hozgh.jpg"
+    },
+    "summary": "ä¸ºäºè§£å³å°çè½æºå±æºï¼èµå°å·è©è´çå¨å¤ªç©ºä¸­åç°æ°è½æºçä½¿å½ï¼å¨ä¸æ¬¡åä¸æ¬¡çä»»å¡ä¸­ï¼ä¸ºå°çè¾éäºå®è´µçå®å®æ°æ®åæ¸æ´è½æºï¼èç°å¨ä¸»äººå¬SPTå°éåå°å±å¼æ°çæ¢ç´¢åé©ä¹æï¼ä»ä»¬ä¸ä¸ä¸ªç®çå°ä¼æ¯åªéå¢ï¼ å¨èªè¡éä¸­èµå°å·è¢«ä¸ç§åä¸ºâå¯å°âçç»çæ¡ä½äºå»è·¯ï¼ä¸ºäºæå¼ç»çï¼SPTåéå°éæ¥å°å°éªæï¼å¨è¿éå°ä¼éå°ç¥ç§çå¤§éªæªï¼å·¨çæä¸å­å¨çä¸é¢è®°å½çæ å°½è½æºçæ­£å¥¥ç§çç£ç³ï¼ä¸ºé²æ­¢å®å®æµ·çæ·è¶³åç»ï¼èµå°å·éç»æç¥èçï¼ä»ä»¬åéç¥ç§ç»æå¯¹æï¼æåä»ä»¬æ¯å¦è½åå¾èå©ï¼æ¾å°æ å°½è½æºåï¼",
+    "name": "èµå°å·ç¬¬10å­£ï¼å°å°è¦å¡",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 7,
+        "total_count": 1390523
+      },
+      {
+        "name": "å½äº§",
+        "count": 5,
+        "total_count": 159792
+      },
+      {
+        "name": "ä¸­å½",
+        "count": 5,
+        "total_count": 31116
+      },
+      {
+        "name": "æ¸¸ææ¹",
+        "count": 4,
+        "total_count": 161388
+      },
+      {
+        "name": "2019",
+        "count": 4,
+        "total_count": 76211
+      },
+      {
+        "name": "å¨ç»",
+        "count": 2,
+        "total_count": 35440
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 2,
+        "total_count": 250013
+      },
+      {
+        "name": "ç­è¡",
+        "count": 2,
+        "total_count": 211012
+      },
+      {
+        "name": "ï¼æ²ªï¼å¨å®¡å­ï¼2019ï¼ç¬¬009å·",
+        "count": 1,
+        "total_count": 1
+      }
+    ],
+    "infobox": [
+      {
+        "key": "è¯æ°",
+        "value": "30"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´6æ28æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææå"
+      },
+      {
+        "key": "åºåäºº",
+        "value": "éæ³¢"
+      },
+      {
+        "key": "æ»ç­å",
+        "value": "èµµå"
+      },
+      {
+        "key": "æ»çå¶",
+        "value": "çæ¯ãçè³"
+      },
+      {
+        "key": "åçè¿è¥",
+        "value": "éè"
+      },
+      {
+        "key": "åçææ",
+        "value": "çç¶ãåæ¯é¾"
+      },
+      {
+        "key": "åªä½åè¡",
+        "value": "çææ´ãå­ææãå¾é"
+      },
+      {
+        "key": "ç¾æ¯æå¯¼",
+        "value": "èµµå°å"
+      },
+      {
+        "key": "ç¾æ¯",
+        "value": "çä¸å¸ãè¡æ·ãæ®·éªãå¶é¹ãé±é«ç¿ï¼ä½æ æãä½å©ãå®éãåæå"
+      },
+      {
+        "key": "æ§è¡å¯¼æ¼",
+        "value": "éåãé©¬å»¶æ¸"
+      },
+      {
+        "key": "å¯å¯¼æ¼",
+        "value": "åæç¦"
+      },
+      {
+        "key": "æ»å¯¼æ¼",
+        "value": "çç« ä¿"
+      },
+      {
+        "key": "åºå",
+        "value": "ä¸æµ·æ·ç±³å¨ç»æéå¬å¸"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 17,
+      "count": {
+        "1": 7,
+        "2": 1,
+        "3": 1,
+        "4": 2,
+        "5": 1,
+        "6": 4,
+        "7": 0,
+        "8": 1,
+        "9": 0,
+        "10": 0
+      },
+      "score": 3.4
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 3,
+      "dropped": 5,
+      "wish": 6,
+      "collect": 28,
+      "doing": 1
+    },
+    "id": 463611,
+    "eps": 30,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-06-24",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/5c/7f/284258_x3666.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/5c/7f/284258_x3666.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/5c/7f/284258_x3666.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/5c/7f/284258_x3666.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/5c/7f/284258_x3666.jpg"
+    },
+    "summary": "Buckle up your butt cheeks â itâs about to get wild. The second season of the epic sci-fi adventure comedy with a plethora of heart, Final Space, will premiere on Monday, June 24th at 11:30 p.m. ET/PT on Adult Swim.\r\n\r\nFinal Space is created by YouTube sensation, Olan Rogers, and Emmy award-winner David Sacks (The Simpsons). Rogers stars in the animated series with Fred Armisen (Portlandia), Tom Kenny (Adventure Time), David Tennant (Dr. Who), Tika Sumpter (Mixed-ish), and Steven Yeun (The Walking Dead). The half-hour animated space action/adventure series is produced by Conaco and New Form, with animation production by ShadowMachine",
+    "name": "Final Space Season 2",
+    "name_cn": "å¤ªç©ºç»ç ç¬¬äºå­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 7,
+        "total_count": 75413
+      },
+      {
+        "name": "ç§å¹»",
+        "count": 4,
+        "total_count": 200677
+      },
+      {
+        "name": "æç¬",
+        "count": 3,
+        "total_count": 529876
+      },
+      {
+        "name": "2019",
+        "count": 1,
+        "total_count": 68131
+      },
+      {
+        "name": "å¤ªç©º",
+        "count": 1,
+        "total_count": 226
+      },
+      {
+        "name": "æå",
+        "count": 1,
+        "total_count": 5
+      },
+      {
+        "name": "å¨æ¼«",
+        "count": 1,
+        "total_count": 2766
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1171128
+      },
+      {
+        "name": "10",
+        "count": 1,
+        "total_count": 1305
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¤ªç©ºç»ç ç¬¬äºå­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "13"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´6æ24æ¥"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://www.adultswim.com/videos/final-space"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Adult Swim"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2019å¹´9æ23æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 12,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 5,
+        "7": 3,
+        "8": 3,
+        "9": 0,
+        "10": 1
+      },
+      "score": 7.1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 5,
+      "wish": 4,
+      "collect": 16,
+      "doing": 3
+    },
+    "id": 284258,
+    "eps": 13,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-06-22",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/10/37/422800_1ZL4o.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/10/37/422800_1ZL4o.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/10/37/422800_1ZL4o.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/10/37/422800_1ZL4o.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/10/37/422800_1ZL4o.jpg"
+    },
+    "summary": "ãä¹é«åå¸å¤§åé©ãæ¯ä¸é¨å¨æ°çãä»¥äººç©ä¸ºä¸»é¢çå¨ç»çç³»åï¼åç°ç»è§ä¼æè¶£ï¼æºæ§ï¼åæ»¡æ´»åçåå¸çæ´»ï¼ä»¥åæ æ¯å¨è¿åº§æ¥çåå±çç°ä»£å¤§é½å¸ä¸­ï¼å½¢å½¢è²è²ãä¸ä¼ä¸åçè§è²ä»¬æ¢å¯»å¸æãè¿½æ±æ¢¦æ³åç®æ åæ¢äºåé©çæäºããä¹é«åå¸å¤§åé©ãéçææå¸æ°ï¼ä»åæ¢çè­¦å¯ãè¯¡è¯çåèãè·³èçæ¶é²åå°è¿åº¦ç­æçæå¡å·¥ãç¥ç§çåä¸å¤§äº¨ãå±æ­çæ¾èå¥³ï¼å½ç¶è¿æç©¿å¾åçç±³æ£çå¸é¿ï¼å¨è¿åº§æ¥çåå±çç°ä»£å¤§é½å¸ä¸­ï¼ä»ä»¬ççæ´»è½¨è¿¹æ»æ¯ä»¥åç§æ»ç¨½ä¸åºä¹ææå°æ¹å¼äº¤éå¨ä¸èµ·ãè·å®èµ·ä¼ãåæ»¡æ¬¢ä¹ï¼åç§åéæè¸ï¼é»è²å¹½é»ä»¥åæé©åºæ¿çå¨ä½åºæ¯ï¼ä½¿å¾ãä¹é«åå¸å¤§åé©ãåå¾æåã",
+    "name": "Lego City Adventures",
+    "name_cn": "ä¹é«åå¸å¤§åé©",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 83366
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1335651
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ä¹é«åå¸å¤§åé©"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "65"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´6æ22æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 2,
+      "wish": 1,
+      "collect": 6,
+      "doing": 0
+    },
+    "id": 422800,
+    "eps": 65,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-06-22",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/2a/64/554364_noU3y.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/2a/64/554364_noU3y.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/2a/64/554364_noU3y.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/2a/64/554364_noU3y.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/2a/64/554364_noU3y.jpg"
+    },
+    "summary": "Basking in the glory of their recent victory, the ninja embark on a new adventure to explore a mysterious pyramid â just for a little light rest and recovery, of course. But has success lulled our heroes into a false sense of security? When the ninja accidentally set an ancient threat loose, nothing could ever have prepared them for the mayhem that follows.",
+    "name": "LEGO Ninjagoï¼Season 11",
+    "name_cn": "ä¹é«å¹»å½±å¿è ç¬¬åä¸å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 7,
+        "total_count": 86075
+      },
+      {
+        "name": "TV",
+        "count": 6,
+        "total_count": 1389647
+      },
+      {
+        "name": "åå",
+        "count": 4,
+        "total_count": 612810
+      },
+      {
+        "name": "ä¹é«å¹»å½±å¿è",
+        "count": 3,
+        "total_count": 45
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "ä¹é«å¹»å½±å¿è ç¬¬åä¸å­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "Ninjagoï¼Secrets of the Forbidden Spinjitzu"
+          },
+          {
+            "v": "å¹»å½±å¿èï¼å°ç¦å¹»å½±æè½¬æ¯çç§å¯"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "30"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´6æ22æ¥"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´2æ1æ¥"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "Adam WoodãWade CrossãDaniel IfeãShane Poettcker"
+      },
+      {
+        "key": "ç¼å§",
+        "value": "Bragi SchutãKevin BurkeãChris \"Doc\" WyattãMatt \"Chato\" Hill"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 16,
+      "count": {
+        "1": 0,
+        "2": 1,
+        "3": 0,
+        "4": 0,
+        "5": 2,
+        "6": 5,
+        "7": 4,
+        "8": 3,
+        "9": 0,
+        "10": 1
+      },
+      "score": 6.5
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 0,
+      "dropped": 2,
+      "wish": 3,
+      "collect": 40,
+      "doing": 2
+    },
+    "id": 554364,
+    "eps": 30,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-06-21",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/a0/0a/291044_QrMrI.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/a0/0a/291044_QrMrI.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/a0/0a/291044_QrMrI.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/a0/0a/291044_QrMrI.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/a0/0a/291044_QrMrI.jpg"
+    },
+    "summary": "ãé¾å¾æéãè®²è¿°æä»æçå­æ¥å°å°çï¼åå©æä»æç¥å¨âé¾å¾ï¼æ¶éå°çèæ°çåéï¼æ¯æå¤äºç¯å¢å´©æºçæä»æãä½ç¥å¨æå¤å¤±è½ï¼å°ç·å­©å¤©å¤©æ æä¸­å¾å°ç¥å¨é¾å¾ï¼åèªå·±çå¥½æåé¹é¹ãå°èãç½é²ä¸èµ·å¸®å©æä»æçå­ï¼å©ç¨é¾å¾æ¶æäºäºååèæ°å®æ¤çµï¼ä»èåççä¸ç³»åæ¢æé©åæè¶£çç²¾å½©æäºãå¨è¿ä¸ªè¿ç¨ä¸­ï¼å¤©å¤©åä»çä¼ä¼´ä»¬é­éäºåç§å°é¾åæ«æï¼ä»ä¸­æ¶è·äºæé¿ååæ¢ï¼åç±åèªä¿¡ï¼åäº«åæå½ï¼æç»åæä»å°å¹´å±åç»æé¾å¾æéï¼åæééå°é¾ï¼åå¾è¿åæåçéè¦ä¸æ­¥ã",
+    "name": "é¾å¾æé",
+    "name_cn": "é¾å¾æé",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 27416
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 33005
+      },
+      {
+        "name": "(æ¸)å¨å®¡å­ï¼»2018ï¼½ç¬¬002å·",
+        "count": 1,
+        "total_count": 1
+      },
+      {
+        "name": "å½äº§",
+        "count": 1,
+        "total_count": 153851
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1285947
+      },
+      {
+        "name": "ç¼å¯",
+        "count": 1,
+        "total_count": 5
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "é¾å¾æé"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "26"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´6æ21æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "éåºçµè§å°å°å¿é¢é"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "ç±å¥èº"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "èæå"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "åºåæ¹ï¼éåºç²è¾°å½±è§å¨ç»æéå¬å¸(è§ç¾å½±ä¸)ï¼åºåäººï¼åå´ãæ±ç"
+      },
+      {
+        "key": "ä¼ç»",
+        "value": "æ±çï¼æ»ç­åï¼"
+      },
+      {
+        "key": "æ»å¶çäºº",
+        "value": "å¼ å®"
+      },
+      {
+        "key": "å¶çäºº",
+        "value": "ä¸¥ä¿"
+      },
+      {
+        "key": "å®£ä¼ ",
+        "value": "åå®¹æ¨å¹¿ï¼æ¯æ¦ãééªå¿ãä¼æ¥è¹"
+      },
+      {
+        "key": "åå¡ç»ç",
+        "value": "ä½å½¦é"
+      },
+      {
+        "key": "éé³çç£",
+        "value": "å±±æ°"
+      },
+      {
+        "key": "äººç©åæ¡",
+        "value": "ç³ç³"
+      },
+      {
+        "key": "èæ¬",
+        "value": "æ¢èãéæ³¢"
+      },
+      {
+        "key": "é³åçç£",
+        "value": "é³é¢å¶çäººï¼å´åæ¥ "
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "ç³ç³ï¼äººç©è®¾å®çå¶ï¼ãåå®ï¼äººç©è®¾å®æå¯¼ï¼ãç½æè"
+      },
+      {
+        "key": "åé",
+        "value": "ç¨çãåçè²ãæ±æ¥ç²ãé­è½¶ç¾¤ãåéæ³¢ãæ¨éªãéå¦è¯ãæ±ä¿ç®ãå­çç"
+      },
+      {
+        "key": "å¶ä½åå",
+        "value": "ä¸ç»´å¶ä½ï¼éåºä¹¾ä¹åç§ææéå¬å¸ãéåºåè°·å¨æ¼«è®¾è®¡æéå¬å¸"
+      },
+      {
+        "key": "ç¹å«é¸£è°¢",
+        "value": "ç¹å«é¸£è°¢åä¸å¶ä½(æåä¸ååå)ï¼å¯ååãä»»ä¼ãç®¡éè¶ãçéãå¯ä¼æ ãéå®½ãæ¨å°"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 7,
+      "wish": 3,
+      "collect": 1,
+      "doing": 3
+    },
+    "id": 291044,
+    "eps": 26,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-06-14",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/8f/64/293633_ayXhH.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/8f/64/293633_ayXhH.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/8f/64/293633_ayXhH.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/8f/64/293633_ayXhH.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/8f/64/293633_ayXhH.jpg"
+    },
+    "summary": "Ordinary Anne Boonchuy, 13, finds a treasure chest that sends her to Amphibia, a world full of frogs, toads, and giant insects. With help from Sprig, she must adjust to life in Amphibia and discover her first true friendship in her life.",
+    "name": "Amphibia Season 1",
+    "name_cn": "å¥å¹»æ²¼æ³½ ç¬¬ä¸å­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 23,
+        "total_count": 85961
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 16,
+        "total_count": 459753
+      },
+      {
+        "name": "è¿ªå£«å°¼",
+        "count": 14,
+        "total_count": 19440
+      },
+      {
+        "name": "TV",
+        "count": 14,
+        "total_count": 1386858
+      },
+      {
+        "name": "2019",
+        "count": 13,
+        "total_count": 76119
+      },
+      {
+        "name": "ç©¿è¶",
+        "count": 9,
+        "total_count": 61760
+      },
+      {
+        "name": "åé©",
+        "count": 8,
+        "total_count": 52507
+      },
+      {
+        "name": "ç¾å½",
+        "count": 7,
+        "total_count": 26903
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 5,
+        "total_count": 12467
+      },
+      {
+        "name": "åå§",
+        "count": 5,
+        "total_count": 33558
+      },
+      {
+        "name": "åå",
+        "count": 2,
+        "total_count": 611249
+      },
+      {
+        "name": "TVA",
+        "count": 1,
+        "total_count": 15386
+      },
+      {
+        "name": "Bert_Youn",
+        "count": 1,
+        "total_count": 3
+      },
+      {
+        "name": "Disney",
+        "count": 1,
+        "total_count": 7557
+      },
+      {
+        "name": "DisneyTelevisionAnimation",
+        "count": 1,
+        "total_count": 8
+      },
+      {
+        "name": "Kim_Roberson",
+        "count": 1,
+        "total_count": 3
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¥å¹»æ²¼æ³½ ç¬¬ä¸å­£"
+      },
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "èï¼å°å®çå¥å¹»ä¹æ ç¬¬ä¸å­£"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "20"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´6æ14æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 31,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1,
+        "6": 5,
+        "7": 11,
+        "8": 10,
+        "9": 2,
+        "10": 2
+      },
+      "score": 7.4
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 4,
+      "dropped": 6,
+      "wish": 54,
+      "collect": 54,
+      "doing": 12
+    },
+    "id": 293633,
+    "eps": 20,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

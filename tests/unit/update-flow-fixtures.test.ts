@@ -71,6 +71,16 @@ class FailingOptionalAdapter implements AnimeSourceAdapter {
   }
 }
 
+class HangingAdapter implements AnimeSourceAdapter {
+  readonly name = "HangingPrimary";
+  readonly sourceType = "bangumi" as const;
+  readonly enabled = true;
+
+  async fetchSeason(): Promise<SourceFetchResult> {
+    return new Promise<SourceFetchResult>(() => {});
+  }
+}
+
 function toSummerFixtureItem(cache: AnimeCache): AnimeItem {
   const item = findFixtureItem(cache, "anime:june-to-july");
   return {
@@ -535,6 +545,77 @@ describe("update data merge and rollback", () => {
     assert.equal(nextCache.items[0]?.sources.some((source) => source.name === "Bangumi"), true);
   });
 
+  it("inherits eligible old rows when YucWiki lists a title without a parseable broadcast date", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const oldUndatedYucTitle: AnimeItem = {
+      ...toSummerFixtureItem(cache),
+      id: "anime:111222",
+      title: {
+        original: "Undated YucWiki Title",
+        japanese: "Undated YucWiki Title",
+        chinese: "YucWiki 缺日期标题",
+        english: null,
+        aliases: []
+      },
+      bangumi: {
+        ...toSummerFixtureItem(cache).bangumi,
+        subjectId: 111222,
+        url: "https://bgm.tv/subject/111222"
+      },
+      externalIds: {
+        ...toSummerFixtureItem(cache).externalIds,
+        bangumiSubjectId: 111222
+      },
+      sources: [{ name: "Bangumi", type: "bangumi" as const, retrievedAt: runAt }]
+    };
+    const yucCatalogItem: AnimeItem = {
+      ...toSummerFixtureItem(cache),
+      id: "anime:yucwiki:202607:a01",
+      title: {
+        original: "Current YucWiki Title",
+        japanese: "Current YucWiki Title",
+        chinese: "当前 YucWiki 标题",
+        english: null,
+        aliases: []
+      },
+      sources: [{ name: "YucWiki", type: "third_party" as const, retrievedAt: runAt, scope: "japan_broadcast" as const }]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [oldUndatedYucTitle] });
+
+    await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [
+          new StaticAdapter("YucWiki", "third_party", [yucCatalogItem], [
+            {
+              source: "YucWiki",
+              code: "MISSING_FIELD",
+              message: "YucWiki entries without parseable broadcast dates were kept for old-cache inheritance",
+              retryable: false,
+              details: [
+                {
+                  id: "A08",
+                  titleChinese: "YucWiki 缺日期标题",
+                  titleJapanese: "Undated YucWiki Title",
+                  url: "https://yuc.example/202607/#A08",
+                  retrievedAt: runAt
+                }
+              ]
+            }
+          ])
+        ],
+        now: () => new Date(runAt)
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    const inherited = nextCache.items.find((item) => item.id === oldUndatedYucTitle.id);
+    assert.equal(inherited?.title.original, "Undated YucWiki Title");
+    assert.equal(inherited?.sources.some((source) => source.name === "YucWiki"), true);
+    assert.equal(nextCache.items.some((item) => item.id === yucCatalogItem.id), true);
+  });
+
   it("can cold-start a season from trusted reference sources when Bangumi is unavailable", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const referenceItem = {
@@ -950,6 +1031,40 @@ describe("update data merge and rollback", () => {
     };
     const storage = new MemoryStorage({ ...cache, items: [] }, staleStatus);
 
+    const result = await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [new StaticAdapter("Bangumi", "bangumi", [item])],
+        now: () => new Date(runAt)
+      }
+    );
+
+    assert.equal(result.status, "success");
+  });
+
+  it("does not let a stale in-process update flag block a released file lock", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const storage = new MemoryStorage({ ...cache, items: [] });
+    const firstRunAt = "2026-07-28T10:00:00+09:00";
+    void updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [new HangingAdapter()],
+        now: () => new Date(firstRunAt)
+      }
+    ).catch(() => {});
+    await Promise.resolve();
+    await Promise.resolve();
+
+    const staleStatus = await storage.readUpdateStatus();
+    assert.equal(staleStatus.status, "running");
+
+    const item = {
+      ...toSummerFixtureItem(cache),
+      sources: [{ name: "Bangumi", type: "bangumi" as const, retrievedAt: runAt }]
+    };
     const result = await updateAnimeData(
       { year: 2026, season: 7 },
       {

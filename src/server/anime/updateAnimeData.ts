@@ -7,6 +7,7 @@ import { normalizeStaleUpdateStatus } from "../cache/statusCache.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { toSourceIssue, type AnimeSourceAdapter, type SourceIssue } from "../sources/types.ts";
 import { BangumiSourceAdapter } from "../sources/bangumi/adapter.ts";
+import type { YucWikiUnscheduledEntry } from "../sources/yucwiki/adapter.ts";
 import {
   enrichMissingBangumiBySearch,
   refreshBangumiDetailsForItems,
@@ -48,10 +49,6 @@ let runningInProcess = false;
 
 export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDataOptions = {}): Promise<UpdateResult> {
   assertUpdateInput(input);
-
-  if (runningInProcess && !input.force) {
-    throw new ApiErrorException("UPDATE_RUNNING", "another update job is already running", { status: 409 });
-  }
 
   const storage = options.storage ?? getDefaultStorage();
   const now = options.now ?? (() => new Date());
@@ -99,7 +96,12 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
       .filter((item) => !shouldDropSecondaryCatalogItem(item, hasPrimaryCatalogCandidates))
       .filter((item) => !shouldDropReferenceOnlyItem(item, oldCache.items, !hasCatalogCandidates))
       .map(markReferenceColdStartItem);
-    let eligibleTargetItems = targetItems.filter(isCacheEligibleAnime);
+    const eligibleFetchedItems = targetItems.filter(isCacheEligibleAnime);
+    const skippedNonJapanese = targetItems.length - eligibleFetchedItems.length;
+    let eligibleTargetItems = mergeDuplicateItems([
+      ...eligibleFetchedItems,
+      ...inheritOldItemsForUnscheduledYucWikiEntries(fetched.warnings, oldCache.items, targetSeason)
+    ]);
     if (shouldRunBangumiSearchEnrichment(options, eligibleTargetItems)) {
       const enrichment = await enrichMissingBangumiBySearch(eligibleTargetItems, { now });
       eligibleTargetItems = enrichment.items;
@@ -146,7 +148,6 @@ export async function updateAnimeData(input: UpdateInput, options: UpdateAnimeDa
     const nextSeasonItems = hasCatalogItems
       ? eligibleTargetItems
       : mergeDuplicateItems([...fallbackSeasonItems, ...eligibleTargetItems]);
-    const skippedNonJapanese = targetItems.length - eligibleTargetItems.length;
     const manualOverrides = await readManualBroadcastOverrides();
     let mergedItems = mergeDuplicateItems(
       nextSeasonItems.map((item) =>
@@ -596,6 +597,76 @@ function normalizeTitleForMerge(value: string): string {
     .normalize("NFKC")
     .toLowerCase()
     .replace(/[!！?？:：,，.。'"“”‘’《》「」『』（）()[\]\s_-]+/gu, "");
+}
+
+function inheritOldItemsForUnscheduledYucWikiEntries(
+  warnings: SourceIssue[],
+  oldItems: AnimeItem[],
+  targetSeason: SeasonKey
+): AnimeItem[] {
+  const inherited: AnimeItem[] = [];
+  const seenIds = new Set<string>();
+  for (const entry of getUnscheduledYucWikiEntries(warnings)) {
+    const oldItem = findOldItemByYucWikiEntry(entry, oldItems, targetSeason);
+    if (!oldItem || seenIds.has(oldItem.id)) continue;
+    seenIds.add(oldItem.id);
+    inherited.push({
+      ...oldItem,
+      sources: dedupeSources([
+        ...oldItem.sources,
+        {
+          name: "YucWiki",
+          type: "third_party",
+          url: entry.url,
+          retrievedAt: entry.retrievedAt,
+          confidence: 0.7,
+          scope: "japan_broadcast"
+        }
+      ]),
+      updatedAt: entry.retrievedAt
+    });
+  }
+  return inherited;
+}
+
+function getUnscheduledYucWikiEntries(warnings: SourceIssue[]): YucWikiUnscheduledEntry[] {
+  return warnings
+    .filter((warning) => warning.source === "YucWiki" && warning.code === "MISSING_FIELD")
+    .flatMap((warning) => Array.isArray(warning.details) ? warning.details : [])
+    .filter(isYucWikiUnscheduledEntry);
+}
+
+function isYucWikiUnscheduledEntry(value: unknown): value is YucWikiUnscheduledEntry {
+  if (!value || typeof value !== "object") return false;
+  const entry = value as Record<string, unknown>;
+  return (
+    typeof entry.id === "string" &&
+    (typeof entry.titleChinese === "string" || entry.titleChinese === null) &&
+    (typeof entry.titleJapanese === "string" || entry.titleJapanese === null) &&
+    typeof entry.url === "string" &&
+    typeof entry.retrievedAt === "string"
+  );
+}
+
+function findOldItemByYucWikiEntry(
+  entry: YucWikiUnscheduledEntry,
+  oldItems: AnimeItem[],
+  targetSeason: SeasonKey
+): AnimeItem | null {
+  const entryTitles = new Set(
+    [entry.titleJapanese, entry.titleChinese]
+      .filter((value): value is string => typeof value === "string" && value.trim().length > 0)
+      .map(normalizeTitleForMerge)
+      .filter((value) => value.length > 0)
+  );
+  if (entryTitles.size === 0) return null;
+
+  return oldItems.find((oldItem) => {
+    if (!isPrimaryInSeason(oldItem, targetSeason)) return false;
+    if (!isCacheEligibleAnime(oldItem)) return false;
+    const oldTitles = getNormalizedTitleSet(oldItem);
+    return [...entryTitles].some((title) => oldTitles.has(title));
+  }) ?? null;
 }
 
 function mergeWithOldItem(item: AnimeItem, oldItems: AnimeItem[]): AnimeItem {

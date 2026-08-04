@@ -27,6 +27,14 @@ export interface YucWikiEntry {
   retrievedAt: string;
 }
 
+export interface YucWikiUnscheduledEntry {
+  id: string;
+  titleChinese: string | null;
+  titleJapanese: string | null;
+  url: string;
+  retrievedAt: string;
+}
+
 export interface YucWikiAdapterOptions {
   enabled?: boolean;
   entries?: YucWikiEntry[];
@@ -99,8 +107,24 @@ export class YucWikiSourceAdapter implements AnimeSourceAdapter {
     const url = this.resolvePageUrl(input);
     const pageEntries = await this.readPageEntries(input, url, retrievedAt, warnings);
     const targetSeason: SeasonKey = { year: input.year, quarter: input.quarter };
-    const items = [...this.entries, ...pageEntries]
-      .map((entry) => mapYucWikiEntryToAnimeItem(entry, input.year, input.season, retrievedAt))
+    const mappedEntries = [...this.entries, ...pageEntries].map((entry) => ({
+      entry,
+      item: mapYucWikiEntryToAnimeItem(entry, input.year, input.season, retrievedAt)
+    }));
+    const unscheduledEntries = mappedEntries
+      .filter(({ item }) => item === null)
+      .map(({ entry }) => toUnscheduledEntry(entry));
+    if (unscheduledEntries.length > 0) {
+      warnings.push({
+        source: this.name,
+        code: "MISSING_FIELD",
+        message: "YucWiki entries without parseable broadcast dates were kept for old-cache inheritance",
+        retryable: false,
+        details: unscheduledEntries
+      });
+    }
+    const items = mappedEntries
+      .map(({ item }) => item)
       .filter((item): item is AnimeItem => item !== null)
       .filter((item) => item.primarySeason !== null && item.primarySeason.year === targetSeason.year && item.primarySeason.quarter === targetSeason.quarter);
 
@@ -225,6 +249,16 @@ export class YucWikiSourceAdapter implements AnimeSourceAdapter {
 
     this.requestTimes.push(Date.now());
   }
+}
+
+function toUnscheduledEntry(entry: YucWikiEntry): YucWikiUnscheduledEntry {
+  return {
+    id: entry.id,
+    titleChinese: entry.titleChinese,
+    titleJapanese: entry.titleJapanese,
+    url: entry.url,
+    retrievedAt: entry.retrievedAt
+  };
 }
 
 export function parseYucWikiHtml(html: string, options: YucWikiParseOptions): YucWikiEntry[] {
