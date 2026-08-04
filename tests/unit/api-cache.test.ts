@@ -208,7 +208,7 @@ function createAnime(overrides: Partial<AnimeItem> = {}): AnimeItem {
     title: {
       original: "Example Anime",
       japanese: "Example Anime",
-      chinese: null,
+      chinese: "Example Anime",
       english: null,
       aliases: []
     },
@@ -226,7 +226,7 @@ function createAnime(overrides: Partial<AnimeItem> = {}): AnimeItem {
     airedEpisodeCount: null,
     isJapaneseAnime: true,
     inclusionStatus: "included",
-    officialUrl: null,
+    officialUrl: "https://example.jp/anime/",
     coverImage: null,
     externalIds: {
       bangumiSubjectId: null,

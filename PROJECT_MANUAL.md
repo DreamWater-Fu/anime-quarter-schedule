@@ -4,6 +4,13 @@
 
 本文件是后续 AI 和维护者的项目入口。修改产品边界、数据源、更新流程、缓存状态、API 口径或部署方式后, 必须同步更新本文件。开始改代码前先读本文件, 再读相关实现。
 
+## 近期规则补充：无中文名评分门槛
+
+- 展示/缓存边界新增规则：如果条目没有 `title.chinese`，且 Bangumi `ratingCount` 缺失或小于 `50`，必须排除。
+- 如果条目没有中文名但 Bangumi `ratingCount >= 50`，可以继续保留；例如 `Free!-Dive to the Future-` 与 `RobiHachi`。
+- `ポンコツクエスト〜魔王と派遣の魔物たち〜 シーズン5` 当前无中文名且 Bangumi 评分人数为 `3`，按该规则删除。
+- 这条规则必须在 Bangumi subject 搜索/补全之前执行。Bangumi 匹配只补元数据，不得用来把低评分人数、无中文名的条目重新导入。
+
 ## 1. 项目概览
 
 - 技术栈: Next.js App Router, React, TypeScript, Node.js `>=24`
@@ -31,6 +38,12 @@
 - `isJapaneseAnime === false`
 - `inclusionStatus === "excluded"`
 - 人工审查排除清单或明确排除 Bangumi subjectId 命中项
+
+边界细节:
+
+- 明确海外品牌/IP 标题信号是硬排除, 例如 Disney/迪士尼/ディズニー、Marvel、LEGO、Paw Patrol、Transformers/变形金刚等; 即使 Bangumi 或 staff 里存在日本制作公司信号, 也不得借此进入缓存。
+- 日方制作公司、日方官网、日文假名标题等强日本制作证据, 只用于修正泛化词误伤; 例如《シンカリオン チェンジ ザ ワールド》这类日本 TV 动画不能仅因中文别名含“进化先锋/机器人”被排除。
+- 这类保护只能在 `isCacheEligibleAnime` 边界内生效, 不得用于放行 WEB、剧场版、SP、成人向、非日漫或明确海外品牌/IP 条目。
 
 2019 年 1 月/4 月人工审查结论:
 
@@ -86,6 +99,12 @@ YucWiki 缺日期条目规则:
 - YucWiki adapter 必须把这些标题作为结构化 `MISSING_FIELD` warning 带出。
 - 更新流程在目标季度刷新时, 若旧缓存中存在同标题、同季度且仍通过 `isCacheEligibleAnime` 的条目, 必须继承旧条目并补上 YucWiki 来源, 避免“YucWiki 有标题但缺日期”的条目被主目录刷新误删。
 - 如果 YucWiki 页面本身没有该标题, 不应仅因旧缓存存在而保留。
+
+YucWiki 页面结构规则:
+
+- YucWiki 条目标记不只存在 `<!--#A01-->` 形式, 也可能出现优先级标记如 `<!--#B-P3-->`, 或小写标记如 `<!--#a01-->`。
+- adapter 必须把这些标记解析为独立目录行; 小写锚点需归一化, 优先级标记需按同一字母前缀顺序编号, 避免大作因页面标记差异漏入。
+- 当怀疑某季度异常偏低时, 先用本地 `data/yucwiki-YYYYMM.html` 快照与 `data/anime.json` 做同口径审查: YucWiki 已抓取且通过 `isCacheEligibleAnime` 的条目, 不应在缓存中缺失。
 
 ## 5. 更新流程
 

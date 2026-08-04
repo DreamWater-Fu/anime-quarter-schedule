@@ -8,7 +8,7 @@
                       "title":  {
                                     "original":  "Winter Jan Mar",
                                     "japanese":  "Winter Jan Mar",
-                                    "chinese":  null,
+                                    "chinese":  "Winter Jan Mar",
                                     "english":  null,
                                     "aliases":  [
 
@@ -36,7 +36,7 @@
                       "airedEpisodeCount":  12,
                       "isJapaneseAnime":  true,
                       "inclusionStatus":  "included",
-                      "officialUrl":  null,
+                      "officialUrl":  "https://example.jp/winter-jan-mar/",
                       "coverImage":  null,
                       "externalIds":  {
                                           "bangumiSubjectId":  1001,
@@ -106,7 +106,7 @@
                       "title":  {
                                     "original":  "March To April",
                                     "japanese":  "March To April",
-                                    "chinese":  null,
+                                    "chinese":  "March To April",
                                     "english":  null,
                                     "aliases":  [
 
@@ -138,7 +138,7 @@
                       "airedEpisodeCount":  3,
                       "isJapaneseAnime":  true,
                       "inclusionStatus":  "included",
-                      "officialUrl":  null,
+                      "officialUrl":  "https://example.jp/march-to-april/",
                       "coverImage":  null,
                       "externalIds":  {
                                           "bangumiSubjectId":  1002,
@@ -199,7 +199,7 @@
                       "title":  {
                                     "original":  "June To July",
                                     "japanese":  "June To July",
-                                    "chinese":  null,
+                                    "chinese":  "June To July",
                                     "english":  null,
                                     "aliases":  [
 
@@ -231,7 +231,7 @@
                       "airedEpisodeCount":  3,
                       "isJapaneseAnime":  true,
                       "inclusionStatus":  "included",
-                      "officialUrl":  null,
+                      "officialUrl":  "https://example.jp/june-to-july/",
                       "coverImage":  null,
                       "externalIds":  {
                                           "bangumiSubjectId":  null,
@@ -290,7 +290,7 @@
                       "title":  {
                                     "original":  "October To Next January",
                                     "japanese":  "October To Next January",
-                                    "chinese":  null,
+                                    "chinese":  "October To Next January",
                                     "english":  null,
                                     "aliases":  [
 
@@ -322,7 +322,7 @@
                       "airedEpisodeCount":  13,
                       "isJapaneseAnime":  true,
                       "inclusionStatus":  "included",
-                      "officialUrl":  null,
+                      "officialUrl":  "https://example.jp/october-to-next-january/",
                       "coverImage":  null,
                       "externalIds":  {
                                           "bangumiSubjectId":  1004,

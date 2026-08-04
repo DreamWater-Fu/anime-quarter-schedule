@@ -84,9 +84,21 @@ const FOREIGN_TITLE_PATTERNS = [
   /节气密码|宁德山海|少年家国梦|书香少年|王应麟|幸福公寓|光影天炎战甲|青田小田鱼|孔子归来|飞越五千年|霸王龙雷奇|桃花夫人|快乐小郑星/iu,
   /龙族|龍族|Dragon\s+Raja/iu,
   /차징|탑스피너|티니핑|꼬마버스|타요|라바|爆笑虫子|小公交车太友|朱迪希猜谜秀/iu,
-  /south\s+park|paw\s+patrol|curtis|柯蒂斯总统|ninjago|lego|mickey|disney|miraculous|family\s+guy/iu,
+  /south\s+park|paw\s+patrol|curtis|柯蒂斯总统|ninjago|lego|mickey|disney|迪士尼|ディズニー|miraculous|family\s+guy/iu,
   /marvel|iron\s*man|spider-?man|spidey|moon\s*girl|devil\s*dinosaur|superman|beast\s*boy|dc\s*metal/iu,
   /transformers|变形金刚|變形金剛|rick\s*and\s*morty|瑞克和莫蒂|瑞克和莫蒂/iu,
+  /sponge\s*bob|spongebob|海绵宝宝|海綿寶寶|patrick\s*star|派大星/iu,
+  /paddington|帕丁顿熊|帕丁頓熊|octonauts|海底小纵队|海底小縱隊|wild\s*kratts|动物兄弟|動物兄弟/iu,
+  /ghost\s+and\s+molly\s+mcgee|幽灵与莫莉|幽靈與莫莉|beyblade\s+burst\s+quadstrike/iu,
+  /star\s*trek|星际迷航|星際迷航|blood\s+of\s+zeus|宙斯之血|smiling\s+friends|微笑朋友/iu,
+  /smurfs?|schtroumpfs|蓝精灵|藍精靈|mermaid\s+magic|魔法美人鱼|blaze\s+and\s+the\s+monster\s+machines/iu,
+  /sealook|pinkfong|baby\s*shark|grimsburg|wakfu|沃土|monster\s*high|怪物高中|primal|genndy\s+tartakovsky|samuel|nyaaaanvy/iu
+];
+
+const EXPLICIT_FOREIGN_BRAND_TITLE_PATTERNS = [
+  /south\s+park|paw\s+patrol|curtis|柯蒂斯总统|ninjago|lego|mickey|disney|迪士尼|ディズニー|miraculous|family\s+guy/iu,
+  /marvel|iron\s*man|spider-?man|spidey|moon\s*girl|devil\s*dinosaur|superman|beast\s*boy|dc\s*metal/iu,
+  /transformers|变形金刚|變形金剛|rick\s*and\s*morty|瑞克和莫蒂/iu,
   /sponge\s*bob|spongebob|海绵宝宝|海綿寶寶|patrick\s*star|派大星/iu,
   /paddington|帕丁顿熊|帕丁頓熊|octonauts|海底小纵队|海底小縱隊|wild\s*kratts|动物兄弟|動物兄弟/iu,
   /ghost\s+and\s+molly\s+mcgee|幽灵与莫莉|幽靈與莫莉|beyblade\s+burst\s+quadstrike/iu,
@@ -132,6 +144,11 @@ const SEASON_NUMBER_PATTERN =
 export function hasExplicitNonJapaneseSignal(values: Array<string | null | undefined>): boolean {
   const normalizedValues = toNormalizedValues(values);
   return FOREIGN_TITLE_PATTERNS.some((pattern) => normalizedValues.some((value) => pattern.test(value)));
+}
+
+export function hasExplicitForeignBrandSignal(values: Array<string | null | undefined>): boolean {
+  const normalizedValues = toNormalizedValues(values);
+  return EXPLICIT_FOREIGN_BRAND_TITLE_PATTERNS.some((pattern) => normalizedValues.some((value) => pattern.test(value)));
 }
 
 export function hasExplicitNonJapaneseBangumiSubjectId(value: number | null | undefined): boolean {

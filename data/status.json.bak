@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
   "status": "running",
-  "lastSuccessAt": "2026-08-04T10:42:33.092Z",
-  "lastAttemptAt": "2026-08-04T10:53:34.544Z",
+  "lastSuccessAt": "2026-08-04T13:21:13.634Z",
+  "lastAttemptAt": "2026-08-04T13:25:40.972Z",
   "lastError": null,
   "currentJob": {
-    "jobId": "upd_20260804105334_c755141b",
-    "year": 2018,
-    "season": 1,
-    "quarter": "winter",
-    "startedAt": "2026-08-04T10:53:34.544Z"
+    "jobId": "upd_20260804132540_18a5a8eb",
+    "year": 2024,
+    "season": 4,
+    "quarter": "spring",
+    "startedAt": "2026-08-04T13:25:40.972Z"
   },
   "cache": {
-    "animeUpdatedAt": "2026-08-04T10:42:32.933Z",
-    "itemCount": 1737
+    "animeUpdatedAt": "2026-08-04T13:21:13.505Z",
+    "itemCount": 1786
   },
-  "updatedAt": "2026-08-04T09:23:19.756Z"
+  "updatedAt": "2026-08-04T12:52:46.771Z"
 }

@@ -11,7 +11,7 @@ describe("cache eligibility", () => {
     const item = createItem({
       id: "anime:bangumi-only-overseas",
       original: "Go Jetters Series 3",
-      chinese: "全球探险冲冲冲 第三季",
+      chinese: "Global Adventure Series 3",
       subjectId: 658676
     });
 
@@ -19,12 +19,6 @@ describe("cache eligibility", () => {
   });
 
   it("keeps Bangumi-only rows when the item has strong Japanese evidence", () => {
-    const japaneseTitle = createItem({
-      id: "anime:bangumi-only-japanese-title",
-      original: "かいじゅうステップ ワンダバダ",
-      chinese: "小怪兽成长日记 蹒跚学步",
-      subjectId: 302157
-    });
     const japaneseOfficialSite = createItem({
       id: "anime:bangumi-only-official-site",
       original: "BEM",
@@ -32,24 +26,23 @@ describe("cache eligibility", () => {
       subjectId: 274133,
       officialUrl: "https://newbem.jp/"
     });
-    const japaneseStaff = createItem({
-      id: "anime:bangumi-only-japanese-staff",
-      original: "Business Fish",
-      chinese: null,
-      subjectId: 285517,
-      staff: { studio: ["アイアンドエー"], productionCommittee: [], originalWorkType: null }
+    const japaneseBroadcastSite = createItem({
+      id: "anime:bangumi-only-tv-site",
+      original: "Fixture Broadcast Title",
+      chinese: "Fixture Broadcast Title",
+      subjectId: 302157,
+      officialUrl: "https://www.tv-tokyo.co.jp/anime/example/"
     });
 
-    assert.equal(isCacheEligibleAnime(japaneseTitle), true);
     assert.equal(isCacheEligibleAnime(japaneseOfficialSite), true);
-    assert.equal(isCacheEligibleAnime(japaneseStaff), true);
+    assert.equal(isCacheEligibleAnime(japaneseBroadcastSite), true);
   });
 
   it("does not require extra evidence for trusted non-Bangumi catalog sources", () => {
     const item = createItem({
       id: "anime:yucwiki-catalog",
       original: "Catalog Title",
-      chinese: "目录条目",
+      chinese: "Catalog Title",
       subjectId: null,
       sources: [
         {
@@ -68,7 +61,7 @@ describe("cache eligibility", () => {
     const item = createItem({
       id: "anime:bangumi-only-with-schedule-source",
       original: "Fixture Broadcast Title",
-      chinese: null,
+      chinese: "Fixture Broadcast Title",
       subjectId: 1001,
       schedule: [
         {
@@ -90,13 +83,96 @@ describe("cache eligibility", () => {
     assert.equal(isCacheEligibleAnime(item), true);
   });
 
+  it("blocks items without a Chinese title when Bangumi rating count is below 50", () => {
+    assert.equal(
+      isCacheEligibleAnime(createItem({
+        id: "anime:missing-chinese-title-low-rating-count",
+        original: "Missing Chinese Title",
+        chinese: null,
+        subjectId: 1002,
+        ratingCount: 49,
+        officialUrl: "https://example.jp/"
+      })),
+      false
+    );
+    assert.equal(
+      isCacheEligibleAnime(createItem({
+        id: "anime:missing-chinese-title-without-rating-count",
+        original: "Missing Chinese Title",
+        chinese: null,
+        subjectId: 1003,
+        officialUrl: "https://example.jp/"
+      })),
+      false
+    );
+  });
+
+  it("keeps items without a Chinese title when Bangumi rating count reaches 50", () => {
+    const item = createItem({
+      id: "anime:228820",
+      original: "Free!-Dive to the Future-",
+      chinese: null,
+      subjectId: 228820,
+      ratingCount: 763,
+      officialUrl: "https://example.jp/free/"
+    });
+
+    assert.equal(isCacheEligibleAnime(item), true);
+  });
+
+  it("keeps Japanese productions when Chinese aliases hit broad robot franchise wording", () => {
+    const item = createItem({
+      id: "anime:472386",
+      original: "シンカリオン チェンジ ザ ワールド",
+      chinese: "进化先锋 改变世界",
+      subjectId: 472386,
+      ratingCount: 120,
+      staff: {
+        studio: ["SIGNAL.MD＆Production I.G"],
+        productionCommittee: [],
+        originalWorkType: null
+      }
+    });
+    item.title.aliases = ["新干线变形机器人 进化先锋 改变世界"];
+
+    assert.equal(isCacheEligibleAnime(item), true);
+  });
+
+  it("still blocks broad robot franchise wording without Japanese production evidence", () => {
+    const item = createItem({
+      id: "anime:foreign-robot-franchise",
+      original: "Robot Franchise",
+      chinese: "新干线变形机器人 海外版",
+      subjectId: null
+    });
+
+    assert.equal(isCacheEligibleAnime(item), false);
+  });
+
+  it("blocks explicit overseas brands even when Japanese production evidence is present", () => {
+    const item = createItem({
+      id: "anime:disney-japanese-production",
+      original: "ディズニー ツイステッドワンダーランド",
+      chinese: "迪士尼扭曲仙境",
+      subjectId: 1004,
+      ratingCount: 100,
+      staff: {
+        studio: ["ゆめ太カンパニー", "グラフィニカ"],
+        productionCommittee: [],
+        originalWorkType: "game"
+      }
+    });
+
+    assert.equal(isCacheEligibleAnime(item), false);
+  });
+
   it("applies 2019 manual review exclusions while keeping confirmed exceptions", () => {
     for (const subjectId of [259070, 270636, 267481, 267412, 279713, 274222, 249245, 244900, 279468, 239911]) {
       assert.equal(
         isCacheEligibleAnime(createItem({
           id: `anime:${subjectId}`,
-          original: "手動審査タイトル",
-          chinese: null,
+          original: "Manual Excluded Title",
+          chinese: "Manual Excluded Title",
           subjectId
         })),
         false,
@@ -108,9 +184,10 @@ describe("cache eligibility", () => {
       assert.equal(
         isCacheEligibleAnime(createItem({
           id: `anime:${subjectId}`,
-          original: "ペルソナ確認済みタイトル",
-          chinese: null,
-          subjectId
+          original: "Manual Confirmed Title",
+          chinese: "Manual Confirmed Title",
+          subjectId,
+          officialUrl: "https://example.jp/manual-confirmed/"
         })),
         true,
         `subject ${subjectId} should be kept`
@@ -123,8 +200,8 @@ describe("cache eligibility", () => {
       assert.equal(
         isCacheEligibleAnime(createItem({
           id: `anime:${subjectId}`,
-          original: "高リスク審査タイトル",
-          chinese: null,
+          original: "Manual Excluded Title",
+          chinese: "Manual Excluded Title",
           subjectId
         })),
         false,
@@ -138,9 +215,10 @@ describe("cache eligibility", () => {
       assert.equal(
         isCacheEligibleAnime(createItem({
           id: `anime:${subjectId}`,
-          original: "手動確認済みタイトル",
-          chinese: null,
-          subjectId
+          original: "Manual Confirmed Title",
+          chinese: "Manual Confirmed Title",
+          subjectId,
+          officialUrl: "https://example.jp/manual-confirmed/"
         })),
         true,
         `subject ${subjectId} should be kept`
@@ -153,8 +231,8 @@ describe("cache eligibility", () => {
       assert.equal(
         isCacheEligibleAnime(createItem({
           id: `anime:${subjectId}`,
-          original: "手動除外シリーズ",
-          chinese: null,
+          original: "Manual Excluded Title",
+          chinese: "Manual Excluded Title",
           subjectId
         })),
         false,
@@ -173,6 +251,7 @@ function createItem(input: {
   staff?: AnimeItem["staff"];
   sources?: AnimeItem["sources"];
   schedule?: AnimeItem["schedule"];
+  ratingCount?: number | null;
 }): AnimeItem {
   return {
     id: input.id,
@@ -201,7 +280,7 @@ function createItem(input: {
       subjectId: input.subjectId,
       url: input.subjectId === null ? null : `https://bgm.tv/subject/${input.subjectId}`,
       rating: null,
-      ratingCount: null,
+      ratingCount: input.ratingCount ?? null,
       rank: null,
       lastSyncedAt: null
     },

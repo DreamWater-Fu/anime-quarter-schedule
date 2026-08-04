@@ -144,6 +144,31 @@ describe("Bangumi mapper", () => {
     assert.equal(item.exclusionReason, "Not Japanese anime");
   });
 
+  it("keeps Japanese productions even when Chinese aliases contain robot franchise terms", () => {
+    const item = mapBangumiSubjectToAnimeItem(
+      {
+        ...subject,
+        id: 472386,
+        name: "シンカリオン チェンジ ザ ワールド",
+        name_cn: "进化先锋 改变世界",
+        date: "2024-04-07",
+        platform: "TV",
+        rating: { score: 6.3, total: 120, rank: 0 },
+        infobox: [
+          { key: "别名", value: [{ v: "新干线变形机器人 进化先锋 改变世界" }] },
+          { key: "动画制作", value: "SIGNAL.MD＆Production I.G" },
+          { key: "官方网站", value: "https://www.shinkalion.com/" }
+        ]
+      },
+      [{ ep: 1, name_cn: "Episode 1", airdate: "2024-04-07", type: 0 }],
+      { retrievedAt, now: new Date("2026-07-28T00:00:00Z") }
+    );
+
+    assert.equal(item.isJapaneseAnime, true);
+    assert.equal(item.inclusionStatus, "included");
+    assert.equal(item.format, "tv");
+  });
+
   it("excludes Paw Patrol and Curtis President as non-Japanese subjects", () => {
     for (const input of [
       { name: "PAW Patrol Season 13", name_cn: "汪汪队立大功 第十三季" },
@@ -511,6 +536,57 @@ describe("source adapters", () => {
     assert.equal(item?.staff?.studio[0], "Sample Studio");
     assert.equal(item?.sources[0]?.name, "YucWiki");
     assert.equal(item?.sources[0]?.scope, "japan_broadcast");
+  });
+
+  it("parses YucWiki priority markers as separate catalog rows", () => {
+    const html = `
+      <!--#B-P3-->
+      <div><table><tr><td class="title_main_r">
+      <p class="title_cn_r">First Priority Title</p>
+      <p class="title_jp_r">First Priority Title JP</p></td>
+      <td class="type_a_r">original tv anime</td></tr>
+      <tr><td class="link_a_r"><p class="broadcast_r">4/1</p></td></tr></table></div>
+      <div style="clear:both"></div>
+      <!--#B-P3-->
+      <div><table><tr><td class="title_main_r">
+      <p class="title_cn_r">Second Priority Title</p>
+      <p class="title_jp_r">Second Priority Title JP</p></td>
+      <td class="type_a_r">original tv anime</td></tr>
+      <tr><td class="link_a_r"><p class="broadcast_r">4/2</p></td></tr></table></div>
+      <div style="clear:both"></div>
+    `;
+
+    const entries = parseYucWikiHtml(html, {
+      year: 2023,
+      season: 4,
+      url: "https://yuc.wiki/202304/",
+      retrievedAt
+    });
+
+    assert.deepEqual(entries.map((entry) => entry.id), ["B01", "B02"]);
+    assert.deepEqual(entries.map((entry) => entry.titleChinese), ["First Priority Title", "Second Priority Title"]);
+  });
+
+  it("normalizes lowercase YucWiki markers before assigning catalog row IDs", () => {
+    const html = `
+      <!--#a01-->
+      <div><table><tr><td class="title_main_r">
+      <p class="title_cn_r">Lowercase Marker Title</p>
+      <p class="title_jp_r">Lowercase Marker Title JP</p></td>
+      <td class="type_a_r">original tv anime</td></tr>
+      <tr><td class="link_a_r"><p class="broadcast_r">1/12</p></td></tr></table></div>
+      <div style="clear:both"></div>
+    `;
+
+    const entries = parseYucWikiHtml(html, {
+      year: 2021,
+      season: 1,
+      url: "https://yuc.wiki/202101/",
+      retrievedAt
+    });
+
+    assert.deepEqual(entries.map((entry) => entry.id), ["A01"]);
+    assert.equal(entries[0]?.titleChinese, "Lowercase Marker Title");
   });
 
   it("uses Bangumi fallback data when configured and the source fails", async () => {

@@ -6,6 +6,7 @@ import {
 } from "../../anime/calculateSeason.ts";
 import {
   hasExplicitExcludedBangumiSubjectId,
+  hasExplicitForeignBrandSignal,
   hasExplicitNonJapaneseBangumiSubjectId,
   hasExplicitNonJapaneseMetadataSignal,
   hasExplicitNonJapaneseSignal,
@@ -144,6 +145,10 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
     extractOfficialUrl(subject),
     ...extractAliases(subject)
   ];
+  if (hasExplicitForeignBrandSignal(titleValuesForOrigin)) {
+    return { isJapaneseAnime: false, reason: "Not Japanese anime" };
+  }
+
   const metadataValuesForOrigin = [
     ...extractBangumiTagNames(subject),
     ...extractStringListFromInfobox(subject, [
@@ -158,6 +163,9 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
       "Country"
     ])
   ];
+  if (hasStrongJapanesePrimaryProductionSignal(subject)) {
+    return { isJapaneseAnime: true };
+  }
   if (
     hasExplicitNonJapaneseSignal(titleValuesForOrigin) ||
     hasForeignPrimaryTitleSignal(subject.name) ||
@@ -204,6 +212,29 @@ function resolveJapaneseAnimeDecision(subject: BangumiSubject): { isJapaneseAnim
   if (/[ぁ-ゖァ-ヺー]/u.test(subject.name)) return { isJapaneseAnime: true };
 
   return { isJapaneseAnime: true };
+}
+
+function hasStrongJapanesePrimaryProductionSignal(subject: BangumiSubject): boolean {
+  if (!/[ぁ-ゖァ-ヺー]/u.test(repairMojibakeText(subject.name))) return false;
+  const values = [
+    extractOfficialUrl(subject),
+    ...extractBangumiTagNames(subject),
+    ...extractStringListFromInfobox(subject, [
+      "动画制作",
+      "アニメーション制作",
+      "制作公司",
+      "studio",
+      "鍔ㄧ敾鍒朵綔",
+      "銈儖銉°兗銈枫儳銉冲埗浣?",
+      "鍒朵綔鍏徃"
+    ])
+  ]
+    .filter((value): value is string => typeof value === "string")
+    .map((value) => value.normalize("NFKC").toLowerCase());
+  return values.some((value) =>
+    /\.jp(?:[/?#]|$)/iu.test(value) ||
+    /(?:日本|japan|japanese|production\s*i\.?\s*g|signal\.?\s*md|mappa|ufotable|kyoto\s*animation|bones|wit\s*studio|a-?1\s*pictures|cloverworks|madhouse|j\.?\s*c\.?\s*staff|tms|olm|toei|sunrise|bandai\s*namco\s*pictures|doga\s*kobo|動画工房|京都アニメーション|東映|サンライズ|日本アニメーション)/iu.test(value)
+  );
 }
 
 function resolveContentExclusionReason(subject: BangumiSubject): string | null {

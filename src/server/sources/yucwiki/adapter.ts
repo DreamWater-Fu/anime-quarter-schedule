@@ -291,7 +291,7 @@ export function parseYucWikiHtml(html: string, options: YucWikiParseOptions): Yu
 }
 
 function collectYucWikiBlocks(html: string): Array<{ id: string; anchor: string; block: string }> {
-  const markers = [...html.matchAll(/<!--#([A-Z](?:\d{2})?)-->/gu)];
+  const markers = [...html.matchAll(/<!--#([A-Za-z](?:(?:\d{2})|(?:-[A-Za-z0-9]+))?)-->/gu)];
   const blocks: Array<{ id: string; anchor: string; block: string }> = [];
   const idCounts = new Map<string, number>();
 
@@ -310,13 +310,14 @@ function collectYucWikiBlocks(html: string): Array<{ id: string; anchor: string;
 }
 
 function normalizeYucWikiEntryId(anchor: string, idCounts: Map<string, number>): string | null {
-  const numbered = /^([A-Z])(\d{2})$/u.exec(anchor);
+  const normalizedAnchor = anchor.toUpperCase();
+  const numbered = /^([A-Z])(\d{2})$/u.exec(normalizedAnchor);
   if (numbered?.[1] && numbered[2]) {
     idCounts.set(numbered[1], Math.max(idCounts.get(numbered[1]) ?? 0, Number(numbered[2])));
-    return anchor;
+    return normalizedAnchor;
   }
 
-  const prefix = /^[A-Z]$/u.exec(anchor)?.[0];
+  const prefix = /^([A-Z])(?:-[A-Z0-9]+)?$/u.exec(normalizedAnchor)?.[1];
   if (!prefix) return null;
   const next = (idCounts.get(prefix) ?? 0) + 1;
   idCounts.set(prefix, next);
