@@ -89,6 +89,79 @@ describe("cache eligibility", () => {
 
     assert.equal(isCacheEligibleAnime(item), true);
   });
+
+  it("applies 2019 manual review exclusions while keeping confirmed exceptions", () => {
+    for (const subjectId of [259070, 270636, 267481, 267412, 279713, 274222, 249245, 244900, 279468, 239911]) {
+      assert.equal(
+        isCacheEligibleAnime(createItem({
+          id: `anime:${subjectId}`,
+          original: "手動審査タイトル",
+          chinese: null,
+          subjectId
+        })),
+        false,
+        `subject ${subjectId} should be excluded`
+      );
+    }
+
+    for (const subjectId of [262382, 270473, 251831]) {
+      assert.equal(
+        isCacheEligibleAnime(createItem({
+          id: `anime:${subjectId}`,
+          original: "ペルソナ確認済みタイトル",
+          chinese: null,
+          subjectId
+        })),
+        true,
+        `subject ${subjectId} should be kept`
+      );
+    }
+  });
+
+  it("applies 2018 high-risk manual review exclusions", () => {
+    for (const subjectId of [230295, 231887, 231888, 256278, 250558, 263756, 223127, 223407, 231067, 217239, 186180, 226986, 243923, 258390, 154771, 236597, 259135]) {
+      assert.equal(
+        isCacheEligibleAnime(createItem({
+          id: `anime:${subjectId}`,
+          original: "高リスク審査タイトル",
+          chinese: null,
+          subjectId
+        })),
+        false,
+        `subject ${subjectId} should be excluded`
+      );
+    }
+  });
+
+  it("keeps 2018 manual review confirmations", () => {
+    for (const subjectId of [205310, 199373, 239910, 257844, 246431]) {
+      assert.equal(
+        isCacheEligibleAnime(createItem({
+          id: `anime:${subjectId}`,
+          original: "手動確認済みタイトル",
+          chinese: null,
+          subjectId
+        })),
+        true,
+        `subject ${subjectId} should be kept`
+      );
+    }
+  });
+
+  it("applies manually excluded short-form and long-running children series", () => {
+    for (const subjectId of [227778, 233609, 237838, 238300, 238831, 247549, 239750, 239840, 239853, 240383, 241031, 240459, 294292, 279470, 279473, 239747, 262384, 301776, 302446, 302447]) {
+      assert.equal(
+        isCacheEligibleAnime(createItem({
+          id: `anime:${subjectId}`,
+          original: "手動除外シリーズ",
+          chinese: null,
+          subjectId
+        })),
+        false,
+        `subject ${subjectId} should be excluded`
+      );
+    }
+  });
 });
 
 function createItem(input: {

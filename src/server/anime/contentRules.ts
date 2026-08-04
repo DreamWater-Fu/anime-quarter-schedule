@@ -26,6 +26,56 @@ const EXPLICIT_NON_TV_BANGUMI_SUBJECT_IDS = new Set<number>([
   316817
 ]);
 
+const MANUAL_REVIEW_EXCLUDED_BANGUMI_SUBJECT_IDS = new Set<number>([
+  154771,
+  186180,
+  217239,
+  223127,
+  223407,
+  226986,
+  227778,
+  230295,
+  231067,
+  231887,
+  231888,
+  233609,
+  236597,
+  237838,
+  238300,
+  238831,
+  239747,
+  239750,
+  239840,
+  239853,
+  239911,
+  240383,
+  240459,
+  241031,
+  243923,
+  244900,
+  247549,
+  249245,
+  250558,
+  256278,
+  258390,
+  259070,
+  259135,
+  262384,
+  263756,
+  267412,
+  267481,
+  270636,
+  274222,
+  279468,
+  279470,
+  279473,
+  279713,
+  294292,
+  301776,
+  302446,
+  302447
+]);
+
 const FOREIGN_TITLE_PATTERNS = [
   /中国之旅|国产|国创|大陆|台湾|香港/iu,
   /皮皮鲁|鲁西西|天才小鲁班|新西游|千秋诗颂|敦煌的故事|山海(?:精奇|传奇)/iu,
@@ -91,7 +141,9 @@ export function hasExplicitNonJapaneseBangumiSubjectId(value: number | null | un
 export function hasExplicitExcludedBangumiSubjectId(value: number | null | undefined): boolean {
   return (
     hasExplicitNonJapaneseBangumiSubjectId(value) ||
-    (typeof value === "number" && EXPLICIT_NON_TV_BANGUMI_SUBJECT_IDS.has(value))
+    (typeof value === "number" &&
+      (EXPLICIT_NON_TV_BANGUMI_SUBJECT_IDS.has(value) ||
+        MANUAL_REVIEW_EXCLUDED_BANGUMI_SUBJECT_IDS.has(value)))
   );
 }
 

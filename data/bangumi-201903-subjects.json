@@ -1,0 +1,730 @@
+[
+  {
+    "date": "2019-03-28",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/fa/01/578276_uw2iW.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/fa/01/578276_uw2iW.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/fa/01/578276_uw2iW.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/fa/01/578276_uw2iW.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/fa/01/578276_uw2iW.jpg"
+    },
+    "summary": "",
+    "name": "è¾ç±³åå ç¬¬äºå­£",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 21193
+      },
+      {
+        "name": "å¨ç»ç",
+        "count": 1,
+        "total_count": 1235
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1154716
+      }
+    ],
+    "infobox": [
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "è¾ç±³åå ç¬¬2å­£"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "104"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´3æ28æ¥"
+      },
+      {
+        "key": "æ»å¯¼æ¼",
+        "value": "ç¼ªç£"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 0,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 0
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 0,
+      "wish": 0,
+      "collect": 0,
+      "doing": 0
+    },
+    "id": 578276,
+    "eps": 104,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-03-23",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/ba/3c/270473_CB35g.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/ba/3c/270473_CB35g.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/ba/3c/270473_CB35g.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/ba/3c/270473_CB35g.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/ba/3c/270473_CB35g.jpg"
+    },
+    "summary": "",
+    "name": "PERSONA5 the Animation Stars and Ours",
+    "name_cn": "å¥³ç¥å¼é»å½5 Stars and Ours",
+    "tags": [
+      {
+        "name": "æ¸¸ææ¹",
+        "count": 212,
+        "total_count": 161571
+      },
+      {
+        "name": "CloverWorks",
+        "count": 161,
+        "total_count": 56152
+      },
+      {
+        "name": "2019",
+        "count": 122,
+        "total_count": 76266
+      },
+      {
+        "name": "OVA",
+        "count": 112,
+        "total_count": 362818
+      },
+      {
+        "name": "å¥³ç¥å¼é»å½",
+        "count": 89,
+        "total_count": 1586
+      },
+      {
+        "name": "ææ",
+        "count": 62,
+        "total_count": 465642
+      },
+      {
+        "name": "2019å¹´3æ",
+        "count": 54,
+        "total_count": 549
+      },
+      {
+        "name": "TV",
+        "count": 53,
+        "total_count": 1391637
+      },
+      {
+        "name": "TVSP",
+        "count": 40,
+        "total_count": 1962
+      },
+      {
+        "name": "ç³æµçå²",
+        "count": 39,
+        "total_count": 669
+      },
+      {
+        "name": "SP",
+        "count": 26,
+        "total_count": 5898
+      },
+      {
+        "name": "2019å¹´",
+        "count": 18,
+        "total_count": 3628
+      },
+      {
+        "name": "çªçªæä¸",
+        "count": 18,
+        "total_count": 350
+      },
+      {
+        "name": "æ¸¸æ¹",
+        "count": 13,
+        "total_count": 2479
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 13,
+        "total_count": 464390
+      },
+      {
+        "name": "æ¥æ¬",
+        "count": 13,
+        "total_count": 290787
+      },
+      {
+        "name": "ç¦å±±æ½¤",
+        "count": 8,
+        "total_count": 5214
+      },
+      {
+        "name": "æ ¡å­",
+        "count": 6,
+        "total_count": 447959
+      },
+      {
+        "name": "Atlus",
+        "count": 5,
+        "total_count": 580
+      },
+      {
+        "name": "æ¸¸æ",
+        "count": 4,
+        "total_count": 7070
+      },
+      {
+        "name": "ç®é»å°å¸",
+        "count": 4,
+        "total_count": 120
+      },
+      {
+        "name": "æ¥æ¬å¨ç»",
+        "count": 3,
+        "total_count": 34759
+      },
+      {
+        "name": "PERSONA",
+        "count": 3,
+        "total_count": 671
+      },
+      {
+        "name": "ç»­ä½",
+        "count": 3,
+        "total_count": 45590
+      },
+      {
+        "name": "ç³å·æºç¾",
+        "count": 3,
+        "total_count": 13
+      },
+      {
+        "name": "ç³æ»¨çå²",
+        "count": 3,
+        "total_count": 190
+      },
+      {
+        "name": "ç¦å±±æ¶¦",
+        "count": 3,
+        "total_count": 15041
+      },
+      {
+        "name": "å·²ä¸è½½",
+        "count": 2,
+        "total_count": 6841
+      },
+      {
+        "name": "ç®é»å°å¸",
+        "count": 2,
+        "total_count": 257
+      },
+      {
+        "name": "å­£çª",
+        "count": 2,
+        "total_count": 8386
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "å¥³ç¥å¼é»å½5 Stars and Ours"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "1"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´3æ23æ¥"
+      },
+      {
+        "key": "æ¾éææ",
+        "value": "ææå­"
+      },
+      {
+        "key": "å®æ¹ç½ç«",
+        "value": "https://p5a.jp/"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "TOKYO MX"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "ç¾¤é¦¬ãã¬ããã¨ã¡ããã¬ãã MBSãBS11"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "ç³æµçå²"
+      },
+      {
+        "key": "Copyright",
+        "value": "Â©ATLUS Â©SEGA/PERSONA5 the Animation Project"
+      },
+      {
+        "key": "åä½",
+        "value": "ããã«ã½ã5ãï¼ã¢ãã©ã¹ï¼"
+      },
+      {
+        "key": "äººç©è®¾å®",
+        "value": "ç³å·æºç¾"
+      }
+    ],
+    "rating": {
+      "rank": 7425,
+      "total": 730,
+      "count": {
+        "1": 4,
+        "2": 4,
+        "3": 11,
+        "4": 43,
+        "5": 107,
+        "6": 339,
+        "7": 171,
+        "8": 32,
+        "9": 7,
+        "10": 12
+      },
+      "score": 6.1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 56,
+      "dropped": 39,
+      "wish": 254,
+      "collect": 1434,
+      "doing": 36
+    },
+    "id": 270473,
+    "eps": 1,
+    "meta_tags": [
+      "TV",
+      "æ¥æ¬",
+      "æ¸¸ææ¹"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-03-18",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/bd/29/257507_OS8OR.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/bd/29/257507_OS8OR.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/bd/29/257507_OS8OR.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/bd/29/257507_OS8OR.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/bd/29/257507_OS8OR.jpg"
+    },
+    "summary": "",
+    "name": "Star vs. the Forces of Evil (Season 4)",
+    "name_cn": "æè¶å¬ä¸» ç¬¬åå­£",
+    "tags": [
+      {
+        "name": "æ¬§ç¾",
+        "count": 19,
+        "total_count": 86264
+      },
+      {
+        "name": "è¿ªå£«å°¼",
+        "count": 18,
+        "total_count": 19458
+      },
+      {
+        "name": "Disney",
+        "count": 14,
+        "total_count": 7566
+      },
+      {
+        "name": "2019",
+        "count": 11,
+        "total_count": 76307
+      },
+      {
+        "name": "æè¶å¬ä¸»",
+        "count": 10,
+        "total_count": 61
+      },
+      {
+        "name": "åå",
+        "count": 8,
+        "total_count": 615448
+      },
+      {
+        "name": "æç±",
+        "count": 6,
+        "total_count": 558442
+      },
+      {
+        "name": "å¥å¹»",
+        "count": 6,
+        "total_count": 465280
+      },
+      {
+        "name": "TV",
+        "count": 4,
+        "total_count": 1393214
+      },
+      {
+        "name": "ææ",
+        "count": 4,
+        "total_count": 466366
+      },
+      {
+        "name": "æ ¡å­",
+        "count": 3,
+        "total_count": 448662
+      },
+      {
+        "name": "Disney_Television_Animation",
+        "count": 3,
+        "total_count": 41
+      },
+      {
+        "name": "ç¾æ¼«",
+        "count": 3,
+        "total_count": 1994
+      },
+      {
+        "name": "æ åå¤´",
+        "count": 2,
+        "total_count": 1308
+      },
+      {
+        "name": "TVA",
+        "count": 2,
+        "total_count": 15435
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 35516
+      },
+      {
+        "name": "å¤è§æ",
+        "count": 1,
+        "total_count": 90
+      },
+      {
+        "name": "ååå§",
+        "count": 1,
+        "total_count": 2114
+      },
+      {
+        "name": "å­ä¾å",
+        "count": 1,
+        "total_count": 12615
+      },
+      {
+        "name": "TVA-02",
+        "count": 1,
+        "total_count": 138
+      },
+      {
+        "name": "æ¥å¸¸",
+        "count": 1,
+        "total_count": 396554
+      },
+      {
+        "name": "æç¬",
+        "count": 1,
+        "total_count": 633834
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "æè¶å¬ä¸» ç¬¬åå­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "21"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´3æ18æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "Disney XD"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "Disney Channel"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2019å¹´5æ19æ¥"
+      }
+    ],
+    "rating": {
+      "rank": 3576,
+      "total": 77,
+      "count": {
+        "1": 2,
+        "2": 1,
+        "3": 2,
+        "4": 2,
+        "5": 9,
+        "6": 18,
+        "7": 19,
+        "8": 14,
+        "9": 6,
+        "10": 4
+      },
+      "score": 6.6
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 8,
+      "dropped": 11,
+      "wish": 32,
+      "collect": 130,
+      "doing": 9
+    },
+    "id": 257507,
+    "eps": 21,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-03-08",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/07/14/524963_C7i4j.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/07/14/524963_C7i4j.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/07/14/524963_C7i4j.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/07/14/524963_C7i4j.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/07/14/524963_C7i4j.jpg"
+    },
+    "summary": "Teenage versions of DC Comics superheroines both attend high school and fight crime to protect the citizens of Metropolis.",
+    "name": "DC Super Hero Girls Season 1",
+    "name_cn": "DCè¶çº§è±éç¾å°å¥³ ç¬¬ä¸å­£",
+    "tags": [
+      {
+        "name": "TV",
+        "count": 2,
+        "total_count": 1311402
+      },
+      {
+        "name": "æ¬§ç¾",
+        "count": 2,
+        "total_count": 82966
+      },
+      {
+        "name": "æç¬",
+        "count": 1,
+        "total_count": 598786
+      }
+    ],
+    "infobox": [
+      {
+        "key": "ä¸­æå",
+        "value": "DCè¶çº§è±éç¾å°å¥³ ç¬¬ä¸å­£"
+      },
+      {
+        "key": "è¯æ°",
+        "value": "52"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´3æ8æ¥"
+      },
+      {
+        "key": "æ­æ¾ç»æ",
+        "value": "2020å¹´12æ27æ¥"
+      },
+      {
+        "key": "ä¸»æ¼",
+        "value": "Tara StrongãNicole SullivanãMyrna Velasco"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 1
+      },
+      "score": 10
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 1,
+      "dropped": 1,
+      "wish": 1,
+      "collect": 4,
+      "doing": 2
+    },
+    "id": 524963,
+    "eps": 52,
+    "meta_tags": [
+      "TV",
+      "æ¬§ç¾"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  },
+  {
+    "date": "2019-03-01",
+    "platform": "TV",
+    "images": {
+      "small": "https://lain.bgm.tv/r/200/pic/cover/l/be/e9/499361_Rzreq.jpg",
+      "grid": "https://lain.bgm.tv/r/100/pic/cover/l/be/e9/499361_Rzreq.jpg",
+      "large": "https://lain.bgm.tv/pic/cover/l/be/e9/499361_Rzreq.jpg",
+      "medium": "https://lain.bgm.tv/r/800/pic/cover/l/be/e9/499361_Rzreq.jpg",
+      "common": "https://lain.bgm.tv/r/400/pic/cover/l/be/e9/499361_Rzreq.jpg"
+    },
+    "summary": "15å¹´åï¼çå¯é£çç¸ç¸å¨é­å¹»éèºå åèµä¸­ä¸å åè£èªå¤±ä¹äº¤èãä¸ºäºå®æç¸ç¸æªåçå¿æ¿ï¼å¯é£è¸ä¸äºéèºç«æä¹è·¯ï¼å¼å¯éæ¢¦å¾ç¨ãæ°äººèµä¸­ï¼çå¯é£åæä½¿ç¨ç¸ç¸å½å¹´ç¨è¿çèè½å¼æââå¤©ç°ï¼å¹¶ä»é­å¹»éèºåä½èæªåå£«é£éå¾å°äºæä½³éèºæ­æ¡£ââæç°é£æ´ãä»ä¸è·¯æ«èæ©æ£ææèªå·±ï¼ä¸åºåºæ¯èµä¸­ï¼å¯é£ç»è¯äºé©è·ãå¸äºãå¯»å¾èãæèç¶ãå´æç­å¥½åï¼ä¼ä¼´ä»¬å±åè®­ç»ï¼å®åä¸æ­æåãç¶èï¼éèºç«æåé£äºçªåï¼ä¸å çé¢éçªç¶éå½¹ï¼ä¸æ­¤åæ¶ç¥ç§èé¢äººæ¶å¸¸åºç°ï¼éèºæ¯èµé´äºééâ¦â¦ç«æä¹è·¯ä¸ï¼å°åºè°è½å¤é¡ºå©æºè¿å åèµ?è°å°ä¼æ¯ä¸ä¸ä¸ªéèºç?èç¥ç§èé¢äººï¼åæ¯è°?",
+    "name": "é­å¹»éèºä¹èè½å¼æ",
+    "name_cn": "",
+    "tags": [
+      {
+        "name": "ä¸­å½",
+        "count": 2,
+        "total_count": 26693
+      },
+      {
+        "name": "TV",
+        "count": 1,
+        "total_count": 1274274
+      },
+      {
+        "name": "å¨ç»",
+        "count": 1,
+        "total_count": 32837
+      }
+    ],
+    "infobox": [
+      {
+        "key": "å«å",
+        "value": [
+          {
+            "v": "é­å¹»éèº4"
+          }
+        ]
+      },
+      {
+        "key": "è¯æ°",
+        "value": "30"
+      },
+      {
+        "key": "æ¾éå¼å§",
+        "value": "2019å¹´3æ1æ¥"
+      },
+      {
+        "key": "æ­æ¾çµè§å°",
+        "value": "ä¼æ¼«å¡éå«è§"
+      },
+      {
+        "key": "å¶ä»çµè§å°",
+        "value": "ä¸­å¤®çµè§å°å°å¿é¢éãååç«å¨å«è§ãåä½³å¡éãå¹¿ä¸å°å¿ãè¾½å®éå°å¿ãç¦å»ºå°å¿ãæµæ±å°å¿ãå¤©æ´¥å°å¿ãäºåå°å¿ãçèå°å¿ãæ­¦æ±å°å¿ãå¤§è¿å°å¿ã æµåå°å¿"
+      },
+      {
+        "key": "å¯¼æ¼",
+        "value": "é»ä¸æ³°"
+      },
+      {
+        "key": "ç³»åææ",
+        "value": "æ¨æ¿ãå¼ æ¥å¤"
+      },
+      {
+        "key": "çå¶",
+        "value": "æ»çå¶ï¼éä½³çãé¢å¯å"
+      },
+      {
+        "key": "å¶ç",
+        "value": "åäºè¬ãå¼ æµ©ãå¼ è·¯"
+      },
+      {
+        "key": "è£½ä½",
+        "value": "åºåå¬å¸ï¼å¹¿å·çµå¨åæ³æåç§ææéå¬å¸ï¼åºåäººï¼è°¢å½å"
+      }
+    ],
+    "rating": {
+      "rank": 0,
+      "total": 1,
+      "count": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "score": 1
+    },
+    "total_episodes": 0,
+    "collection": {
+      "on_hold": 2,
+      "dropped": 3,
+      "wish": 1,
+      "collect": 1,
+      "doing": 0
+    },
+    "id": 499361,
+    "eps": 30,
+    "meta_tags": [
+      "TV",
+      "ä¸­å½"
+    ],
+    "volumes": 0,
+    "series": false,
+    "locked": false,
+    "nsfw": false,
+    "type": 2
+  }
+]

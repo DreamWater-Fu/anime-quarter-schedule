@@ -32,6 +32,19 @@
 - `inclusionStatus === "excluded"`
 - 人工审查排除清单或明确排除 Bangumi subjectId 命中项
 
+2019 年 1 月/4 月人工审查结论:
+
+- 保留: `PERSONA5 the Animation Dark Sun...` / subject `262382`, `PERSONA5 the Animation Stars and Ours` / subject `270473`, `斉木楠雄のΨ難 完結編` / subject `251831`。
+- 排除: `探偵オペラ ミルキィホームズ サイコの挨拶` / subject `259070`, `マンガで分かる！Fate/Grand Order` / subject `270636`, `ルパン三世 グッバイ・パートナー` / subject `267481`, `機動戦士ガンダム THE ORIGIN 前夜 赤い彗星` / subject `267412`, `ポプテピピック TVスペシャル` / subject `279713`, `勇気の花がひらくとき やなせたかしとアンパンマンの物語` / subject `274222`, `KING OF PRISM -Shiny Seven Stars-` / subject `249245`, `群青のマグメル` / subject `244900`, `爆丸バトルプラネット` / subject `279468`, `revisions リヴィジョンズ` / subject `239911`。
+
+2018 年度高风险临时排除:
+
+- 排除: `探偵オペラ ミルキィホームズ アルセーヌ 華麗なる欲望` / subject `230295`, `Fate/Grand Order -MOONLIGHT/LOSTROOM-` / subject `231887`, `Fate/Grand Order×氷室の天地～7人の最強偉人編～` / subject `231888`, `ONE PIECE エピソードオブ 空島` / subject `256278`, `かみさまみならい ヒミツのここたま 夏だ！おおはしゃぎスペシャル` / subject `250558`, `マーベル フューチャー・アベンジャーズ2` / subject `263756`, `狐狸之声` / subject `223127`。
+- 继续排除: `怪獣娘～ウルトラ怪獣擬人化計画～ 第2期` / subject `223407`, `サクラノチカイ ～東の飛鳥 下野市をえーる！～` / subject `231067`, `銀の墓守りII` / subject `217239`, `重神機パンドーラ` / subject `186180`, `レイトン ミステリー探偵社～カトリーのナゾトキファイル～` / subject `226986`, `ぱすてるらいふ` / subject `243923`, `スペースバグ` / subject `258390`, `軒轅剣・蒼き曜` / subject `154771`, `ラディアン` / subject `236597`, `走り続けてよかったって。` / subject `259135`。
+- 点名删除: `ケッケロケー` / subject `239840`, `俺たちゃ妖怪人間G` / subject `241031`, `少年アシベ GO!GO!ゴマちゃん 第3シリーズ` / subject `240459`, `少年アシベ GO!GO!ゴマちゃん 第4シリーズ` / subject `279470`, `あはれ！名作くん 第3期` / subject `239750`, `あはれ！名作くん 第4期` / subject `279473`, `ふるさと 日本の昔ばなし セレクション` / subject `247549`, `黒猫モンロヲ` / subject `237838`, `きこりと宝物` / subject `294292`, `かみさまみならい ヒミツのここたま 第3シリーズ` / subject `240383`, `うさぎのマシュー` / subject `239853`, `はなかっぱ 第9期` / subject `302446`, `はなかっぱ 第10期` / subject `302447`, `キャラとおたまじゃくし島` / subject `239747`, `ほしの島のにゃんこ` / subject `262384`, `シルバニアファミリー ミニストーリー シーズン2` / subject `301776`, `がんがんがんこちゃん 第2期` / subject `238831`, `戦隊ヒーロー スキヤキフォース - ぐんまの平和を願うシーズン え、また？ -` / subject `238300`, `ポチっと発明 ピカちんキット` / subject `227778`, `みっちりねこ` / subject `233609`。
+- 保留: `LOST SONG` / subject `205310`, `バキ` / subject `199373`, `イングレス` / subject `239910`, `アイドルマスター SideM 理由あってMini!` / subject `257844`, `BanG Dream! ガルパ☆ピコ` / subject `246431`。
+- 2018 审查中仅因 `泡面番` / `短片` 弱信号被列为低优先度的条目整体保留; 短篇 TV 本身不等于越界。
+
 Bangumi-only 额外准入规则:
 
 - 只有 Bangumi 来源的条目, 不能仅凭 Bangumi `platform=TV` 进入展示/缓存。
