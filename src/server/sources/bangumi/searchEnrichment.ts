@@ -1,5 +1,6 @@
 import { setTimeout as delay } from "node:timers/promises";
 
+import { isCacheEligibleAnime } from "../../anime/cacheEligibility.ts";
 import type { AnimeItem, AnimeSource, CoverImage } from "../../types/anime.ts";
 import { BangumiApiClient } from "./client.ts";
 import { generateBangumiSearchTitles, scoreBangumiCandidate } from "./matcher.ts";
@@ -35,7 +36,7 @@ export async function enrichMissingBangumiBySearch(
   const nextItems: AnimeItem[] = [];
 
   for (const item of items) {
-    if (!shouldSearchBangumi(item)) {
+    if (!shouldSearchMissingBangumi(item)) {
       nextItems.push(item);
       continue;
     }
@@ -144,14 +145,15 @@ async function fetchSubjectDetailStrict(
   throw lastError;
 }
 
-function shouldSearchBangumi(item: AnimeItem): boolean {
+export function shouldSearchMissingBangumi(item: AnimeItem): boolean {
   const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
   return (
+    isCacheEligibleAnime(item) &&
     subjectId === null &&
-    item.sources.some((source) => source.name === "YucWiki") &&
-    item.format === "tv" &&
-    item.isJapaneseAnime !== false &&
-    item.inclusionStatus !== "excluded"
+    item.sources.some((source) =>
+      source.name === "YucWiki" ||
+      (source.name === "YourAnimes" && source.scope === "japan_broadcast")
+    )
   );
 }
 

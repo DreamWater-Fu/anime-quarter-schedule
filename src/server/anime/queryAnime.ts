@@ -11,6 +11,7 @@ import { getDefaultStorage } from "../cache/jsonFileStorage.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { ApiErrorException } from "../utils/errors.ts";
 import { DEFAULT_ANIME_SEARCH_LIMIT, searchAnimeItems } from "../../shared/animeSearch.ts";
+import { isCacheEligibleAnime } from "./cacheEligibility.ts";
 import {
   compareSeasonKey,
   getCurrentSeasonKey,
@@ -63,8 +64,7 @@ export async function queryAnimeBySeason(input: QueryAnimeInput): Promise<AnimeS
 
   const items = cache.items
     .filter((item) => isVisibleInSeason(item, currentSeason, actualSeason))
-    .filter((item) => item.format === "tv")
-    .filter((item) => item.isJapaneseAnime !== false)
+    .filter(isCacheEligibleAnime)
     .filter((item) => isIncludedForQuery(item, includeOptional, includeNeedsReview))
     .sort(compareAnimeForSeasonPage);
 
@@ -86,7 +86,7 @@ export async function searchAnimeLibrary(input: SearchAnimeInput): Promise<Anime
   const cache = await storage.readAnimeCache();
   const query = input.query.trim();
   const limit = normalizeSearchLimit(input.limit);
-  const results = searchAnimeItems(cache.items, query, limit);
+  const results = searchAnimeItems(cache.items.filter(isCacheEligibleAnime), query, limit);
 
   return {
     query,
@@ -105,9 +105,7 @@ export async function queryAnimeItemsByIds(input: QueryAnimeItemsInput): Promise
   const idSet = new Set(ids);
   const items = cache.items
     .filter((item) => idSet.has(item.id))
-    .filter((item) => item.format === "tv")
-    .filter((item) => item.isJapaneseAnime !== false)
-    .filter((item) => item.inclusionStatus !== "excluded")
+    .filter(isCacheEligibleAnime)
     .sort(compareAnimeForLibraryPage);
 
   return {

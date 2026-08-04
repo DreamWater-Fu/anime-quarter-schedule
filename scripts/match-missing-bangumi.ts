@@ -3,6 +3,7 @@ import { promisify } from "node:util";
 
 import { getDefaultStorage } from "../src/server/cache/jsonFileStorage.ts";
 import { repairMojibakeText } from "../src/server/anime/contentRules.ts";
+import { shouldSearchMissingBangumi } from "../src/server/sources/bangumi/searchEnrichment.ts";
 import { scoreBangumiCandidate } from "../src/server/sources/bangumi/matcher.ts";
 import type { BangumiSubject, Candidate } from "../src/server/sources/bangumi/types.ts";
 import type { AnimeCache, AnimeItem, AnimeSource, CoverImage } from "../src/server/types/anime.ts";
@@ -25,13 +26,13 @@ async function main() {
   const matched: Array<{ id: string; subjectId: number; title: string; score: number; fields: string[] }> = [];
   const failed: Array<{ id: string; title: string; error: string }> = [];
   const rejected: Array<{ id: string; title: string; subjectId: number; candidateTitle: string; score: number; fields: string[]; risks: string[] }> = [];
-  const searchItems = cache.items.filter(shouldSearchBangumi).slice(0, batchLimit ?? undefined);
+  const searchItems = cache.items.filter(shouldSearchMissingBangumi).slice(0, batchLimit ?? undefined);
   const searchResults = await fetchSearchResults(searchItems);
 
   const nextItems: AnimeItem[] = [];
   let changed = false;
   for (const item of cache.items) {
-    if (!shouldSearchBangumi(item)) {
+    if (!shouldSearchMissingBangumi(item)) {
       nextItems.push(item);
       continue;
     }
@@ -107,7 +108,7 @@ async function main() {
   }
 
   console.log(JSON.stringify({
-    eligible: cache.items.filter(shouldSearchBangumi).length,
+    eligible: cache.items.filter(shouldSearchMissingBangumi).length,
     processed: searchItems.length,
     matched: matched.length,
     failed: failed.length,
@@ -115,17 +116,6 @@ async function main() {
     rejected,
     failures: failed
   }, null, 2));
-}
-
-function shouldSearchBangumi(item: AnimeItem): boolean {
-  const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
-  return (
-    subjectId === null &&
-    item.sources.some((source) => source.name === "YucWiki") &&
-    item.format === "tv" &&
-    item.isJapaneseAnime !== false &&
-    item.inclusionStatus !== "excluded"
-  );
 }
 
 function scoreSubjects(item: AnimeItem, subjects: BangumiSubject[]): Candidate[] {

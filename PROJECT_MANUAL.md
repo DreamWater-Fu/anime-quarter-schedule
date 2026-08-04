@@ -149,7 +149,7 @@ PWA 与缓存:
 数据源:
 
 - 长门有C / YucWiki: 主目录源, 提供季度番剧列表、标题、播放日期/时间标签、放送形态、官网、制作信息、集数和封面链接; 优先决定目标季度可写入目录。默认读取 `https://yuc.wiki/YYYYMM/`, 成功获取后写入 `data/yucwiki-YYYYMM.html` 作为本地快照
-- Bangumi: 次源, 主要补齐已匹配条目的 subjectId、评分、排名、封面和条目信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照。月度 subject 列表不是完整季度目录, 只能作为候选池和评分补强源。长门有C主目录存在时, 未能匹配到长门条目的 Bangumi-only 条目不得单独写入缓存。网页端/API 更新会对缺 subjectId 的长门条目执行在线 Bangumi 搜索补全, 搜索词覆盖原题、日文名、中文名、英文名和别名, 一旦出现带标题与日期/官网/集数/季数/制作信息辅助证据的高置信候选就绑定; 对已绑定但缺评分或非 Bangumi 封面的条目会继续拉取 subject 详情刷新评分与封面。Windows PowerShell fallback 的临时脚本必须写入项目内 `.tmp/` 或 `BANGUMI_TMP_DIR`, 不要写入用户 Temp, 以免网页端本地更新遇到权限错误; 本地 Bangumi 月度快照读取前必须剥离 UTF-8 BOM。
+- Bangumi: 次源, 主要补齐已匹配条目的 subjectId、评分、排名、封面和条目信息; 成功读取月度 subject 列表后会写入 `data/bangumi-YYYYMM-subjects.json` 作为本地快照。月度 subject 列表不是完整季度目录, 只能作为候选池和评分补强源。长门有C主目录存在时, 未能匹配到长门条目的 Bangumi-only 条目不得单独写入缓存。网页端/API 更新会对已通过展示/缓存边界且缺 subjectId 的长门条目、YourAnimes `japan_broadcast` 冷启动参考条目执行在线 Bangumi 搜索补全, 搜索词覆盖原题、日文名、中文名、英文名和别名, 一旦出现带标题与日期/官网/集数/季数/制作信息辅助证据的高置信候选就绑定; 对已绑定但缺评分或非 Bangumi 封面的条目会继续拉取 subject 详情刷新评分与封面。Bangumi 匹配只补元数据, 不得用于扩大“只展示日本 TV 动画”的产品边界。Windows PowerShell fallback 的临时脚本必须写入项目内 `.tmp/` 或 `BANGUMI_TMP_DIR`, 不要写入用户 Temp, 以免网页端本地更新遇到权限错误; 本地 Bangumi 月度快照读取前必须剥离 UTF-8 BOM。
 - YourAnimes: 低优先级参考源, 保持原用途, 补充日本首播时间和 Bangumi subjectId; 当主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 可信参考源可冷启动导入 `partial` / `needs_review` 条目
 - 巴哈姆特: 遗留参考源适配器仍保留给旧测试和手动调试, 但默认更新流程已经由长门有C替代, 不再作为默认数据源注册
 - `data/manual-broadcast-overrides.json`: 最终人工覆盖, 只对未完结、未取消条目生效
@@ -179,12 +179,13 @@ npm run data:audit
 3. 按优先级读取长门有C、Bangumi、YourAnimes
 4. 归一化、去重、按 `primarySeason` 过滤目标季度
 5. 若长门有C主目录有可写入条目, 以长门条目为目录主体; Bangumi 只合并到同标题/高置信匹配条目上补齐评分、排名、subjectId、封面等信息, 未匹配的 Bangumi-only 条目会被丢弃
-6. 对缺 subjectId 的长门条目执行内联 Bangumi 搜索补全; 搜索不要只取前两个标题变体, 必须覆盖中文名和别名, 并在找到高置信候选后提前停止以减少请求量。对已绑定但缺评分或缺 Bangumi 封面的条目再拉取 subject 详情补齐
-7. 主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 对无 Bangumi ID 且无旧缓存匹配的 YourAnimes 参考条目, 仅在来源可信、格式为 TV、具备开播日期与排期时允许冷启动, 并标记为 `needs_review`
-8. 过滤 TV、日本动画、非成人内容、剧场版/电影标题、已知 SP 标题和第 11 季及以上条目; 非日漫过滤必须同时读取标题/别名/官网、Bangumi tags、产地字段和韩文主标题信号, 并用强日方制作信号保护 `明日方舟` 这类特殊条目
-9. 与旧缓存合并, 保留可靠旧信息
-10. 应用人工广播覆盖
-11. 校验并写入 `data/anime.json`, `data/status.json`, `data/update-log.jsonl`
+6. 主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 对无 Bangumi ID 且无旧缓存匹配的 YourAnimes 参考条目, 仅在来源可信、格式为 TV、具备开播日期与排期时允许冷启动, 并标记为 `needs_review`
+7. 统一执行展示/缓存边界过滤: 只允许 TV、日本动画、非 excluded、非人工审查排除、非成人内容、非海外/IP 标题、非剧场版/电影/MOVIE/SP/已知非 TV 特番、第 10 季及以下条目进入缓存候选; 冷启动参考源条目也必须先通过该边界
+8. 对筛选后仍缺 subjectId 的长门条目、YourAnimes `japan_broadcast` 冷启动参考条目执行内联 Bangumi 搜索补全; 搜索不要只取前两个标题变体, 必须覆盖中文名和别名, 并在找到高置信候选后提前停止以减少请求量。Bangumi 匹配只补 subjectId、评分、封面等元数据, 不用于决定是否重新导入 WEB、剧场版、SP、成人向或非日漫条目。对已绑定但缺评分或缺 Bangumi 封面的条目再拉取 subject 详情补齐
+9. 非日漫过滤必须同时读取标题/别名/官网、Bangumi tags、产地字段和韩文主标题信号, 并用强日方制作信号保护 `明日方舟` 这类特殊条目
+10. 与旧缓存合并, 保留可靠旧信息
+11. 应用人工广播覆盖
+12. 校验并写入 `data/anime.json`, `data/status.json`, `data/update-log.jsonl`
 
 失败策略:
 
@@ -197,7 +198,7 @@ npm run data:audit
 - `scripts/reconcile-current-cache.ts` 会回查本地 `data/bangumi-YYYYMM-subjects.json` 快照, 用同一套标题/IP、tags/产地、韩文主标题、已知 SP 和第 11 季以上规则清理既有缓存
 - 旧季度导入优先使用长门有C; Bangumi 只作为评分和 subjectId 补强。长门有C与 Bangumi 网络失败时, 可使用 `data/youranimes-YYYYMM.html` 等本地参考源快照完成低置信度冷启动, 后续再用长门有C重建目录并用 Bangumi 同步补齐评分、封面和 subjectId
 - `npm run data:sync-bangumi` 会优先使用本地 `data/bangumi-YYYYMM-subjects.json` 快照, 对已匹配 Bangumi subjectId 的条目刷新评分、封面、集数和状态, 并对缺 subjectId 的长门条目尝试本地高置信匹配; 不足阈值的条目保持缺评分状态, 不做冒险写入。可加 `-- --local-only` 只使用本地 Bangumi 快照, 不执行在线详情刷新
-- `npm run data:match-bangumi` 是在线 Bangumi 搜索补强脚本, 需要修复搜索响应中的 mojibake 后再评分; 自动接受标题/别名强匹配并具备日期、官网、集数、季数或制作信息辅助证据的候选。中文标题不要求完全一致; 对上下半 cour / Part 共用同一 Bangumi subject 的情况, 允许多个长门条目共用同一个 Bangumi subjectId 和评分; 对长门合并多个篇名、Bangumi 拆分篇名的情况, 可用日文标题包含关系 + 日期/格式等辅助证据接受拆篇候选; 格式冲突、多候选接近或缺少辅助证据的弱标题候选仍保持拒绝
+- `npm run data:match-bangumi` 是在线 Bangumi 搜索补强脚本, 需要先复用展示/缓存边界筛选, 只处理筛选后仍缺 subjectId 且来自长门有C或 YourAnimes `japan_broadcast` 的可搜索条目, 再修复搜索响应中的 mojibake 后评分; 自动接受标题/别名强匹配并具备日期、官网、集数、季数或制作信息辅助证据的候选。中文标题不要求完全一致; 对上下半 cour / Part 共用同一 Bangumi subject 的情况, 允许多个长门条目共用同一个 Bangumi subjectId 和评分; 对长门合并多个篇名、Bangumi 拆分篇名的情况, 可用日文标题包含关系 + 日期/格式等辅助证据接受拆篇候选; 格式冲突、多候选接近或缺少辅助证据的弱标题候选仍保持拒绝。不得为了补 subjectId 把 WEB、剧场版、SP、成人向、非日漫条目重新导入或强行当作 TV 绑定
 - `終末のワルキューレ` / `终末的女武神` 已确认可保留并绑定 Bangumi subject `322900`, 不要仅因 Netflix / WEB 配信信号移除该条目
 - `東京卍リベンジャーズ` / `东京卍复仇者` 已确认绑定 Bangumi subject `308936`; 带 `卍` 的 Bangumi 搜索不稳定, 后续应优先使用 `東京リベンジャーズ` / `Tokyo Revengers` / `东京复仇者` 的显式规则
 - `ひぐらしのなく頃に` / `新 寒蝉鸣泣之时` 的 2020-10-01 TV 条目已确认对应 `ひぐらしのなく頃に 業`, 绑定 Bangumi subject `297969`

@@ -7,7 +7,11 @@ import { normalizeStaleUpdateStatus } from "../cache/statusCache.ts";
 import type { AnimeStorage } from "../cache/storage.ts";
 import { toSourceIssue, type AnimeSourceAdapter, type SourceIssue } from "../sources/types.ts";
 import { BangumiSourceAdapter } from "../sources/bangumi/adapter.ts";
-import { enrichMissingBangumiBySearch, refreshBangumiDetailsForItems } from "../sources/bangumi/searchEnrichment.ts";
+import {
+  enrichMissingBangumiBySearch,
+  refreshBangumiDetailsForItems,
+  shouldSearchMissingBangumi
+} from "../sources/bangumi/searchEnrichment.ts";
 import { YucWikiSourceAdapter } from "../sources/yucwiki/adapter.ts";
 import { YourAnimesSourceAdapter } from "../sources/youranimes/adapter.ts";
 import type { AnimeCache, AnimeItem, SeasonKey, SeasonMonth } from "../types/anime.ts";
@@ -15,6 +19,7 @@ import type { PublicApiError, UpdateInput, UpdateResult, UpdateStatusPayload, Up
 import { ApiErrorException, toPublicApiError } from "../utils/errors.ts";
 import { hasBlockingValidationIssues, validateAnimeCache } from "./validateAnime.ts";
 import { clearFinalStatusBroadcastSlot } from "./normalizeAnime.ts";
+import { isCacheEligibleAnime } from "./cacheEligibility.ts";
 import {
   calculateActiveSeasons,
   calculatePrimarySeason,
@@ -23,14 +28,6 @@ import {
   seasonKeyEquals,
   seasonMonthToQuarter
 } from "./calculateSeason.ts";
-import {
-  hasExplicitExcludedBangumiSubjectId,
-  hasExplicitNonJapaneseSignal,
-  hasForeignPrimaryTitleSignal,
-  hasKnownNonTvSpecialSignal,
-  hasOverSeasonLimitSignal,
-  hasTheatricalMovieSignal
-} from "./contentRules.ts";
 
 export interface UpdateAnimeDataOptions {
   storage?: AnimeStorage;
@@ -764,10 +761,7 @@ function shouldFailWeakHistoricalCatalogRefresh(
 
 function shouldRunBangumiSearchEnrichment(options: UpdateAnimeDataOptions, targetItems: AnimeItem[]): boolean {
   if (options.adapters !== undefined) return false;
-  return targetItems.some((item) =>
-    item.sources.some((source) => source.name === "YucWiki") &&
-    (item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId) === null
-  );
+  return targetItems.some(shouldSearchMissingBangumi);
 }
 
 function shouldRunBangumiDetailRefresh(options: UpdateAnimeDataOptions, items: AnimeItem[]): boolean {
@@ -817,44 +811,6 @@ function quarterOrder(quarter: SeasonKey["quarter"]): number {
 
 function isPrimaryInSeason(item: Pick<AnimeItem, "primarySeason">, targetSeason: SeasonKey): boolean {
   return seasonKeyEquals(item.primarySeason, targetSeason);
-}
-
-function isCacheEligibleAnime(item: AnimeItem): boolean {
-  const textValues = getAnimeTextValues(item);
-  const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
-  return (
-    item.format === "tv" &&
-    !hasExplicitExcludedBangumiSubjectId(subjectId) &&
-    item.isJapaneseAnime !== false &&
-    item.inclusionStatus !== "excluded" &&
-    !isAdultAnime(item) &&
-    !hasExplicitNonJapaneseSignal(textValues) &&
-    !hasForeignPrimaryTitleSignal(item.title.original) &&
-    !hasTheatricalMovieSignal(textValues) &&
-    !hasKnownNonTvSpecialSignal(textValues) &&
-    !hasOverSeasonLimitSignal(textValues)
-  );
-}
-
-function isAdultAnime(item: AnimeItem): boolean {
-  const haystack = getAnimeTextValues(item)
-    .filter((value): value is string => typeof value === "string")
-    .join(" ")
-    .normalize("NFKC")
-    .toLowerCase();
-  return /(インゴクダンチ|淫狱团地|淫獄団地|r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu.test(haystack);
-}
-
-function getAnimeTextValues(item: AnimeItem): Array<string | null | undefined> {
-  return [
-    item.title.original,
-    item.title.japanese,
-    item.title.chinese,
-    item.title.english,
-    ...item.title.aliases,
-    item.officialUrl,
-    item.exclusionReason
-  ];
 }
 
 function summarizeUpdate(seasonItems: AnimeItem[], nextCache: AnimeCache, skippedNonJapanese: number): UpdateSummary {
