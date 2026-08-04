@@ -106,6 +106,17 @@ YucWiki 页面结构规则:
 - adapter 必须把这些标记解析为独立目录行; 小写锚点需归一化, 优先级标记需按同一字母前缀顺序编号, 避免大作因页面标记差异漏入。
 - 当怀疑某季度异常偏低时, 先用本地 `data/yucwiki-YYYYMM.html` 快照与 `data/anime.json` 做同口径审查: YucWiki 已抓取且通过 `isCacheEligibleAnime` 的条目, 不应在缓存中缺失。
 
+YucWiki 相邻页与日期解析规则:
+
+- YucWiki 条目可能出现在下一季度页面, 但首播日期仍属于上一季度; 默认 adapter 应补读本地下一季度快照, 按首播日期归属 `primarySeason`, 但 id 必须保留来源页面年月, 避免不同页面的 `A01` / `C01` 相撞。
+- 同一播出文本同时含有“先行/先行配信”和常规 TV 播出日期时, 首播归属优先采用非先行的常规 TV 日期; 只有先行配信日期且没有常规电视放送信号时才按 WEB/参考项处理。
+- 目标季度刷新时, 如果新 YucWiki 条目 id 与旧缓存不同, 但旧缓存中存在同季度、同标题、仍通过 `isCacheEligibleAnime` 的条目, 必须继承旧 Bangumi subject/评分/封面元数据; 不得因为 Yuc id 变化把已匹配条目降级为裸标题。
+
+非 TV 特番/剪辑版边界补充:
+
+- 明确的 TV 剪辑版、特别编集版、总集篇、SP、粉丝来信、女英雄故事、鬼灭分段重播篇、奇蛋特别篇、`No.170+1` 等, 即使 Bangumi 评分人数较高也不得作为季度 TV 正片导入。
+- 这些规则必须通过 `isCacheEligibleAnime` 生效, Bangumi 匹配只能补元数据, 不能用来绕过非 TV 特番/剪辑版排除。
+
 ## 5. 更新流程
 
 顺序必须保持:
@@ -136,6 +147,7 @@ Bangumi 搜索增强准入:
 - 已通过 `isCacheEligibleAnime`
 - 当前没有 `bangumi.subjectId` 且没有 `externalIds.bangumiSubjectId`
 - 来源为 YucWiki, 或 YourAnimes 且 `scope === "japan_broadcast"`
+- Bangumi 候选 subject 的 `platform` 不得与 TV 边界冲突; `WEB` 候选必须拒绝, 不能为了补 subjectId 把 WEB 条目固定进 TV 缓存。
 
 ## 6. 失败与锁
 

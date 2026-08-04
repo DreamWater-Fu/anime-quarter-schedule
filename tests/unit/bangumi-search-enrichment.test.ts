@@ -108,6 +108,44 @@ describe("Bangumi search enrichment", () => {
     assert.deepEqual(result.items.map((item) => item.id), [webItem.id, excludedItem.id, adultItem.id]);
   });
 
+  it("does not match a WEB Bangumi subject for a TV cache item", async () => {
+    let searchCalls = 0;
+    const subject: BangumiSubject = {
+      id: 700101,
+      type: 2,
+      name: "Web Candidate Anime",
+      name_cn: "Web Candidate Anime CN",
+      date: "2026-07-14",
+      platform: "WEB",
+      eps: 12,
+      rating: { score: 6.8, total: 220, rank: 2800 },
+      images: { large: "https://img.example/web-candidate.jpg" }
+    };
+    const item = createSearchItem({
+      id: "anime:yucwiki:web-candidate",
+      original: "Web Candidate Anime",
+      japanese: "Web Candidate Anime",
+      chinese: "Web Candidate Anime CN",
+      startDate: "2026-07-14",
+      sourceName: "YucWiki"
+    });
+
+    const result = await enrichMissingBangumiBySearch([item], {
+      now: () => new Date(retrievedAt),
+      client: {
+        searchSubjects: async () => {
+          searchCalls += 1;
+          return [subject];
+        },
+        getSubject: async () => subject
+      }
+    });
+
+    assert.equal(searchCalls > 0, true);
+    assert.equal(result.matched, 0);
+    assert.equal(result.items[0]?.bangumi.subjectId, null);
+  });
+
   it("keeps searching aliases when the primary Japanese title does not return an acceptable subject", async () => {
     const keywords: string[] = [];
     const subject: BangumiSubject = {

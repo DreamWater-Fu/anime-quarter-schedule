@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 
+import { isCacheEligibleAnime } from "../src/server/anime/cacheEligibility.ts";
 import {
   hasExplicitNonJapaneseSignal,
   hasForeignPrimaryTitleSignal,
@@ -31,11 +32,13 @@ const buckets = {
   nonJapaneseFlag: items.filter((item) => item.isJapaneseAnime === false),
   excludedStatus: items.filter((item) => item.inclusionStatus === "excluded"),
   hiddenInclusionStatus: items.filter((item) => item.inclusionStatus !== "included"),
+  cacheIneligible: items.filter((item) => !isCacheEligibleAnime(item)),
   theatricalMovieSignal: items.filter((item) => hasTheatricalMovieSignal(getTextValues(item))),
   knownNonTvSpecialSignal: items.filter((item) => hasKnownNonTvSpecialSignal(getTextValues(item))),
   overSeasonLimitSignal: items.filter((item) => hasOverSeasonLimitSignal(getTextValues(item))),
   explicitForeignSignal: items.filter((item) =>
-    hasExplicitNonJapaneseSignal(getTextValues(item)) || hasForeignPrimaryTitleSignal(item.title.original)
+    !isCacheEligibleAnime(item) &&
+    (hasExplicitNonJapaneseSignal(getTextValues(item)) || hasForeignPrimaryTitleSignal(item.title.original))
   ),
   adultSignal: items.filter((item) => ADULT_PATTERN.test(getTextValues(item).filter(Boolean).join(" "))),
   finishedWithUpdateSlot: items.filter((item) =>
@@ -68,11 +71,7 @@ const blockingBucketNames = [
   "nonTv",
   "nonJapaneseFlag",
   "excludedStatus",
-  "theatricalMovieSignal",
-  "knownNonTvSpecialSignal",
-  "overSeasonLimitSignal",
-  "explicitForeignSignal",
-  "adultSignal",
+  "cacheIneligible",
   "finishedWithUpdateSlot",
   "airedEpisodeOverTotal",
   "missingSources",

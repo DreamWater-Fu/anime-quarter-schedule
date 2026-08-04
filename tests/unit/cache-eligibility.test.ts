@@ -240,6 +240,28 @@ describe("cache eligibility", () => {
       );
     }
   });
+
+  it("blocks explicit TV recap and special-program titles", () => {
+    for (const title of [
+      "机动战士高达 闪光的哈撒韦 TV剪辑版",
+      "紫罗兰永恒花园 特別編集版",
+      "航海王：粉丝来信",
+      "航海王 女英雄们的故事",
+      "鬼灭之刃 浅草篇",
+      "『我的英雄学院』No.170＋1『More』"
+    ]) {
+      assert.equal(
+        isCacheEligibleAnime(createItem({
+          id: `anime:special:${title}`,
+          original: title,
+          chinese: title,
+          subjectId: null
+        })),
+        false,
+        `${title} should be excluded`
+      );
+    }
+  });
 });
 
 function createItem(input: {

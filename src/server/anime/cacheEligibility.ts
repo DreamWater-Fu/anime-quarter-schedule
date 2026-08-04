@@ -9,6 +9,7 @@ import {
   hasTheatricalMovieSignal
 } from "./contentRules.ts";
 
+const ADULT_EDGE_TITLE_PATTERN = /xl\s*\u4e0a\u53f8/iu;
 const ADULT_ANIME_PATTERN =
   /(インゴクダンチ|淫狱团地|淫獄団地|r-?18|18\+|nsfw|adult|アダルト|成人|里番|裏番|僧侣档|僧侶枠|オンエア版|無修正|av女优|av女優|セックス|sex)/iu;
 
@@ -110,7 +111,7 @@ function isAdultAnime(item: AnimeItem): boolean {
     .join(" ")
     .normalize("NFKC")
     .toLowerCase();
-  return ADULT_ANIME_PATTERN.test(haystack);
+  return ADULT_ANIME_PATTERN.test(haystack) || ADULT_EDGE_TITLE_PATTERN.test(haystack);
 }
 
 function getAnimeTextValues(item: AnimeItem): Array<string | null | undefined> {

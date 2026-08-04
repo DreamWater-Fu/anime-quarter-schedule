@@ -17,6 +17,7 @@ import {
   parseBahamutTimetableText,
   parseYourAnimesHtml,
   parseYucWikiHtml,
+  YucWikiSourceAdapter,
   YourAnimesSourceAdapter
 } from "../../src/server/sources/index.ts";
 import type { BangumiClient, BangumiSubject } from "../../src/server/sources/index.ts";
@@ -587,6 +588,96 @@ describe("source adapters", () => {
 
     assert.deepEqual(entries.map((entry) => entry.id), ["A01"]);
     assert.equal(entries[0]?.titleChinese, "Lowercase Marker Title");
+  });
+
+  it("prefers regular YucWiki broadcast dates over advance streaming dates", () => {
+    const html = `
+      <!--#B01-->
+      <div><table><tr><td class="title_main_r">
+      <p class="title_cn_r">躲在超市后门抽烟的两人</p>
+      <p class="title_jp_r">スーパーの裏でヤニ吸うふたり</p></td>
+      <td class="type_b_r">漫画改编动画</td></tr>
+      <tr><td class="link_a_r"><p class="broadcast_r">6/3先行6话<br>7/9周四深夜</p></td></tr></table></div>
+      <div style="clear:both"></div>
+    `;
+
+    const entries = parseYucWikiHtml(html, {
+      year: 2026,
+      season: 7,
+      url: "https://yuc.wiki/202607/",
+      retrievedAt
+    });
+    const item = mapYucWikiEntryToAnimeItem(entries[0]!, 2026, 7, retrievedAt);
+
+    assert.equal(item?.format, "tv");
+    assert.equal(item?.startDate, "2026-07-09");
+    assert.deepEqual(item?.primarySeason, { year: 2026, quarter: "summer" });
+  });
+
+  it("treats YucWiki entries with only advance streaming dates as web", () => {
+    const html = `
+      <!--#B01-->
+      <div><table><tr><td class="title_main_r">
+      <p class="title_cn_r">村井之恋</p>
+      <p class="title_jp_r">村井の恋</p></td>
+      <td class="type_b_r">漫画改编动画</td></tr>
+      <tr><td class="link_a_r"><p class="broadcast_r">9/4网络先行</p></td></tr></table></div>
+      <div style="clear:both"></div>
+    `;
+
+    const entries = parseYucWikiHtml(html, {
+      year: 2024,
+      season: 10,
+      url: "https://yuc.wiki/202410/",
+      retrievedAt
+    });
+    const item = mapYucWikiEntryToAnimeItem(entries[0]!, 2024, 10, retrievedAt);
+
+    assert.equal(item?.format, "web");
+    assert.equal(item?.startDate, "2024-09-04");
+  });
+
+  it("reads the next YucWiki page to recover entries whose premiere belongs to the requested season", async () => {
+    const previousDataDir = process.env.DATA_DIR;
+    const dataDir = await mkdtemp(join(tmpdir(), "yucwiki-adjacent-"));
+    process.env.DATA_DIR = dataDir;
+    await writeFile(join(dataDir, "yucwiki-202010.html"), `
+      <!--#A01-->
+      <div><table><tr><td class="title_main_r">
+      <p class="title_cn_r">当前秋季标题</p>
+      <p class="title_jp_r">Current Fall Title</p></td>
+      <td class="type_a_r">原创动画</td></tr>
+      <tr><td class="link_a_r"><p class="broadcast_r">10/1周四深夜</p></td></tr></table></div>
+      <div style="clear:both"></div>
+    `);
+    await writeFile(join(dataDir, "yucwiki-202101.html"), `
+      <!--#B01-->
+      <div><table><tr><td class="title_main_r">
+      <p class="title_cn_r">进击的巨人 最终季</p>
+      <p class="title_jp_r">進撃の巨人 The Final Season</p></td>
+      <td class="type_b_r">漫画改编动画</td></tr>
+      <tr><td rowspan="2" class="staff_r">动画制作：MAPPA</td>
+      <td class="link_a_r"><p class="broadcast_r">12/6周日深夜</p></td></tr></table></div>
+      <div style="clear:both"></div>
+    `);
+
+    try {
+      const adapter = new YucWikiSourceAdapter({ now: () => new Date(retrievedAt), rateLimitPerMinute: 0 });
+      const result = await adapter.fetchSeason({ year: 2020, season: 10, quarter: "fall" });
+
+      assert.equal(result.items.some((item) => item.title.chinese === "当前秋季标题"), true);
+      const adjacentItem = result.items.find((item) => item.title.chinese === "进击的巨人 最终季");
+      assert.equal(adjacentItem?.startDate, "2020-12-06");
+      assert.equal(adjacentItem?.id, "anime:yucwiki:202101:b01");
+      assert.deepEqual(adjacentItem?.primarySeason, { year: 2020, quarter: "fall" });
+    } finally {
+      if (previousDataDir === undefined) {
+        delete process.env.DATA_DIR;
+      } else {
+        process.env.DATA_DIR = previousDataDir;
+      }
+      await rm(dataDir, { recursive: true, force: true });
+    }
   });
 
   it("uses Bangumi fallback data when configured and the source fails", async () => {

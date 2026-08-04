@@ -5,6 +5,7 @@ import {
   calculatePrimarySeason,
   inferUpdateWeekday
 } from "../src/server/anime/calculateSeason.ts";
+import { isCacheEligibleAnime } from "../src/server/anime/cacheEligibility.ts";
 import {
   hasExplicitExcludedBangumiSubjectId,
   hasExplicitNonJapaneseMetadataSignal,
@@ -41,7 +42,6 @@ async function main() {
   const now = new Date().toISOString();
   const references = await readYourAnimesReferences(now);
   const manualOverrides = await readManualBroadcastOverrides();
-  const bangumiSubjects = await readBangumiSubjectSnapshots();
   const byBangumiId = new Map<number, AnimeItem>();
   const byTitle = new Map<string, AnimeItem>();
   for (const item of references) {
@@ -60,16 +60,7 @@ async function main() {
   const nextItems: AnimeItem[] = [];
 
   for (const item of cache.items) {
-    if (
-      item.format !== "tv" ||
-      isExplicitExcludedBangumiSubject(item) ||
-      isExplicitNonJapanese(item, bangumiSubjects) ||
-      isExplicitAdult(item) ||
-      isTheatricalMovie(item) ||
-      isKnownNonTvSpecial(item) ||
-      isOverSeasonLimit(item) ||
-      isUnmatchedReferenceOnlyItem(item)
-    ) {
+    if (!isCacheEligibleAnime(item) || isUnmatchedReferenceOnlyItem(item)) {
       removed += 1;
       continue;
     }
@@ -165,23 +156,6 @@ function scoreDuplicateSubjectCandidate(item: AnimeItem): number {
   if (item.coverImage !== null) score += 2;
   if (item.bangumi.rating !== null) score += 2;
   return score;
-}
-
-function isExplicitAdult(item: AnimeItem): boolean {
-  const haystack = [
-    item.title.original,
-    item.title.japanese,
-    item.title.chinese,
-    item.title.english,
-    ...item.title.aliases,
-    item.officialUrl,
-    item.exclusionReason
-  ]
-    .filter((value): value is string => typeof value === "string")
-    .join(" ")
-    .normalize("NFKC")
-    .toLowerCase();
-  return ADULT_PATTERN.test(haystack);
 }
 
 async function readYourAnimesReferences(retrievedAt: string): Promise<AnimeItem[]> {

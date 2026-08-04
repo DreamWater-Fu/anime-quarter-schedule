@@ -889,9 +889,8 @@ function mapCoverImage(subject: BangumiSubject): CoverImage | null {
 }
 
 function isHardFormatConflict(input: AnimeFormat, candidate: AnimeFormat): boolean {
-  const tvLike = new Set<AnimeFormat>(["tv", "web"]);
-  const specialLike = new Set<AnimeFormat>(["movie", "sp", "ova", "recap", "pv", "cm", "music_video"]);
-  return (tvLike.has(input) && specialLike.has(candidate)) || (specialLike.has(input) && tvLike.has(candidate));
+  const hardFormats = new Set<AnimeFormat>(["tv", "web", "movie", "sp", "ova", "recap", "pv", "cm", "music_video"]);
+  return input !== candidate && hardFormats.has(input) && hardFormats.has(candidate);
 }
 
 function quarterFromMonth(month: number): AnimeQuarter {

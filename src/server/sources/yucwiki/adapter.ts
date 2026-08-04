@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 
@@ -14,6 +14,8 @@ import { inferReferenceLifecycle } from "../referenceLifecycle.ts";
 
 export interface YucWikiEntry {
   id: string;
+  pageYear?: number;
+  pageSeason?: number;
   titleChinese: string | null;
   titleJapanese: string | null;
   typeText: string | null;
@@ -40,6 +42,7 @@ export interface YucWikiAdapterOptions {
   entries?: YucWikiEntry[];
   pageUrl?: string;
   pageFile?: string;
+  includeAdjacentSeasonPages?: boolean;
   fetchImpl?: typeof fetch;
   userAgent?: string;
   timeoutMs?: number;
@@ -65,6 +68,7 @@ export class YucWikiSourceAdapter implements AnimeSourceAdapter {
   private readonly entries: YucWikiEntry[];
   private readonly pageUrl?: string;
   private readonly pageFile?: string;
+  private readonly includeAdjacentSeasonPages: boolean;
   private readonly fetchImpl: typeof fetch;
   private readonly userAgent: string;
   private readonly timeoutMs: number;
@@ -77,6 +81,8 @@ export class YucWikiSourceAdapter implements AnimeSourceAdapter {
     this.entries = options.entries ?? [];
     this.pageUrl = options.pageUrl;
     this.pageFile = options.pageFile;
+    this.includeAdjacentSeasonPages = options.includeAdjacentSeasonPages ??
+      (options.entries === undefined && options.pageUrl === undefined && options.pageFile === undefined);
     this.fetchImpl = options.fetchImpl ?? fetch;
     this.userAgent = options.userAgent ?? process.env.YUCWIKI_USER_AGENT ?? "anime-quarter-schedule-local/0.1.1 (contact: local-dev)";
     this.timeoutMs = options.timeoutMs ?? parsePositiveInteger(process.env.YUCWIKI_TIMEOUT_MS, 15_000);
@@ -104,12 +110,16 @@ export class YucWikiSourceAdapter implements AnimeSourceAdapter {
     }
 
     const warnings: SourceIssue[] = [];
-    const url = this.resolvePageUrl(input);
-    const pageEntries = await this.readPageEntries(input, url, retrievedAt, warnings);
+    const pageEntries = await this.readCurrentAndAdjacentPageEntries(input, retrievedAt, warnings);
     const targetSeason: SeasonKey = { year: input.year, quarter: input.quarter };
     const mappedEntries = [...this.entries, ...pageEntries].map((entry) => ({
       entry,
-      item: mapYucWikiEntryToAnimeItem(entry, input.year, input.season, retrievedAt)
+      item: mapYucWikiEntryToAnimeItem(
+        entry,
+        entry.pageYear ?? input.year,
+        entry.pageSeason ?? input.season,
+        retrievedAt
+      )
     }));
     const unscheduledEntries = mappedEntries
       .filter(({ item }) => item === null)
@@ -148,6 +158,32 @@ export class YucWikiSourceAdapter implements AnimeSourceAdapter {
   private resolvePageFile(input: SourceFetchInput): string {
     if (this.pageFile) return this.pageFile;
     return `${process.env.DATA_DIR ?? "data"}/yucwiki-${input.year}${String(input.season).padStart(2, "0")}.html`;
+  }
+
+  private async readCurrentAndAdjacentPageEntries(
+    input: SourceFetchInput,
+    retrievedAt: string,
+    warnings: SourceIssue[]
+  ): Promise<YucWikiEntry[]> {
+    const url = this.resolvePageUrl(input);
+    const currentEntries = await this.readPageEntries(input, url, retrievedAt, warnings);
+    if (!this.includeAdjacentSeasonPages || currentEntries.length === 0) return currentEntries;
+
+    const adjacentWarnings: SourceIssue[] = [];
+    const nextInput = getNextSeasonInput(input);
+    if (!(await this.hasCachedPageFile(nextInput))) return currentEntries;
+    const nextUrl = this.resolvePageUrl(nextInput);
+    const nextEntries = await this.readPageEntries(nextInput, nextUrl, retrievedAt, adjacentWarnings);
+    return [...currentEntries, ...nextEntries];
+  }
+
+  private async hasCachedPageFile(input: SourceFetchInput): Promise<boolean> {
+    try {
+      await access(resolve(/* turbopackIgnore: true */ process.cwd(), this.resolvePageFile(input)));
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   private async readPageEntries(
@@ -273,6 +309,8 @@ export function parseYucWikiHtml(html: string, options: YucWikiParseOptions): Yu
 
     entries.push({
       id,
+      pageYear: options.year,
+      pageSeason: options.season,
       titleChinese,
       titleJapanese,
       typeText: extractCellText(block, /<td class="type_(?!tag)[^"]*">([\s\S]*?)<\/td>/u),
@@ -425,7 +463,8 @@ function createYucWikiSource(entry: YucWikiEntry): AnimeSource {
 function parseYucBroadcastSlot(value: string | null, pageYear: number, season: number): { date: string; time: string | null } | null {
   if (!value) return null;
   const normalized = htmlToText(value).normalize("NFKC");
-  const dateMatch = /(\d{1,2})\/(\d{1,2})/u.exec(normalized);
+  const dateMatches = [...normalized.matchAll(/(\d{1,2})\/(\d{1,2})/gu)];
+  const dateMatch = dateMatches.find((match) => !isAdvanceStreamingDate(normalized, match.index ?? 0)) ?? dateMatches[0];
   if (!dateMatch) return null;
   const month = Number(dateMatch[1]);
   const day = Number(dateMatch[2]);
@@ -438,11 +477,16 @@ function parseYucBroadcastSlot(value: string | null, pageYear: number, season: n
   };
 }
 
+function isAdvanceStreamingDate(value: string, index: number): boolean {
+  return /(?:先行|先播|先導|提前)/u.test(value.slice(index, index + 18));
+}
+
 function inferYucFormat(entry: YucWikiEntry): AnimeFormat {
   const text = [entry.typeText, entry.tagText, entry.broadcastText, entry.broadcastExtraText].filter(Boolean).join(" ").normalize("NFKC").toLowerCase();
   if (/剧场|劇場|映画|movie|电影|電影/u.test(text)) return "movie";
   if (/\bova\b|oad/u.test(text)) return "ova";
   if (/\bsp\b|特别篇|特別篇/u.test(text)) return "sp";
+  if (/网络先行|網絡先行|配信先行/u.test(text) && !/(?:周|晚间|深夜|朝|午前|午後|\d{1,2}:\d{2})/u.test(text)) return "web";
   if (/网络放送|web|网播/u.test(text)) return "web";
   return "tv";
 }
@@ -560,6 +604,18 @@ function dedupeYucWikiEntries(entries: YucWikiEntry[]): YucWikiEntry[] {
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getNextSeasonInput(input: SourceFetchInput): SourceFetchInput {
+  if (input.season === 10) {
+    return { ...input, year: input.year + 1, season: 1, quarter: "winter" };
+  }
+  const nextSeason = (input.season + 3) as 4 | 7 | 10;
+  return {
+    ...input,
+    season: nextSeason,
+    quarter: nextSeason === 4 ? "spring" : nextSeason === 7 ? "summer" : "fall"
+  };
 }
 
 function parsePositiveInteger(value: string | undefined, fallback: number): number {

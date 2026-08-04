@@ -146,6 +146,133 @@ describe("update data merge and rollback", () => {
     assert.equal(item?.title.aliases.includes("June July Alias"), true);
   });
 
+  it("preserves old Bangumi metadata when refreshed YucWiki catalog IDs changed", async () => {
+    const cache = readFixture<AnimeCache>("anime-cache.base.json");
+    const baseItem = toSummerFixtureItem(cache);
+    const oldItem: AnimeItem = {
+      ...baseItem,
+      id: "anime:9001",
+      externalIds: {
+        ...baseItem.externalIds,
+        bangumiSubjectId: 9001
+      },
+      bangumi: {
+        subjectId: 9001,
+        url: "https://bgm.tv/subject/9001",
+        rating: 7.4,
+        ratingCount: 1234,
+        rank: 321,
+        lastSyncedAt: "2026-07-01T00:00:00.000Z"
+      },
+      sources: [
+        {
+          name: "Bangumi",
+          type: "bangumi",
+          url: "https://bgm.tv/subject/9001",
+          retrievedAt: runAt,
+          confidence: 0.9
+        }
+      ]
+    };
+    const yucItem: AnimeItem = {
+      ...baseItem,
+      id: "anime:yucwiki:202607:a01",
+      bangumi: {
+        subjectId: null,
+        url: null,
+        rating: null,
+        ratingCount: null,
+        rank: null,
+        lastSyncedAt: null
+      },
+      externalIds: {
+        bangumiSubjectId: null,
+        bahamutSn: null
+      },
+      sources: [
+        {
+          name: "YucWiki",
+          type: "third_party",
+          url: "https://yuc.wiki/202607/#A01",
+          retrievedAt: runAt,
+          confidence: 0.9,
+          scope: "japan_broadcast"
+        }
+      ]
+    };
+    const storage = new MemoryStorage({ ...cache, items: [oldItem] });
+
+    await updateAnimeData(
+      { year: 2026, season: 7 },
+      {
+        storage,
+        adapters: [new StaticAdapter("YucWiki", "third_party", [yucItem])],
+        now: () => new Date(runAt)
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    assert.equal(nextCache.items.length, 1);
+    assert.equal(nextCache.items[0]?.id, "anime:9001");
+    assert.equal(nextCache.items[0]?.bangumi.subjectId, 9001);
+    assert.equal(nextCache.items[0]?.bangumi.rating, 7.4);
+    assert.equal(nextCache.items[0]?.sources.some((source) => source.name === "YucWiki"), true);
+  });
+
+  it("fills missing primary catalog episode counts from matched Bangumi metadata", async () => {
+    const baseCache = readFixture<AnimeCache>("anime-cache.base.json");
+    const yucItem: AnimeItem = {
+      ...toSummerFixtureItem(baseCache),
+      id: "anime:yucwiki:202607:a01",
+      episodeCount: null,
+      airedEpisodeCount: null,
+      bangumi: {
+        subjectId: null,
+        url: null,
+        rating: null,
+        ratingCount: null,
+        rank: null,
+        lastSyncedAt: null
+      },
+      externalIds: { bangumiSubjectId: null, bahamutSn: null },
+      sources: [{ name: "YucWiki", type: "third_party", retrievedAt: runAt, scope: "japan_broadcast" }]
+    };
+    const bangumiItem: AnimeItem = {
+      ...toSummerFixtureItem(baseCache),
+      id: "anime:998003",
+      episodeCount: 13,
+      airedEpisodeCount: 13,
+      bangumi: {
+        subjectId: 998003,
+        url: "https://bgm.tv/subject/998003",
+        rating: 7.1,
+        ratingCount: 100,
+        rank: 2000,
+        lastSyncedAt: runAt
+      },
+      externalIds: { bangumiSubjectId: 998003, bahamutSn: null },
+      sources: [{ name: "Bangumi", type: "bangumi", retrievedAt: runAt }]
+    };
+    const storage = new MemoryStorage({ ...baseCache, items: [] });
+
+    await updateAnimeData(
+      { year: 2026, season: 7, force: true },
+      {
+        storage,
+        now: () => new Date(runAt),
+        adapters: [
+          new StaticAdapter("YucWiki", "third_party", [yucItem]),
+          new StaticAdapter("Bangumi", "bangumi", [bangumiItem])
+        ]
+      }
+    );
+
+    const nextCache = await storage.readAnimeCache();
+    assert.equal(nextCache.items[0]?.id, "anime:998003");
+    assert.equal(nextCache.items[0]?.episodeCount, 13);
+    assert.equal(nextCache.items[0]?.airedEpisodeCount, 13);
+  });
+
   it("continues when a non-primary source returns warnings and marks source warnings in the log", async () => {
     const cache = readFixture<AnimeCache>("anime-cache.base.json");
     const item = {

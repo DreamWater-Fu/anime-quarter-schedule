@@ -21,9 +21,12 @@ const EXPLICIT_NON_JAPANESE_BANGUMI_SUBJECT_IDS = new Set<number>([
 ]);
 
 const EXPLICIT_NON_TV_BANGUMI_SUBJECT_IDS = new Set<number>([
+  285424,
   292940,
   293556,
-  316817
+  316817,
+  442559,
+  457956
 ]);
 
 const MANUAL_REVIEW_EXCLUDED_BANGUMI_SUBJECT_IDS = new Set<number>([
@@ -138,6 +141,10 @@ const THEATRICAL_MOVIE_PATTERN = /剧场版|劇場版|映画|movie|the\s+movie|f
 const KNOWN_NON_TV_SPECIAL_PATTERN = /テラパゴスのキラキラ探検記|太乐巴戈斯的闪闪发亮探险记|太樂巴戈斯的閃閃發亮探險記|terapagos/iu;
 const KNOWN_NON_TV_TITLE_PATTERN =
   /ライジングインパクト|一击冲天|高尔夫物语|ばなにゃ\s*あらうんど\s*ざ\s*わーるど|香蕉喵\s*(?:第3期|游世界)|Shenmue the Animation|莎木|地球外少年少女|バイオハザード[:：]\s*インフィニット\s*ダークネス|BIOHAZARD[:：]\s*Infinite Darkness|Resident Evil[:：]?\s*Infinite Darkness|生化危机[:： ]\s*无尽黑暗|斉木楠雄のψ難\s*Ψ始動編|齐木楠雄的灾难\s*灾始动篇|ポケモン\s*ソード・シールド\s*薄明の翼|精灵宝可梦\s*剑&盾\s*薄明之翼|ベイブレードバースト\s*スパーキング|霸旋陀螺\s*爆刃对决\s*第5期|四月一日さん家と\s*第2期|四月一日三姐妹\s*第2期|おーばーふろぉ|overflow\.cf-anime\.com/iu;
+const KNOWN_WEB_TITLE_PATTERN =
+  /t\s*[\u30fb\uff65.]?\s*p\s*\u307c\u3093|\u3076\u3089\u3069\u3089\u3076|vladlove|\u30b0\u30ea\u30e0\u7d44\u66f2|\u683c\u6797\u7ae5\u8bdd\u53d8\u594f\u66f2/iu;
+const TV_SPECIAL_OR_RECAP_TITLE_PATTERN =
+  /tv\s*(?:剪辑版|編集版)|特别编集版|特別编集版|特別編集版|特別編集版|総集編|总集篇|粉丝来信|ファンレター|女英雄们的故事|女英雄たちの物語|奇蛋物语\s*特别篇|ワンダーエッグ.*特別編|柱合会议|蝶屋敷篇|浅草篇|鼓屋敷篇|那田蜘蛛山篇|起始的物语|永远的物语|はじまりの物語|永遠の物語|在异世界获得超强能力的我.*sp|No\.?\s*170\s*[＋+]\s*1/iu;
 const SEASON_NUMBER_PATTERN =
   /(?:第\s*([0-9０-９一二三四五六七八九十百]+)\s*(?:[季期部]|シリーズ))|(?:season|series|s)\s*([0-9０-９]+)/giu;
 
@@ -183,7 +190,12 @@ export function hasTheatricalMovieSignal(values: Array<string | null | undefined
 
 export function hasKnownNonTvSpecialSignal(values: Array<string | null | undefined>): boolean {
   const haystack = toNormalizedHaystack(values);
-  return KNOWN_NON_TV_SPECIAL_PATTERN.test(haystack) || KNOWN_NON_TV_TITLE_PATTERN.test(haystack);
+  return (
+    KNOWN_NON_TV_SPECIAL_PATTERN.test(haystack) ||
+    KNOWN_NON_TV_TITLE_PATTERN.test(haystack) ||
+    KNOWN_WEB_TITLE_PATTERN.test(haystack) ||
+    TV_SPECIAL_OR_RECAP_TITLE_PATTERN.test(haystack)
+  );
 }
 
 export function hasOverSeasonLimitSignal(values: Array<string | null | undefined>): boolean {

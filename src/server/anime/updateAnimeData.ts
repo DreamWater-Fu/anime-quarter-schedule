@@ -517,6 +517,8 @@ function mergeBangumiMetadataIntoPrimaryCatalog(primary: AnimeItem, bangumiItem:
     coverImage: primary.coverImage ?? bangumiItem.coverImage,
     externalIds,
     bangumi,
+    episodeCount: primary.episodeCount ?? bangumiItem.episodeCount,
+    airedEpisodeCount: primary.airedEpisodeCount ?? bangumiItem.airedEpisodeCount,
     sources: dedupeSources([...primary.sources, ...bangumiItem.sources]),
     updatedAt: bangumiItem.updatedAt
   });
@@ -673,8 +675,13 @@ function mergeWithOldItem(item: AnimeItem, oldItems: AnimeItem[]): AnimeItem {
   const oldItem = oldItems.find((candidate) => candidate.id === item.id);
   if (oldItem && isScheduleReviewItem(item)) return mergeScheduleReviewWithOldItem(oldItem, item);
   if (!oldItem) {
-    const oldTitleMatch = isScheduleReviewItem(item) ? findOldItemByTitle(item, oldItems) : null;
-    return oldTitleMatch ? mergeScheduleReviewWithOldItem(oldTitleMatch, item) : item;
+    const oldTitleMatch = isScheduleReviewItem(item)
+      ? findOldItemByTitle(item, oldItems)
+      : isPrimaryCatalogItem(item) ? findOldPrimaryCatalogItemByTitleInSeason(item, oldItems) : null;
+    if (!oldTitleMatch) return item;
+    return isScheduleReviewItem(item)
+      ? mergeScheduleReviewWithOldItem(oldTitleMatch, item)
+      : mergePrimaryCatalogWithOldItem(oldTitleMatch, item);
   }
 
   const mergedStatus = resolveMergedStatus(item.status, oldItem.status);
@@ -694,6 +701,37 @@ function mergeWithOldItem(item: AnimeItem, oldItems: AnimeItem[]): AnimeItem {
     bangumi: item.bangumi.rating === null && oldItem.bangumi.subjectId === item.bangumi.subjectId
       ? oldItem.bangumi
       : item.bangumi,
+    sources: dedupeSources([...oldItem.sources, ...item.sources])
+  };
+}
+
+function mergePrimaryCatalogWithOldItem(oldItem: AnimeItem, item: AnimeItem): AnimeItem {
+  const mergedStatus = resolveMergedStatus(item.status, oldItem.status);
+  const suppressBroadcastTime = isFinalStatus(mergedStatus);
+  const bangumi = item.bangumi.subjectId !== null ? item.bangumi : oldItem.bangumi;
+  const externalIds = {
+    bangumiSubjectId: item.externalIds.bangumiSubjectId ?? oldItem.externalIds.bangumiSubjectId,
+    bahamutSn: item.externalIds.bahamutSn ?? oldItem.externalIds.bahamutSn
+  };
+
+  return {
+    ...item,
+    id: bangumi.subjectId !== null ? `anime:${bangumi.subjectId}` : item.id,
+    status: mergedStatus,
+    createdAt: oldItem.createdAt,
+    coverImage: item.coverImage ?? oldItem.coverImage,
+    externalIds,
+    bangumi,
+    episodeCount: item.episodeCount ?? oldItem.episodeCount,
+    airedEpisodeCount: item.airedEpisodeCount ?? oldItem.airedEpisodeCount,
+    schedule: mergeSchedulePreservingTimedEntries(item.schedule, oldItem.schedule),
+    updateWeekday: suppressBroadcastTime
+      ? null
+      : item.updateTime === null ? oldItem.updateWeekday ?? item.updateWeekday : item.updateWeekday,
+    updateTime: suppressBroadcastTime ? null : item.updateTime ?? oldItem.updateTime,
+    timezone: suppressBroadcastTime
+      ? item.timezone
+      : item.updateTime === null && oldItem.updateTime !== null ? oldItem.timezone : item.timezone,
     sources: dedupeSources([...oldItem.sources, ...item.sources])
   };
 }
@@ -725,6 +763,20 @@ function findOldItemByTitle(item: AnimeItem, oldItems: AnimeItem[]): AnimeItem |
   const itemSubjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
   return oldItems.find((oldItem) => {
     if (!isCacheEligibleAnime(oldItem)) return false;
+    const oldSubjectId = oldItem.bangumi.subjectId ?? oldItem.externalIds.bangumiSubjectId;
+    if (itemSubjectId !== null && oldSubjectId !== null && itemSubjectId !== oldSubjectId) return false;
+    const oldTitles = getNormalizedTitleSet(oldItem);
+    return [...itemTitles].some((title) => oldTitles.has(title));
+  }) ?? null;
+}
+
+function findOldPrimaryCatalogItemByTitleInSeason(item: AnimeItem, oldItems: AnimeItem[]): AnimeItem | null {
+  if (item.primarySeason === null) return null;
+  const itemTitles = getNormalizedTitleSet(item);
+  const itemSubjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
+  return oldItems.find((oldItem) => {
+    if (!isCacheEligibleAnime(oldItem)) return false;
+    if (!isPrimaryInSeason(oldItem, item.primarySeason!)) return false;
     const oldSubjectId = oldItem.bangumi.subjectId ?? oldItem.externalIds.bangumiSubjectId;
     if (itemSubjectId !== null && oldSubjectId !== null && itemSubjectId !== oldSubjectId) return false;
     const oldTitles = getNormalizedTitleSet(oldItem);
