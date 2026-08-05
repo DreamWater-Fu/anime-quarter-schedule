@@ -16,5 +16,14 @@ export function CoverImage({ item }: { item: AnimeItem }) {
     );
   }
 
-  return <img alt={`${title} 封面`} className="coverImage" loading="lazy" src={src} onError={() => setFailed(true)} />;
+  return (
+    <img
+      alt={`${title} 封面`}
+      className="coverImage"
+      loading="lazy"
+      referrerPolicy="no-referrer"
+      src={src}
+      onError={() => setFailed(true)}
+    />
+  );
 }
