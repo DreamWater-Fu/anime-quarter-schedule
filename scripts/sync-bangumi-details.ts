@@ -57,6 +57,7 @@ async function main() {
   const fetchedAt = now.toISOString();
   const details = localOnly ? new Map<number, BangumiDetail>() : await fetchBangumiDetails(ids);
   const snapshotSubjects = await readBangumiSubjectSnapshots();
+  const snapshotSubjectsById = indexBangumiSubjects(snapshotSubjects);
   let ratingUpdated = 0;
   let matchedMissingBangumi = 0;
   let coverUpdated = 0;
@@ -67,10 +68,10 @@ async function main() {
     const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId;
     const detail = subjectId === null
       ? findBangumiSnapshotMatch(item, snapshotSubjects)
-      : details.get(subjectId);
+      : details.get(subjectId) ?? snapshotSubjectsById.get(subjectId);
     if (!detail) return normalizeBroadcastState(item, fetchedAt);
 
-    const next = mergeBangumiDetail(item, detail, fetchedAt);
+    const next = localOnly ? mergeLocalBangumiSnapshot(item, detail, fetchedAt) : mergeBangumiDetail(item, detail, fetchedAt);
     if (subjectId === null && next.bangumi.subjectId !== null) matchedMissingBangumi += 1;
     if (item.bangumi.rating === null && next.bangumi.rating !== null) ratingUpdated += 1;
     if (item.coverImage?.source !== "bangumi" && next.coverImage?.source === "bangumi") coverUpdated += 1;
@@ -156,6 +157,33 @@ $result | ConvertTo-Json -Depth 6 -Compress
     if (Number.isInteger(detail.id)) details.set(detail.id, detail);
   }
   return details;
+}
+
+function mergeLocalBangumiSnapshot(item: AnimeItem, detail: BangumiDetail, fetchedAt: string): AnimeItem {
+  const episodeCount = positiveIntegerOrNull(detail.eps) ?? positiveIntegerOrNull(detail.total_episodes);
+  const nextEpisodeCount = item.episodeCount ?? episodeCount;
+  const nextAiredEpisodeCount = item.airedEpisodeCount ?? (
+    item.status === "finished" && nextEpisodeCount !== null ? nextEpisodeCount : null
+  );
+  const subjectId = item.bangumi.subjectId ?? item.externalIds.bangumiSubjectId ?? detail.id;
+  return {
+    ...item,
+    episodeCount: nextEpisodeCount,
+    airedEpisodeCount: nextAiredEpisodeCount,
+    externalIds: {
+      ...item.externalIds,
+      bangumiSubjectId: item.externalIds.bangumiSubjectId ?? subjectId
+    },
+    bangumi: {
+      subjectId,
+      url: item.bangumi.url ?? `https://bgm.tv/subject/${subjectId}`,
+      rating: item.bangumi.rating ?? positiveNumberOrNull(detail.rating?.score),
+      ratingCount: item.bangumi.ratingCount ?? positiveIntegerOrNull(detail.rating?.total),
+      rank: item.bangumi.rank ?? positiveIntegerOrNull(detail.rank) ?? positiveIntegerOrNull(detail.rating?.rank),
+      lastSyncedAt: episodeCount !== null || item.bangumi.rating === null ? fetchedAt : item.bangumi.lastSyncedAt
+    },
+    updatedAt: episodeCount !== null || item.bangumi.rating === null ? fetchedAt : item.updatedAt
+  };
 }
 
 function mergeBangumiDetail(item: AnimeItem, detail: BangumiDetail, fetchedAt: string): AnimeItem {
@@ -259,6 +287,16 @@ function isBangumiSubject(value: unknown): value is BangumiSubject {
     (value as { type?: unknown }).type === 2 &&
     typeof (value as { name?: unknown }).name === "string"
   );
+}
+
+function indexBangumiSubjects(snapshots: Map<string, BangumiSubject[]>): Map<number, BangumiSubject> {
+  const result = new Map<number, BangumiSubject>();
+  for (const subjects of snapshots.values()) {
+    for (const subject of subjects) {
+      if (!result.has(subject.id)) result.set(subject.id, subject);
+    }
+  }
+  return result;
 }
 
 function findBangumiSnapshotMatch(

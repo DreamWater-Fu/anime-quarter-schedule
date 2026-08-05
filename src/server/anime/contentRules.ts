@@ -140,7 +140,7 @@ const FOREIGN_METADATA_PATTERNS = [
 const THEATRICAL_MOVIE_PATTERN = /剧场版|劇場版|映画|movie|the\s+movie|film|电影|電影/iu;
 const KNOWN_NON_TV_SPECIAL_PATTERN = /テラパゴスのキラキラ探検記|太乐巴戈斯的闪闪发亮探险记|太樂巴戈斯的閃閃發亮探險記|terapagos/iu;
 const KNOWN_NON_TV_TITLE_PATTERN =
-  /ライジングインパクト|一击冲天|高尔夫物语|ばなにゃ\s*あらうんど\s*ざ\s*わーるど|香蕉喵\s*(?:第3期|游世界)|Shenmue the Animation|莎木|地球外少年少女|バイオハザード[:：]\s*インフィニット\s*ダークネス|BIOHAZARD[:：]\s*Infinite Darkness|Resident Evil[:：]?\s*Infinite Darkness|生化危机[:： ]\s*无尽黑暗|斉木楠雄のψ難\s*Ψ始動編|齐木楠雄的灾难\s*灾始动篇|ポケモン\s*ソード・シールド\s*薄明の翼|精灵宝可梦\s*剑&盾\s*薄明之翼|ベイブレードバースト\s*スパーキング|霸旋陀螺\s*爆刃对决\s*第5期|四月一日さん家と\s*第2期|四月一日三姐妹\s*第2期|おーばーふろぉ|overflow\.cf-anime\.com/iu;
+  /ライジングインパクト|一击冲天|高尔夫物语|ばなにゃ\s*あらうんど\s*ざ\s*わーるど|香蕉喵\s*(?:第3期|游世界)|Shenmue the Animation|莎木|地球外少年少女|バイオハザード[:：]\s*インフィニット\s*ダークネス|BIOHAZARD[:：]\s*Infinite Darkness|Resident Evil[:：]?\s*Infinite Darkness|生化危机[:： ]\s*无尽黑暗|斉木楠雄のψ難\s*Ψ始動編|齐木楠雄的灾难\s*灾始动篇|ポケモン\s*ソード・シールド\s*薄明の翼|精灵宝可梦\s*剑&盾\s*薄明之翼|ベイブレードバースト\s*スパーキング|霸旋陀螺\s*爆刃对决\s*第5期|四月一日さん家と\s*第2期|四月一日三姐妹\s*第2期|すとぷりのhere!we!go!!|草莓王子\s*herewego|おーばーふろぉ|overflow\.cf-anime\.com/iu;
 const KNOWN_WEB_TITLE_PATTERN =
   /t\s*[\u30fb\uff65.]?\s*p\s*\u307c\u3093|\u3076\u3089\u3069\u3089\u3076|vladlove|\u30b0\u30ea\u30e0\u7d44\u66f2|\u683c\u6797\u7ae5\u8bdd\u53d8\u594f\u66f2/iu;
 const TV_SPECIAL_OR_RECAP_TITLE_PATTERN =

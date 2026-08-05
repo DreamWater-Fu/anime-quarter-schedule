@@ -27,6 +27,7 @@ export interface YourAnimesReferenceEntry {
   aliases: string[];
   url: string;
   publishedAt: string;
+  episodeCount: number | null;
   bangumiSubjectId: number | null;
   retrievedAt: string;
 }
@@ -200,6 +201,7 @@ export function parseYourAnimesHtml(
         aliases: extractAliases(series.alternateName),
         url: typeof series.url === "string" ? series.url : options.url,
         publishedAt,
+        episodeCount: positiveIntegerOrNull(series.numberOfEpisodes),
         bangumiSubjectId: extractBangumiSubjectId(series.sameAs),
         retrievedAt: options.retrievedAt
       });
@@ -233,6 +235,7 @@ export function mapYourAnimesReferenceToAnimeItem(
   const bangumiSubjectId = Number.isInteger(entry.bangumiSubjectId) ? Number(entry.bangumiSubjectId) : null;
   const lifecycle = inferReferenceLifecycle(beijingSlot.date, new Date(retrievedAt));
   const isFinished = lifecycle.status === "finished";
+  const episodeCount = entry.episodeCount;
 
   return {
     id: bangumiSubjectId !== null ? `anime:${bangumiSubjectId}` : `anime:youranimes:${slugify(entry.title)}`,
@@ -253,8 +256,8 @@ export function mapYourAnimesReferenceToAnimeItem(
     updateWeekday: isFinished ? null : inferUpdateWeekday({ schedule, startDate: beijingSlot.date }),
     updateTime: isFinished ? null : beijingSlot.time,
     timezone: "Asia/Shanghai",
-    episodeCount: null,
-    airedEpisodeCount: null,
+    episodeCount,
+    airedEpisodeCount: isFinished ? episodeCount : null,
     isJapaneseAnime: true,
     inclusionStatus: "included",
     officialUrl: entry.url.startsWith("http") ? entry.url : null,
@@ -278,6 +281,11 @@ export function mapYourAnimesReferenceToAnimeItem(
     updatedAt: retrievedAt,
     createdAt: retrievedAt
   };
+}
+
+function positiveIntegerOrNull(value: unknown): number | null {
+  const parsed = typeof value === "string" ? Number(value) : value;
+  return Number.isInteger(parsed) && Number(parsed) > 0 ? Number(parsed) : null;
 }
 
 function createYourAnimesSource(entry: YourAnimesReferenceEntry, retrievedAt: string): AnimeSource {

@@ -317,6 +317,7 @@ function mergeBangumiSubject(item: AnimeItem, subject: BangumiSubject, retrieved
     retrievedAt,
     scope: "metadata"
   };
+  const episodeCount = positiveIntegerOrNull(subject.eps) ?? positiveIntegerOrNull(subject.total_episodes);
   return {
     ...item,
     title: {
@@ -338,6 +339,8 @@ function mergeBangumiSubject(item: AnimeItem, subject: BangumiSubject, retrieved
       rank: positiveIntegerOrNull(subject.rank) ?? positiveIntegerOrNull(subject.rating?.rank),
       lastSyncedAt: retrievedAt
     },
+    episodeCount: item.episodeCount ?? episodeCount,
+    airedEpisodeCount: item.airedEpisodeCount ?? episodeCount,
     sources: dedupeSources([...item.sources, source]),
     updatedAt: retrievedAt
   };

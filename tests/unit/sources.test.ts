@@ -986,6 +986,7 @@ describe("source adapters", () => {
               name: "YourAnimes Reference",
               url: "https://youranimes.tw/animes/1",
               datePublished: "2026-07-17T23:30:00+09:00",
+              numberOfEpisodes: 12,
               sameAs: ["https://bangumi.tv/subject/517106"]
             }
           }
@@ -997,6 +998,7 @@ describe("source adapters", () => {
     assert.equal(entries.length, 1);
     assert.equal(entries[0]?.bangumiSubjectId, 517106);
     assert.equal(entries[0]?.publishedAt, "2026-07-17T23:30:00+09:00");
+    assert.equal(entries[0]?.episodeCount, 12);
     assert.deepEqual(entries[0]?.aliases, []);
   });
 
@@ -1007,6 +1009,7 @@ describe("source adapters", () => {
         aliases: ["YourAnimes Alias"],
         url: "https://youranimes.tw/animes/1",
         publishedAt: "2026-07-17T23:30:00+09:00",
+        episodeCount: 12,
         bangumiSubjectId: 517106,
         retrievedAt
       },
@@ -1017,6 +1020,7 @@ describe("source adapters", () => {
     assert.equal(item?.startDate, "2026-07-17");
     assert.equal(item?.updateWeekday, 5);
     assert.equal(item?.updateTime, "22:30");
+    assert.equal(item?.episodeCount, 12);
     assert.equal(item?.timezone, "Asia/Shanghai");
     assert.equal(item?.sources[0]?.scope, "japan_broadcast");
   });
@@ -1028,6 +1032,7 @@ describe("source adapters", () => {
         aliases: [],
         url: "https://youranimes.tw/animes/2024",
         publishedAt: "2024-04-05T23:30:00+09:00",
+        episodeCount: 12,
         bangumiSubjectId: null,
         retrievedAt
       },
@@ -1036,6 +1041,8 @@ describe("source adapters", () => {
 
     assert.equal(item?.status, "finished");
     assert.equal(item?.endDate, "2024-06-30");
+    assert.equal(item?.episodeCount, 12);
+    assert.equal(item?.airedEpisodeCount, 12);
     assert.equal(item?.updateWeekday, null);
     assert.equal(item?.updateTime, null);
     assert.equal(item?.schedule[0]?.airTime, "22:30");

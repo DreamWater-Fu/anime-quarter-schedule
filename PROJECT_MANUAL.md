@@ -88,7 +88,7 @@ Bangumi 匹配只补 subjectId、评分、封面和元数据, 不得用于重新
 
 - YucWiki / 长门有C: 主目录源。提供季度目录、标题、首播信息、放送形态、官网、制作信息、集数和封面。默认读取 `https://yuc.wiki/YYYYMM/`, 成功后写入 `data/yucwiki-YYYYMM.html` 快照。
 - Bangumi: 次源。补齐已匹配条目的 subjectId、评分、排名、封面和详情。月度 subject 列表会写入 `data/bangumi-YYYYMM-subjects.json`, 但它不是完整季度目录, 只能作为候选池和元数据补强源。
-- YourAnimes: 低优先级参考源。补充日本首播时间和 Bangumi subjectId。只有在主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 可信 `japan_broadcast` 参考项才可冷启动为 `partial` / `needs_review`。
+- YourAnimes: 低优先级参考源。补充日本首播时间、Bangumi subjectId, 以及页面明确给出的总集数。只有在主目录源与 Bangumi 均不可用且目标季度无旧缓存时, 可信 `japan_broadcast` 参考项才可冷启动为 `partial` / `needs_review`。
 - Bahamut: 遗留参考源适配器, 保留给旧测试和手动调试; 默认更新流程不注册。
 - `data/manual-broadcast-overrides.json`: 最终人工播出时间覆盖, 只对未完结、未取消条目生效。
 
@@ -115,6 +115,7 @@ YucWiki 相邻页与日期解析规则:
 非 TV 特番/剪辑版边界补充:
 
 - 明确的 TV 剪辑版、特别编集版、总集篇、SP、粉丝来信、女英雄故事、鬼灭分段重播篇、奇蛋特别篇、`No.170+1` 等, 即使 Bangumi 评分人数较高也不得作为季度 TV 正片导入。
+- 明确不是 TV 动画正片的电视节目/虚拟综艺不得作为缺 subject 的动画保留; `すとぷりのHere!We!GO!!` / `草莓王子 HereWeGO` 已按此边界排除。
 - 这些规则必须通过 `isCacheEligibleAnime` 生效, Bangumi 匹配只能补元数据, 不能用来绕过非 TV 特番/剪辑版排除。
 
 ## 5. 更新流程
@@ -141,6 +142,7 @@ YucWiki 相邻页与日期解析规则:
 - 长门有C/YucWiki 主目录存在时, 以 YucWiki 为目录主体; Bangumi-only 未匹配条目不得单独写入缓存。
 - 冷启动参考源条目也必须先通过展示/缓存边界。
 - 独立脚本 `scripts/match-missing-bangumi.ts` 必须复用同一套边界和搜索准入判断。
+- 本地 Bangumi 快照同步可以补缺失的 subject 元数据和总集数, 但不得仅凭快照重建 schedule、改写 endDate 或反向改变已确定播出状态。
 
 Bangumi 搜索增强准入:
 

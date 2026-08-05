@@ -241,6 +241,26 @@ describe("cache eligibility", () => {
     }
   });
 
+  it("blocks the Strawberry Prince variety program", () => {
+    assert.equal(
+      isCacheEligibleAnime(createItem({
+        id: "anime:yucwiki:202301:e02",
+        original: "すとぷりのHere!We!GO!!",
+        chinese: "草莓王子 HereWeGO",
+        subjectId: null,
+        sources: [
+          {
+            name: "YucWiki",
+            type: "third_party",
+            retrievedAt,
+            scope: "japan_broadcast"
+          }
+        ]
+      })),
+      false
+    );
+  });
+
   it("blocks explicit TV recap and special-program titles", () => {
     for (const title of [
       "机动战士高达 闪光的哈撒韦 TV剪辑版",

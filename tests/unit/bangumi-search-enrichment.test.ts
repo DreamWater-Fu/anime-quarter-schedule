@@ -53,6 +53,8 @@ describe("Bangumi search enrichment", () => {
     assert.equal(result.matched, 1);
     assert.equal(result.items[0]?.bangumi.subjectId, 600101);
     assert.equal(result.items[0]?.bangumi.rating, 7.2);
+    assert.equal(result.items[0]?.episodeCount, 12);
+    assert.equal(result.items[0]?.airedEpisodeCount, 12);
     assert.equal(result.items[0]?.coverImage?.source, "bangumi");
     assert.deepEqual(keywords, ["コールドスタート"]);
   });
